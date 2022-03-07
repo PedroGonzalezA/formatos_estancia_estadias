@@ -271,6 +271,7 @@
                 text-align: center;
                 background-color: #E1E1E1;
                 border-bottom: 1px solid black;
+                height: 20px;
             }
             .subT{
                 font-size: 13px;
