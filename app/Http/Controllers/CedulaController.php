@@ -343,6 +343,6 @@ class CedulaController extends Controller
             );
         }
 
-        return redirect('registro_final');
+        return redirect('registro_final_cedula');
     }
 }

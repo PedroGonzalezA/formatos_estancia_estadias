@@ -9,7 +9,7 @@
 			<!-- SideBar User info -->
 			<div class="full-box dashboard-sideBar-UserInfo">
 				<figure class="full-box">
-					<img src="{{ asset('https://blogger.googleusercontent.com/img/a/AVvXsEiiqAWnoAMFLHJKb7saVRHa0IJHfIlZbxgEHP-7_esC561vCmk4T8YOor-s-PKpdSHtqx1KTXV8NlxG8cxEVD0EnYvUR-rdj50-k31mz_H56FQ7lroKEtmpe8RqTWsfxc5aaSjV5v3k1UrlDpOdH70mXnhkNZxO-1NBTeC0ziAha4X05KllRm4xGtz4=w320-h320') }}" alt="UserIcon">
+					<img src="{{ asset('https://blogger.googleusercontent.com/img/a/AVvXsEhB5DW9esdg8epwsP3CBsFw7vh4cWKBifJQX9I73WN2HFZcs3tDcwY_Qq3cuwAa0bqtS7m0nEGBdQtnggzjngQeBWs0FiGxyhjzG5E5kkwKVvZ-L6b7yypIwbruCkl41FE7SGzYYxxDq-F66DaOxJgOeMJy2rkfNs6Unj81hwctAsOn4dfa_q4O1q02=s512') }}" alt="UserIcon">
 					<figcaption class="text-center text-titles">{{ auth()->user()->email }}</figcaption>
 				</figure>
 				<ul class="full-box list-unstyled text-center">

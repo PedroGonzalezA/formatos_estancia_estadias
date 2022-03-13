@@ -37,15 +37,16 @@
                     <h1 class="text-5xl text-center pt-24">Se ha guardado el registro correctamente <b style="color: green;">{{ auth()->user()->name }}</b></h1>
                 </div>
                 <div class="col-4 ">
+                    
                     @switch($dato->id_procesos)
                         @case(1)
-                            <a href="{{ route('descarga_cd_f03.index') }}">
+                            <a href="{{ route('descarga_cd_estancia_f03.index') }}">
                                 <button type="button" class="btn btn-outline-info btnDes"><i class="zmdi zmdi-download"> Descargar</i></button>
                             </a>
                         @break
                     
                         @case(2)
-                            <a href="{{ route('descarga_cd_f03.index') }}">
+                            <a href="{{ route('descarga_cd_estancia_f03.index') }}">
                                 <button type="button" class="btn btn-outline-info btnDes"><i class="zmdi zmdi-download"> Descargar</i></button>
                             </a>
                         @break

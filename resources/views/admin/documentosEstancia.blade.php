@@ -33,41 +33,60 @@
 		<!-- Content page -->
 		<div class="container p-3">
 			<div class="page-header">
-			  <h2 class="text-titles">Usuarios <small>(Registrados)</small></h2>
+			  <h2 class="text-titles">Documetos <small>(Registrados)</small></h2>
 			</div>
 		</div>
-			<div class="row">
-				<div class="col-12 col-sm-12 col-md-6 col lg-6 p-5">
-					<div class="row listaAdmin">
-						<div class="col-12 tituloDash">
-							<div>Administradores</div>		 
-						</div>
-						<div class="col-6" style="font-size: 30px; color:rgb(0, 0, 0);">
-							<i class="zmdi zmdi-account  zmdi-hc-5x"></i>
-						</div>
-						<div class="col-6 registro">
-							<p class="registroCount">{{ $adminsCount }}</p>
-							<small>Registrados</small>
-						</div>
-					</div>
-					
-				</div>
-				<div class="col-12 col-sm-12 col-md-6 col lg-6 p-5">
-					<div class="row listaAdmin">
-						<div class="col-12 tituloDash">
-							<div>Usuarios</div>		 
-						</div>
-						<div class="col-6" style="font-size: 30px; color:rgb(0, 0, 0);">
-							<i class="zmdi zmdi-male-alt  zmdi-hc-5x"></i>
-						</div>
-						<div class="col-6 registro">
-							<p class="registroCount">{{ $usersCount }}</p>
-							<small>Registrados</small>
-						</div>
-					</div>
-					
-				</div>
-			</div>
+        <table class="table">
+			<thead>
+				<tr>
+					<th scope="col">#</th>
+					<th scope="col">Matricula</th>
+					<th scope="col">Correo</th>
+                    <th scope="col">Carta aceptación</th>
+                    <th scope="col">Cedula registro</th>
+                    <th scope="col">Definición proyecto</th>
+                    <th scope="col">Carta liberación</th>
+				</tr>
+			</thead>
+			<tbody>
+                @forelse($documentos['documentos'] as $respuestaD)
+                    <tr>
+                        <th scope="row"></th>
+                        
+                            <th>{{ $respuestaD->name }}</th>
+                            <th>{{ $respuestaD->email}}</th>
+                            <th>
+                                @if ($respuestaD->id_c_aceptacion)
+                                    
+                                @endif
+                            </th>
+                            <th>
+                                @if($respuestaD->id_c_registro)
+                                    <form method="post" action="{{ route('ver_cd_estancia_f03_admin.index',[$respuestaD->id_c_registro, $respuestaD->nombre_c_r]) }}">
+                                        @csrf
+                                        <button type="submit" class="btn btn-outline-primary btnEliminar" >Ver</button>
+                                    </form>	
+                                @endif
+                            </th>
+                            <th>
+                                 @if ($respuestaD->id_d_proyecto)
+                                    
+                                @endif
+                            </th>
+                            <th>
+                                @if ($respuestaD->id_c_liberacion)
+                                    
+                                @endif
+                            </th>
+                        
+                    </tr>
+				@empty
+                @endforelse
+
+				
+			</tbody>
+		</table>
+
 			
 			
 	</section>

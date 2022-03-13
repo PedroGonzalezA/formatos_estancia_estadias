@@ -21,12 +21,10 @@
             <p class="text-center"><b>Universidad Politécnica de Quintana Roo</b><br>Dirección de Vinculación, Difusión y Extensión Universitaria</p>
             <div>
                 @forelse ($usuario as $dato)
-                    @if(auth()->user()->name === $dato->name )
                     <div class="text-center" style="display: inline-block; width:550px;"><b>CÉDULA DE REGISTRO DE ESTADÍA</b></div>
                     <div class="text-right" style="display: inline-block; width:140px;">
                         <div class="datos" style="width: 90px; display: inline-block;">{{$dato->nombre_proceso}} </div>
                     </div>
-                     @endif                     
                 @empty
                 @endforelse 
                 
@@ -35,7 +33,6 @@
                 Datos del Alumno/a:
             </div>
                 @forelse ($usuario as $dato)
-                    @if(auth()->user()->name === $dato->name )
                         <table class="table table-borderless p-0 m-0">
                             <tr class="p-0 m-0">
                                 <th class="p-1"><div><div class="datos "><small>{{$dato->ape_paterno}}</small></div><div class="subT text-center"><small>Apellido Paterno</small></div></div></th>
@@ -218,7 +215,6 @@
 
                             </tr>
                         </table>      
-                     @endif                     
                 @empty
                 @endforelse 
         </main>
