@@ -37,7 +37,7 @@
                     @csrf
                     <div class="row">
                         <div class="col-12 p-0">
-                                <a href="{{ route('documentoEstadiaAdmin.index') }}" class="btn "  ><i class="zmdi zmdi-arrow-left"></i></a>
+                                <a href="{{ route('documentoEstanciaAdmin.index') }}" class="btn "  ><i class="zmdi zmdi-arrow-left"></i></a>
                         </div>
                         <div class="col-12 p-1">
                             <textarea class="form-control" id="observaciones" rows="3" name="observaciones"></textarea>
