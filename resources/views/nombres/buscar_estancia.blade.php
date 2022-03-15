@@ -33,27 +33,39 @@
 		<!-- Content page -->
 		<div class="container p-3">
 			<div class="page-header">
-			  <h2 class="text-titles">Documetos Registrados<small>(Estancia)</small></h2>
+			  <h2 class="text-titles">Documetos Registrados<small>(Estadía)</small></h2>
 			</div>
 		</div>
         <div class="container">
-            <form action="{{ route('buscar_estancia.index') }}" method="GET">
-                @csrf
-                  <!-- buscar-->
-                    <div class="row">
-                        <div class=" col-12 col-sm-12 col-md-10">
-                            <input type="text" class="form-control" id="texto" name="texto" placeholder="Buscar" value="">
-                                
-                        </div>
-                        <div class="col-12 col-sm-12 col-md-2">
-                            <input type="submit" value="Buscar" class="btn btn-outline-primary buscar">
-                        </div>
+
+                <div class="row">
+                    <div class=" col-12 col-sm-12 col-md-10">
+                        <form action="{{ route('buscar_estancia.index') }}" method="GET">
+                            @csrf
+                            <!-- buscar-->
+                            <div class="row">
+                                <div class=" col-12 col-sm-12 col-md-10">
+                                    <input type="text" class="form-control" id="texto" name="texto" placeholder="Buscar" value="{{$texto}}">
+                                            
+                                </div>
+                                <div class="col-12 col-sm-6 col-md-2">
+                                    <input type="submit" value="Buscar" class="btn btn-outline-primary buscar">
+                                </div>
+                            </div>
+                                    
+                        </form>
                     </div>
-            </form>
-      
+                    <div class="col-12 col-sm-6 col-md-2">
+                        <a href="{{ route('documentoEstanciaAdmin.index') }}">
+                            <input type="submit" value="Ver todos" class="btn btn-outline-success buscar">
+                        </a>
+                    </div>
+                </div>      
         </div>
-        @forelse($documentos['documentos'] as $respuestaD)
-             @forelse($documentos['usuarios'] as $respuestaU)
+      
+       
+    @forelse($nombres as $respuestaD)
+        @forelse($documentos as $respuestaU)
                 @if ($respuestaD->name==$respuestaU->name)
                     <div class="row p-4">
                         <div class="col-12 documentosUsuario">
@@ -67,7 +79,7 @@
                                     <div class="col-12 col-sm-6 p-0">
                                         <div><div class="text-center" style="background: rgb(31 104 162); color:white;">Correo</div><div class="text-center">{{ $respuestaU->email}}</div></div>
                                     </div>
-                                   
+                                    
                                     <div class="col-6 col-sm-6 p-0">
                                         <div><div class="text-center" style="background: rgb(31 104 162); color:white;">Matricula</div><div class="text-center">{{ $respuestaU->matricula}}</div></div>
                                     </div>
@@ -101,7 +113,7 @@
                                                         Cedula registro
                                                     </div>
                                                 </div>
-                                               
+                                                
                                                         <div class="row text-center">
                                                             <div class="col-12 nombreDoc">
                                                                 {{$respuestaD->nombre_c_r}}
@@ -215,16 +227,22 @@
                         </div>
                     </div>
                 @endif
-            @empty
-                                                    
-            @endforelse
-            
         @empty
-                                                
+            <div class="row">
+                <div class="col-12 text-center">
+                    Sin resultados
+                </div>
+            </div>                                   
         @endforelse
-
-			
-			
+       
+   @empty
+    <div class="row">
+        <div class="col-12 text-center">
+            Sin resultados
+        </div>
+    </div>                                    
+   @endforelse
+    
 	</section>
 	<!--====== Scripts -->
 	<script src="./js/jquery-3.1.1.min.js"></script>
@@ -238,4 +256,5 @@
 		$.material.init();
 	</script>
 </body>
+
 </html>

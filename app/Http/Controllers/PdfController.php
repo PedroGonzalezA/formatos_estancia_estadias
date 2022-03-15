@@ -235,7 +235,7 @@ class PdfController extends Controller
   //cancelar documentos
 
       //cancelar documento f03
-      public function cancelarF03(Request $req,$id_d,$nombre){    
+      public function cancelarF03_Estancia(Request $req,$id_d,$nombre){    
         $carta=documentos::find($id_d);
         $carta->id_c_registro=NULL;
         $carta->save();
@@ -249,6 +249,23 @@ class PdfController extends Controller
            return redirect('estancia');
         }else{
           return redirect('estancia');
+        }
+      }
+
+      public function cancelarF03_Estadia(Request $req,$id_d,$nombre){    
+        $carta=documentos::find($id_d);
+        $carta->id_c_registro=NULL;
+        $carta->save();
+        $nombreA=$req->get('nombreAf03');
+        $formularioA = DB::table('cedula_registro')  
+        ->where('cedula_registro.nombre_c_r', $nombreA)
+        ->delete();
+        $path=public_path().'/documentos/'.$nombreA;
+        if(File::exists($path)){
+           File::delete($path);
+           return redirect('estadia');
+        }else{
+          return redirect('estadia');
         }
       }
 }

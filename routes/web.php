@@ -7,6 +7,7 @@ use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\definicion_proyectoController;
 use App\Http\Controllers\definicionController;
+use App\Http\Controllers\documentosEstadiaAdminController;
 use App\Http\Controllers\documentosEstanciaAdminController;
 use App\Http\Controllers\EstadiaController;
 use App\Http\Controllers\EstanciaController;
@@ -14,6 +15,7 @@ use App\Http\Controllers\falloController;
 use App\Http\Controllers\FormulariosController;
 use App\Http\Controllers\InicioController;
 use App\Http\Controllers\PdfController;
+use App\Http\Controllers\ScrollController;
 use App\Http\Controllers\UsuariosController;
 use App\Models\Formulario;
 
@@ -61,17 +63,70 @@ Route::get('/logout', [LoginController::class, 'destroy'])
     //
      Route::get('/usuarios', [UsuariosController::class, 'create'])
     ->name('usuarios.index');
-
+//estancia
     Route::match(['post','get'],'/estancia_Documentos', [documentosEstanciaAdminController::class, 'ver'])
     ->name('documentoEstanciaAdmin.index');
 
-     //ver con datos f03
-     Route::match(['post','get'],'/ver_cd_estancia_f03/{id}/{name}', [documentosEstanciaAdminController::class, 'ver_cd_estancia_f03'])
-     ->name('ver_cd_estancia_f03.index');
 
         //ver con datos f03
-        Route::match(['post','get'],'/ver_cd_estancia_f03/admin/{id}/{name}', [documentosEstanciaAdminController::class, 'ver_cd_estancia_f03_admin'])
+        Route::match(['post','get'],'/ver_cd_estancia_f03/admin/{name}', [documentosEstanciaAdminController::class, 'ver_cd_estancia_f03_admin'])
         ->name('ver_cd_estancia_f03_admin.index');
+
+        //aceptar  f03
+        Route::match(['post','get','put'],'/aceptar_estancia_f03/admin/{idU}/{id}/{name}', [documentosEstanciaAdminController::class, 'aceptar_estancia_f03_admin'])
+        ->name('aceptar_estancia_f03_admin.index');
+
+        //pendiente f03
+        Route::match(['post','get','put'],'/pendiente_estancia_f03/admin/{idU}/{id}/{name}', [documentosEstanciaAdminController::class, 'pendiente_estancia_f03_admin'])
+        ->name('pendiente_estancia_f03_admin.index');
+
+        //observaciones  f03
+        Route::match(['post','get','put'],'/observaciones_estancia_f03/admin', [documentosEstanciaAdminController::class, 'observaciones_estancia_f03_admin'])
+        ->name('observaciones_estancia_f03_admin.index');
+
+        //guardar observaciones f03
+        Route::match(['get','post','put'],'/guardar_observaciones_estancia_f03_admin/{id}', [documentosEstanciaAdminController::class, 'guardarObservaciones_estancia_f03_admin'])
+        ->name('guardarObservaciones_estancia_f03_admin.index');
+  
+        //con Observaciones  f03
+        Route::match(['post','get'],'/con_Observaciones_estancia_f03/admin', [documentosEstanciaAdminController::class, 'conObservaciones_estancia_f03_admin'])
+        ->name('conObservaciones_estancia_f03_admin.index');
+
+        //buscardor
+        Route::get('/buscar', [documentosEstanciaAdminController::class, 'buscador_estancia'])
+        ->name('buscar_estancia.index');;
+
+//estadiaS
+    Route::match(['post','get'],'/estadia_Documentos', [documentosEstadiaAdminController::class, 'ver'])
+    ->name('documentoEstadiaAdmin.index');
+
+        //ver con datos f03
+        Route::match(['post','get'],'/ver_cd_estadia_f03/admin/{idU}/{id}/{name}', [documentosEstadiaAdminController::class, 'ver_cd_estadia_f03_admin'])
+        ->name('ver_cd_estadia_f03_admin.index');
+
+        //aceptar  f03
+        Route::match(['post','get','put'],'/aceptar_estadia_f03/admin/{idU}/{id}/{name}', [documentosEstadiaAdminController::class, 'aceptar_estadia_f03_admin'])
+        ->name('aceptar_estadia_f03_admin.index');
+
+        //pendiente f03
+        Route::match(['post','get','put'],'/pendiente_estadia_f03/admin/{idU}/{id}/{name}', [documentosEstadiaAdminController::class, 'pendiente_estadia_f03_admin'])
+        ->name('pendiente_estadia_f03_admin.index');
+
+        //observaciones  f03
+        Route::match(['post','get','put'],'/observaciones_estadia_f03/admin', [documentosEstadiaAdminController::class, 'observaciones_estadia_f03_admin'])
+        ->name('observaciones_estadia_f03_admin.index');
+
+        //guardar observaciones f03
+        Route::match(['get','post','put'],'/guardar_observaciones_estadia_f03_admin/{id}', [documentosEstadiaAdminController::class, 'guardarObservaciones_estadia_f03_admin'])
+        ->name('guardarObservaciones_estadia_f03_admin.index');
+  
+        //con Observaciones  f03
+        Route::match(['post','get'],'/con_Observaciones_estadia_f03/admin', [documentosEstadiaAdminController::class, 'conObservaciones_estadia_f03_admin'])
+        ->name('conObservaciones_estadia_f03_admin.index');
+
+        //buscardor
+        Route::get('/nombres', [documentosEstadiaAdminController::class, 'buscador'])
+        ->name('nombres.index');;
 //alumno
    
 
@@ -120,8 +175,8 @@ Route::get('/inicio', [InicioController::class, 'ver'])
     ->name('subir_f03_estancia.index');
 
     //cancelar solicitud documento f03
-    Route::match(['post', 'delete','put'], '/f03/{id_d}/{nombre}',[PdfController::class,'cancelarF03'])
-    ->name('cancelar_f03.index');
+    Route::match(['post', 'delete','put'], '/f03/{id_d}/{nombre}',[PdfController::class,'cancelarF03_Estancia'])
+    ->name('cancelar_f03_Estancia.index');
     
 
     //llenar datos f04
@@ -167,6 +222,11 @@ Route::get('/inicio', [InicioController::class, 'ver'])
     //enviar documento f03 sin datos 
     Route::match(['post', 'delete','put'],'subir/f03_estadia/{name}/{nombre}', [EstadiaController::class, 'subirF03_estadia'])
     ->name('subir_f03_estadia.index');
+
+       //cancelar solicitud documento f03
+       Route::match(['post', 'delete','put'], '/f03_estadia/{id_d}/{nombre}',[PdfController::class,'cancelarF03_Estadia'])
+       ->name('cancelar_f03_Estadia.index');
+       
 
 //fallos
     Route::match(['post','get'],'/errores', [falloController::class, 'ver'])

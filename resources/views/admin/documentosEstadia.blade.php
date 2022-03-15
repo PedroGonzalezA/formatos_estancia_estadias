@@ -33,27 +33,29 @@
 		<!-- Content page -->
 		<div class="container p-3">
 			<div class="page-header">
-			  <h2 class="text-titles">Documetos Registrados<small>(Estancia)</small></h2>
+			  <h2 class="text-titles">Documetos Registrados<small>(Estadía)</small></h2>
 			</div>
 		</div>
-        <div class="container">
-            <form action="{{ route('buscar_estancia.index') }}" method="GET">
-                @csrf
-                  <!-- buscar-->
-                    <div class="row">
-                        <div class=" col-12 col-sm-12 col-md-10">
-                            <input type="text" class="form-control" id="texto" name="texto" placeholder="Buscar" value="">
-                                
+            <div class="container">
+                <form action="{{ route('nombres.index') }}" method="GET">
+                    @csrf
+                      <!-- buscar-->
+                        <div class="row">
+                            <div class=" col-12 col-sm-12 col-md-10">
+                                <input type="text" class="form-control" id="texto" name="texto" placeholder="Buscar" value="">
+                                    
+                            </div>
+                            <div class="col-12 col-sm-12 col-md-2">
+                                <input type="submit" value="Buscar" class="btn btn-outline-primary buscar">
+                            </div>
                         </div>
-                        <div class="col-12 col-sm-12 col-md-2">
-                            <input type="submit" value="Buscar" class="btn btn-outline-primary buscar">
-                        </div>
-                    </div>
-            </form>
-      
-        </div>
+                </form>
+          
+            </div>
+          
+           
         @forelse($documentos['documentos'] as $respuestaD)
-             @forelse($documentos['usuarios'] as $respuestaU)
+            @forelse($documentos['usuarios'] as $respuestaU)
                 @if ($respuestaD->name==$respuestaU->name)
                     <div class="row p-4">
                         <div class="col-12 documentosUsuario">
@@ -75,6 +77,7 @@
                                     <div class="col-6 col-sm-6 p-0">
                                         <div><div class="text-center" style="background: rgb(31 104 162); color:white;">Carrera</div><div class="text-center">{{ $respuestaU->nombre_carrera}}</div></div>
                                     </div>
+                                    
                                     <div class="col-12" style="background: black; color:white;">
                                         <div class="text-center">Documentos</div>
                                     </div>
@@ -99,15 +102,16 @@
                                                 <div class="row text-center divNombreCard">
                                                     <div class="col-12">
                                                         Cedula registro
+                                                        
                                                     </div>
                                                 </div>
                                                
-                                                        <div class="row text-center">
-                                                            <div class="col-12 nombreDoc">
+                                                        <div class="row text-center"> 
+                                                            <div class="col-12 p-1 nombreDoc">
                                                                 {{$respuestaD->nombre_c_r}}
                                                             </div>
                                                             <div class="col-6 p-1">
-                                                                <form method="post" action="{{ route('ver_cd_estancia_f03_admin.index',[$respuestaD->nombre_c_r]) }}">
+                                                                <form method="post" action="{{ route('ver_cd_estadia_f03_admin.index',[$respuestaD->id_usuario,$respuestaD->id_c_registro, $respuestaD->nombre_c_r]) }}">
                                                                     @csrf
                                                                     <button type="submit" class="btn btn-outline-primary btnVer" > <i class="zmdi zmdi-eye zmdi-hc-lg"></i> Ver</button>
                                                                 </form>	
@@ -117,19 +121,19 @@
                                                                 @case(0)
                                                         <!--con observaciones-->
                                                                     <div class="col-6 p-1">
-                                                                        <form method="post" action="{{ route('aceptar_estancia_f03_admin.index',[$respuestaD->id_usuario,$respuestaD->id_c_registro, $respuestaD->nombre_c_r]) }}">
+                                                                        <form method="post" action="{{ route('aceptar_estadia_f03_admin.index',[$respuestaD->id_usuario,$respuestaD->id_c_registro, $respuestaD->nombre_c_r]) }}">
                                                                             @csrf
                                                                             <button type="submit" class="btn btn-outline-success btnAceptar" > <i class="zmdi zmdi-check zmdi-hc-lg"></i> Aceptar</button>
                                                                         </form>	
                                                                     </div>
                                                                     <div class="col-12 p-1">
-                                                                        <form method="post" action="{{ route('pendiente_estancia_f03_admin.index',[$respuestaD->id_usuario,$respuestaD->id_c_registro, $respuestaD->nombre_c_r]) }}">
+                                                                        <form method="post" action="{{ route('pendiente_estadia_f03_admin.index',[$respuestaD->id_usuario,$respuestaD->id_c_registro, $respuestaD->nombre_c_r]) }}">
                                                                             @csrf
                                                                             <button type="submit" class="btn btn-outline-dark btnPendiente" >Pendiente</button>
                                                                         </form>	
                                                                     </div>
                                                                     <div class="col-12 p-1">
-                                                                        <form method="post" action="{{ route('conObservaciones_estancia_f03_admin.index') }}">
+                                                                        <form method="post" action="{{ route('conObservaciones_estadia_f03_admin.index') }}">
                                                                             @csrf
                                                                             <input type="text" name="id_c" id="id_c" value="{{$respuestaD->id_c_registro}}" class="id_d">
                                                                             <div class="text-center p-1"><span class="badge bg-warning text-dark">Con Observaciones</span></div>
@@ -142,14 +146,14 @@
                                                         <!--pendiente-->
                                                                 @case(1)
                                                                     <div class="col-6 p-1">
-                                                                        <form method="post" action="{{ route('aceptar_estancia_f03_admin.index',[$respuestaD->id_usuario,$respuestaD->id_c_registro, $respuestaD->nombre_c_r]) }}">
+                                                                        <form method="post" action="{{ route('aceptar_estadia_f03_admin.index',[$respuestaD->id_usuario,$respuestaD->id_c_registro, $respuestaD->nombre_c_r]) }}">
                                                                             @csrf
                                                                             <button type="submit" class="btn btn-outline-success btnAceptar" > <i class="zmdi zmdi-check zmdi-hc-lg"></i> Aceptar</button>
                                                                         </form>	
                                                                     </div>
                                                                     <div class="col-12 p-1">
                                                                         <div class="text-center p-1"><span class="badge bg-dark">Pendiente</span></div>
-                                                                        <form method="post" action="{{ route('observaciones_estancia_f03_admin.index') }}">
+                                                                        <form method="post" action="{{ route('observaciones_estadia_f03_admin.index') }}">
                                                                             @csrf
                                                                             <input type="text" name="id_c" id="id_c" value="{{$respuestaD->id_c_registro}}" class="id_d">
                                                                             <button type="submit" class="btn btn-outline-warning btnObservaciones" > <i class="zmdi zmdi-alert-circle zmdi-hc-lg"></i> Obsevaciones</button>
@@ -160,14 +164,14 @@
                                                                 @case(2)
                                                                 
                                                                     <div class="col-6 p-1">
-                                                                        <form method="post" action="{{ route('pendiente_estancia_f03_admin.index',[$respuestaD->id_usuario,$respuestaD->id_c_registro, $respuestaD->nombre_c_r]) }}">
+                                                                        <form method="post" action="{{ route('pendiente_estadia_f03_admin.index',[$respuestaD->id_usuario,$respuestaD->id_c_registro, $respuestaD->nombre_c_r]) }}">
                                                                             @csrf
                                                                             <button type="submit" class="btn btn-outline-dark btnAceptar" >Pendiente</button>
                                                                         </form>	
                                                                     </div>
                                                                     <div class="col-12 p-1">
                                                                         <div class="text-center p-1"><span class="badge bg-success">Aceptado</span></div>
-                                                                        <form method="post" action="{{ route('observaciones_estancia_f03_admin.index') }}">
+                                                                        <form method="post" action="{{ route('observaciones_estadia_f03_admin.index') }}">
                                                                             @csrf
                                                                             <input type="text" name="id_c" id="id_c" value="{{$respuestaD->id_c_registro}}" class="id_d">
                                                                             <button type="submit" class="btn btn-outline-warning btnObservaciones" > <i class="zmdi zmdi-alert-circle zmdi-hc-lg"></i> Obsevaciones</button>
@@ -222,9 +226,6 @@
         @empty
                                                 
         @endforelse
-
-			
-			
 	</section>
 	<!--====== Scripts -->
 	<script src="./js/jquery-3.1.1.min.js"></script>
@@ -238,4 +239,5 @@
 		$.material.init();
 	</script>
 </body>
+</html>
 </html>

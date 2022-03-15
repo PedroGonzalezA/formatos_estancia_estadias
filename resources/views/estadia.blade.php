@@ -65,11 +65,11 @@
 													
 													<div class="row">
 														<div class="col-12 col-sm-9">
-															<form action="{{ route('cancelar_f03.index',[$datoC->id,$datoC->name]) }}" method="POST" enctype="multipart/form-data">
+															<form action="{{ route('cancelar_f03_Estadia.index',[$datoC->id,$datoC->name]) }}" method="POST" enctype="multipart/form-data">
 																@csrf
 																<div class="row">
 																	<div class="col-12 col-sm-9 px-3 py-1">
-																		<input type="text" name="nombreAf03" id="" value="{{$datoC->nombre_c_r}}" class="nombreDoc">
+																		<input type="text" name="nombreAf03" id="" value="{{$datoC->nombre_c_r}}" class="nombreDoc id_d">
 																	</div>
 																	<div class="col-12 col-sm-3 px-3 py-1">
 																		<button type="submit" class="btn btn-outline-danger btnCancelar" >Cancelar</button>

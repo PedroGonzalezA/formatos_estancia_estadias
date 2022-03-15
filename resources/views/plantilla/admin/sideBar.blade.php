@@ -39,9 +39,12 @@
                     <li>
                         <a href="{{ route('usuarios.index') }}"></i> Alumnos</a>
                     </li>
-                        <li>
-                            <a href="{{ route('documentoEstanciaAdmin.index') }}"></i> Documentos Estancias</a>
-                        </li>
+                    <li>
+                        <a href="{{ route('documentoEstanciaAdmin.index') }}"></i> Documentos Estancias</a>
+                    </li>
+                    <li>
+                        <a href="{{ route('documentoEstadiaAdmin.index') }}"></i> Documentos Estadías</a>
+                    </li>
                 </ul>
             </li>
             <!--<li>
