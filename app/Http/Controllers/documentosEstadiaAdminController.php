@@ -54,8 +54,10 @@ class documentosEstadiaAdminController extends Controller
     }
     public function conObservaciones_estadia_f03_admin(Request $request) {
         $id_c   = [ $request->input('id_c')];
+        $id_c_r   = ['id_c'=>$request->input('id_c')];
+        $datos = Arr::collapse([$id_c_r]);
         $cedula=cedula_registro::find($id_c);
-        return view('admin.conObservaciones',['datos'=>$cedula]);
+        return view('admin.conObservaciones',['datos'=>$cedula,'id'=>$datos]);
     }
     public function observaciones_estadia_f03_admin(Request $request) {
         $id_c   = ['id_c'=>$request->input('id_c')];

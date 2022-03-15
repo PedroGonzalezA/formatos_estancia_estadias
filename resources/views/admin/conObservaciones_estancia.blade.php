@@ -34,11 +34,11 @@
 		</div>
         <div class="container">
             @forelse ($datos as $dato)
-				<form action="{{ route('guardarObservaciones_estadia_f03_admin.index',[$id['id_c']]) }}" method="post" enctype="multipart/form-data" >
+				<form action="{{ route('guardarObservaciones_estancia_f03_admin.index',[$id['id_c']]) }}" method="post" enctype="multipart/form-data" >
 				@csrf
 					<div class="row">
 							<div class="col-12 p-0">
-									<a href="{{ route('documentoEstadiaAdmin.index') }}" class="btn "  ><i class="zmdi zmdi-arrow-left"></i></a>
+									<a href="{{ route('documentoEstanciaAdmin.index') }}" class="btn "  ><i class="zmdi zmdi-arrow-left"></i></a>
 							</div>
 							<div class="col-12 p-1">
 								<input type="text" name="observaciones" value="{{$dato->observaciones_c_r}}" class="observaciones" >
