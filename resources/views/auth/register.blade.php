@@ -36,7 +36,7 @@
                     <div class="col-md-12 col-lg-12 d-flex align-items-center">
                         <div class="card-body p-4 p-lg-5 text-black">
 
-                            <form method="POST" action="">
+                            <form method="POST" action="{{route('register.store')}}">
                                 @csrf
                                 <div class="row">
                                     <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
@@ -49,7 +49,7 @@
                                         <div class="form-outline mb-4">
                                             <input type="text" id="name" class="form-control form-control-lg"
                                             name="name" />
-                                            <label class="form-label" for="name">Nombre Usuario</label>
+                                            <label class="form-label" for="name">Nombre Usuario(Matricula)</label>
                                         </div>
                                         @error('name')
                                             <p class="border border-red-500 rounded-md bg-red-200 w-full text-red-600 p-2 my-2">{{ $message }}</p>
@@ -57,8 +57,10 @@
                                     </div>
                                     <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
                                         <div class="form-outline mb-4">
-                                            <input type="text" id="role" class="form-control form-control-lg"
-                                            name="role" />
+                                            <select class="form-control" name="role" id="role">
+                                                <option value="alumno">Alumno</option>
+                                                <option value="admin">Admin</option>
+                                            </select>
                                             <label class="form-label" for="role">Rol de Usuario</label>
                                         </div>
                                         @error('role')

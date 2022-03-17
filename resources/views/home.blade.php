@@ -66,13 +66,13 @@
         </div>-->
         @if(auth()->check())
         <div class="row">
-            <div class="col-6">
+            <div class="col-2 col-sm-2 col-md-6">
                 <a href="{{ route('inicio.index') }}" class="btn "  ><i class="zmdi zmdi-arrow-left"></i></a>
             </div>
-            <div class="col-4">
+            <div class="col-10 col-sm-10 col-md-4">
                 <p class="text-xl">Bienvenido <b>{{ auth()->user()->name }}</b></p>
             </div>
-            <div class="col-2 text-center">
+            <div class="col-12 col-sm-12 col-md-2 text-center">
                 <a href="{{ route('login.destroy') }}">Cerrar Sesion</a>
             </div>
         </div>

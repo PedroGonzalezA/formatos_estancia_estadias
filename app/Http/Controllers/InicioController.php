@@ -6,6 +6,8 @@ use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\DB;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+
 class InicioController extends Controller
 {
     //
@@ -28,5 +30,20 @@ class InicioController extends Controller
 
 
         return view('inicio',['datos'=>$datos]);
+    }
+
+    public function redirect(){
+        $userID=Auth::user()->id; 
+        $userrole=Auth::user()->role; 
+
+        if(!$userID){
+            return redirect('/login');
+        }else{
+            if($userrole=='admin'){
+                return redirect('/admin');
+            }else{
+                return redirect('/inicio');
+            }
+        }
     }
 }

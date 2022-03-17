@@ -95,14 +95,17 @@ body, html{
 .dashboard-sideBar{
 	left: 0;
 	z-index: 2;
-	background-image: url('../assets/img/sideBar-font.jpg');
+	background-image: url('https://siev1.000webhostapp.com/MPGH/view/assets/img/menu.png');
 	border-right: 1px solid rgba(255, 255, 255, .4);
 	overflow: hidden;
+}
+.colorPrin{
+	background-color: #9A616D;
 }
 .dashboard-sideBar-ct{
 	position: relative;
 	height: 100%;
-	background-color: rgba(0, 0, 0, .77);
+	background-color: rgba(2, 70, 119, .65);
 	padding: 0 10px;
 	padding-bottom: 30px;
 }
@@ -207,8 +210,8 @@ body, html{
 	outline: none;
 }
 .dashboard-sideBar-Menu > li > ul > li > a:hover{
-	border-left: 3px solid #FF5722;
-	color: #FF5722;
+	border-left: 3px solid #002f50;
+	color: #024677;
 }
 /*contentPage*/
 .dashboard-contentPage{
@@ -227,7 +230,7 @@ body, html{
 	outline: none;
 }
 .dashboard-Navbar{
-	background-color: #000;
+	background-color: #024677;
 	overflow: hidden;
 }
 .dashboard-Navbar > ul >li,

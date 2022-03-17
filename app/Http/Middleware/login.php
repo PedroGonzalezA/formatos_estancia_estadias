@@ -5,7 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Http\Request;
 
-class AdminAuth
+class login
 {
     /**
      * Handle an incoming request.
@@ -14,13 +14,18 @@ class AdminAuth
      * @param  \Closure(\Illuminate\Http\Request): (\Illuminate\Http\Response|\Illuminate\Http\RedirectResponse)  $next
      * @return \Illuminate\Http\Response|\Illuminate\Http\RedirectResponse
      */
-    public function handle(Request $request, Closure $next) {
-
+    public function handle(Request $request, Closure $next)
+    {
+      
         if ( auth()->check() ) {
             if (auth()->user()->role == 'admin') {
-                return $next($request);
+                return redirect('/admin');
             }
-        }   
-        return redirect()->to('/login');
+            if (! $request->expectsJson()) {
+            
+                return redirect('/inicio');
+            }
+        }  
+        return $next($request);
     }
 }

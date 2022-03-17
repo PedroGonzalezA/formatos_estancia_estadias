@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\datosController;
 use App\Http\Controllers\definicion_proyectoController;
 use App\Http\Controllers\definicionController;
 use App\Http\Controllers\documentosEstadiaAdminController;
@@ -18,6 +19,7 @@ use App\Http\Controllers\PdfController;
 use App\Http\Controllers\ScrollController;
 use App\Http\Controllers\UsuariosController;
 use App\Models\Formulario;
+use App\Models\universidad;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,12 +33,12 @@ use App\Models\Formulario;
 */
 
 Route::get('/', function () {
-    return view('auth.login');
-})->middleware('auth');
+    return redirect('/login');
+})->middleware('login');
 
 Route::get('/register', [RegisterController::class, 'create'])
-    ->middleware('guest')
-    ->name('register.index');
+->middleware('login')
+->name('register.index');
 
 Route::post('/register', [RegisterController::class, 'store'])
     ->name('register.store');
@@ -44,7 +46,7 @@ Route::post('/register', [RegisterController::class, 'store'])
 
 
 Route::get('/login', [LoginController::class, 'create'])
-    ->middleware('guest')
+    ->middleware('login')
     ->name('login.index');
 
 Route::post('/login', [LoginController::class, 'store'])
@@ -62,15 +64,36 @@ Route::get('/logout', [LoginController::class, 'destroy'])
 
     //
      Route::get('/usuarios', [UsuariosController::class, 'create'])
-    ->name('usuarios.index');
+    ->name('usuarios.index')
+    ->middleware('auth.admin');
+
+        //cambiar datos director
+        Route::get('/datos', [datosController::class, 'ver'])
+        ->name('datos.index')
+        ->middleware('auth.admin');
+
+        //guardar datos vinculacion
+           Route::match(['post','get','put'],'/guardar_datos_vinculacion', [datosController::class, 'guardar'])
+           ->name('guardar_vinculacion.index');
+
+        //actualizar datos vinculacion
+        Route::match(['post','get','put'],'/actualizar_datos_vinculacion', [datosController::class, 'actualizar'])
+        ->name('actualizar_vinculacion.index');  
+
+        //imagen
+        Route::match(['post','get','put'],'/imagen/{filename}', [datosController::class, 'imagen'])
+        ->name('imagen.index');      
 //estancia
     Route::match(['post','get'],'/estancia_Documentos', [documentosEstanciaAdminController::class, 'ver'])
-    ->name('documentoEstanciaAdmin.index');
+    ->name('documentoEstanciaAdmin.index')
+    ->middleware('auth.admin');
+
 
 
         //ver con datos f03
         Route::match(['post','get'],'/ver_cd_estancia_f03/admin/{name}', [documentosEstanciaAdminController::class, 'ver_cd_estancia_f03_admin'])
-        ->name('ver_cd_estancia_f03_admin.index');
+        ->name('ver_cd_estancia_f03_admin.index')
+        ->middleware('auth.admin');
 
         //aceptar  f03
         Route::match(['post','get','put'],'/aceptar_estancia_f03/admin/{idU}/{id}/{name}', [documentosEstanciaAdminController::class, 'aceptar_estancia_f03_admin'])
@@ -82,7 +105,9 @@ Route::get('/logout', [LoginController::class, 'destroy'])
 
         //observaciones  f03
         Route::match(['post','get','put'],'/observaciones_estancia_f03/admin', [documentosEstanciaAdminController::class, 'observaciones_estancia_f03_admin'])
-        ->name('observaciones_estancia_f03_admin.index');
+        ->name('observaciones_estancia_f03_admin.index')
+        ->middleware('auth.admin');
+
 
         //guardar observaciones f03
         Route::match(['get','post','put'],'/guardar_observaciones_estancia_f03_admin/{id}', [documentosEstanciaAdminController::class, 'guardarObservaciones_estancia_f03_admin'])
@@ -90,19 +115,25 @@ Route::get('/logout', [LoginController::class, 'destroy'])
   
         //con Observaciones  f03
         Route::match(['post','get'],'/con_Observaciones_estancia_f03/admin', [documentosEstanciaAdminController::class, 'conObservaciones_estancia_f03_admin'])
-        ->name('conObservaciones_estancia_f03_admin.index');
+        ->name('conObservaciones_estancia_f03_admin.index')
+        ->middleware('auth.admin');
+
 
         //buscardor
         Route::get('/buscar', [documentosEstanciaAdminController::class, 'buscador_estancia'])
-        ->name('buscar_estancia.index');;
+        ->name('buscar_estancia.index');
 
 //estadiaS
     Route::match(['post','get'],'/estadia_Documentos', [documentosEstadiaAdminController::class, 'ver'])
-    ->name('documentoEstadiaAdmin.index');
+    ->name('documentoEstadiaAdmin.index')
+    ->middleware('auth.admin');
+
 
         //ver con datos f03
         Route::match(['post','get'],'/ver_cd_estadia_f03/admin/{idU}/{id}/{name}', [documentosEstadiaAdminController::class, 'ver_cd_estadia_f03_admin'])
-        ->name('ver_cd_estadia_f03_admin.index');
+        ->name('ver_cd_estadia_f03_admin.index')
+        ->middleware('auth.admin');
+
 
         //aceptar  f03
         Route::match(['post','get','put'],'/aceptar_estadia_f03/admin/{idU}/{id}/{name}', [documentosEstadiaAdminController::class, 'aceptar_estadia_f03_admin'])
@@ -114,7 +145,9 @@ Route::get('/logout', [LoginController::class, 'destroy'])
 
         //observaciones  f03
         Route::match(['post','get','put'],'/observaciones_estadia_f03/admin', [documentosEstadiaAdminController::class, 'observaciones_estadia_f03_admin'])
-        ->name('observaciones_estadia_f03_admin.index');
+        ->name('observaciones_estadia_f03_admin.index')
+        ->middleware('auth.admin');
+
 
         //guardar observaciones f03
         Route::match(['get','post','put'],'/guardar_observaciones_estadia_f03_admin/{id}', [documentosEstadiaAdminController::class, 'guardarObservaciones_estadia_f03_admin'])
@@ -122,7 +155,9 @@ Route::get('/logout', [LoginController::class, 'destroy'])
   
         //con Observaciones  f03
         Route::match(['post','get'],'/con_Observaciones_estadia_f03/admin', [documentosEstadiaAdminController::class, 'conObservaciones_estadia_f03_admin'])
-        ->name('conObservaciones_estadia_f03_admin.index');
+        ->name('conObservaciones_estadia_f03_admin.index')
+        ->middleware('auth.admin');
+
 
         //buscardor
         Route::get('/nombres', [documentosEstadiaAdminController::class, 'buscador'])
@@ -132,11 +167,13 @@ Route::get('/logout', [LoginController::class, 'destroy'])
 
 //inicio
 Route::get('/inicio', [InicioController::class, 'ver'])
-->name('inicio.index');
+->name('inicio.index')
+->middleware('auth');
 
 //formato estancias
     Route::match(['post','get'],'/estancia', [EstanciaController::class, 'ver'])
-    ->name('estancia.index');
+    ->name('estancia.index')
+    ->middleware('auth');
 
     //descargar con datos f02
     Route::get('/descarga_cd_estancia_f01', [PdfController::class, 'descarga_cd_f01_estancia'])
@@ -148,7 +185,8 @@ Route::get('/inicio', [InicioController::class, 'ver'])
 
     //llenar f03
     Route::get('/home', [CedulaController::class, 'ver'])
-    ->name('home.index');
+    ->name('home.index')
+    ->middleware('auth');;
     
     Route::post('/home', [CedulaController::class, 'store'])
         ->name('home.store');
@@ -201,7 +239,8 @@ Route::get('/inicio', [InicioController::class, 'ver'])
 
 //formatos estadias
     Route::match(['post','get'],'/estadia', [EstadiaController::class, 'ver'])
-    ->name('estadia.index');
+    ->name('estadia.index')
+    ->middleware('auth');
 
     //descargar sin datos f03
     Route::get('/descarga_sd_estadia_f03', [DescargaController::class, 'descarga_sd_estadia_f03'])
@@ -230,22 +269,32 @@ Route::get('/inicio', [InicioController::class, 'ver'])
 
 //fallos
     Route::match(['post','get'],'/errores', [falloController::class, 'ver'])
-    ->name('fallos.index');
+    ->name('fallos.index')
+    ->middleware('auth');;
 
     
 
     //registro final cedula f03
 
     Route::match(['post','get'],'/registro_final_cedula', [falloController::class, 'verRegistroFinalCedula'])
-    ->name('registro_final_cedula.index');
+    ->name('registro_final_cedula.index')
+    ->middleware('auth');;
 
 
     //registro final definicion f04
     Route::match(['post','get'],'/registro_final_definicion', [falloController::class, 'verRegistroFinalDefinicion'])
-    ->name('registro_final_definicion.index');
+    ->name('registro_final_definicion.index')
+    ->middleware('auth');;
 
 
     
-    //Ver Observaciones del admin vista usuario
+    //Ver Observaciones  f03 del admin vista usuario
     Route::match(['post','get'],'/observaciones', [EstanciaController::class, 'verObservaciones_f03'])
-    ->name('obsevaciones_f03.index');
+    ->name('obsevaciones_f03.index')
+    ->middleware('auth');
+
+
+       //Ver Observaciones f03 del admin vista usuario estadia
+       Route::match(['post','get'],'/observaciones_estadia', [EstadiaController::class, 'verObservaciones_f03_estadia'])
+       ->name('obsevaciones_f03_estadia.index')
+       ->middleware('auth');

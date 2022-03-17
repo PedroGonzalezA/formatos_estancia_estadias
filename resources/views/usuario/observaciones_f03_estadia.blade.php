@@ -4,9 +4,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin</title>
+    <title>UPQROO</title>
 
-   
     <link rel="stylesheet" href="css/menu.css">
 	<link rel="stylesheet" href="css/formato.css">
 
@@ -23,54 +22,26 @@
 </head>
 <body>
     <!-- SideBar -->
-	@include('plantilla/admin/sideBar')
+	@include('plantilla/alumno/sideBar')
 
 	<!-- Content page-->
 	<section class="full-box dashboard-contentPage">
 		<!-- NavBar -->
-		@include('plantilla/admin/navBar')
-
+		@include('plantilla/alumno/navBar')
 		<!-- Content page -->
 		<div class="container p-3">
 			<div class="page-header">
-			  <h2 class="text-titles">Usuarios <small>(Registrados)</small></h2>
+			  <h2 class="text-titles">Observaciones <small>(f-03_cedula de Registro Estadía)</small></h2>
 			</div>
 		</div>
-			<div class="row">
-				<div class="col-12 col-sm-12 col-md-6 col lg-6 p-5">
-					<div class="row listaAdmin">
-						<div class="col-12 tituloDash">
-							<div>Administradores</div>		 
-						</div>
-						<div class="col-6" style="font-size: 30px; color:rgb(0, 0, 0);">
-							<a href="#!"><i class="zmdi zmdi-account  zmdi-hc-5x"></i></a>
-						</div>
-						<div class="col-6 registro">
-							<p class="registroCount">{{ $adminsCount }}</p>
-							<small>Registrados</small>
-						</div>
-					</div>
-					
-				</div>
-				<div class="col-12 col-sm-12 col-md-6 col lg-6 p-5">
-					<div class="row listaAdmin">
-						<div class="col-12 tituloDash">
-							<div>Usuarios</div>		 
-						</div>
-						<div class="col-6" style="font-size: 30px; color:rgb(0, 0, 0);">
-							<a href="#!"><i class="zmdi zmdi-male-alt  zmdi-hc-5x"></i></a>
-						</div>
-						<div class="col-6 registro">
-							<p class="registroCount">{{ $usersCount }}</p>
-							<small>Registrados</small>
-						</div>
-					</div>
-					
-				</div>
-			</div>
-			
-			
+		<div class="observaciones">
+            @forelse ($datos as $dato)
+                    {{$dato->observaciones_c_r}}
+				@empty
+			@endforelse
+        </div>
 	</section>
+	
 	<!--====== Scripts -->
 	<script src="./js/jquery-3.1.1.min.js"></script>
 	<script src="./js/sweetalert2.min.js"></script>
@@ -79,6 +50,7 @@
 	<script src="./js/ripples.min.js"></script>
 	<script src="./js/jquery.mCustomScrollbar.concat.min.js"></script>
 	<script src="./js/main.js"></script>
+	
 	<script>
 		$.material.init();
 	</script>

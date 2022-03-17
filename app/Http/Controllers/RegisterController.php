@@ -26,7 +26,7 @@ class RegisterController extends Controller
         if (auth()->login($user) == 'admin') {
             return view('admin.index');
         } else {
-            return redirect()->to('/login');
+            return redirect()->to('/inicio');
         }
     }
 }

@@ -46,6 +46,11 @@
                         <a href="{{ route('documentoEstadiaAdmin.index') }}"></i> Documentos Estadías</a>
                     </li>
                 </ul>
+                <li>
+                    <a href="{{ route('datos.index') }}">
+                        <i class="zmdi zmdi-file-text zmdi-hc-fw"></i> Datos Vinculación
+                    </a>
+                </li>
             </li>
             <!--<li>
                 <a href="#!" class="btn-sideBar-SubMenu">

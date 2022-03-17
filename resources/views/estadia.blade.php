@@ -83,7 +83,7 @@
 																	@switch($datoC->estado_c_r)
 																		@case(0)
 																			
-																			<a href="{{ route('obsevaciones_f03.index') }}">
+																			<a href="{{ route('obsevaciones_f03_estadia.index') }}">
 																				<button type="submit" class="btn btn-outline-danger divObservacionf02" ><i class="zmdi zmdi-folder-person">  Observaciones</i> </button>
 																			</a>
 																		@break

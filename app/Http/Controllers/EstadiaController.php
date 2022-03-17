@@ -229,4 +229,15 @@ class EstadiaController extends Controller
         return redirect('estadia');
 
     }
+    public function verObservaciones_f03_estadia(){
+        $userID=Auth::user()->id; 
+        $cedula_doc=DB::table('users')
+        ->join('respuesta_doc','users.id','=','respuesta_doc.id_usuario')
+        ->join('documentos','documentos.id','=','respuesta_doc.id_documentos')
+        ->join('cedula_registro','cedula_registro.id','=','documentos.id_c_registro')
+        ->select('documentos.id_c_registro','cedula_registro.nombre_c_r','cedula_registro.estado_c_r','cedula_registro.observaciones_c_r','respuesta_doc.id_documentos','respuesta_doc.id_documentos','users.name')
+        ->where('users.id',$userID)
+        ->get();
+        return view('usuario.observaciones_f03_estadia',['datos'=>$cedula_doc]);
+    }
 }

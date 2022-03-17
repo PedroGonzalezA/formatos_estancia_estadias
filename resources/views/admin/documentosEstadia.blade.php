@@ -113,12 +113,12 @@
                                                             @switch($respuestaD->estado_c_r)
                                                                 @case(0)
                                                                     <div class="col-12">
-                                                                        <div class="text-center p-1"><span class="badge bg-warning text-dark">Con Observaciones</span></div>
+                                                                        <div class="text-center p-1"><span class="badge bg-danger text-white">Con Observaciones</span></div>
                                                                     </div>
                                                                 @break
                                                                 @case(1)
                                                                     <div class="col-12">
-                                                                        <div class="text-center p-1"><span class="badge bg-dark">Pendiente</span></div>
+                                                                        <div class="text-center p-1"><span class="badge bg-warning">Pendiente</span></div>
                                                                     </div>
                                                                 @break
                                                                 @case(2)
@@ -149,7 +149,7 @@
                                                                     <div class="col-12 p-1">
                                                                         <form method="post" action="{{ route('pendiente_estadia_f03_admin.index',[$respuestaD->id_usuario,$respuestaD->id_c_registro, $respuestaD->nombre_c_r]) }}">
                                                                             @csrf
-                                                                            <button type="submit" class="btn btn-outline-dark btnPendiente" >Pendiente</button>
+                                                                            <button type="submit" class="btn btn-outline-warning btnPendiente" >Pendiente</button>
                                                                         </form>	
                                                                     </div>
                                                                     <div class="col-12 p-1">
@@ -157,7 +157,7 @@
                                                                             @csrf
                                                                             <input type="text" name="id_c" id="id_c" value="{{$respuestaD->id_c_registro}}" class="id_d">
                     
-                                                                            <button type="submit" class="btn btn-outline-warning btnObservaciones" > <i class="zmdi zmdi-alert-circle zmdi-hc-lg"></i> Ver Obsevaciones</button>
+                                                                            <button type="submit" class="btn btn-outline-danger btnObservaciones" > <i class="zmdi zmdi-alert-circle zmdi-hc-lg"></i> Ver Obsevaciones</button>
                                                                         </form>	
                                                                     </div>
                                                                     
@@ -174,7 +174,7 @@
                                                                         <form method="post" action="{{ route('observaciones_estadia_f03_admin.index') }}">
                                                                             @csrf
                                                                             <input type="text" name="id_c" id="id_c" value="{{$respuestaD->id_c_registro}}" class="id_d">
-                                                                            <button type="submit" class="btn btn-outline-warning btnObservaciones" > <i class="zmdi zmdi-alert-circle zmdi-hc-lg"></i> Obsevaciones</button>
+                                                                            <button type="submit" class="btn btn-outline-danger btnObservaciones" > <i class="zmdi zmdi-alert-circle zmdi-hc-lg"></i> Obsevaciones</button>
                                                                         </form>	
                                                                     </div>
                                                                 @break
@@ -184,14 +184,14 @@
                                                                     <div class="col-6 p-1">
                                                                         <form method="post" action="{{ route('pendiente_estadia_f03_admin.index',[$respuestaD->id_usuario,$respuestaD->id_c_registro, $respuestaD->nombre_c_r]) }}">
                                                                             @csrf
-                                                                            <button type="submit" class="btn btn-outline-dark btnAceptar" >Pendiente</button>
+                                                                            <button type="submit" class="btn btn-outline-warning btnAceptar" >Pendiente</button>
                                                                         </form>	
                                                                     </div>
                                                                     <div class="col-12 p-1">
                                                                         <form method="post" action="{{ route('observaciones_estadia_f03_admin.index') }}">
                                                                             @csrf
                                                                             <input type="text" name="id_c" id="id_c" value="{{$respuestaD->id_c_registro}}" class="id_d">
-                                                                            <button type="submit" class="btn btn-outline-warning btnObservaciones" > <i class="zmdi zmdi-alert-circle zmdi-hc-lg"></i> Obsevaciones</button>
+                                                                            <button type="submit" class="btn btn-outline-danger btnObservaciones" > <i class="zmdi zmdi-alert-circle zmdi-hc-lg"></i> Obsevaciones</button>
                                                                         </form>	
                                                                     </div>
                                                                 @break
