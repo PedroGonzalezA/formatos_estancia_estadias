@@ -247,13 +247,13 @@ body, html{
 }
 .dashboard-Navbar > ul > li > a:hover{
 	background-color: rgba(255, 255, 255, .1);
-	color: #FF5722;
+	color: #2382ff;
 }
 .dashboard-Navbar > ul > li > a > span.badge{
 	position: absolute;
 	top: 7px;
 	right: 6px;
-	background-color: #FF5722;
+	background-color: #2382ff;
 	transition: all .3s ease-in-out;
 }
 .dashboard-Navbar > ul > li > a:hover span.badge{

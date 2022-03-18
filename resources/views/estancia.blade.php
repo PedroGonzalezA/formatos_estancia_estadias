@@ -37,7 +37,7 @@
 		<div class="container p-2">
 				<ol class="list-group">
 		<!-- f01 -->
-				<!---
+					<!---
 						<li class="list-group-item d-flex justify-content-between align-items-start">
 						<div class="row lista">
 							<div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2">
@@ -73,8 +73,7 @@
 										
 						</div>
 					</li>
-				--->
-
+				-->
 		<!-- f02 -->
 				<!---
 					<li class="list-group-item d-flex justify-content-between align-items-start">
@@ -129,7 +128,7 @@
 											<div class="col-6 col-sm-6 col-md-5 col-lg-3 col-xl-2 p-0 colLlenar">
 												<form method="post" action="{{ route('eliminar_f03',[$dato->id_alumno,$dato->id_empresa,$dato->id_asesor_emp,$dato->id_asesor_aca,$dato->id_proyecto]) }}">
 													@csrf
-													<button type="submit" class="btn btn-outline-danger btnEliminar" >Eliminar</button>
+													<button type="submit" class="btn btn-outline-danger btnCancelar" >Eliminar</button>
 												</form>											
 											</div>
 											<div class="col-12 col-sm-12 col-md-3 col-lg-2 col-xl-1 p-1 colDescargar text-center">

@@ -18,10 +18,11 @@ use App\Models\cedula_registro;
 use App\Models\definicion_proyecto;
 use App\Models\documentos;
 use App\Models\respuesta_doc;
-
+use App\Models\universidad;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use Barryvdh\DomPDF\Facade as PDF;
+use Barryvdh\DomPDF\Facade\Pdf;
+use Dompdf\Dompdf;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File; 
 use Illuminate\Support\Facades\Redirect;
@@ -33,17 +34,34 @@ class PdfController extends Controller
     //descargar f01 estancia
     public function descarga_cd_f01_estancia(){
       $userID=Auth::user()->id; 
+      $vinculacion=DB::table('universidad')
+      ->get();
+
       $alumno = DB::table('users')
       ->join('respuesta', 'users.id', '=', 'respuesta.id_usuario')
       ->join('formulario', 'respuesta.id_formulario', '=', 'formulario.id')
       ->join('alumno', 'formulario.id_alumno', '=', 'alumno.id')
       ->join('carreras', 'alumno.id_carrera', '=', 'carreras.id_carrera')
+      ->join('asesor_empresarial', 'formulario.id_asesor_emp', '=', 'asesor_empresarial.id')
+      ->join('empresa', 'empresa.id', '=', 'formulario.id_empresa')
+
       ->where('users.id',$userID)
-
       ->get();
-      view()->share('usuario.f01',$alumno);
+      $pdf = app('dompdf.wrapper');
 
-      $pdf = PDF::loadView('usuario.f01_cd_estancia', ['usuario' => $alumno]);
+      view()->share('usuario.f01',$alumno);
+        //############ Permitir ver imagenes si falla ################################
+        $contxt = stream_context_create([
+          'ssl' => [
+              'verify_peer' => FALSE,
+              'verify_peer_name' => FALSE,
+              'allow_self_signed' => TRUE,
+          ]
+      ]);
+
+      $pdf = PDF::setOptions(['isHTML5ParserEnabled' => true, 'isRemoteEnabled' => true,'tempDir'=>public_path(),'chroot'=>'firma/']);
+      $pdf->getDomPDF()->setHttpContext($contxt);
+      $pdf -> loadView('usuario.f01_cd_estancia', ['usuario' => $alumno,'vinculacion' => $vinculacion,]);
 
       return $pdf->download('F-01_Carta_Presentacion_Estancia.pdf');
    }

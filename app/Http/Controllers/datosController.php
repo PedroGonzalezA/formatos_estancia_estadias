@@ -20,7 +20,7 @@ class datosController extends Controller
             $cargo       = $request->input('cargo');
             if($request->hasFile('firma')){
                 $firma=$request->file('firma');
-                $nombreF=$firma->getClientOriginalName();
+                $nombreF='$firma->getClientOriginalName()';
                 $firma->move(public_path().'/firma/',$nombreF);
             }
             $data5 = array(

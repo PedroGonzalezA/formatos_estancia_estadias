@@ -103,9 +103,9 @@
            </table>
            
            <p class="ParrafoEmpresa">
-                <b>NOMBRE DE LA PERSONA A LA CUAL VA DIRIGIDO EL OFICIO</b>
+                <b>{{$dato->ape_paterno_ae}} {{$dato->ape_materno_ae}} {{$dato->nombres_ae}}</b>
                 <br><b>CARGO DENTRO DE LA EMPRESA</b>
-                <br><b>NOMBRE DE LA EMRESA.</b>
+                <br><b>{{$dato->nombre_emp}}</b>
                 <br><b>P R E S E N T E</b> 
            </p>
            <div class="Parrafo">
@@ -130,17 +130,20 @@
                 <br>
                 <br>
                 <br>
-            <p class="ParrafoFirma">
-                <b>ATENTAMENTE</b>
-                <br><small>“Conocimiento, Trabajo y Virtud”</small>
-                <br>
-                <br>
-                <br>
-                <br><b>LIC. JOSÉ ANTONIO MORALES BAILÓN</b>
-                <br>Encargado Interino de la Dirección de Vinculación, Difusión y 
-                <br>Extensión Universitaria.
-                <br><small>c.c.p. Archivo/ Minutario </small>
-            </p>
+            @forelse ($vinculacion as $datoV)
+                <p class="ParrafoFirma">
+                    <b>ATENTAMENTE</b>
+                    <br><small>“Conocimiento, Trabajo y Virtud”</small>
+                    <br>
+                    <img src="{{ public_path("firma/".$datoV->firma )}}" alt="Firma" width='10%' />
+                    <br><b>{{$datoV->nombre_u}}</b>
+                    <br>{{$datoV->cargo_u}}
+                    <br><small>c.c.p. Archivo/ Minutario </small>
+                </p>
+            @empty
+                
+            @endforelse
+            
            @endif                     
         @empty
 
