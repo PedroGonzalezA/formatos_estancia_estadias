@@ -44,13 +44,13 @@ class documentosEstadiaAdminController extends Controller
         $carta=cedula_registro::find($id);
         $carta->estado_c_r=2;
         $carta->save();
-         return redirect('estadia_Documentos');
+         return redirect('estadia_Documentos')->with('success','F-03 Aceptado');
     }
     public function pendiente_estadia_f03_admin($idU,$id,$name) {
         $carta=cedula_registro::find($id);
         $carta->estado_c_r=1;
         $carta->save();
-         return redirect('estadia_Documentos');
+         return redirect('estadia_Documentos')->with('success','F-03 Pendiente');
     }
     public function conObservaciones_estadia_f03_admin(Request $request) {
         $id_c   = [ $request->input('id_c')];
@@ -62,7 +62,7 @@ class documentosEstadiaAdminController extends Controller
     public function observaciones_estadia_f03_admin(Request $request) {
         $id_c   = ['id_c'=>$request->input('id_c')];
         $datos = Arr::collapse([$id_c]);
-        return view('admin.observaciones',['datos'=>$datos]);
+        return view('admin.observaciones',['datos'=>$datos,]);
     }
 
     public function  guardarObservaciones_estadia_f03_admin(Request $request,$id){
@@ -71,7 +71,7 @@ class documentosEstadiaAdminController extends Controller
         $carta->estado_c_r=0;
         $carta->observaciones_c_r=$observacion;
         $carta->save();
-        return redirect('estadia_Documentos');
+        return redirect('estadia_Documentos')->with('success','F-03 Con Observacion');
     }
     
     public function buscador(Request $request){        

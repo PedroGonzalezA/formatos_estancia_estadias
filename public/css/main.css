@@ -410,6 +410,7 @@ body, html{
 }
 .documentosUsuario{
 	box-shadow: 0 1px 7px rgb(0 0 0 / 20%);
+	font-size: 14px;
 }
 .divNombreCard{
 	background: #1f68a2;
@@ -421,6 +422,11 @@ body, html{
 .buscar{
 	width: 100%;
 	height: 38px;
+}
+
+.btnEliminarUser{
+	width: 100%;
+	border-radius: 0px 0px 3px 3px;
 }
 /*============ Estilos home*/
 .tile{
@@ -648,7 +654,26 @@ body, html{
 	.logoLogin{
 		width: 100%;
 	}
-	
+	.tablaAlumnos{
+		font-size: 5px;
+		}
+	.col-firma{
+		font-size: 10px;
+	}
+}
+@media (max-width: 406px){
+	.tablaAlumnos{
+		font-size: 5px;
+	}
+	.col-firma{
+		font-size: 10px;
+	}
+	.fallo{
+		font-size: 12px;
+	}
+	.btnDescargar{
+		width: 100%;
+	}
 }
 @media (max-width: 767px){
 	.archivo{
@@ -679,7 +704,9 @@ body, html{
 		height:30px;
 		width: 100%;
 	}
-
+	.btnDescargar{
+		width: 100%;
+	}
 	/*admin*/
 	
 	.tablaDoc{
@@ -689,6 +716,10 @@ body, html{
 	.documentosUsuario{
 		font-size: 11px;
 	}
+	.tablaAlumnos{
+		font-size: 10px;
+	}
+
 	.dashboard-sideBar{
 		width: 100%;
 		z-index: 99;
@@ -758,6 +789,7 @@ body, html{
 		height:30px;
 		width: 100%;
 	}
+	
 /*admin*/
 	.documentosUsuario{
 		font-size: 12px;
@@ -771,6 +803,9 @@ body, html{
 	.no-paddin-left{
 		padding-left: 0;
 	}
+	.tablaAlumnos{
+	font-size: 10px;
+	}
 }
 @media (min-width: 992px) and (max-width: 1199px){
 	.hide-sidebar{
@@ -782,6 +817,9 @@ body, html{
 	.no-paddin-left{
 		padding-left: 0;
 	}
+	.tablaAlumnos{
+		font-size: 11px;
+		}
 }
 @media (min-width: 1200px){
 	.hide-sidebar{
@@ -800,4 +838,5 @@ body, html{
 		align-items: center;
 		justify-content: center;
 	}
+
 }

@@ -34,6 +34,7 @@
 			  <h2 class="text-titles">Formatos <small>(Estancias)</small></h2>
 			</div>
 		</div>
+		@include('notificaciones/notificaciones')
 		<div class="container p-2">
 				<ol class="list-group">
 		<!-- f01 -->
@@ -125,7 +126,7 @@
 						
 								
 										@forelse ($datos['datosCedula'] as $dato)
-											<div class="col-6 col-sm-6 col-md-5 col-lg-3 col-xl-2 p-0 colLlenar">
+											<div class="col-6 col-sm-6 col-md-5 col-lg-3 col-xl-2 p-1 colLlenar">
 												<form method="post" action="{{ route('eliminar_f03',[$dato->id_alumno,$dato->id_empresa,$dato->id_asesor_emp,$dato->id_asesor_aca,$dato->id_proyecto]) }}">
 													@csrf
 													<button type="submit" class="btn btn-outline-danger btnCancelar" >Eliminar</button>
@@ -136,7 +137,7 @@
 													<button type="button" class="btn btn-outline-info btnDescargar"><i class="zmdi zmdi-download"> Descargar</i></button>
 												</a>
 											</div>
-											<div class="col-12 col-sm-12 col-md-12 col-lg-7 colArchivo">
+											<div class="col-12 col-sm-12 col-md-12 col-lg-7 p-1 colArchivo">
 												@forelse ($documentos['documentos'] as $datoD)
 														@forelse ($documentos['cedula_registro'] as $datoC)
 														
@@ -146,8 +147,11 @@
 																				<form action="{{ route('cancelar_f03_Estancia.index',[$datoC->id_documentos,$datoC->name]) }}" method="POST" enctype="multipart/form-data">
 																					@csrf
 																					<div class="row">
+																						<div class="col-12 col-sm-9 px-3 py-1 id_d" >
+																							<input type="text" name="nombreAf03" id="" value="{{$datoC->nombre_c_r}}" class="nombreDoc"style=''>
+																						</div>
 																						<div class="col-12 col-sm-9 px-3 py-1" >
-																							<input type="text" name="nombreAf03" id="" value="{{$datoC->nombre_c_r}}" class="nombreDoc id_d" style=''>
+																							<input type="text" name="" id="" value="{{$datoC->nombre_c_r}}" class="nombreDoc" >
 																						</div>
 																						<div class="col-12 col-sm-3 px-3 py-1">
 																							<button type="submit" class="btn btn-outline-danger btnCancelar" >Cancelar</button>
@@ -207,7 +211,7 @@
 											</div>
 												
 										@empty
-											<div class="col-6 col-sm-6 col-md-6 col-lg-2 col-xl-2 p-0 colLlenar">
+											<div class="col-6 col-sm-6 col-md-6 col-lg-2 col-xl-2 p-1 colLlenar">
 												<a href="{{ route('home.index') }}">
 													<button type="button" class="btn btn-outline-dark btnLlenar" >Llenar Cedula de Registro</button>
 												</a>

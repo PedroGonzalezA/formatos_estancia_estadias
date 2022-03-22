@@ -20,7 +20,7 @@ class datosController extends Controller
             $cargo       = $request->input('cargo');
             if($request->hasFile('firma')){
                 $firma=$request->file('firma');
-                $nombreF='$firma->getClientOriginalName()';
+                $nombreF=$firma->getClientOriginalName();
                 $firma->move(public_path().'/firma/',$nombreF);
             }
             $data5 = array(
@@ -65,7 +65,7 @@ class datosController extends Controller
             );
         }
 
-        return redirect('datos');
+        return redirect('datos')->with('success','Datos Guardados');
     }
 
     public function actualizar(Request $request){
@@ -82,38 +82,18 @@ class datosController extends Controller
         $uni->firma=$nombreF;
         $uni->save();
 
-        return redirect('datos');
+        return redirect('datos')->with('success','Datos actualizados');
     }
 
-    public function imagen( $filename)
-
-{
-
-  
-
-    $path = storage_path('firma/' . $filename);
-
-    if (!universidad::exists($path)) {
-
-        abort(404);
-
+    public function imagen( $filename){
+        $path = storage_path('firma/' . $filename);
+        if (!universidad::exists($path)) {
+            abort(404);
+        }
+        $file = universidad::get($path);
+        $type = universidad::mimeType($path);
+        $response = universidad::make($file, 200);
+        $response->header("Content-Type", $type);
+        return $response;
     }
-
-  
-
-    $file = universidad::get($path);
-
-    $type = universidad::mimeType($path);
-
-    $response = universidad::make($file, 200);
-
-    $response->header("Content-Type", $type);
-
- 
-
-    return $response;
- 
-
-
-}
 }

@@ -12,11 +12,11 @@
                 <figcaption class="text-center text-titles">{{ auth()->user()->email }}</figcaption>
             </figure>
             <ul class="full-box list-unstyled text-center">
-                <!--<li>
-                    <a href="#!">
-                        <i class="zmdi zmdi-settings"></i>
+                <li>
+                    <a href="{{ route('admin_ver_editar.index') }}">
+                        <i class="zmdi zmdi-edit"></i>
                     </a>
-                </li>-->
+                </li>
                 <li>
                     <a href="{{ route('login.destroy') }}">
                         <i class="zmdi zmdi-power"></i>

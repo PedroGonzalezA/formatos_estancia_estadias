@@ -15,8 +15,8 @@ class RegisterController extends Controller
     public function store() {
 
         $this->validate(request(), [
-            'name' => 'required',
-            'role'  => 'string',
+            'name' => 'required|integer',
+            'role'  => 'required|string',
             'email' => 'required|email',
             'password' => 'required|confirmed'
         ]);
@@ -26,7 +26,20 @@ class RegisterController extends Controller
         if (auth()->login($user) == 'admin') {
             return view('admin.index');
         } else {
-            return redirect()->to('/inicio');
+            return redirect()->to('/usuarios');
         }
+    }
+    public function registrar(Request $request) {
+
+        $this->validate(request(), [
+            'name' => 'required',
+            'role'  => 'required|string',
+            'email' => 'required|email',
+            'password' => 'required|confirmed'
+        ]);
+        User::create(request(['name', 'role', 'email', 'password']));
+
+        return redirect()->to('/usuarios')->with('success','Usuario agregado');
+
     }
 }

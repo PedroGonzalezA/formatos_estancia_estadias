@@ -164,7 +164,7 @@ class EstadiaController extends Controller
             )
             );
         }
-        return redirect('estadia');
+        return redirect('estadia')->with('success','Documento agregado');
     }
 //actualizar documento f03
     public function actualizarF03_estadia(Request $request, $name,$nombre){
@@ -226,7 +226,7 @@ class EstadiaController extends Controller
             )
             );
         }
-        return redirect('estadia');
+        return redirect('estadia')->with('success','Documento agregado');
 
     }
     public function verObservaciones_f03_estadia(){

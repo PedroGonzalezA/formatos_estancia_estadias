@@ -21,7 +21,7 @@ use App\Http\Controllers\UsuariosController;
 use App\Models\Formulario;
 use App\Models\universidad;
 
-/*
+/*  
 |--------------------------------------------------------------------------
 | Web Routes
 |--------------------------------------------------------------------------
@@ -58,19 +58,50 @@ Route::get('/logout', [LoginController::class, 'destroy'])
 
 //admin
     //dashboard
+    Route::get('/admin_ver_editar', [AdminController::class, 'ver'])
+    ->middleware('auth.admin')
+    ->name('admin_ver_editar.index');
+    
+    //editar contra
+    Route::match(['post','get','put'],'/admin_editar', [AdminController::class, 'editar'])
+    ->middleware('auth.admin')
+    ->name('admin_editar.index');
+    //dashboard
     Route::get('/admin', [AdminController::class, 'index'])
     ->middleware('auth.admin')
     ->name('admin.index');
 
-    //
+//Ver usuarios
      Route::get('/usuarios', [UsuariosController::class, 'create'])
     ->name('usuarios.index')
     ->middleware('auth.admin');
 
-        //cambiar datos director
-        Route::get('/datos', [datosController::class, 'ver'])
-        ->name('datos.index')
-        ->middleware('auth.admin');
+        //eliminarusuarios
+        Route::match(['post','get','delete'],'/eliminar/usuario/{id}', [UsuariosController::class, 'eliminarUsuario'])
+        ->name('eliminarUsuario.index');
+         //buscardor
+         Route::get('/buscar_usuario', [UsuariosController::class, 'buscarUsuario'])
+         ->name('buscar_usuario.index')
+         ->middleware('auth.admin');
+
+          //buscardor datos
+          Route::get('/buscar_datos', [UsuariosController::class, 'buscarUsuarioDatos'])
+          ->name('buscar_usuario_datos.index')
+          ->middleware('auth.admin');
+
+          //agregar usuario
+          Route::get('/agregar_usuario', [UsuariosController::class, 'ver'])
+          ->name('agregar_usuario.index')
+          ->middleware('auth.admin');
+
+          //registrar usuario
+          Route::post('/registrar', [RegisterController::class, 'registrar'])
+         ->name('registrar_usuario.index');
+
+//cambiar datos director
+    Route::get('/datos', [datosController::class, 'ver'])
+    ->name('datos.index')
+    ->middleware('auth.admin');
 
         //guardar datos vinculacion
            Route::match(['post','get','put'],'/guardar_datos_vinculacion', [datosController::class, 'guardar'])
@@ -114,7 +145,7 @@ Route::get('/logout', [LoginController::class, 'destroy'])
         ->name('guardarObservaciones_estancia_f03_admin.index');
   
         //con Observaciones  f03
-        Route::match(['post','get'],'/con_Observaciones_estancia_f03/admin', [documentosEstanciaAdminController::class, 'conObservaciones_estancia_f03_admin'])
+        Route::match(['post','get'],'/con_Observaciones_estancia_f03_admin', [documentosEstanciaAdminController::class, 'conObservaciones_estancia_f03_admin'])
         ->name('conObservaciones_estancia_f03_admin.index')
         ->middleware('auth.admin');
 
@@ -154,7 +185,7 @@ Route::get('/logout', [LoginController::class, 'destroy'])
         ->name('guardarObservaciones_estadia_f03_admin.index');
   
         //con Observaciones  f03
-        Route::match(['post','get'],'/con_Observaciones_estadia_f03/admin', [documentosEstadiaAdminController::class, 'conObservaciones_estadia_f03_admin'])
+        Route::match(['post','get'],'/con_Observaciones_estadia_f03_admin', [documentosEstadiaAdminController::class, 'conObservaciones_estadia_f03_admin'])
         ->name('conObservaciones_estadia_f03_admin.index')
         ->middleware('auth.admin');
 

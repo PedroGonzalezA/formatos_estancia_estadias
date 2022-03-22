@@ -28,29 +28,11 @@
 		<!-- NavBar -->
 		@include('plantilla/admin/navBar')
         <!-- Content page -->
-		<div class="container p-3">
-			<div class="page-header">
-				<div class="row">
-					<div class="col-12 col-sm-12 col-md-3">
-						<h2 class="text-titles">Usuarios<small>(Registrados)</small> </h2>
-					</div>
-					<div class="col-12 col-sm-12 col-md-9">
-						<div class="row">
-							<div class="col-sm-12 col-md-3">
-								<form action="{{ route('agregar_usuario.index') }}" method="GET">
-									@csrf
-									<button type="submit" value="Agregar usuario" class="btn btn-outline-success buscar" > <i class="zmdi zmdi-account-add"> Agregar usuario</i></button>
-								</form>
-							</div>
-							
-						</div>
-						
-					</div>
-				</div>
-			</div>
+		<div class="page-header">
+			<h2 class="text-titles">Usuarios<small>(Registrados)</small> </h2>
 		</div>
 		<div class="container">
-            <div class="row">
+			<div class="row">
 				<div class="col-12 col-sm-12 col-md-6 p-1">
 					<form action="{{ route('buscar_usuario.index') }}" method="GET">
 						@csrf
@@ -70,75 +52,79 @@
 				</div>
 				
 				<div class="col-12 col-sm-12 col-md-6 p-1">
-					<form action="{{ route('buscar_usuario_datos.index') }}" method="GET">
-						@csrf
-						<!-- buscar-->
-							<div class="row">
-								<div class=" col-9 col-sm-9 col-md-10">
-									<input type="text" class="form-control" id="texto" name="texto" placeholder="Buscar Datos" value="">
-										
-								</div>
-								<div class="col-3 col-sm-3 col-md-2">
-									<button type="submit" class="btn btn-outline-primary buscar"><i class="zmdi zmdi-search"></i></button>
-								</div>
-								
-							</div>
-							
-					</form>
+                    <div class="row">
+                        <div class="col-12 col-sm-12 col-md-9">
+                            <form action="{{ route('buscar_usuario_datos.index') }}" method="GET">
+                                @csrf
+                                <!-- buscar-->
+                                    <div class="row">
+                                        <div class=" col-9 col-sm-9 col-md-10">
+                                            <input type="text" class="form-control" id="texto" name="texto" placeholder="Buscar datos" value="{{$texto}}">
+                                                
+                                        </div>
+                                        <div class="col-3 col-sm-3 col-md-2">
+											<button type="submit" class="btn btn-outline-primary buscar"><i class="zmdi zmdi-search"></i></button>
+                                        </div>
+                                        
+                                    </div>
+                                    
+                            </form>
+                        </div>
+                        <div class="col-12 col-sm-12 col-md-3">
+                            <a href="{{ route('usuarios.index') }}">
+                                <input type="submit" value="Ver todos" class="btn btn-outline-success buscar">
+                            </a>
+                        </div>
+                    </div>
+					
 				</div>
 				
 			</div>
-			@include('notificaciones/notificaciones')
-
         </div>
 		<div class="container">
 			<div class="row">
-				@forelse ($datos['users'] as $respuestaU)
+				@forelse ($res as $respuestaU)
 					<div class="col-12 col-sm-12 col-md-4 p-4 ">
 						<div class="row documentosUsuario" >
 							<div class="col-12 text-center tituloAlumno">
 								Alumno
 							</div>
-							<div class="col-2 col-sm-2 col-md-2 col-lg-2 text-center colum">
-								{{ $respuestaU->id}}
+							<div class="col-2 col-sm-2 col-md-2 text-center colum">
+								{{ $respuestaU->id_usuario}}
 								
 							</div>
-							<div class="col-10 col-sm-10 col-md-6 col-lg-6 text-left colum">
+							<div class="col-10 col-sm-10 col-md-6 text-left colum">
 								{{ $respuestaU->name }}										
 							</div>
-							<div class="col-12 col-sm-12 col-md-4 col-lg-4 text-center colum">
+							<div class="col-12 col-sm-12 col-md-4 text-center colum">
 								{{ $respuestaU->role }}										
 							</div>
-							<div class="col-12 col-sm-12 col-md-12 col-lg-12 text-center">
+							<div class="col-12 col-sm-12 col-md-12 text-center">
 								{{ $respuestaU->email }}										
 							</div>
-							@forelse ($datos['respuestas'] as $respuestaR)
-								@if ($respuestaR->id_usuario ==$respuestaU->id)
+							
 									<div class="col-12 text-center tituloAlumno">
 										Datos
 									</div>
 									<div class="col-12 col-sm-12 col-md-12 text-center colum">
-										{{ $respuestaR->nombres }} {{ $respuestaR->ape_paterno }} {{ $respuestaR->ape_materno }}
+										{{ $respuestaU->nombres }} {{ $respuestaU->ape_paterno }} {{ $respuestaU->ape_materno }}
 									</div>
 									<div class="col-12 col-sm-12 col-md-12 text-center colum">
-										{{ $respuestaR->email}} 
+										{{ $respuestaU->email}} 
 									</div>
 									<div class="col-6 col-sm-6 col-md-6 text-center colum">
-										{{ $respuestaR->matricula }}										
+										{{ $respuestaU->matricula }}										
 									</div>									
 									
 									<div class="col-6 col-sm-6 col-md-6 text-center colum">
-										{{ $respuestaR->nombre_proceso}} 
+										{{ $respuestaU->nombre_proceso}} 
 									</div>
-									<div class="col-12 col-sm-12 col-md-12 text-center ">
-										{{ $respuestaR->nombre_carrera}} 
+									<div class="col-12 col-sm-12 col-md-12 text-center">
+										{{ $respuestaU->nombre_carrera}} 
 									</div>
-								@endif
-							@empty
-								sin datos
-							@endforelse	
+								
 							<div class="col-12 col-sm-12 col-md-12 text-center m-0 p-0">
-								<form action="{{route('eliminarUsuario.index',$respuestaU->id)}}" method="POST">
+								<form action="{{route('eliminarUsuario.index',$respuestaU->id_usuario)}}" method="POST">
 									@csrf 
 									<button type="submit" class="btn btn-outline-danger btnEliminarUser">Eliminar</button>
 								</form>
@@ -147,8 +133,13 @@
 					</div>	
 					
 				@empty
-							Sin usuarios
-				@endforelse				
+				<div class="row">
+					<div class="col-12 text-center">
+						Sin usuarios
+					</div>
+				</div>
+				@endforelse
+								
 			</div>
 		</div>
 		

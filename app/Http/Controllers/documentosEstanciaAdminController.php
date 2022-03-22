@@ -73,13 +73,13 @@ class documentosEstanciaAdminController extends Controller
         $carta=cedula_registro::find($id);
         $carta->estado_c_r=2;
         $carta->save();
-         return redirect('estancia_Documentos');
+         return redirect('estancia_Documentos')->with('success','F-03 Aceptado');
     }
     public function pendiente_estancia_f03_admin($idU,$id,$name) {
         $carta=cedula_registro::find($id);
         $carta->estado_c_r=1;
         $carta->save();
-         return redirect('estancia_Documentos');
+         return redirect('estancia_Documentos')->with('success','F-03 Pendiente');
     }
     public function conObservaciones_estancia_f03_admin(Request $request) {
         $id_c   = [ $request->input('id_c')];
@@ -101,17 +101,17 @@ class documentosEstanciaAdminController extends Controller
         $carta->estado_c_r=0;
         $carta->observaciones_c_r=$observacion;
         $carta->save();
-        return redirect('estancia_Documentos');
+        return redirect('estancia_Documentos')->with('success','F-03 Con Observacion');
     }
     
     public function buscador_estancia(Request $request){        
         $texto   =trim($request->get('texto'));
 
         $users = DB::table('users')
-        ->join('respuesta', 'users.id', '=', 'respuesta.id_usuario')
+       
+        ->join('carreras', 'alumno.id_carrera', '=', 'carreras.id_carrera') ->join('respuesta', 'users.id', '=', 'respuesta.id_usuario')
         ->join('formulario', 'respuesta.id_formulario', '=', 'formulario.id')
         ->join('alumno', 'formulario.id_alumno', '=', 'alumno.id')
-        ->join('carreras', 'alumno.id_carrera', '=', 'carreras.id_carrera')
         ->where('alumno.nombres','LIKE','%'.$texto.'%')
         ->orWhere('alumno.ape_paterno','LIKE','%'.$texto.'%')
         ->orWhere('alumno.ape_materno','LIKE','%'.$texto.'%')

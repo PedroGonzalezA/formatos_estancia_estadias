@@ -343,6 +343,6 @@ class CedulaController extends Controller
             );
         }
 
-        return redirect('registro_final_cedula');
+        return redirect('registro_final_cedula')->with('success','F-03 Agregado');
     }
 }

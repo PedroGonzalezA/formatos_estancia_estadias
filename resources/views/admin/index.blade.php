@@ -36,6 +36,7 @@
 			  <h2 class="text-titles">Usuarios <small>(Registrados)</small></h2>
 			</div>
 		</div>
+		@include('notificaciones/notificaciones')
 			<div class="row">
 				<div class="col-12 col-sm-12 col-md-6 col lg-6 p-5">
 					<div class="row listaAdmin">

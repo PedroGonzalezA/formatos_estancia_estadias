@@ -30,34 +30,18 @@
         <!-- Content page -->
 		<div class="container p-3">
 			<div class="page-header">
-				<div class="row">
-					<div class="col-12 col-sm-12 col-md-3">
-						<h2 class="text-titles">Usuarios<small>(Registrados)</small> </h2>
-					</div>
-					<div class="col-12 col-sm-12 col-md-9">
-						<div class="row">
-							<div class="col-sm-12 col-md-3">
-								<form action="{{ route('agregar_usuario.index') }}" method="GET">
-									@csrf
-									<button type="submit" value="Agregar usuario" class="btn btn-outline-success buscar" > <i class="zmdi zmdi-account-add"> Agregar usuario</i></button>
-								</form>
-							</div>
-							
-						</div>
-						
-					</div>
-				</div>
+				<h2 class="text-titles">Usuarios<small>(Registrados)</small> </h2>
 			</div>
 		</div>
 		<div class="container">
-            <div class="row">
+			<div class="row">
 				<div class="col-12 col-sm-12 col-md-6 p-1">
 					<form action="{{ route('buscar_usuario.index') }}" method="GET">
 						@csrf
 						<!-- buscar-->
 							<div class="row">
 								<div class=" col-9 col-sm-9 col-md-10">
-									<input type="text" class="form-control" id="texto" name="texto" placeholder="Buscar Alumno" value="">
+									<input type="text" class="form-control" id="texto" name="texto" placeholder="Buscar Alumno" value="{{$texto}}">
 										
 								</div>
 								<div class="col-3 col-sm-3 col-md-2">
@@ -70,26 +54,34 @@
 				</div>
 				
 				<div class="col-12 col-sm-12 col-md-6 p-1">
-					<form action="{{ route('buscar_usuario_datos.index') }}" method="GET">
-						@csrf
-						<!-- buscar-->
-							<div class="row">
-								<div class=" col-9 col-sm-9 col-md-10">
-									<input type="text" class="form-control" id="texto" name="texto" placeholder="Buscar Datos" value="">
-										
-								</div>
-								<div class="col-3 col-sm-3 col-md-2">
-									<button type="submit" class="btn btn-outline-primary buscar"><i class="zmdi zmdi-search"></i></button>
-								</div>
-								
-							</div>
-							
-					</form>
+                    <div class="row">
+                        <div class="col-12 col-sm-12 col-md-9">
+                            <form action="{{ route('buscar_usuario_datos.index') }}" method="GET">
+                                @csrf
+                                <!-- buscar-->
+                                    <div class="row">
+										<div class=" col-9 col-sm-9 col-md-10">
+                                            <input type="text" class="form-control" id="texto" name="texto" placeholder="Buscar datos" value="">
+                                                
+                                        </div>
+                                        <div class="col-3 col-sm-3 col-md-2">
+											<button type="submit" class="btn btn-outline-primary buscar"><i class="zmdi zmdi-search"></i></button>
+										</div>
+                                        
+                                    </div>
+                                    
+                            </form>
+                        </div>
+                        <div class="col-12 col-sm-12 col-md-3">
+                            <a href="{{ route('usuarios.index') }}">
+                                <input type="submit" value="Ver todos" class="btn btn-outline-success buscar">
+                            </a>
+                        </div>
+                    </div>
+					
 				</div>
 				
 			</div>
-			@include('notificaciones/notificaciones')
-
         </div>
 		<div class="container">
 			<div class="row">
@@ -99,17 +91,17 @@
 							<div class="col-12 text-center tituloAlumno">
 								Alumno
 							</div>
-							<div class="col-2 col-sm-2 col-md-2 col-lg-2 text-center colum">
+							<div class="col-2 col-sm-2 col-md-2 text-center colum">
 								{{ $respuestaU->id}}
 								
 							</div>
-							<div class="col-10 col-sm-10 col-md-6 col-lg-6 text-left colum">
+							<div class="col-10 col-sm-10 col-md-6 text-left colum">
 								{{ $respuestaU->name }}										
 							</div>
-							<div class="col-12 col-sm-12 col-md-4 col-lg-4 text-center colum">
+							<div class="col-12 col-sm-12 col-md-4 text-center colum">
 								{{ $respuestaU->role }}										
 							</div>
-							<div class="col-12 col-sm-12 col-md-12 col-lg-12 text-center">
+							<div class="col-12 col-sm-12 col-md-12 text-center">
 								{{ $respuestaU->email }}										
 							</div>
 							@forelse ($datos['respuestas'] as $respuestaR)
@@ -130,7 +122,7 @@
 									<div class="col-6 col-sm-6 col-md-6 text-center colum">
 										{{ $respuestaR->nombre_proceso}} 
 									</div>
-									<div class="col-12 col-sm-12 col-md-12 text-center ">
+									<div class="col-12 col-sm-12 col-md-12 text-center">
 										{{ $respuestaR->nombre_carrera}} 
 									</div>
 								@endif
@@ -147,8 +139,13 @@
 					</div>	
 					
 				@empty
-							Sin usuarios
-				@endforelse				
+				<div class="row">
+					<div class="col-12 text-center">
+						Sin usuarios
+					</div>
+				</div>  
+				@endforelse
+								
 			</div>
 		</div>
 		

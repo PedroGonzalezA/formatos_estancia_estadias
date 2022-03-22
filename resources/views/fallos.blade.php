@@ -36,7 +36,7 @@
 		</div>
 		<div class="container p-2">
 				<div>
-                    <input type="text" name=""  id="" class="btnFormato text-center" value="soportestanciasyestadias@upqroo.edu.mx">
+                    <input type="text" name=""  id="" class="btnFormato text-center fallo" value="soportestanciasyestadias@upqroo.edu.mx">
                 </div>
 		</div>
 	</section>

@@ -52,12 +52,14 @@
             </form>
       
         </div>
+        <!---notificacion --->
+        @include('notificaciones/notificaciones')  
         @forelse($documentos['documentos'] as $respuestaD)
              @forelse($documentos['usuarios'] as $respuestaU)
                 @if ($respuestaD->name==$respuestaU->name)
                     <div class="row p-4">
-                        <div class="col-12 documentosUsuario">
-                                <div class="row p-3">
+                        <div class="col-12">
+                                <div class="row documentosUsuario">
                                     <div class="col-12" style="background: black; color:white;">
                                         <div class="text-center">Usuario</div>
                                     </div>
@@ -80,7 +82,7 @@
                                     </div>
                         <!--f02-->
                                     @if ($respuestaD->id_c_aceptacion)
-                                        <div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-3" >
+                                        <div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-3 doc" >
                                             <div>
                                                 
                                                 <div class="text-center divNombreCard">
@@ -94,11 +96,11 @@
                                     @endif
                         <!--f03-->
                                     @if($respuestaD->id_c_registro)
-                                        <div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-3" >
+                                        <div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-3 doc" >
                                                 
                                                 <div class="row text-center divNombreCard">
                                                     <div class="col-12">
-                                                        Cedula registro
+                                                        F-03 Cedula registro
                                                     </div>
                                                 </div>
                                                
@@ -200,7 +202,7 @@
                                     @endif
                         <!--f04-->
                                     @if ($respuestaD->id_d_proyecto)
-                                        <div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-3" >
+                                        <div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-3 doc" >
                                             <div>
                                                 
                                                 <div class="text-center divNombreCard">
@@ -214,7 +216,7 @@
                                     @endif
                         <!--f05-->
                                     @if ($respuestaD->id_c_liberacion)
-                                        <div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-3" >
+                                        <div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-3 doc" >
                                             <div>
                                                 
                                                 <div class="text-center divNombreCard">
@@ -229,14 +231,18 @@
                                 </div>
                                 
                         </div>
-                    </div>
+                    </div> 
                 @endif
             @empty
                                                     
             @endforelse
             
         @empty
-                                                
+            <div class="row">
+                <div class="col-12 text-center">
+                    Sin documentos subidos
+                </div>
+            </div>                                     
         @endforelse
 
 			
@@ -255,3 +261,8 @@
 	</script>
 </body>
 </html>
+<style>
+    .doc{
+        box-shadow: 0 1px 7px rgb(0 0 0 / 20%);
+    }
+</style>

@@ -59,7 +59,6 @@
                                         <div class="form-outline mb-4">
                                             <select class="form-control" name="role" id="role">
                                                 <option value="alumno">Alumno</option>
-                                                <option value="admin">Admin</option>
                                             </select>
                                             <label class="form-label" for="role">Rol de Usuario</label>
                                         </div>
@@ -71,7 +70,7 @@
                                         <div class="form-outline mb-4">
                                             <input type="email" id="email" class="form-control form-control-lg"
                                             name="email" />
-                                            <label class="form-label" for="email">Email</label>
+                                            <label class="form-label" for="email">Email(UPQROO)</label>
                                         </div>
                                         @error('email')
                                             <p class="border border-red-500 rounded-md bg-red-200 w-full text-red-600 p-2 my-2">{{ $message }}</p>

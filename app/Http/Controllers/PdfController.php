@@ -227,7 +227,7 @@ class PdfController extends Controller
         Asesor_Emp::find($id_a_e)->delete();
         Asesor_Aca::find($id_a_a)->delete();
         Proyecto::find($id_p)->delete();
-        return redirect('estancia');
+        return redirect('estancia')->with('success','F-03 Eliminado');
       }
       //eliminar f03 estadia
 
@@ -238,7 +238,7 @@ class PdfController extends Controller
         Asesor_Emp::find($id_a_e)->delete();
         Asesor_Aca::find($id_a_a)->delete();
         Proyecto::find($id_p)->delete();
-        return redirect('estadia');
+        return redirect('estadia')->with('success','F-03 Eliminado');
       }
       //eliminar f04 estancia
       public function eliminarF04($id_a,$id_a_e,$id_p,$id_d){    
@@ -264,9 +264,9 @@ class PdfController extends Controller
         $path=public_path().'/documentos/'.$nombreA;
         if(File::exists($path)){
            File::delete($path);
-           return redirect('estancia');
+           return redirect('estancia')->with('success','F-03 Eliminado');
         }else{
-          return redirect('estancia');
+          return redirect('estancia')->with('warning','F-03 Eliminado');
         }
       }
 
@@ -281,9 +281,9 @@ class PdfController extends Controller
         $path=public_path().'/documentos/'.$nombreA;
         if(File::exists($path)){
            File::delete($path);
-           return redirect('estadia');
+           return redirect('estadia')->with('success','F-03 Eliminado');
         }else{
-          return redirect('estadia');
+          return redirect('estadia')->with('warning','F-03 Eliminado');
         }
       }
 }

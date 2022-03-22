@@ -38,6 +38,7 @@
 				<h2 class="text-titles">Actualizar Datos Vinculación <small>(Registrados)</small></h2>
 				</div>
 			</div>
+			@include('notificaciones/notificaciones')
 			<div class="row">
 				<div class="col-12 p-5">
 						<form action="{{ route('actualizar_vinculacion.index') }}" method="POST" enctype="multipart/form-data">
@@ -61,8 +62,14 @@
 									</div>
 								</div>
 								<div class="col-12 col-sm-12 col-md-9 p-5 text-center justify-content-center col-firma">
-									<label for="">Actualizar Firma </label>
-									<input type="file" name="firmaA" id="firmaA">
+									<div class="row">
+										<div class="col-12">
+											<label for="">Actualizar Firma </label>
+										</div>
+										<div class="col-12">
+											<input type="file" name="firmaA" id="firmaA">
+										</div>
+									</div>
 								</div>
 								<div class="col-12">
 									<button class="btn btn-dark btn-lg btn-block" type="submit">Guardar</button>
@@ -82,18 +89,24 @@
 						<form action="{{ route('guardar_vinculacion.index') }}" method="POST" enctype="multipart/form-data">
 							@csrf
 							<div class="row">
-								<div class="col-12 col-sm-12 col-md-12 p-3">
+								<div class="col-12 col-sm-12 col-md-12 p-3 text-center">
 									<label for="">Nombre</label>
 									<input type="text" name="nombre" id="nombre" class="nombre">
 								</div>
-								<div class="col-12 col-sm-12 col-md-12 p-3">
+								<div class="col-12 col-sm-12 col-md-12 p-3 text-center">
 									<label for="">Cargo</label>
 
 									<input type="text" name="cargo" id="cargo" class="cargo">
 								</div>
-								<div class="col-12 col-sm-12 p-3">
-									<label for="">Firma</label>
-									<input type="file" name="firma" id="firma" class="firma">
+								<div class="col-12 col-sm-12 p-3 text-center  justify-content-center col-firma">
+									<div class="row">
+										<div class="col-12">
+											<label for="">Firma</label>
+										</div>
+										<div class="col-12">
+											<input type="file" name="firma" id="firma" class="firma">
+										</div>
+									</div>
 								</div>
 								<div class="col-12">
 									<button class="btn btn-dark btn-lg btn-block" type="submit">Guardar</button>
