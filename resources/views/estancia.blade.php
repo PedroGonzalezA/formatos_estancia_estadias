@@ -151,7 +151,7 @@
 																							<input type="text" name="nombreAf03" id="" value="{{$datoC->nombre_c_r}}" class="nombreDoc"style=''>
 																						</div>
 																						<div class="col-12 col-sm-9 px-3 py-1" >
-																							<input type="text" name="" id="" value="{{$datoC->nombre_c_r}}" class="nombreDoc" >
+																							<input type="text" value="{{$datoC->nombre_c_r}}" class="nombreDoc" disabled>
 																						</div>
 																						<div class="col-12 col-sm-3 px-3 py-1">
 																							<button type="submit" class="btn btn-outline-danger btnCancelar" >Cancelar</button>

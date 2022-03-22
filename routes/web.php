@@ -57,7 +57,7 @@ Route::get('/logout', [LoginController::class, 'destroy'])
     ->name('login.destroy');
 
 //admin
-    //dashboard
+    //editar contra vista
     Route::get('/admin_ver_editar', [AdminController::class, 'ver'])
     ->middleware('auth.admin')
     ->name('admin_ver_editar.index');
@@ -66,6 +66,7 @@ Route::get('/logout', [LoginController::class, 'destroy'])
     Route::match(['post','get','put'],'/admin_editar', [AdminController::class, 'editar'])
     ->middleware('auth.admin')
     ->name('admin_editar.index');
+
     //dashboard
     Route::get('/admin', [AdminController::class, 'index'])
     ->middleware('auth.admin')
@@ -196,11 +197,20 @@ Route::get('/logout', [LoginController::class, 'destroy'])
 //alumno
    
 
-//inicio
-Route::get('/inicio', [InicioController::class, 'ver'])
-->name('inicio.index')
-->middleware('auth');
+    //inicio
+    Route::get('/inicio', [InicioController::class, 'ver'])
+    ->name('inicio.index')
+    ->middleware('auth');
 
+    //editar contra vista
+    Route::get('/alumno_ver_editar', [LoginController::class, 'ver'])
+    ->middleware('auth')
+    ->name('alumno_ver_editar.index');
+
+    //editar contra
+    Route::match(['post','get','put'],'/alumno_editar', [LoginController::class, 'editar'])
+    ->middleware('auth')
+    ->name('alumno_editar.index');
 //formato estancias
     Route::match(['post','get'],'/estancia', [EstanciaController::class, 'ver'])
     ->name('estancia.index')

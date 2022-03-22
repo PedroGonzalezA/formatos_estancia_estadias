@@ -6,7 +6,7 @@ use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 use App\Models\User;
-
+use Illuminate\Support\Facades\Auth;
 class LoginController extends Controller
 {
 
@@ -36,5 +36,21 @@ class LoginController extends Controller
         auth()->logout();
 
         return redirect()->to('/login');
+    }
+
+    public function ver(){
+       
+        return view('cambiar_contra');
+    }
+    
+    public function editar(Request $request){
+        $this->validate(request(), [
+            'password' => 'required'
+        ]);
+        $userID=Auth::user()->id;
+        $user=User::find($userID);
+        $user->password=request('password');
+        $user->save();
+        return redirect()->to('/alumno_ver_editar')->with('success','Contraseña cambiada');
     }
 }
