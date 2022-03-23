@@ -3,11 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Models\Respuesta;
+use App\Models\User;
 use App\Models\Users;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\Auth;
 class UsuariosController extends Controller
 {
     public function create() {;
@@ -122,5 +124,23 @@ class UsuariosController extends Controller
 
     public function ver(){
         return view('admin.agregar_usuario');
+    }
+    public function ver_datos_usuario($id){
+        $datos=DB::table('users')->where('id',$id)->get();
+        return view('admin.editar_datos_usuario',['datos'=>$datos]);
+    }
+
+    public function editar_datos_usuario($id){
+        $this->validate(request(), [
+            'name' => 'integer',
+            'email' => 'email',
+            'password' => 'required'
+        ]);
+        $user=User::find($id);
+        $user->name=request('name');
+        $user->email=request('email');
+        $user->password=request('password');
+        $user->save();
+        return redirect()->to('/usuarios')->with('success','Datos cambiados');
     }
 }

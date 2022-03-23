@@ -36,6 +36,8 @@
 			  <h2 class="text-titles">Documetos Registrados<small>(Estadía)</small></h2>
 			</div>
 		</div>
+         <!---notificacion --->
+         @include('notificaciones/notificaciones')  
             <div class="container">
                 <form action="{{ route('nombres.index') }}" method="GET">
                     @csrf
@@ -52,8 +54,7 @@
                 </form>
           
             </div>
-        <!---notificacion --->
-        @include('notificaciones/notificaciones')  
+       
         @forelse($documentos['documentos'] as $respuestaD)
             @forelse($documentos['usuarios'] as $respuestaU)
                 @if ($respuestaD->name==$respuestaU->name)

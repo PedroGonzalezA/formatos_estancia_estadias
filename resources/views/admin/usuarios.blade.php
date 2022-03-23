@@ -28,18 +28,19 @@
 		<!-- NavBar -->
 		@include('plantilla/admin/navBar')
         <!-- Content page -->
-		<div class="container p-3">
+		<div class="container py-3">
 			<div class="page-header">
 				<div class="row">
-					<div class="col-12 col-sm-12 col-md-3">
+					<div class="col-12 col-sm-12 col-md-3 p-1">
 						<h2 class="text-titles">Usuarios<small>(Registrados)</small> </h2>
 					</div>
-					<div class="col-12 col-sm-12 col-md-9">
+					<div class="col-12 col-sm-12 col-md-9 p-1" p-1>
 						<div class="row">
+							<div class="col-9"></div>
 							<div class="col-sm-12 col-md-3">
 								<form action="{{ route('agregar_usuario.index') }}" method="GET">
 									@csrf
-									<button type="submit" value="Agregar usuario" class="btn btn-outline-success buscar" > <i class="zmdi zmdi-account-add"> Agregar usuario</i></button>
+									<button type="submit" value="Agregar usuario" class="btn btn-outline-info buscar" > <i class="zmdi zmdi-account-add"> Agregar usuario</i></button>
 								</form>
 							</div>
 							
@@ -49,6 +50,8 @@
 				</div>
 			</div>
 		</div>
+		 <!-- Notificaciones -->
+		@include('notificaciones/notificaciones')
 		<div class="container">
             <div class="row">
 				<div class="col-12 col-sm-12 col-md-6 p-1">
@@ -88,7 +91,6 @@
 				</div>
 				
 			</div>
-			@include('notificaciones/notificaciones')
 
         </div>
 		<div class="container">
@@ -97,7 +99,17 @@
 					<div class="col-12 col-sm-12 col-md-4 p-4 ">
 						<div class="row documentosUsuario" >
 							<div class="col-12 text-center tituloAlumno">
-								Alumno
+								<div class="row">
+									<div class="col-10 p-1">
+										Alumno
+									</div>
+									<div class="col-2 p-1">
+										<form action="{{route('ver_datos_usuario.index',$respuestaU->id)}}">
+											@csrf
+											<button type="submit" class="btn btn-info btnCambiarC"><i class="zmdi zmdi-edit"></i></button>
+										</form>
+									</div>
+								</div>
 							</div>
 							<div class="col-2 col-sm-2 col-md-2 col-lg-2 text-center colum">
 								{{ $respuestaU->id}}

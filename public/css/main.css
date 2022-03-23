@@ -349,6 +349,11 @@ body, html{
 	justify-content: center;
 	align-items: center;
 }
+
+.btnCambiarC{
+	height: 30px;
+	font-size: 12px;
+}
 /*--------------------------admin*/
 .listaAdmin{
 	/* width: 100%; */

@@ -33,48 +33,58 @@
 		<!-- Content page -->
 		<div class="container p-3">
 			<div class="page-header">
-			  <h2 class="text-titles">Cambiar contraseña <small>(Admin)</small></h2>
+			  <h2 class="text-titles">Cambiar datos <small>(Alumno)</small></h2>
 			</div>
 		</div>
 		<div class="row">
             <div class="col-md-12 col-lg-12 d-flex align-items-center">
                 <div class="card-body p-4 p-lg-5 text-black">
-
-                        <form method="POST" action="{{route('admin_editar.index')}}">
+                    @foreach ($datos as $dato)
+                        <form method="POST" action="{{route('editar_datos_usuario.index',$dato->id)}}">
                             @csrf
                             <div class="row">
                                 <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 text-center">
                                     <div class="form-outline mb-4">
                                         <input type="text" id="name" class="form-control form-control-lg text-center"
-                                        name="name" value="{{ auth()->user()->name }}" disabled />
+                                        name="name" value="{{ $dato->name }}" />
                                         <label class="form-label" for="name">Nombre Usuario(Matricula)</label>
-                                    </div>                                  
+                                    </div>
+                                    @error('name')
+                                        <p class="border border-danger rounded-md bg-red-200 w-full text-red-600 p-2 my-2">{{ $message }}</p>
+                                    @enderror
                                 </div>
+                                
                                 <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 text-center">
                                     <div class="form-outline mb-4">
                                         <input type="password" id="password" class="form-control form-control-lg text-center" name="password"/>
                                         <label class="form-label" for="password">Contraseña</label>
                                     </div>
-                                </div> 
+                                    @error('password')
+                                        <p class="border border-danger rounded-md bg-red-200 w-full text-red-600 p-2 my-2">{{ $message }}</p>
+                                    @enderror
+                                </div>
+                               
                                 <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 text-center">
                                     <div class="form-outline mb-4">
                                         <input type="email" id="email" class="form-control form-control-lg text-center"
-                                        name="email" value="{{ auth()->user()->email }}" disabled/>
+                                        name="email" value="{{ $dato->email }}" />
                                         <label class="form-label" for="email">Email(UPQROO)</label>
                                     </div>
-                                </div>      
-                                @error('password')
-                                    <p class="border border-danger rounded-md bg-red-200 w-full text-red-600 p-2 my-2">{{ $message }}</p>
-                                @enderror                        
+                                    @error('email')
+                                        <p class="border border-danger rounded-md bg-red-200 w-full text-red-600 p-2 my-2">{{ $message }}</p>
+                                    @enderror
+                                </div>
+                                
                                 <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
                                     <div class="pt-1 mb-4">
-                                        <button class="btn btn-dark btn-lg btn-block" type="submit">Registrar</button>
+                                        <button class="btn btn-dark btn-lg btn-block" type="submit">Actualizar</button>
                                     </div>
                                 </div>                                  
                             </div>
                             
                             
                         </form>
+                    @endforeach                      
                 </div>
             </div>
 		</div>

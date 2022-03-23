@@ -99,6 +99,14 @@ Route::get('/logout', [LoginController::class, 'destroy'])
           Route::post('/registrar', [RegisterController::class, 'registrar'])
          ->name('registrar_usuario.index');
 
+         //cambiar datos usuario
+         Route::match(['post','get','delete'],'/ver_datos_usuario_{id}', [UsuariosController::class, 'ver_datos_usuario'])
+        ->name('ver_datos_usuario.index');
+        
+        //editar datos usuario
+        Route::match(['post','get','delete'],'/editar_datos_usuario_{id}', [UsuariosController::class, 'editar_datos_usuario'])
+        ->name('editar_datos_usuario.index');
+
 //cambiar datos director
     Route::get('/datos', [datosController::class, 'ver'])
     ->name('datos.index')

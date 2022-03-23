@@ -50,7 +50,7 @@
                                     <label class="form-label" for="name">Alumno (Matrícula) / Admin (Nombre)</label>
                                 </div>
                                 @error('name')
-                                    <p class="border border-red-500 rounded-md bg-red-200 w-full text-red-600 p-2 my-2">{{ $message }}</p>
+                                    <p class="border border-danger rounded-md bg-red-200 w-full text-red-600 p-2 my-2">{{ $message }}</p>
                                 @enderror
                             </div>
                             <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
@@ -62,7 +62,7 @@
                                     <label class="form-label" for="role">Rol de Usuario</label>
                                 </div>
                                 @error('role')
-                                    <p class="border border-red-500 rounded-md bg-red-200 w-full text-red-600 p-2 my-2">{{ $message }}</p>
+                                    <p class="border border-danger rounded-md bg-red-200 w-full text-red-600 p-2 my-2">{{ $message }}</p>
                                 @enderror
                             </div>
                             <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
@@ -72,7 +72,7 @@
                                     <label class="form-label" for="email">Email(UPQROO)</label>
                                 </div>
                                 @error('email')
-                                    <p class="border border-red-500 rounded-md bg-red-200 w-full text-red-600 p-2 my-2">{{ $message }}</p>
+                                    <p class="border border-danger rounded-md bg-red-200 w-full text-red-600 p-2 my-2">{{ $message }}</p>
                                 @enderror
                             </div> 
                              <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
@@ -81,7 +81,7 @@
                                     <label class="form-label" for="password">Contraseña</label>
                                 </div>
                                 @error('password')
-                                    <p class="border border-red-500 rounded-md bg-red-200 w-full text-red-600 p-2 my-2">{{ $message }}</p>
+                                    <p class="border border-danger rounded-md bg-red-200 w-full text-red-600 p-2 my-2">{{ $message }}</p>
                                 @enderror
                             </div> 
                             <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
@@ -91,7 +91,7 @@
                                         </div>
 
                                         @error('message')
-                                            <p class="border border-red-500 rounded-md bg-red-200 w-full text-red-600 p-2 my-2">* Error</p>
+                                            <p class="border border-danger rounded-md bg-red-200 w-full text-red-600 p-2 my-2">* Error</p>
                                         @enderror
                             </div>   
                             <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
