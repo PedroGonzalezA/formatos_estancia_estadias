@@ -10,19 +10,161 @@ $(document).ready(function(){
 			SubMenu.addClass('show-sideBar-SubMenu');
 		}
 	});
-	$('.btn-exit-system').on('click', function(){
-		swal({
-		  	title: 'Are you sure?',
-		  	text: "The current session will be closed",
-		  	type: 'warning',
-		  	showCancelButton: true,
-		  	confirmButtonColor: '#03A9F4',
-		  	cancelButtonColor: '#F44336',
-		  	confirmButtonText: '<i class="zmdi zmdi-run"></i> Yes, Exit!',
-		  	cancelButtonText: '<i class="zmdi zmdi-close-circle"></i> No, Cancel!'
-		}).then(function () {
-			window.location.href="login.destroy";
-		});
+	
+	$('.btn-eliminar-system').submit(function(e){
+		e.preventDefault();
+		Swal.fire({
+		title: 'Estas seguro de eliminar este usuario',
+		text: "Podras revertir esta acción",
+		icon: 'warning',
+		showCancelButton: true,
+		confirmButtonColor: '#3085d6',
+		cancelButtonColor: '#d33',
+		confirmButtonText: 'Si, Eliminar!',
+		cancelButtonText: '<i class="zmdi zmdi-close-circle"></i> No, Cancelar!'
+		}).then((result) => {
+			if (result.isConfirmed) {
+				this.submit();
+			}
+		})
+	});
+	$('.btn-eliminarC-system').submit(function(e){
+		e.preventDefault();
+		Swal.fire({
+		title: 'Estas seguro de eliminar este usuario',
+		text: "No podras revertir esta acción",
+		icon: 'warning',
+		showCancelButton: true,
+		confirmButtonColor: '#3085d6',
+		cancelButtonColor: '#d33',
+		confirmButtonText: 'Si, Eliminar!',
+		cancelButtonText: '<i class="zmdi zmdi-close-circle"></i> No, Cancelar!'
+		}).then((result) => {
+			if (result.isConfirmed) {
+				this.submit();
+			}
+		})
+	});
+	$('.btn-restaurar-system').submit(function(e){
+		e.preventDefault();
+		Swal.fire({
+		title: 'Estas seguro de restaurar este usuario',
+		text: "Podras revertir esta acción",
+		icon: 'warning',
+		showCancelButton: true,
+		confirmButtonColor: '#3085d6',
+		cancelButtonColor: '#d33',
+		confirmButtonText: 'Si, Restaurar!',
+		cancelButtonText: '<i class="zmdi zmdi-close-circle"></i> No, Cancelar!'
+		}).then((result) => {
+			if (result.isConfirmed) {
+				this.submit();
+			}
+		})
+	});
+
+	$('.btn-eliminarCR-system').submit(function(e){
+		e.preventDefault();
+		Swal.fire({
+		title: 'Estas seguro de eliminar el formato F-03 Cédula de Registro',
+		text: "No podras revertir esta acción",
+		icon: 'warning',
+		showCancelButton: true,
+		confirmButtonColor: '#3085d6',
+		cancelButtonColor: '#d33',
+		confirmButtonText: 'Si, Eliminar!',
+		cancelButtonText: '<i class="zmdi zmdi-close-circle"></i> No, Cancelar!'
+		}).then((result) => {
+			if (result.isConfirmed) {
+				this.submit();
+			}
+		})
+	});
+	$('.btn-eliminarDP-system').submit(function(e){
+		e.preventDefault();
+		Swal.fire({
+		title: 'Estas seguro de eliminar el formtato F-04 Definición de proyecto',
+		text: "No podras revertir esta acción",
+		icon: 'warning',
+		showCancelButton: true,
+		confirmButtonColor: '#3085d6',
+		cancelButtonColor: '#d33',
+		confirmButtonText: 'Si, Eliminar!',
+		cancelButtonText: '<i class="zmdi zmdi-close-circle"></i> No, Cancelar!'
+		}).then((result) => {
+			if (result.isConfirmed) {
+				this.submit();
+			}
+		})
+	});
+	$('.btn-cancelarF2-system').submit(function(e){
+		e.preventDefault();
+		Swal.fire({
+		title: 'Estas seguro de cancelar el documento F-02 Carta de Aceptación',
+		text: "No podras revertir esta acción",
+		icon: 'warning',
+		showCancelButton: true,
+		confirmButtonColor: '#3085d6',
+		cancelButtonColor: '#d33',
+		
+		confirmButtonText: 'Si, Cancelar documento!',
+		cancelButtonText: '<i class="zmdi zmdi-close-circle"></i> No, Cancelar!'
+		}).then((result) => {
+			if (result.isConfirmed) {
+				this.submit();
+			}
+		})
+	});
+	$('.btn-cancelarF3-system').submit(function(e){
+		e.preventDefault();
+		Swal.fire({
+		title: 'Estas seguro de cancelar el documento F-03 Cédula de Registro',
+		text: "No podras revertir esta acción",
+		icon: 'warning',
+		showCancelButton: true,
+		confirmButtonColor: '#3085d6',
+		cancelButtonColor: '#d33',
+		confirmButtonText: 'Si, Cancelar documento!',
+		cancelButtonText: '<i class="zmdi zmdi-close-circle"></i> No, Cancelar!'
+		}).then((result) => {
+			if (result.isConfirmed) {
+				this.submit();
+			}
+		})
+	});
+	$('.btn-cancelarF4-system').submit(function(e){
+		e.preventDefault();
+		Swal.fire({
+		title: 'Estas seguro de cancelar el documento F-04 Definición de Proyecto',
+		text: "No podras revertir esta acción",
+		icon: 'warning',
+		showCancelButton: true,
+		confirmButtonColor: '#3085d6',
+		cancelButtonColor: '#d33',
+		confirmButtonText: 'Si, Cancelar documento!',
+		cancelButtonText: '<i class="zmdi zmdi-close-circle"></i> No, Cancelar!'
+		}).then((result) => {
+			if (result.isConfirmed) {
+				this.submit();
+			}
+		})
+	});
+	$('.btn-cancelarF5-system').submit(function(e){
+		e.preventDefault();
+		Swal.fire({
+		title: 'Estas seguro de cancelar el documento F-05 Carta de Liberación',
+		text: "No podras revertir esta acción",
+		icon: 'warning',
+		showCancelButton: true,
+		confirmButtonColor: '#3085d6',
+		cancelButtonColor: '#d33',
+		confirmButtonText: 'Si, Cancelar documento!',
+		cancelButtonText: '<i class="zmdi zmdi-close-circle"></i> No, Cancelar!'
+		}).then((result) => {
+			if (result.isConfirmed) {
+				this.submit();
+			}
+		})
 	});
 	$('.btn-menu-dashboard').on('click', function(){
 		var body=$('.dashboard-contentPage');
@@ -35,6 +177,7 @@ $(document).ready(function(){
 			sidebar.addClass('hide-sidebar').removeClass('show-sidebar');
 		}
 	});
+
 	$('.btn-Notifications-area').on('click', function(){
 		var NotificationsArea=$('.Notifications-area');
 		if(NotificationsArea.css('opacity')=="0"){
@@ -43,6 +186,7 @@ $(document).ready(function(){
 			NotificationsArea.removeClass('show-Notification-area');
 		}
 	});
+
 	$('.btn-search').on('click', function(){
 		swal({
 		  title: 'What are you looking for?',
@@ -63,10 +207,12 @@ $(document).ready(function(){
 		  )
 		});
 	});
+
 	$('.btn-modal-help').on('click', function(){
 		$('#Dialog-Help').modal('show');
 	});
 });
+
 (function($){
     $(window).on("load",function(){
         $(".dashboard-sideBar-ct").mCustomScrollbar({

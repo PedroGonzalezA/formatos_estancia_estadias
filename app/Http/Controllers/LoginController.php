@@ -22,12 +22,19 @@ class LoginController extends Controller
                 'message' => 'El correo electrónico o la contraseña son incorrectos, intente nuevamente'
             ]);
         } else {
+            if(auth()->user()->deleted_at){
+                auth()->logout();
 
-            if (auth()->user()->role == 'admin') {
-                return redirect()->route('admin.index');
-            } else {
-                return redirect()->to('/inicio');
+                return redirect()->to('/login');
             }
+            else{
+                if (auth()->user()->role == 'admin') {
+                    return redirect()->route('admin.index');
+                } else {
+                    return redirect()->to('/inicio');
+                }
+            }
+            
         }
     }
 

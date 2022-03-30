@@ -31,37 +31,37 @@
                                 </table>
                                 <table class="table table-borderless p-0 m-1">
                                     <tr class="p-0 m-0">
-                                        <td class="p-0 px-1" style="width: 150px; border: 1px solid black;"><div><div class=" text-left" ><small>Datos del Alumno </small></div></div></td>
-                                        <td class="p-0 px-1" style="width: 100px; border: 1px solid black;"><div><div class=" text-left"> <small>Nombre:</small></div></div></td>
+                                        <td class="p-0 px-1" style=" border: 1px solid black;"><div><div class=" text-left" ><small>Datos del Alumno </small></div></div></td>
+                                        <td class="p-0 px-1" style=" border: 1px solid black;"><div><div class=" text-left"> <small>Nombre:</small></div></div></td>
                                         <td colspan="2" class="p-0 px-1 " style="border: 1px solid black;"><div><div class=" text-center"> <small>{{$dato->ape_paterno}} {{$dato->ape_materno}} {{$dato->nombres}}</small></div></div></td>
                                     </tr>
                                     <tr class="p-0 m-0"> 
-                                        <td class="p-0 px-1" style="width: 100px; border: 1px solid black;"><div><div class=" text-left" ><small>Grupo: {{$datodp->grupo}}</small></div></div></td>
-                                        <td class="p-0 px-1" style="width: 110px; border: 1px solid black;"><div><div class=" text-left"> <small>Asesor UPQROO:</small></div></div></td>
+                                        <td class="p-0 px-1" style=" border: 1px solid black;"><div><div class=" text-left" ><small>Grupo: {{$datodp->grupo}}</small></div></div></td>
+                                        <td class="p-0 px-1" style="border: 1px solid black;"><div><div class=" text-left"> <small>Asesor UPQROO:</small></div></div></td>
                                         <td colspan="2" class="p-0 px-1 " style="border: 1px solid black;"><div><div class=" text-center"> <small>{{$dato->ape_paterno_aa}} {{$dato->ape_materno_aa}} {{$dato->nombres_aa}}</small></div></div></td>
                                     </tr>
                                     <tr class="p-0 m-0"> 
-                                        <td class="p-0 px-1 " style="width: 100px; border-left: 1px solid black;"><div><div class=" text-center" ><small>Datos </small></div></div></td>
-                                        <td class="p-0 px-1" style="width: 110px; border: 1px solid black;"><div><div class=" text-left"> <small>Nombre:</small></div></div></td>
+                                        <td class="p-0 px-1 " style=" border-left: 1px solid black;"><div><div class=" text-center" ><small>Datos </small></div></div></td>
+                                        <td class="p-0 px-1" style=" border: 1px solid black;"><div><div class=" text-left"> <small>Nombre:</small></div></div></td>
                                         <td colspan="2" class="p-0 px-1 " style="border: 1px solid black;"><div><div class=" text-center"> <small>{{$dato->nombre_emp}}</small></div></div></td>
                                     </tr>
                                     <tr class="p-0 m-0"> 
-                                        <td class="p-0 px-1 " style="width: 100px; border-left: 1px solid black;"><div><div class=" text-center" ><small>de la </small></div></div></td>
-                                        <td class="p-0 px-1" style="width: 110px; border: 1px solid black;"><div><div class=" text-left"> <small>Asesor:</small></div></div></td>
+                                        <td class="p-0 px-1 " style=" border-left: 1px solid black;"><div><div class=" text-center" ><small>de la </small></div></div></td>
+                                        <td class="p-0 px-1" style=" border: 1px solid black;"><div><div class=" text-left"> <small>Asesor:</small></div></div></td>
                                         <td colspan="2" class="p-0 px-1"  style="width: 200px; border: 1px solid black;"><div><div class=" text-center"> <small>{{$dato->ape_paterno_ae}} {{$dato->ape_materno_ae}} {{$dato->nombres_ae}}</small></div></div></td>
                                     </tr>
                                     <tr class="p-0 m-0"> 
-                                        <td class="p-0 px-1 " style="width: 100px; border-left: 1px solid black; border-bottom: 1px solid black;"><div><div class=" text-center" ><small>Empresa</small></div></div></td>
-                                        <td class="p-0 px-1" style="width: 110px; border: 1px solid black;"><div><div class=" text-left"> <small>Puesto:</small></div></div></td>
+                                        <td class="p-0 px-1 " style=" border-left: 1px solid black; border-bottom: 1px solid black;"><div><div class=" text-center" ><small>Empresa</small></div></div></td>
+                                        <td class="p-0 px-1" style=" border: 1px solid black;"><div><div class=" text-left"> <small>Puesto:</small></div></div></td>
                                         <td colspan="2" class="p-0 px-1" style="width: 200px; border: 1px solid black;"><div><div class=" text-center" style="justify-content: center;"> <small>{{$datodp->puesto}}</small></div></div></td>
                                     </tr>
                                 
                                     <tr class="p-0 m-0">
-                                        <td class="p-0 px-1" style="width: 100px; border: 1px solid black;"><div><div class=" text-left"> <small>Nombre del Proyecto:</small></div></div></td>
+                                        <td class="p-0 px-1" style=" border: 1px solid black;"><div><div class=" text-left"> <small>Nombre del Proyecto:</small></div></div></td>
                                         <td colspan="3" class="p-0 px-1 " style="border: 1px solid black;"><div><div class=" text-center"> <small>{{$dato->nombre_proyecto}}</small></div></div></td>
                                     </tr>
                                     <tr class="p-0 m-0"> 
-                                        <td class="p-0 px-1" style="width: 100px; border: 1px solid black;"><div><div class=" text-left"> <small>Objetivos del Proyecto:</small></div></div></td>
+                                        <td class="p-0 px-1" style=" border: 1px solid black;"><div><div class=" text-left"> <small>Objetivos del Proyecto:</small></div></div></td>
                                         <td colspan="3" class="p-0 px-1 " style="border: 1px solid black;"><div><div class=" text-center"> <small>{{$datodp->objetivos_proyecto}}</small></div></div></td>
                                     </tr>
                                 </table>
@@ -91,81 +91,27 @@
                                             <td class="p-0 px-1 tabla" style="width: 50px; border: 1px solid black;"><div><div class=" text-center"> <small>Horas</small></div></div></td>
                                             <td colspan="2" class="p-0 px-1 tabla" style="border-right: 1px solid black;"><div><div class=" text-center"> <small></small></div></div></td>
                                         </tr>
-                                        <tr class=""> 
-                                            <td class="p-0 px-1" style="width: 230px; border: 1px solid black; height:40px;"><div><div class=" text-center" ><small></small></div></div></td>
-                                            <td class="p-0 px-1 tabla" style="width: 50px; border: 1px solid black; height:40px;"><div><div class=" text-center"> <small></small></div></div></td>
-                                            <td class="p-0 px-1 tabla" style="width: 50px; border: 1px solid black; height:40px;"><div><div class=" text-center"> <small></small></div></div></td>
-                                            <td colspan="2" class="p-0 px-1 tabla" style="border: 1px solid black; height:40px;"><div><div class=" text-center"> <small></small></div></div></td>
-                                        </tr>
-                                        <tr class=""> 
-                                            <td class="p-0 px-1" style="width: 230px; border: 1px solid black; height:40px;"><div><div class=" text-center" ><small></small></div></div></td>
-                                            <td class="p-0 px-1 tabla" style="width: 50px; border: 1px solid black; height:40px;"><div><div class=" text-center"> <small></small></div></div></td>
-                                            <td class="p-0 px-1 tabla" style="width: 50px; border: 1px solid black; height:40px;"><div><div class=" text-center"> <small></small></div></div></td>
-                                            <td colspan="2" class="p-0 px-1 tabla" style="border: 1px solid black; height:40px;"><div><div class=" text-center"> <small></small></div></div></td>
-                                        </tr>                      
-                                        <tr class=""> 
-                                            <td class="p-0 px-1" style="width: 230px; border: 1px solid black; height:40px;"><div><div class=" text-center" ><small></small></div></div></td>
-                                            <td class="p-0 px-1 tabla" style="width: 50px; border: 1px solid black; height:40px;"><div><div class=" text-center"> <small></small></div></div></td>
-                                            <td class="p-0 px-1 tabla" style="width: 50px; border: 1px solid black; height:40px;"><div><div class=" text-center"> <small></small></div></div></td>
-                                            <td colspan="2" class="p-0 px-1 tabla" style="border: 1px solid black; height:40px;"><div><div class=" text-center"> <small></small></div></div></td>
-                                        </tr>
-                                        <tr class=""> 
-                                            <td class="p-0 px-1" style="width: 230px; border: 1px solid black; height:40px;"><div><div class=" text-center" ><small></small></div></div></td>
-                                            <td class="p-0 px-1 tabla" style="width: 50px; border: 1px solid black; height:40px;"><div><div class=" text-center"> <small></small></div></div></td>
-                                            <td class="p-0 px-1 tabla" style="width: 50px; border: 1px solid black; height:40px;"><div><div class=" text-center"> <small></small></div></div></td>
-                                            <td colspan="2" class="p-0 px-1 tabla" style="border: 1px solid black; height:40px;"><div><div class=" text-center"> <small></small></div></div></td>
-                                        </tr>
-                                        <tr class=""> 
-                                            <td class="p-0 px-1" style="width: 230px; border: 1px solid black; height:40px;"><div><div class=" text-center" ><small></small></div></div></td>
-                                            <td class="p-0 px-1 tabla" style="width: 50px; border: 1px solid black; height:40px;"><div><div class=" text-center"> <small></small></div></div></td>
-                                            <td class="p-0 px-1 tabla" style="width: 50px; border: 1px solid black; height:40px;"><div><div class=" text-center"> <small></small></div></div></td>
-                                            <td colspan="2" class="p-0 px-1 tabla" style="border: 1px solid black; height:40px;"><div><div class=" text-center"> <small></small></div></div></td>
-                                        </tr>
-                                        <tr class=""> 
-                                            <td class="p-0 px-1" style="width: 230px; border: 1px solid black; height:40px;"><div><div class=" text-center" ><small></small></div></div></td>
-                                            <td class="p-0 px-1 tabla" style="width: 50px; border: 1px solid black; height:40px;"><div><div class=" text-center"> <small></small></div></div></td>
-                                            <td class="p-0 px-1 tabla" style="width: 50px; border: 1px solid black; height:40px;"><div><div class=" text-center"> <small></small></div></div></td>
-                                            <td colspan="2" class="p-0 px-1 tabla" style="border: 1px solid black; height:40px;"><div><div class=" text-center"> <small></small></div></div></td>
-                                        </tr>
-                                        <tr class=""> 
-                                            <td class="p-0 px-1" style="width: 230px; border: 1px solid black; height:40px;"><div><div class=" text-center" ><small></small></div></div></td>
-                                            <td class="p-0 px-1 tabla" style="width: 50px; border: 1px solid black; height:40px;"><div><div class=" text-center"> <small></small></div></div></td>
-                                            <td class="p-0 px-1 tabla" style="width: 50px; border: 1px solid black; height:40px;"><div><div class=" text-center"> <small></small></div></div></td>
-                                            <td colspan="2" class="p-0 px-1 tabla" style="border: 1px solid black; height:40px;"><div><div class=" text-center"> <small></small></div></div></td>
-                                        </tr>
-                                        <tr class=""> 
-                                            <td class="p-0 px-1" style="width: 230px; border: 1px solid black; height:40px;"><div><div class=" text-center" ><small></small></div></div></td>
-                                            <td class="p-0 px-1 tabla" style="width: 50px; border: 1px solid black; height:40px;"><div><div class=" text-center"> <small></small></div></div></td>
-                                            <td class="p-0 px-1 tabla" style="width: 50px; border: 1px solid black; height:40px;"><div><div class=" text-center"> <small></small></div></div></td>
-                                            <td colspan="2" class="p-0 px-1 tabla" style="border: 1px solid black; height:40px;"><div><div class=" text-center"> <small></small></div></div></td>
-                                        </tr>
-                                        <tr class=""> 
-                                            <td class="p-0 px-1" style="width: 230px; border: 1px solid black; height:40px;"><div><div class=" text-center" ><small></small></div></div></td>
-                                            <td class="p-0 px-1 tabla" style="width: 50px; border: 1px solid black; height:40px;"><div><div class=" text-center"> <small></small></div></div></td>
-                                            <td class="p-0 px-1 tabla" style="width: 50px; border: 1px solid black; height:40px;"><div><div class=" text-center"> <small></small></div></div></td>
-                                            <td colspan="2" class="p-0 px-1 tabla" style="border: 1px solid black; height:40px;"><div><div class=" text-center"> <small></small></div></div></td>
-                                        </tr>
-                                        <tr class=""> 
-                                            <td class="p-0 px-1" style="width: 230px; border: 1px solid black; height:40px;"><div><div class=" text-center" ><small></small></div></div></td>
-                                            <td class="p-0 px-1 tabla" style="width: 50px; border: 1px solid black; height:40px;"><div><div class=" text-center"> <small></small></div></div></td>
-                                            <td class="p-0 px-1 tabla" style="width: 50px; border: 1px solid black; height:40px;"><div><div class=" text-center"> <small></small></div></div></td>
-                                            <td colspan="2" class="p-0 px-1 tabla" style="border: 1px solid black; height:40px;"><div><div class=" text-center"> <small></small></div></div></td>
-                                        </tr>
-                                        <tr class=""> 
-                                            <td class="p-0 px-1" style="width: 230px; border: 1px solid black; height:40px;"><div><div class=" text-center" ><small></small></div></div></td>
-                                            <td class="p-0 px-1 tabla" style="width: 50px; border: 1px solid black; height:40px;"><div><div class=" text-center"> <small></small></div></div></td>
-                                            <td class="p-0 px-1 tabla" style="width: 50px; border: 1px solid black; height:40px;"><div><div class=" text-center"> <small></small></div></div></td>
-                                            <td colspan="2" class="p-0 px-1 tabla" style="border: 1px solid black; height:40px;"><div><div class=" text-center"> <small></small></div></div></td>
-                                        </tr>
-                                        <tr class=""> 
-                                            <td class="p-0 px-1" style="width: 230px; border: 1px solid black; height:40px;"><div><div class=" text-center" ><small></small></div></div></td>
-                                            <td class="p-0 px-1 tabla" style="width: 50px; border: 1px solid black; height:40px;"><div><div class=" text-center"> <small></small></div></div></td>
-                                            <td class="p-0 px-1 tabla" style="width: 50px; border: 1px solid black; height:40px;"><div><div class=" text-center"> <small></small></div></div></td>
-                                            <td colspan="2" class="p-0 px-1 tabla" style="border: 1px solid black; height:40px;"><div><div class=" text-center"> <small></small></div></div></td>
-                                        </tr>
+                                        @foreach ($etapas as $datoE)
+                                            <tr class=""> 
+                                                <td class="p-0 px-1" style="width: 230px; border: 1px solid black; height:40px;"><div><div class=" text-center " ><small>{{$datoE->descripcion_etapas}}</small></div></div></td>
+                                                <td class="p-0 px-1 tabla" style="width: 50px; border: 1px solid black; height:40px;">
+                                                    <div>
+                                                        <div class=" text-center">
+                                                            @if ($datoE->semana_inicial)
+                                                                <div><small>{{$datoE->semana_inicial}}</small></div>
+                                                                <div style="font-size: 10px">---</div>
+                                                                <div> <small>{{$datoE->semana_final}}</small></div>
+                                                            @endif
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td class="p-0 px-1 tabla" style="width: 50px; border: 1px solid black; height:40px;"><div><div class=" text-center"> <small>{{$datoE->horas}}</small></div></div></td>
+                                                <td colspan="2" class="p-0 px-1 tabla" style="border: 1px solid black; height:40px;"><div><div class=" text-center"> <small>{{$datoE->descripcion_competencias}}</small></div></div></td>
+                                            </tr>
+                                        @endforeach 
                                     </tbody>
                                 </table>
-                            <p style="page-break-after: always;">
+                            <p style="">
                                 <table class="table table-borderless p-0 m-1">
                                     <thead class="table-secondary">
                                         <tr class=""> 
@@ -177,7 +123,7 @@
                                     </thead>
                                     <tbody>
                                         <tr class=""> 
-                                            <td class="p-0 px-1" style="width: 150px; border: 1px solid black; height:40px;"><div><div class=" text-center" ><small>{{$datodp->actividades}}</small></div></div></td>
+                                            <td class="p-0 px-1" style="width: 150px; border: 1px solid black; height:40px;"><div><div class="parrafo" ><small>{{$datodp->actividades}}</small></div></div></td>
                                             <td class="p-0 px-1" style="width: 150px; border: 1px solid black; height:40px;"><div><div class=" text-center"> <small>{{$datodp->resultados}}</small></div></div></td>
                                             <td class="p-0 px-1" style="width: 150px; border: 1px solid black; height:40px;"><div><div class=" text-center"> <small>{{$datodp->evidencia}}</small></div></div></td>
                                             <td class="p-0 px-1" style="width: 150px; border: 1px solid black; height:40px;"><div><div class=" text-center"> <small>{{$datodp->instrumentos}}</small></div></div></td>
@@ -221,7 +167,12 @@
                                 </table>
                         @empty
                         @endforelse
-                @empty
+            @empty
+                <div class="row">
+                    <div class="col-12 text-center">
+                        <h1>Faltan datos porfavor llene la cédula de registro para que se autocompleten el documento.</h1>
+                    </div>
+                </div>
             @endforelse 
         </main>
     </body>
@@ -290,5 +241,9 @@
             .sello{
                 justify-content: center;
                 align-items: center;
+            }
+
+            .parrafo{
+                text-align: justify;
             }
 </style>

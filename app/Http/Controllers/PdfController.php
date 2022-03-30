@@ -17,6 +17,7 @@ use App\Models\carta_liberacion;
 use App\Models\cedula_registro;
 use App\Models\definicion_proyecto;
 use App\Models\documentos;
+use App\Models\etapas_del_proyecto;
 use App\Models\respuesta_doc;
 use App\Models\universidad;
 use Illuminate\Http\Request;
@@ -61,12 +62,48 @@ class PdfController extends Controller
 
       $pdf = PDF::setOptions(['isHTML5ParserEnabled' => true, 'isRemoteEnabled' => true,'tempDir'=>public_path(),'chroot'=>'firma/']);
       $pdf->getDomPDF()->setHttpContext($contxt);
-      $pdf -> loadView('usuario.f01_cd_estancia', ['usuario' => $alumno,'vinculacion' => $vinculacion,]);
+
+      $spanish = array('es_utf8', 'es', 'es-ES', 'Spanish_Modern_Sort', 'es_utf8', 'es_ES@euro', 'esp_esp', 'esp_spain', 'spanish_esp', 'spanish_spain', 'es_ES.utf8', 'es-es','es_MX.utf8');
+
+      $pdf -> loadView('usuario.f01_cd_estancia', ['usuario' => $alumno,'vinculacion' => $vinculacion,'fecha'=>$spanish]);
 
       return $pdf->download('F-01_Carta_Presentacion_Estancia.pdf');
    }
     //descargar f01 estadia
+    public function descarga_cd_f01_estadia(){
+      $userID=Auth::user()->id; 
+      $vinculacion=DB::table('universidad')
+      ->get();
 
+      $alumno = DB::table('users')
+      ->join('respuesta', 'users.id', '=', 'respuesta.id_usuario')
+      ->join('formulario', 'respuesta.id_formulario', '=', 'formulario.id')
+      ->join('alumno', 'formulario.id_alumno', '=', 'alumno.id')
+      ->join('carreras', 'alumno.id_carrera', '=', 'carreras.id_carrera')
+      ->join('asesor_empresarial', 'formulario.id_asesor_emp', '=', 'asesor_empresarial.id')
+      ->join('empresa', 'empresa.id', '=', 'formulario.id_empresa')
+
+      ->where('users.id',$userID)
+      ->get();
+      $pdf = app('dompdf.wrapper');
+
+      view()->share('usuario.f01_cd_estadia',$alumno);
+        //############ Permitir ver imagenes si falla ################################
+        $contxt = stream_context_create([
+          'ssl' => [
+              'verify_peer' => FALSE,
+              'verify_peer_name' => FALSE,
+              'allow_self_signed' => TRUE,
+          ]
+      ]);
+
+      $pdf = PDF::setOptions(['isHTML5ParserEnabled' => true, 'isRemoteEnabled' => true,'tempDir'=>public_path(),'chroot'=>'firma/']);
+      $pdf->getDomPDF()->setHttpContext($contxt);
+      $spanish = array('es_utf8', 'es', 'es-ES', 'Spanish_Modern_Sort', 'es_utf8', 'es_ES@euro', 'esp_esp', 'esp_spain', 'spanish_esp', 'spanish_spain', 'es_ES.utf8', 'es-es','es_MX.utf8');
+
+      $pdf -> loadView('usuario.f01_cd_estadia', ['usuario' => $alumno,'vinculacion' => $vinculacion,'fecha'=>$spanish]);
+      return $pdf->download('F-01_Carta_Presentacion_Estadia.pdf');
+    }
 
     //descargar f02 estancia
 
@@ -82,14 +119,34 @@ class PdfController extends Controller
       ->join('carreras', 'alumno.id_carrera', '=', 'carreras.id_carrera')
       ->where('users.id',$userID)
       ->get();
+      $uni=DB::table('universidad')->get();
       view()->share('usuario.f02_cd_estancia',$alumno);
-
-      $pdf = PDF::loadView('usuario.f02_cd_estancia', ['usuario' => $alumno]);
+      $spanish = array('es_utf8', 'es', 'es-ES', 'Spanish_Modern_Sort', 'es_utf8', 'es_ES@euro', 'esp_esp', 'esp_spain', 'spanish_esp', 'spanish_spain', 'es_ES.utf8', 'es-es','es_MX.utf8');
+      $pdf = PDF::loadView('usuario.f02_cd_estancia', ['usuario' => $alumno,'vinculacion'=>$uni,'fecha'=>$spanish]);
 
       return $pdf->download('F-02_Carta_Aceptacion_Estancia.pdf');
    }
     //descargar f02 estadia
+    public function descarga_cd_f02_estadia(){
+      $userID=Auth::user()->id; 
+      $alumno = DB::table('users')
+      ->join('respuesta', 'users.id', '=', 'respuesta.id_usuario')
+      ->join('formulario', 'respuesta.id_formulario', '=', 'formulario.id')
+      ->join('alumno', 'formulario.id_alumno', '=', 'alumno.id')
+      ->join('asesor_empresarial', 'formulario.id_asesor_emp', '=', 'asesor_empresarial.id')
+      ->join('asesor_academico', 'formulario.id_asesor_aca', '=', 'asesor_academico.id')
+      ->join('proyecto', 'formulario.id_proyecto', '=', 'proyecto.id')
+      ->join('carreras', 'alumno.id_carrera', '=', 'carreras.id_carrera')
+      ->where('users.id',$userID)
+      ->get();
+      $uni=DB::table('universidad')->get();
+      view()->share('usuario.f02_cd_estadia',$alumno);
+      $spanish = array('es_utf8', 'es', 'es-ES', 'Spanish_Modern_Sort', 'es_utf8', 'es_ES@euro', 'esp_esp', 'esp_spain', 'spanish_esp', 'spanish_spain', 'es_ES.utf8', 'es-es','es_MX.utf8');
 
+      $pdf = PDF::loadView('usuario.f02_cd_estadia', ['usuario' => $alumno,'vinculacion'=>$uni,'fecha'=>$spanish]);
+
+      return $pdf->download('F-02_Carta_Aceptacion_Estadia.pdf');
+   }
 
     //descargar f03 estancia
 
@@ -147,7 +204,7 @@ class PdfController extends Controller
 
         return $pdf->download('F-03_Cedula_Registro_Estadia.pdf');
     }
-//descargar f04 estancia
+    //descargar f04 estancia
     public function descarga_cd_estancia_f04(){
       $userID=Auth::user()->id; 
 
@@ -160,28 +217,79 @@ class PdfController extends Controller
       ->join('asesor_academico', 'formulario.id_asesor_aca', '=', 'asesor_academico.id')
       ->join('proyecto', 'formulario.id_proyecto', '=', 'proyecto.id')
       ->join('carreras', 'carreras.id_carrera', '=', 'alumno.id_carrera')
-      ->select('carreras.nombre_carrera','users.name','alumno.ape_paterno','alumno.ape_materno','alumno.nombres','alumno.tel','alumno.matricula','alumno.email_per','alumno.email','alumno.no_ss','alumno.direccion','alumno.id_carrera','empresa.nombre_emp','empresa.giro','empresa.id_tipo','empresa.direccion_emp','empresa.ape_paterno_rh','empresa.ape_materno_rh','empresa.nombres_rh','empresa.tel_lada','empresa.tel_num','empresa.tel_ext','empresa.email_emp','asesor_empresarial.ape_paterno_ae','asesor_empresarial.ape_materno_ae','asesor_empresarial.nombres_ae','asesor_empresarial.id_cargo_ae','asesor_empresarial.tel_lada_ae','asesor_empresarial.tel_num_ae','asesor_empresarial.email_ae','asesor_academico.ape_paterno_aa','asesor_academico.ape_materno_aa','asesor_academico.nombres_aa','asesor_academico.id_cargo_aa','asesor_academico.tel_lada_aa','asesor_academico.tel_num_aa','asesor_academico.email_aa','proyecto.nombre_proyecto','proyecto.objetivos_proyecto')
+      ->select('carreras.nombre_carrera','users.name','alumno.ape_paterno','alumno.ape_materno','alumno.nombres','alumno.tel','alumno.matricula','alumno.email_per','alumno.email','alumno.no_ss','alumno.direccion','alumno.id_carrera','empresa.nombre_emp','empresa.giro','empresa.id_tipo','empresa.direccion_emp','empresa.ape_paterno_rh','empresa.ape_materno_rh','empresa.nombres_rh','empresa.tel_lada','empresa.tel_num','empresa.tel_ext','empresa.email_emp','asesor_empresarial.ape_paterno_ae','asesor_empresarial.ape_materno_ae','asesor_empresarial.nombres_ae','asesor_empresarial.id_cargo_ae','asesor_empresarial.tel_lada_ae','asesor_empresarial.tel_num_ae','asesor_empresarial.email_ae','asesor_academico.ape_paterno_aa','asesor_academico.ape_materno_aa','asesor_academico.nombres_aa','asesor_academico.id_cargo_aa','asesor_academico.tel_lada_aa','asesor_academico.tel_num_aa','asesor_academico.email_aa','proyecto.nombre_proyecto',)
       ->where('users.id',$userID)
 
       ->get();
  
       $definicionP = DB::table('users')
-      ->join('respuesta_def', 'users.id', '=', 'respuesta_def.id_usuario_d_p')
-      ->join('formulario_def', 'respuesta_def.id_formulario_d_p', '=', 'formulario_def.id')
+      ->join('respuesta_def', 'users.id', '=', 'respuesta_def.id_usuario')
+      ->join('formulario_def', 'respuesta_def.id_formulario', '=', 'formulario_def.id')
       ->join('alumno_def', 'formulario_def.id_alumno', '=', 'alumno_def.id')
       ->join('asesor_empresarial_def', 'formulario_def.id_asesor_emp', '=', 'asesor_empresarial_def.id')
       ->join('proyecto_def', 'formulario_def.id_proyecto', '=', 'proyecto_def.id')
       ->join('detalle_def','formulario_def.id_detalle','=','detalle_def.id')
       ->where('users.id',$userID)
       ->get();
- 
+      
+      //etapas de proyecto
+      $etapas=DB::table('users')
+      ->join('respuesta_etapa','users.id','=','respuesta_etapa.id_usuario')
+      ->join('etapas_del_proyecto','etapas_del_proyecto.id','=','respuesta_etapa.id_etapa_proyecto')
+      ->where('users.id',$userID)
+      ->get();
+
       view()->share('usuario.f04',$users);
- 
-      $pdf = PDF::loadView('usuario.f04_cd_estancia', ['usuario' => $users,'datos' => $definicionP]);
+      //fecha
+      $spanish = array('es_utf8', 'es', 'es-ES', 'Spanish_Modern_Sort', 'es_utf8', 'es_ES@euro', 'esp_esp', 'esp_spain', 'spanish_esp', 'spanish_spain', 'es_ES.utf8', 'es-es','es_MX.utf8');
+      $pdf = PDF::loadView('usuario.f04_cd_estancia', ['usuario' => $users,'datos' => $definicionP,'etapas' => $etapas,'fecha'=>$spanish]);
  
       return $pdf->download('F-04_Definicion_de_Proyecto_Estancia.pdf');
     } 
-//descargar f05 estancia
+    //descargar f04 estadia
+    public function descarga_cd_estadia_f04(){
+      $userID=Auth::user()->id; 
+
+      $users = DB::table('users')
+      ->join('respuesta', 'users.id', '=', 'respuesta.id_usuario')
+      ->join('formulario', 'respuesta.id_formulario', '=', 'formulario.id')
+      ->join('alumno', 'formulario.id_alumno', '=', 'alumno.id')
+      ->join('empresa', 'formulario.id_empresa', '=', 'empresa.id')
+      ->join('asesor_empresarial', 'formulario.id_asesor_emp', '=', 'asesor_empresarial.id')
+      ->join('asesor_academico', 'formulario.id_asesor_aca', '=', 'asesor_academico.id')
+      ->join('proyecto', 'formulario.id_proyecto', '=', 'proyecto.id')
+      ->join('carreras', 'carreras.id_carrera', '=', 'alumno.id_carrera')
+      ->select('carreras.nombre_carrera','users.name','alumno.ape_paterno','alumno.ape_materno','alumno.nombres','alumno.tel','alumno.matricula','alumno.email_per','alumno.email','alumno.no_ss','alumno.direccion','alumno.id_carrera','empresa.nombre_emp','empresa.giro','empresa.id_tipo','empresa.direccion_emp','empresa.ape_paterno_rh','empresa.ape_materno_rh','empresa.nombres_rh','empresa.tel_lada','empresa.tel_num','empresa.tel_ext','empresa.email_emp','asesor_empresarial.ape_paterno_ae','asesor_empresarial.ape_materno_ae','asesor_empresarial.nombres_ae','asesor_empresarial.id_cargo_ae','asesor_empresarial.tel_lada_ae','asesor_empresarial.tel_num_ae','asesor_empresarial.email_ae','asesor_academico.ape_paterno_aa','asesor_academico.ape_materno_aa','asesor_academico.nombres_aa','asesor_academico.id_cargo_aa','asesor_academico.tel_lada_aa','asesor_academico.tel_num_aa','asesor_academico.email_aa','proyecto.nombre_proyecto',)
+      ->where('users.id',$userID)
+
+      ->get();
+ 
+      $definicionP = DB::table('users')
+      ->join('respuesta_def', 'users.id', '=', 'respuesta_def.id_usuario')
+      ->join('formulario_def', 'respuesta_def.id_formulario', '=', 'formulario_def.id')
+      ->join('alumno_def', 'formulario_def.id_alumno', '=', 'alumno_def.id')
+      ->join('asesor_empresarial_def', 'formulario_def.id_asesor_emp', '=', 'asesor_empresarial_def.id')
+      ->join('proyecto_def', 'formulario_def.id_proyecto', '=', 'proyecto_def.id')
+      ->join('detalle_def','formulario_def.id_detalle','=','detalle_def.id')
+      ->where('users.id',$userID)
+      ->get();
+      
+      //etapas de proyecto
+      $etapas=DB::table('users')
+      ->join('respuesta_etapa','users.id','=','respuesta_etapa.id_usuario')
+      ->join('etapas_del_proyecto','etapas_del_proyecto.id','=','respuesta_etapa.id_etapa_proyecto')
+      ->where('users.id',$userID)
+      ->get();
+
+      view()->share('usuario.f04_cd_estadia',$users);
+      //fecha
+      $spanish = array('es_utf8', 'es', 'es-ES', 'Spanish_Modern_Sort', 'es_utf8', 'es_ES@euro', 'esp_esp', 'esp_spain', 'spanish_esp', 'spanish_spain', 'es_ES.utf8', 'es-es','es_MX.utf8');
+
+      $pdf = PDF::loadView('usuario.f04_cd_estadia', ['usuario' => $users,'datos' => $definicionP,'etapas' => $etapas,'fecha'=>$spanish]);
+ 
+      return $pdf->download('F-04_Definicion_de_Proyecto_Estadia.pdf');
+    } 
+    //descargar f05 estancia
     public function descarga_cd_estancia_f05(){
       $userID=Auth::user()->id; 
 
@@ -194,14 +302,14 @@ class PdfController extends Controller
       ->join('asesor_academico', 'formulario.id_asesor_aca', '=', 'asesor_academico.id')
       ->join('proyecto', 'formulario.id_proyecto', '=', 'proyecto.id')
       ->join('carreras', 'carreras.id_carrera', '=', 'alumno.id_carrera')
-      ->select('carreras.nombre_carrera','users.name','alumno.ape_paterno','alumno.ape_materno','alumno.nombres','alumno.tel','alumno.matricula','alumno.email_per','alumno.email','alumno.no_ss','alumno.direccion','alumno.id_carrera','empresa.nombre_emp','empresa.giro','empresa.id_tipo','empresa.direccion_emp','empresa.ape_paterno_rh','empresa.ape_materno_rh','empresa.nombres_rh','empresa.tel_lada','empresa.tel_num','empresa.tel_ext','empresa.email_emp','asesor_empresarial.ape_paterno_ae','asesor_empresarial.ape_materno_ae','asesor_empresarial.nombres_ae','asesor_empresarial.id_cargo_ae','asesor_empresarial.tel_lada_ae','asesor_empresarial.tel_num_ae','asesor_empresarial.email_ae','asesor_academico.ape_paterno_aa','asesor_academico.ape_materno_aa','asesor_academico.nombres_aa','asesor_academico.id_cargo_aa','asesor_academico.tel_lada_aa','asesor_academico.tel_num_aa','asesor_academico.email_aa','proyecto.nombre_proyecto','proyecto.objetivos_proyecto')
+      ->select('carreras.nombre_carrera','users.name','alumno.ape_paterno','alumno.ape_materno','alumno.nombres','alumno.tel','alumno.matricula','alumno.email_per','alumno.email','alumno.no_ss','alumno.direccion','alumno.id_carrera','empresa.nombre_emp','empresa.giro','empresa.id_tipo','empresa.direccion_emp','empresa.ape_paterno_rh','empresa.ape_materno_rh','empresa.nombres_rh','empresa.tel_lada','empresa.tel_num','empresa.tel_ext','empresa.email_emp','asesor_empresarial.ape_paterno_ae','asesor_empresarial.ape_materno_ae','asesor_empresarial.nombres_ae','asesor_empresarial.id_cargo_ae','asesor_empresarial.tel_lada_ae','asesor_empresarial.tel_num_ae','asesor_empresarial.email_ae','asesor_academico.ape_paterno_aa','asesor_academico.ape_materno_aa','asesor_academico.nombres_aa','asesor_academico.id_cargo_aa','asesor_academico.tel_lada_aa','asesor_academico.tel_num_aa','asesor_academico.email_aa','proyecto.nombre_proyecto')
       ->where('users.id',$userID)
 
       ->get();
  
       $definicionP = DB::table('users')
-      ->join('respuesta_def', 'users.id', '=', 'respuesta_def.id_usuario_d_p')
-      ->join('formulario_def', 'respuesta_def.id_formulario_d_p', '=', 'formulario_def.id')
+      ->join('respuesta_def', 'users.id', '=', 'respuesta_def.id_usuario')
+      ->join('formulario_def', 'respuesta_def.id_formulario', '=', 'formulario_def.id')
       ->join('alumno_def', 'formulario_def.id_alumno', '=', 'alumno_def.id')
       ->join('asesor_empresarial_def', 'formulario_def.id_asesor_emp', '=', 'asesor_empresarial_def.id')
       ->join('proyecto_def', 'formulario_def.id_proyecto', '=', 'proyecto_def.id')
@@ -209,12 +317,54 @@ class PdfController extends Controller
       ->where('users.id',$userID)
 
       ->get();
- 
+      
+      $uni=DB::table('universidad')->get();
+
       view()->share('usuario.f05_cd_estancia',$users);
- 
-      $pdf = PDF::loadView('usuario.f05_cd_estancia', ['usuario' => $users,'datos' => $definicionP]);
+      //fecha
+      $spanish = array('es_utf8', 'es', 'es-ES', 'Spanish_Modern_Sort', 'es_utf8', 'es_ES@euro', 'esp_esp', 'esp_spain', 'spanish_esp', 'spanish_spain', 'es_ES.utf8', 'es-es','es_MX.utf8');
+      $pdf = PDF::loadView('usuario.f05_cd_estancia', ['usuario' => $users,'datos' => $definicionP,'vinculacion'=>$uni,'fecha'=>$spanish]);
  
       return $pdf->download('F-05_Carta_de_liberacion_Estancia.pdf');
+    }
+    
+    //descargar f05 estadia
+    public function descarga_cd_estadia_f05(){
+      $userID=Auth::user()->id; 
+
+      $users = DB::table('users')
+      ->join('respuesta', 'users.id', '=', 'respuesta.id_usuario')
+      ->join('formulario', 'respuesta.id_formulario', '=', 'formulario.id')
+      ->join('alumno', 'formulario.id_alumno', '=', 'alumno.id')
+      ->join('empresa', 'formulario.id_empresa', '=', 'empresa.id')
+      ->join('asesor_empresarial', 'formulario.id_asesor_emp', '=', 'asesor_empresarial.id')
+      ->join('asesor_academico', 'formulario.id_asesor_aca', '=', 'asesor_academico.id')
+      ->join('proyecto', 'formulario.id_proyecto', '=', 'proyecto.id')
+      ->join('carreras', 'carreras.id_carrera', '=', 'alumno.id_carrera')
+      ->select('carreras.nombre_carrera','users.name','alumno.ape_paterno','alumno.ape_materno','alumno.nombres','alumno.tel','alumno.matricula','alumno.email_per','alumno.email','alumno.no_ss','alumno.direccion','alumno.id_carrera','empresa.nombre_emp','empresa.giro','empresa.id_tipo','empresa.direccion_emp','empresa.ape_paterno_rh','empresa.ape_materno_rh','empresa.nombres_rh','empresa.tel_lada','empresa.tel_num','empresa.tel_ext','empresa.email_emp','asesor_empresarial.ape_paterno_ae','asesor_empresarial.ape_materno_ae','asesor_empresarial.nombres_ae','asesor_empresarial.id_cargo_ae','asesor_empresarial.tel_lada_ae','asesor_empresarial.tel_num_ae','asesor_empresarial.email_ae','asesor_academico.ape_paterno_aa','asesor_academico.ape_materno_aa','asesor_academico.nombres_aa','asesor_academico.id_cargo_aa','asesor_academico.tel_lada_aa','asesor_academico.tel_num_aa','asesor_academico.email_aa','proyecto.nombre_proyecto')
+      ->where('users.id',$userID)
+
+      ->get();
+ 
+      $definicionP = DB::table('users')
+      ->join('respuesta_def', 'users.id', '=', 'respuesta_def.id_usuario')
+      ->join('formulario_def', 'respuesta_def.id_formulario', '=', 'formulario_def.id')
+      ->join('alumno_def', 'formulario_def.id_alumno', '=', 'alumno_def.id')
+      ->join('asesor_empresarial_def', 'formulario_def.id_asesor_emp', '=', 'asesor_empresarial_def.id')
+      ->join('proyecto_def', 'formulario_def.id_proyecto', '=', 'proyecto_def.id')
+      ->join('detalle_def','formulario_def.id_detalle','=','detalle_def.id')
+      ->where('users.id',$userID)
+
+      ->get();
+
+      $uni=DB::table('universidad')->get();
+
+      view()->share('usuario.f05_cd_estadia',$users);
+      //fecha
+      $spanish = array('es_utf8', 'es', 'es-ES', 'Spanish_Modern_Sort', 'es_utf8', 'es_ES@euro', 'esp_esp', 'esp_spain', 'spanish_esp', 'spanish_spain', 'es_ES.utf8', 'es-es','es_MX.utf8');
+      $pdf = PDF::loadView('usuario.f05_cd_estadia', ['usuario' => $users,'datos' => $definicionP,'vinculacion'=>$uni,'fecha'=>$spanish]);
+ 
+      return $pdf->download('F-05_Carta_de_liberacion_Estadia.pdf');
     } 
 
  //eliminar cedula de registro
@@ -227,7 +377,7 @@ class PdfController extends Controller
         Asesor_Emp::find($id_a_e)->delete();
         Asesor_Aca::find($id_a_a)->delete();
         Proyecto::find($id_p)->delete();
-        return redirect('estancia')->with('success','F-03 Eliminado');
+        return redirect('estancia')->with('eliminarF03','F-03 Eliminado');
       }
       //eliminar f03 estadia
 
@@ -238,20 +388,130 @@ class PdfController extends Controller
         Asesor_Emp::find($id_a_e)->delete();
         Asesor_Aca::find($id_a_a)->delete();
         Proyecto::find($id_p)->delete();
-        return redirect('estadia')->with('success','F-03 Eliminado');
+        return redirect('estadia')->with('eliminarF03','F-03 Eliminado');
       }
       //eliminar f04 estancia
-      public function eliminarF04($id_a,$id_a_e,$id_p,$id_d){    
+      public function eliminarF04(Request $req,$id_a,$id_a_e,$id_p,$id_d){    
+        $userID=Auth::user()->id; 
 
         alumno_def::find($id_a)->delete();
         asesor_empresarial_def::find($id_a_e)->delete();
         proyecto_def::find($id_p)->delete();
         detalle_def::find($id_d)->delete();
-        return redirect('estancia');
-     
+
+        $id_etapa_1=$req->get('id_etapas_1');
+        $id_etapa_2=$req->get('id_etapas_2');
+        $id_etapa_3=$req->get('id_etapas_3');
+        $id_etapa_4=$req->get('id_etapas_4');
+        $id_etapa_5=$req->get('id_etapas_5');
+        $id_etapa_6=$req->get('id_etapas_6');
+        $id_etapa_7=$req->get('id_etapas_7');
+        $id_etapa_8=$req->get('id_etapas_8');
+        $id_etapa_9=$req->get('id_etapas_9');
+        $id_etapa_10=$req->get('id_etapas_10');
+        $id_etapa_11=$req->get('id_etapas_11');
+        $id_etapa_12=$req->get('id_etapas_12');
+        $id_etapa_13=$req->get('id_etapas_13');
+        $id_etapa_14=$req->get('id_etapas_14');
+        $id_etapa_15=$req->get('id_etapas_15');
+
+        $etapas1 = etapas_del_proyecto::find($id_etapa_1)->delete();
+        $etapas2 = etapas_del_proyecto::find($id_etapa_2)->delete();
+        $etapas3 = etapas_del_proyecto::find($id_etapa_3)->delete();
+        $etapas4 = etapas_del_proyecto::find($id_etapa_4)->delete();
+        $etapas5 = etapas_del_proyecto::find($id_etapa_5)->delete();
+        $etapas6 = etapas_del_proyecto::find($id_etapa_6)->delete();
+        $etapas7 = etapas_del_proyecto::find($id_etapa_7)->delete();
+        $etapas8 = etapas_del_proyecto::find($id_etapa_8)->delete();
+        $etapas9 = etapas_del_proyecto::find($id_etapa_9)->delete();
+        $etapas10 = etapas_del_proyecto::find($id_etapa_10)->delete();
+        $etapas11 = etapas_del_proyecto::find($id_etapa_11)->delete();
+        $etapas12 = etapas_del_proyecto::find($id_etapa_12)->delete();
+        $etapas13 = etapas_del_proyecto::find($id_etapa_13)->delete();
+        $etapas14 = etapas_del_proyecto::find($id_etapa_14)->delete();
+        $etapas15 = etapas_del_proyecto::find($id_etapa_15)->delete();
+        return redirect('estancia')->with('eliminarF04','F-04 Eliminado');
+
+      }
+
+       //eliminar f04 estadia
+       public function eliminarF04Estadia(Request $req,$id_a,$id_a_e,$id_p,$id_d){    
+        $userID=Auth::user()->id; 
+
+        alumno_def::find($id_a)->delete();
+        asesor_empresarial_def::find($id_a_e)->delete();
+        proyecto_def::find($id_p)->delete();
+        detalle_def::find($id_d)->delete();
+
+        $id_etapa_1=$req->get('id_etapas_1');
+        $id_etapa_2=$req->get('id_etapas_2');
+        $id_etapa_3=$req->get('id_etapas_3');
+        $id_etapa_4=$req->get('id_etapas_4');
+        $id_etapa_5=$req->get('id_etapas_5');
+        $id_etapa_6=$req->get('id_etapas_6');
+        $id_etapa_7=$req->get('id_etapas_7');
+        $id_etapa_8=$req->get('id_etapas_8');
+        $id_etapa_9=$req->get('id_etapas_9');
+        $id_etapa_10=$req->get('id_etapas_10');
+        $id_etapa_11=$req->get('id_etapas_11');
+        $id_etapa_12=$req->get('id_etapas_12');
+        $id_etapa_13=$req->get('id_etapas_13');
+        $id_etapa_14=$req->get('id_etapas_14');
+        $id_etapa_15=$req->get('id_etapas_15');
+
+        $etapas1 = etapas_del_proyecto::find($id_etapa_1)->delete();
+        $etapas2 = etapas_del_proyecto::find($id_etapa_2)->delete();
+        $etapas3 = etapas_del_proyecto::find($id_etapa_3)->delete();
+        $etapas4 = etapas_del_proyecto::find($id_etapa_4)->delete();
+        $etapas5 = etapas_del_proyecto::find($id_etapa_5)->delete();
+        $etapas6 = etapas_del_proyecto::find($id_etapa_6)->delete();
+        $etapas7 = etapas_del_proyecto::find($id_etapa_7)->delete();
+        $etapas8 = etapas_del_proyecto::find($id_etapa_8)->delete();
+        $etapas9 = etapas_del_proyecto::find($id_etapa_9)->delete();
+        $etapas10 = etapas_del_proyecto::find($id_etapa_10)->delete();
+        $etapas11 = etapas_del_proyecto::find($id_etapa_11)->delete();
+        $etapas12 = etapas_del_proyecto::find($id_etapa_12)->delete();
+        $etapas13 = etapas_del_proyecto::find($id_etapa_13)->delete();
+        $etapas14 = etapas_del_proyecto::find($id_etapa_14)->delete();
+        $etapas15 = etapas_del_proyecto::find($id_etapa_15)->delete();
+        return redirect('estadia')->with('eliminarF04','F-04 Eliminado');
+
       }
   //cancelar documentos
-
+    //cancelar documento f02
+      public function cancelarF02_Estancia(Request $req,$id_d,$nombre){    
+        $carta=documentos::find($id_d);
+        $carta->id_c_aceptacion=NULL;
+        $carta->save();
+        $nombreA=$req->get('nombreAf02');
+        $formularioA = DB::table('carta_aceptacion')  
+        ->where('carta_aceptacion.nombre', $nombreA)
+        ->delete();
+        $path=public_path().'/documentos/'.$nombreA;
+        if(File::exists($path)){
+          File::delete($path);
+          return redirect('estancia')->with('cancelarf02','F-02 Cancelado');
+        }else{
+          return redirect('estancia')->with('cancelarf02','F-02 Cancelado');
+        }
+      }
+      //cancelar documento f02 estadia
+      public function cancelarF02_Estadia(Request $req,$id_d,$nombre){    
+        $carta=documentos::find($id_d);
+        $carta->id_c_aceptacion=NULL;
+        $carta->save();
+        $nombreA=$req->get('nombreAf02');
+        $formularioA = DB::table('carta_aceptacion')  
+        ->where('carta_aceptacion.nombre', $nombreA)
+        ->delete();
+        $path=public_path().'/documentos/'.$nombreA;
+        if(File::exists($path)){
+          File::delete($path);
+          return redirect('estadia')->with('cancelarf02','F-02 Cancelado');
+        }else{
+          return redirect('estadia')->with('cancelarf02','F-02 Cancelado');
+        }
+      }
       //cancelar documento f03
       public function cancelarF03_Estancia(Request $req,$id_d,$nombre){    
         $carta=documentos::find($id_d);
@@ -264,9 +524,9 @@ class PdfController extends Controller
         $path=public_path().'/documentos/'.$nombreA;
         if(File::exists($path)){
            File::delete($path);
-           return redirect('estancia')->with('success','F-03 Eliminado');
+           return redirect('estancia')->with('cancelarf03','F-03 Cancelado');
         }else{
-          return redirect('estancia')->with('warning','F-03 Eliminado');
+          return redirect('estancia')->with('cancelarf03','F-03 Cancelado');
         }
       }
 
@@ -281,9 +541,81 @@ class PdfController extends Controller
         $path=public_path().'/documentos/'.$nombreA;
         if(File::exists($path)){
            File::delete($path);
-           return redirect('estadia')->with('success','F-03 Eliminado');
+           return redirect('estadia')->with('cancelarf03','F-03 Cancelado');
         }else{
-          return redirect('estadia')->with('warning','F-03 Eliminado');
+          return redirect('estadia')->with('cancelarf03','F-03 Cancelado');
         }
       }
+
+        //cancelar documento f04
+        public function cancelarF04_Estancia(Request $req,$id_d,$nombre){    
+          $carta=documentos::find($id_d);
+          $carta->id_d_proyecto=NULL;
+          $carta->save();
+          $nombreA=$req->get('nombreAf04');
+          $formularioA = DB::table('definicion_proyecto')  
+          ->where('definicion_proyecto.nombre_d_p', $nombreA)
+          ->delete();
+          $path=public_path().'/documentos/'.$nombreA;
+          if(File::exists($path)){
+             File::delete($path);
+             return redirect('estancia')->with('cancelarf04','F-04 Cancelado');
+          }else{
+            return redirect('estancia')->with('cancelarf04','F-04 Cancelado');
+          }
+        }
+
+        //cancelar documento f04 estadia
+        public function cancelarF04_Estadia(Request $req,$id_d,$nombre){    
+          $carta=documentos::find($id_d);
+          $carta->id_d_proyecto=NULL;
+          $carta->save();
+          $nombreA=$req->get('nombreAf04');
+          $formularioA = DB::table('definicion_proyecto')  
+          ->where('definicion_proyecto.nombre_d_p', $nombreA)
+          ->delete();
+          $path=public_path().'/documentos/'.$nombreA;
+          if(File::exists($path)){
+             File::delete($path);
+             return redirect('estadia')->with('cancelarf04','F-04 Cancelado');
+          }else{
+            return redirect('estadia')->with('cancelarf04','F-04 Cancelado');
+          }
+        }
+
+        //cancelar documento f05
+        public function cancelarF05_Estancia(Request $req,$id_d,$nombre){    
+          $carta=documentos::find($id_d);
+          $carta->id_c_liberacion=NULL;
+          $carta->save();
+          $nombreA=$req->get('nombreAf05');
+          $formularioA = DB::table('carta_liberacion')  
+          ->where('carta_liberacion.nombre_c_l', $nombreA)
+          ->delete();
+          $path=public_path().'/documentos/'.$nombreA;
+          if(File::exists($path)){
+             File::delete($path);
+             return redirect('estancia')->with('cancelarf05','F-05 Eliminado');
+          }else{
+            return redirect('estancia')->with('cancelarf05','F-05 Eliminado');
+          }
+        }
+         //cancelar documento f05 estadia
+         public function cancelarF05_Estadia(Request $req,$id_d,$nombre){    
+          $carta=documentos::find($id_d);
+          $carta->id_c_liberacion=NULL;
+          $carta->save();
+          $nombreA=$req->get('nombreAf05');
+          $formularioA = DB::table('carta_liberacion')  
+          ->where('carta_liberacion.nombre_c_l', $nombreA)
+          ->delete();
+          $path=public_path().'/documentos/'.$nombreA;
+          if(File::exists($path)){
+             File::delete($path);
+             return redirect('estadia')->with('cancelarf05','F-05 Eliminado');
+          }else{
+            return redirect('estadia')->with('cancelarf05','F-05 Eliminado');
+          }
+        }
+  
 }

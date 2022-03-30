@@ -79,8 +79,7 @@
 
         <!-- Wrap the content of your PDF inside a main tag -->
         <main>
-        @forelse ($usuario as $dato)
-           @if(auth()->user()->name === $dato->matricula )
+
            <table>
                <tr>
                    <td class="colu">
@@ -96,23 +95,23 @@
                                 Asunto: Carta de Presentación para programa de Estancia.
                                 <br>
                                 <br>
-                                Fecha: Cancún, Quintana Roo a <?php echo date("d/m/y");?>.
+                                Fecha: Cancún, Quintana Roo a <?php setlocale(LC_TIME, $fecha);echo strftime(" %d de %B del %Y");?>.
                         </p>
                    </td>
                </tr>
            </table>
            
            <p class="ParrafoEmpresa">
-                <b>{{$dato->ape_paterno_ae}} {{$dato->ape_materno_ae}} {{$dato->nombres_ae}}</b>
-                <br><b>CARGO DENTRO DE LA EMPRESA</b>
-                <br><b>{{$dato->nombre_emp}}</b>
+                <b>[ NOMBRE DE LA PERSONA A LA CUAL VA DIRIGIDO EL OFICIO ]</b>
+                <br><b>[ CARGO DENTRO DE LA EMPRESA ]</b>
+                <br><b>[ NOMBRE DE LA EMRESA ]</b>
                 <br><b>P R E S E N T E</b> 
-           </p>
-           <div class="Parrafo">
-                Reciba por este medio un cordial saludo, el motivo de esta carta es  presentarle a <b>{{$dato->ape_paterno}} {{$dato->ape_materno}} {{$dato->nombres}}</b>,
+            </p>
+            <div class="Parrafo">
+                Reciba por este medio un cordial saludo, el motivo de esta carta es  presentarle a <b>[NOMBRE DEL ALUMNO]</b>,
                 quien es alumno regular de la Universidad Politécnica de Quintana Roo, con 
-                número de matrícula <b>{{$dato->matricula}}</b>,  quien durante el periodo <b>PERIODO CUATRIMESTRE</b>, cursa el
-                <b>NO. DE CUATRIMESTRE</b> cuatrimestre de estudios del Programa Educativo de <b>{{$dato->nombre_carrera}}</b>   
+                número de matrícula <b>[ MATRÍCULA ]</b>,  quien durante el periodo <b>[ PERIODO CUATRIMESTRE ]</b>, cursa el
+                <b>[ NO. DE CUATRIMESTRE ]</b> cuatrimestre de estudios del Programa Educativo de <b>[ NOMBRE DEL PROGRAMA EDUCATIVO ]</b>   
             </div>
             <br>
             <div class="Parrafo">
@@ -144,10 +143,7 @@
                 
             @endforelse
             
-           @endif                     
-        @empty
-
-        @endforelse            
+         
         </main>
     </body>
 </html>

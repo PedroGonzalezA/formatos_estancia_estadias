@@ -60,10 +60,10 @@
              text-align: left;
             }
             .colu{
-                width: 360px;
+                width: 300px;
             }
             .colu2{
-                width: 240px;
+                width: 300px;
             }
             .cabecera{
                 font-size: 14px;
@@ -94,10 +94,7 @@
 
         <!-- Wrap the content of your PDF inside a main tag -->
         <main>
-        @forelse ($usuario as $dato)
-           @if(auth()->user()->name === $dato->matricula )
-                @forelse ($datos as $datodp)
-                    @if(auth()->user()->name === $dato->matricula )
+
                     <table>
                         <tr>
                             <td colspan="2" class="p-0 m-0">
@@ -114,7 +111,7 @@
                             </td>
                             <td class="colu2 p-2 m-0">
                                     <p class="ParrafoFecha">
-                                            Fecha: Cancún, Quintana Roo a <?php echo date("d/m/y");?>.
+                                            Fecha: Cancún, Quintana Roo a <?php setlocale(LC_TIME, $fecha);echo strftime(" %d de %B del %Y");?>.
                                     </p>
                             </td>
                         </tr>
@@ -122,16 +119,19 @@
                     <br>
                     <br>
                     <p class="ParrafoEmpresa">
-                            <b>LIC. JOSÉ ANTONIO MORALES BAILÓN</b>
-                            <br><b>ENCARGADO INTERINO DE LA DIRECCIÓN</b>
-                            <br><b>DE VINCULACIÓN, DIFUSIÓN Y EXTENSIÓN UNIVERSITARIA.</b>
-                            <br><b>UNIVERSIDAD POLITÉCNICA DE QUINTANA ROO</b> 
+                        @forelse ($vinculacion as $dato)
+                                <b>{{$dato->nombre_u}}</b>
+                                <br><b>{{$dato->cargo_u}}</b>
+                                <br><b>UNIVERSIDAD POLITÉCNICA DE QUINTANA ROO</b> 
+                        @empty
+                            Sin datos comunicarse con el adminitrador
+                        @endforelse
                     </p>
                     <div class="Parrafo">
-                            Por medio de la presente, hacemos constar que el alumno <b>{{$dato->ape_paterno}} {{$dato->ape_materno}} {{$dato->nombres}}</b>, del Programa Educativo {{$dato->nombre_carrera}}, 
-                            ha cumplido satisfactoriamente sus actividades de  Estadía, realizada en esta <b>{{$dato->nombre_emp}}</b>; elaborando el proyecto: {{$dato->nombre_proyecto}}
-                            durante el periodo comprendido del <b>fecha de inicio</b>  al <b>fecha de terminación</b>, el cual desarrolló en el departamento de <b>Nombre del departamento </b>,
-                            bajo la asesoría de <b>{{$dato->ape_paterno_ae}} {{$dato->ape_materno_ae}} {{$dato->nombres_ae}}</b>, por parte de la empresa.     
+                            Por medio de la presente, hacemos constar que el alumno <b>[ NOMBRE DEL ALUMNO ]</b>, del Programa Educativo [ NOMBRE DEL PROGRAMA EDUCATIVO ], 
+                            ha cumplido satisfactoriamente sus actividades de  Estadía, realizada en esta <b>[ EMPRESA/INSTITUCIÓN ]</b>; elaborando el proyecto: [ NOMBRE DEL PROYECTO ]
+                            durante el periodo comprendido del <b>[ FECHA DE INICIO ]</b>  al <b>[ FECHA DE TERMINACIÓN ]</b>, el cual desarrolló en el departamento de <b>[ NOMBRE DEL DEPARTAMENTO ]</b>,
+                            bajo la asesoría de <b>[ NOMBRE DEL ASESOR EXTERNO ]</b>, por parte de la empresa.     
                         </div>
                         <br>      
                         <br>
@@ -153,24 +153,15 @@
                             <table class="table table-borderless p-0 m-1" >
                                 <tbody>
                                     <tr class="p-0 m-0">
-                                                        <td colspan="2" class="p-1"><div><div style="border-bottom: 1px solid black;"></div><div class="subT text-center"><small>{{$dato->ape_paterno_ae}} {{$dato->ape_materno_ae}} {{$dato->nombres_ae}}</small></div><div class="subT text-center"><small>{{$datodp->puesto}}</small></div><div class="subT text-center"><small></small></div></div></td>
+                                                        <td colspan="2" class="p-1"><div><div style="border-bottom: 1px solid black;"></div><div class="subT text-center"><small>[ NOMBRE Y FIRMA DEL ASESOR EMPRESARIAL ]</small></div><div class="subT text-center"><small>[ CARGO ]</small></div><div class="subT text-center"><small></small></div></div></td>
                                                         <td colspan="1" ></td>
-                                                        <td colspan="2" class="p-1"><div><div style="border-bottom: 1px solid black;"></div><div class="subT text-center"><small>{{$dato->ape_paterno_aa}} {{$dato->ape_materno_aa}} {{$dato->nombres_aa}}</small></div><div class="subT text-center"><small>Asesor Académico</small></div></div></td>
+                                                        <td colspan="2" class="p-1"><div><div style="border-bottom: 1px solid black;"></div><div class="subT text-center"><small>[ NOMBRE Y FIRMA DE REVISIÓN ]</small></div><div class="subT text-center"><small>ASESOR ACADÉMICO</small></div></div></td>
                                     </tr>
                                     <br>
                                     <br>
                                 </tbody>
                             </table>
-                        </p>
-                    @endif                     
-                @empty
-
-                @endforelse  
-          
-           @endif                     
-        @empty
-
-        @endforelse            
+                        </p>         
         </main>
     </body>
 </html>

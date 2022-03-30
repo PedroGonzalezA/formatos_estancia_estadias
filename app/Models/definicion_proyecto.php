@@ -10,7 +10,7 @@ class definicion_proyecto extends Model
 {
     use HasFactory;
     protected $table = 'definicion_proyecto';
-
+    protected $primaryKey='id';
     /**
      * LLamada a la peticion para agregar un nuevo marcador
      * Tambien devuelve la llamada si Ocurrió algun error
@@ -44,12 +44,12 @@ class definicion_proyecto extends Model
         $arrayResponse = array();
 
         try{
-            $definicion= DB::table('definicion_proyecto')->insertGetId($data);
+            $id= DB::table('definicion_proyecto')->insertGetId($data);
             
             $arrayResponse = array(
                 "code"      => 200,
                 "message"   => "Se ha agragado el registro",
-                "id" => $definicion
+                "id" => $id
             );
         }catch (Exception $e) {
             $arrayResponse = array(

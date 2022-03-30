@@ -354,6 +354,63 @@ body, html{
 	height: 30px;
 	font-size: 12px;
 }
+
+/*f04*/
+.panel{
+	background-color: #16355a;
+	color: white;
+	padding: 3px 3px 3px 3px;
+}
+.titulo{
+	font-size: 13px;
+}
+.datos{
+	text-align: center;
+	background-color: #E1E1E1;
+	border-bottom: 1px solid black;
+}
+.datosF04{
+	font-size: 13px;
+	height: 24px;
+	background-color: #BBBBBB;
+}
+.subT{
+	font-size: 13px;
+}
+.tabla{
+	border: 1px  solid black;
+}
+.tablaE{
+	border-left: 1px solid black;
+	
+}
+.sello{
+	justify-content: center;
+	align-items: center;
+}
+.area{
+	background:#BBBBBB;
+}
+.btnG{
+
+}
+.horas{
+	height: 65px;
+}
+.fecha{
+	font-size: 12px;
+}
+.semana{
+	font-size: 10px;
+}
+.datos_a{
+	width: 150px;
+	border: 1px solid black;
+}
+
+.asesor{
+	/* width: 120px; */
+}
 /*--------------------------admin*/
 .listaAdmin{
 	/* width: 100%; */
@@ -665,6 +722,9 @@ body, html{
 	.col-firma{
 		font-size: 10px;
 	}
+	.tabla_r{
+		font-size: 12px;
+	}
 }
 @media (max-width: 406px){
 	.tablaAlumnos{
@@ -678,6 +738,23 @@ body, html{
 	}
 	.btnDescargar{
 		width: 100%;
+	}
+	.tabla_r{
+		font-size: 10px;
+	}
+	.datos_a{
+		width: 100px;
+		border: 1px solid black;
+	}
+	.datosF04{
+		font-size: 10px;
+	}
+	.asesor{
+		width: 43px;
+	}
+
+	.eliminado{
+		font-size: 10px;
 	}
 }
 @media (max-width: 767px){

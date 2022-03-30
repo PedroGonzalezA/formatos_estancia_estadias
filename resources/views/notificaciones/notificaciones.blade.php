@@ -32,3 +32,109 @@
     Revisa los siguientes errores
 </div>
 @endif
+
+@if ($message = Session::get('aceptado'))
+<div class="alert alert-success alert-block">
+    <button type="button" class="close" data-dismiss="alert">×</button>
+    <strong> {{$message}} </strong>
+</div>
+@endif
+
+@if ($message = Session::get('pendiente'))
+<div class="alert alert-success alert-block">
+    <button type="button" class="close" data-dismiss="alert">×</button>
+    <strong> {{$message}} </strong>
+</div>
+@endif
+
+@if ($message = Session::get('observaciones'))
+<div class="alert alert-success alert-block">
+    <button type="button" class="close" data-dismiss="alert">×</button>
+    <strong> {{$message}} </strong>
+</div>
+@endif
+
+@if ($message = Session::get('eliminar'))
+	<script>
+		Swal.fire(
+			'Eliminado!',
+			'El usuario a sido elimidado',
+			'success'
+		)
+	</script>
+@endif
+
+@if ($message = Session::get('eliminarC'))
+	<script>
+		Swal.fire(
+			'Eliminado!',
+			'El usuario a sido elimidado',
+			'success'
+		)
+	</script>
+@endif
+
+@if ($message = Session::get('restaurar'))
+	<script>
+		Swal.fire(
+			'Restaurado!',
+			'El usuario a sido Restaurado',
+			'success'
+		)
+	</script>
+@endif
+@if ($message = Session::get('eliminarF03'))
+	<script>
+		Swal.fire(
+			'Eliminado!',
+			'F03 elimidado',
+			'success'
+		)
+	</script>
+@endif
+@if ($message = Session::get('eliminarF04'))
+	<script>
+		Swal.fire(
+			'Eliminado!',
+			'F04 elimidado',
+			'success'
+		)
+	</script>
+@endif
+
+@if ($message = Session::get('cancelarf02'))
+	<script>
+		Swal.fire(
+			'Cancelado!',
+			'F02 Cancelado',
+			'success'
+		)
+	</script>
+@endif
+@if ($message = Session::get('cancelarf03'))
+	<script>
+		Swal.fire(
+			'Cancelado!',
+			'F03 Cancelado',
+			'success'
+		)
+	</script>
+@endif
+@if ($message = Session::get('cancelarf04'))
+	<script>
+		Swal.fire(
+			'Cancelado!',
+			'F04 Cancelado',
+			'success'
+		)
+	</script>
+@endif
+@if ($message = Session::get('cancelarf05'))
+	<script>
+		Swal.fire(
+			'Cancelado!',
+			'F05 Cancelado',
+			'success'
+		)
+	</script>
+@endif

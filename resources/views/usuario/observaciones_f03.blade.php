@@ -36,7 +36,7 @@
 		</div>
 		<div class="observaciones">
             @forelse ($datos as $dato)
-                    {{$dato->observaciones_c_r}}
+                    {{$dato->observaciones_c_r}}, cancele el documento y vuelva a subirlo con los cambios antes mencionados.
 				@empty
 			@endforelse
         </div>

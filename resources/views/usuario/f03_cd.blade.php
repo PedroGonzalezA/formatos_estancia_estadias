@@ -13,7 +13,6 @@
         </header>
 
         <footer>
-            Copyright &copy; <?php echo date("d/m/y");?> 
         </footer>
 
         <!-- Wrap the content of your PDF inside a main tag -->

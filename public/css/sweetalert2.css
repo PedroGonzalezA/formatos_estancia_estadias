@@ -22,7 +22,8 @@ body.swal2-iosfix {
   background-color: transparent;
   z-index: 1060; }
   .swal2-container:not(.swal2-in) {
-    pointer-events: none; }
+    /* pointer-events: none; */
+    }
   .swal2-container.swal2-fade {
     -webkit-transition: background-color .1s;
     transition: background-color .1s; }
@@ -432,7 +433,8 @@ body.swal2-iosfix {
     z-index: 10; }
 
 [class^='swal2'] {
-  -webkit-tap-highlight-color: transparent; }
+  -webkit-tap-highlight-color: transparent;
+  }
 
 @-webkit-keyframes showSweetAlert {
   0% {

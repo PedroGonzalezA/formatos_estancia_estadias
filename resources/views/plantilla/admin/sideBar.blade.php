@@ -18,7 +18,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="{{ route('login.destroy') }}">
+                    <a href="{{ route('login.destroy') }}" >
                         <i class="zmdi zmdi-power"></i>
                     </a>
                 </li>

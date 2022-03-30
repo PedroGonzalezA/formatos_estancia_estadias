@@ -60,10 +60,10 @@
              text-align: left;
             }
             .colu{
-                width: 360px;
+                width: 280px;
             }
             .colu2{
-                width: 240px;
+                width: 320px;
             }
             .cabecera{
                 font-size: 14px;
@@ -94,8 +94,7 @@
 
         <!-- Wrap the content of your PDF inside a main tag -->
         <main>
-        @forelse ($usuario as $dato)
-           @if(auth()->user()->name === $dato->matricula )
+
            <table>
                <tr>
                    <td colspan="2" class="p-0 m-0">
@@ -110,7 +109,7 @@
                    </td>
                    <td class="colu2 p-2 m-0">
                         <p class="ParrafoFecha">
-                                Fecha: Cancún, Quintana Roo a <?php echo date("d/m/y");?>.
+                                Fecha: Cancún, Quintana Roo a <?php setlocale(LC_TIME, $fecha);echo strftime(" %d de %B del %Y");?>.
                         </p>
                    </td>
                </tr>
@@ -118,29 +117,32 @@
            <br>
            <br>
            <p class="ParrafoEmpresa">
-                <b>LIC. JOSÉ ANTONIO MORALES BAILÓN</b>
-                <br><b>ENCARGADO INTERINO DE LA DIRECCIÓN</b>
-                <br><b>DE VINCULACIÓN, DIFUSIÓN Y EXTENSIÓN UNIVERSITARIA.</b>
-                <br><b>UNIVERSIDAD POLITÉCNICA DE QUINTANA ROO</b> 
+               @forelse ($vinculacion as $dato)
+                    <b>{{$dato->nombre_u}}</b>
+                    <br><b>{{$dato->cargo_u}}</b>
+                    <br><b>UNIVERSIDAD POLITÉCNICA DE QUINTANA ROO</b> 
+               @empty
+                   Sin datos comunicarse con el adminitrador
+               @endforelse
            </p>
            <div class="Parrafo">
-                Por medio de la presente hacemos constar que el alumno <b>{{$dato->ape_paterno}} {{$dato->ape_materno}} {{$dato->nombres}}</b>, del Programa Educativo
-                <b>{{$dato->nombre_carrera}}</b> ha sido aceptado en esta empresa para la realización de su programa y proyecto de Estancia denominado:    
+                Por medio de la presente hacemos constar que el alumno <b>[ NOMBRE DEL ALUMNO ]</b>, del Programa Educativo
+                <b>[ NOMBRE DEL PROGRAMA EDUCATIVO ]</b> ha sido aceptado en esta empresa para la realización de su programa y proyecto de Estancia denominado:    
             </div>
             <br>
             <div class="nombreP">
-                {{$dato->nombre_proyecto}}
+                [ NOMBRE DEL PROYECTO ]
             </div>
             <br>
             <div class="Parrafo">
-            El cual desarrollará en el departamento de <b>Nombre del departamento</b> , bajo la asesoría de
-            <b>{{$dato->ape_paterno_ae}} {{$dato->ape_materno_ae}} {{$dato->nombres_ae}}</b>, por parte de su organización y de <b>{{$dato->ape_paterno_aa}} {{$dato->ape_materno_aa}} {{$dato->nombres_aa}}</b>,
+            El cual desarrollará en el departamento de <b>[ NOMBRE DEL DEPARTAMENTO ]</b> , bajo la asesoría de
+            <b>[ NOMBRE DEL ASESOR EXTERNO ]</b>, por parte de su organización y de <b>[ NOMBRE DEL ASESOR ACADÉMICO ]</b>,
             por parte de la Universidad Politécnica de Quintana Roo.
             </div>
             <br>
             <div class="Parrafo">
-            Las actividades del alumno en la empresa darán comienzo a partir del <b>fecha de inicio</b> 
-             y terminará el día <b>fecha de terminación</b>, con un horario de <b>especificaciones de horario</b>, 
+            Las actividades del alumno en la empresa darán comienzo a partir del <b>[ FECHA DE INICIO ]</b> 
+             y terminará el día <b>[ FECHA DE TERMINACIÓN ]</b>, con un horario de <b>especificaciones de horario</b>, 
              a fin de completar las 120 horas o 210 en el caso de estancia 2 de Ingeniería en Biotecnología requeridas por el programa.
             </div>
             <br>
@@ -159,14 +161,10 @@
                 <br>
                 <br>
 
-                <b>{{$dato->ape_paterno_ae}} {{$dato->ape_materno_ae}} {{$dato->nombres_ae}}</b>
+                <b>[ NOMBRE Y FIRMA DEL REPRESENTANTE DE LA EMPRESA ]</b>
 
-                <!---<br><small>[{$dato->puesto_ae}}</small>--->
-            </p>
-           @endif                     
-        @empty
-
-        @endforelse            
+                <br><small>[ CARGO ]</small>
+            </p>           
         </main>
     </body>
 </html>

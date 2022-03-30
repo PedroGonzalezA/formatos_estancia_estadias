@@ -17,6 +17,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
     <script src="https://www.google.com/recaptcha/api.js"></script>
+	<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <link rel="stylesheet" href='{{ asset("/css/main.css") }}'>
 
@@ -29,12 +30,25 @@
 	<section class="full-box dashboard-contentPage">
 		<!-- NavBar -->
 		@include('plantilla/admin/navBar')
-
+      
 		<!-- Content page -->
 		<div class="container p-3">
-			<div class="page-header">
-			  <h2 class="text-titles">Cambiar datos <small>(Alumno)</small></h2>
-			</div>
+            <div class="row p-4">
+                <div class="col-12 col-md-10">
+                    <div class="page-header">
+                        <h2 class="text-titles">Cambiar datos <small>(Alumno)</small></h2>
+                    </div>
+                </div>
+                <div class="col-12 col-md-2">
+                    @foreach ($datos as $dato)
+                        <form action="{{route('eliminarUsuarioCompleto.index',$dato->id)}}"  class="btn-eliminarC-system" method="POST">
+                            @csrf 
+                            <button type="submit" class="btn btn-outline-danger btnEliminarUser ">Eliminar</button>
+                        </form>
+                    @endforeach
+                </div>
+            </div>
+			
 		</div>
 		<div class="row">
             <div class="col-md-12 col-lg-12 d-flex align-items-center">
@@ -43,6 +57,7 @@
                         <form method="POST" action="{{route('editar_datos_usuario.index',$dato->id)}}">
                             @csrf
                             <div class="row">
+                                
                                 <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 text-center">
                                     <div class="form-outline mb-4">
                                         <input type="text" id="name" class="form-control form-control-lg text-center"
@@ -91,6 +106,8 @@
 			
 			
 	</section>
+
+ 
 	<!--====== Scripts -->
 	<script src="./js/jquery-3.1.1.min.js"></script>
 	<script src="./js/sweetalert2.min.js"></script>

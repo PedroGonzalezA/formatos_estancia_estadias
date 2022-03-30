@@ -95,8 +95,8 @@ class falloController extends Controller
 
         ->get();
         $datosDefinicionProyecto = DB::table('users')
-        ->join('respuesta_def', 'users.id', '=', 'respuesta_def.id_usuario_d_p')
-        ->join('formulario_def', 'respuesta_def.id_formulario_d_p', '=', 'formulario_def.id')
+        ->join('respuesta_def', 'users.id', '=', 'respuesta_def.id_usuario')
+        ->join('formulario_def', 'respuesta_def.id_formulario', '=', 'formulario_def.id')
         ->where('users.id',$userID)
         ->get();
 

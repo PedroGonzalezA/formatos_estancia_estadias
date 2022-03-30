@@ -15,6 +15,8 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
     <script src="https://www.google.com/recaptcha/api.js"></script>
+	<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="stylesheet" href="sweetalert2.min.css">
 
     <link rel="stylesheet" href='{{ asset("/css/main.css") }}'>
 </head>
@@ -52,6 +54,8 @@
 		</div>
 		 <!-- Notificaciones -->
 		@include('notificaciones/notificaciones')
+		@include('sweetalert::alert')
+		
 		<div class="container">
             <div class="row">
 				<div class="col-12 col-sm-12 col-md-6 p-1">
@@ -101,7 +105,16 @@
 							<div class="col-12 text-center tituloAlumno">
 								<div class="row">
 									<div class="col-10 p-1">
-										Alumno
+										<div class="row">
+											<div class="col-12 col-md-8">
+												Alumno
+											</div>
+											<div class="col-12 col-md-4">
+												@if ($respuestaU->deleted_at)
+													<div class="text-center"><span class="badge bg-danger text-white eliminado">Eliminado</span></div>
+												@endif
+											</div>
+										</div>
 									</div>
 									<div class="col-2 p-1">
 										<form action="{{route('ver_datos_usuario.index',$respuestaU->id)}}">
@@ -150,10 +163,18 @@
 								sin datos
 							@endforelse	
 							<div class="col-12 col-sm-12 col-md-12 text-center m-0 p-0">
-								<form action="{{route('eliminarUsuario.index',$respuestaU->id)}}" method="POST">
-									@csrf 
-									<button type="submit" class="btn btn-outline-danger btnEliminarUser">Eliminar</button>
-								</form>
+								@if ($respuestaU->deleted_at)
+									<form action="{{route('restaurarUsuario.index',$respuestaU->id)}}"  class="btn-restaurar-system" method="POST">
+										@csrf 
+										<button type="submit" class="btn btn-outline-success btnEliminarUser ">Restaurar</button>
+									</form>
+									
+								@else
+									<form action="{{route('eliminarUsuario.index',$respuestaU->id)}}"  class="btn-eliminar-system" method="POST">
+										@csrf 
+										<button type="submit" class="btn btn-outline-danger btnEliminarUser ">Eliminar</button>
+									</form>
+								@endif
 							</div>
 						</div>
 					</div>	
@@ -165,11 +186,12 @@
 		</div>
 		
 		        
-	<!-- Dialog help -->
+		<script type="text/javascript">
+			
+		</script>
 
 	<!--====== Scripts -->
 	<script src="./js/jquery-3.1.1.min.js"></script>
-	<script src="./js/sweetalert2.min.js"></script>
 	<script src="./js/bootstrap.min.js"></script>
 	<script src="./js/material.min.js"></script>
 	<script src="./js/ripples.min.js"></script>

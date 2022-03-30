@@ -11,6 +11,7 @@ class carta_aceptacion extends Model
 {
     use HasFactory;
     protected $table = 'carta_aceptacion';
+    protected $primaryKey='id';
 
     /**
      * LLamada a la peticion para agregar un nuevo marcador
@@ -45,12 +46,12 @@ class carta_aceptacion extends Model
         $arrayResponse = array();
 
         try{
-            $cartaA = DB::table('carta_aceptacion')->insertGetId($data);
+            $id = DB::table('carta_aceptacion')->insertGetId($data);
             
             $arrayResponse = array(
                 "code"      => 200,
                 "message"   => "Se ha agragado el registro",
-                "id" => $cartaA
+                "id" => $id
             );
         }catch (Exception $e) {
             $arrayResponse = array(

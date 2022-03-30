@@ -5,11 +5,13 @@ namespace App\Http\Controllers;
 use App\Models\Respuesta;
 use App\Models\User;
 use App\Models\Users;
+use App\Models\usuarios;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Auth;
+use RealRashid\SweetAlert\Facades\Alert;
 class UsuariosController extends Controller
 {
     public function create() {;
@@ -41,14 +43,22 @@ class UsuariosController extends Controller
             dd("Error" . $ex->getMessage());
         }
     }
-
+    //eliminar usuario
     public function eliminarUsuario($id){
-        $respuestas = DB::table('users')
-        ->where('id',$id)
-        ->delete();
-        return redirect('/usuarios')->with('warning','Usuario eliminado');
+        Users::find($id)->delete();
+        return redirect('usuarios')->with('eliminar','Usuario eliminado');
     }
 
+     //eliminar usuario COMPLETO
+     public function eliminarUsuarioC($id){
+        DB::table('users')->where('id',$id)->delete();
+        return redirect('usuarios')->with('eliminarC','Usuario eliminado Completamente');
+    }
+    //restaurar usuario
+    public function restaurarUsuario($id){
+        Users::withTrashed()->find($id)->restore();
+        return redirect('usuarios')->with('restaurar','Usuario restaurado');
+    }
     public function buscarUsuario(Request $request){
         $texto   =trim($request->get('texto'));
 
