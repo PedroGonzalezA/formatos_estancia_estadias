@@ -261,6 +261,7 @@ class EstadiaController extends Controller
             }
             $carta=documentos::find($request->get('id_docf02'));
             $carta->id_c_aceptacion=$response_carta_aceptacion['id'];
+            $carta->id_proceso=3;
             $carta->save();
             
 
@@ -431,6 +432,8 @@ class EstadiaController extends Controller
             }
             $carta=documentos::find($request->get('id_docf03'));
             $carta->id_c_registro=$response_cedula_registro['id'];
+            $carta->id_proceso=3;
+
             $carta->save();
             
 
@@ -601,6 +604,8 @@ class EstadiaController extends Controller
             }
             $carta=documentos::find($request->get('id_docf04'));
             $carta->id_d_proyecto=$response_d_proyecto['id'];
+            $carta->id_proceso=3;
+
             $carta->save();
             
 
@@ -772,6 +777,7 @@ class EstadiaController extends Controller
             }
             $carta=documentos::find($request->get('id_docf05'));
             $carta->id_c_liberacion=$response_c_liberacion['id'];
+            $carta->id_proceso=3;
             $carta->save();
             
 

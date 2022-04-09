@@ -402,6 +402,13 @@ Route::get('/logout', [LoginController::class, 'destroy'])
     Route::match(['post','get','put'],'/alumno_editar', [LoginController::class, 'editar'])
     ->middleware('auth')
     ->name('alumno_editar.index');
+
+    //reiniciar USUARIO
+    Route::match(['post','get','put'],'/reiniciar_{id}', [InicioController::class, 'reiniciarU'])
+    ->name('reiniciarU.index')
+    ->middleware('auth');
+
+
 //formato estancias
     Route::match(['post','get'],'/estancia', [EstanciaController::class, 'ver'])
     ->name('estancia.index')

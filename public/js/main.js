@@ -10,7 +10,40 @@ $(document).ready(function(){
 			SubMenu.addClass('show-sideBar-SubMenu');
 		}
 	});
-	
+	$('.btn-reiniciarP-system').submit(function(e){
+		e.preventDefault();
+		Swal.fire({
+		title: 'Estas seguro de reiniciar el perfil',
+		text: "No podras revertir esta acción",
+		icon: 'warning',
+		showCancelButton: true,
+		confirmButtonColor: '#3085d6',
+		cancelButtonColor: '#d33',
+		confirmButtonText: 'Si!',
+		cancelButtonText: '<i class="zmdi zmdi-close-circle"></i> No, Cancelar!'
+		}).then((result) => {
+			if (result.isConfirmed) {
+				this.submit();
+			}
+		})
+	});
+	$('.btn-sinRespuesta-system').submit(function(e){
+		e.preventDefault();
+		Swal.fire({
+		title: 'Sin resultados',
+		text: "No se encontro el documento en el sistema",
+		icon: 'warning',
+		showCancelButton: true,
+		confirmButtonColor: '#3085d6',
+		cancelButtonColor: '#d33',
+		confirmButtonText: 'Si, Eliminar!',
+		cancelButtonText: '<i class="zmdi zmdi-close-circle"></i> No, Cancelar!'
+		}).then((result) => {
+			if (result.isConfirmed) {
+				this.submit();
+			}
+		})
+	});
 	$('.btn-eliminar-system').submit(function(e){
 		e.preventDefault();
 		Swal.fire({

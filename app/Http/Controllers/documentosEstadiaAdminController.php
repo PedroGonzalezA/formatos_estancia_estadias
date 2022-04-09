@@ -10,6 +10,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Arr;
 use Barryvdh\DomPDF\Facade as PDF;
+
+use function PHPUnit\Framework\fileExists;
+
 class documentosEstadiaAdminController extends Controller
 {
     public function ver(){
@@ -74,7 +77,13 @@ class documentosEstadiaAdminController extends Controller
     public function ver_cd_estadia_f02_admin($name) {
         $nombre='/documentos/'.$name;
         $nombreD= public_path($nombre);
-        return response()->file($nombreD);
+        $resp=file_exists($nombreD);
+        if($resp==true){
+            return response()->file($nombreD);
+        }else
+        {
+            return redirect('estadia_Documentos')->with('sinRespuesta','F-02 Carta Aceptación no ha sido encontrado');
+        }
     }
 
     public function aceptar_estadia_f02_admin($idU,$id,$name) {
@@ -83,6 +92,7 @@ class documentosEstadiaAdminController extends Controller
         $carta->save();
          return redirect('estadia_Documentos')->with('aceptado','F-02 Aceptado');
     }
+    
     public function pendiente_estadia_f02_admin($idU,$id,$name) {
         $carta=carta_aceptacion::find($id);
         $carta->estado=1;
@@ -115,7 +125,13 @@ class documentosEstadiaAdminController extends Controller
     public function ver_cd_estadia_f03_admin($idU,$id,$name) {
         $nombre='/documentos/'.$name;
         $nombreD= public_path($nombre);
-        return response()->file($nombreD);
+        $resp=file_exists($nombreD);
+        if($resp==true){
+            return response()->file($nombreD);
+        }else
+        {
+            return redirect('estadia_Documentos')->with('sinRespuesta','F-03 Cédula Registro no ha sido encontrado');
+        }
 
     }
     public function aceptar_estadia_f03_admin($idU,$id,$name) {
@@ -156,7 +172,13 @@ class documentosEstadiaAdminController extends Controller
     public function ver_cd_estadia_f04_admin($name) {
         $nombre='/documentos/'.$name;
         $nombreD= public_path($nombre);
-        return response()->file($nombreD);
+        $resp=file_exists($nombreD);
+        if($resp==true){
+            return response()->file($nombreD);
+        }else
+        {
+            return redirect('estadia_Documentos')->with('sinRespuesta','F-04 Definición de Proyecto, no ha sido encontrado');
+        }
     }
 
     public function aceptar_estadia_f04_admin($idU,$id,$name) {
@@ -198,7 +220,13 @@ class documentosEstadiaAdminController extends Controller
     public function ver_cd_estadia_f05_admin($name) {
         $nombre='/documentos/'.$name;
         $nombreD= public_path($nombre);
-        return response()->file($nombreD);
+        $resp=file_exists($nombreD);
+        if($resp==true){
+            return response()->file($nombreD);
+        }else
+        {
+            return redirect('estadia_Documentos')->with('sinRespuesta','F-05 Carta de liberación no ha sido encontrado');
+        }
     }
 
     public function aceptar_estadia_f05_admin($idU,$id,$name) {

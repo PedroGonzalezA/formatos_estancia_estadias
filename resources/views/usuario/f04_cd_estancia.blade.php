@@ -25,13 +25,13 @@
                                     <tr class="p-0 m-0">
                                         <td class="p-0"><div><div class="titulo text-center">  DEFINICIÓN DEL PROYECTO</div><div class="subT text-center"><small>[Estancia {{$datodp->id_proceso}}] </small></div></div></td>
                                         <td class="p-0"><div class="subT text-right" style="height: 5px;"><small>Fecha:</small></div></div></td>
-                                        <td colspan="2" class="p-0" style="height: 5px;"><div><div class="text-center" style="border-bottom: 1px solid black;"><small>Cancun, Quintana Roo a <?php echo date("d/m/Y");?></small> </div><div class="subT text-center"><small>LOCALIDAD, ESTADO Y FECHA (DD/MM/AA)</small></div></div></td>
+                                        <td colspan="2" class="p-0" style="height: 5px;"><div><div class="text-center" style="border-bottom: 1px solid black;"><small>Cancun, Quintana Roo a <?php setlocale(LC_TIME, $fecha);echo strftime(" %d de %B del %Y");?></small> </div><div class="subT text-center"><small>LOCALIDAD, ESTADO Y FECHA (DD/MM/AA)</small></div></div></td>
                                         
                                     </tr>
                                 </table>
                                 <table class="table table-borderless p-0 m-1">
                                     <tr class="p-0 m-0">
-                                        <td class="p-0 px-1" style=" border: 1px solid black;"><div><div class=" text-left" ><small>Datos del Alumno </small></div></div></td>
+                                        <td class="p-0 px-1" style=" width:135px; border: 1px solid black;"><div><div class=" text-left" ><small>Datos del Alumno </small></div></div></td>
                                         <td class="p-0 px-1" style=" border: 1px solid black;"><div><div class=" text-left"> <small>Nombre:</small></div></div></td>
                                         <td colspan="2" class="p-0 px-1 " style="border: 1px solid black;"><div><div class=" text-center"> <small>{{$dato->ape_paterno}} {{$dato->ape_materno}} {{$dato->nombres}}</small></div></div></td>
                                     </tr>
@@ -71,32 +71,32 @@
                                             <td class="p-0 px-1 " style="width: 230px; border-top: 1px solid black; border-left: 1px solid black;"><div><div class=" text-center" ><small>Descripción de Etapas del Proyecto</small></div></div></td>
                                             <td class="p-0 px-1 " style="width: 80px; border-top: 1px solid black; border-left: 1px solid black;"><div><div class=" text-center"> <small>Tiempo </small></div></div></td>
                                             <td class="p-0 px-1 " style="width: 80px; border-top: 1px solid black; border-right: 1px solid black;"><div><div class=" text-center"> <small>Aproximado </small></div></div></td>
-                                            <td colspan="2" class="p-0 px-1" style=" border-top: 1px solid black; border-right: 1px solid black;"><div><div class=" text-center"> <small>Descripción de Competencias</small></div></div></td>
+                                            <td  class="p-0 px-1" style="width:270px; border-top: 1px solid black; border-right: 1px solid black;"><div><div class=" text-center"> <small>Descripción de Competencias</small></div></div></td>
                                         </tr>
                                         <tr class="">
                                             <td class="p-0 px-1" style="width: 230px; border-left: 1px solid black;"><div><div class=" text-center" ><small></small></div></div></td>
                                             <td class="p-0 px-1 tabla" colspan="2" style="width: 160px; border-left: 1px solid black; border-right: 1px solid black;"><div><div class=" text-center"> <small>de Duración</small></div></div></td>
-                                            <td colspan="2" class="p-0 px-1 tabla" style="border-right: 1px solid black;"><div><div class=" text-center"> <small></small></div></div></td>
+                                            <td  class="p-0 px-1 tabla" style="border-right: 1px solid black;"><div><div class=" text-center"> <small></small></div></div></td>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <tr class="">
                                             <td class="p-0 px-1" style="width: 230px;  border-top: 1px solid black; border-left: 1px solid black;"><div><div class=" text-center" ><small></small></div></div></td>
                                             <td class="p-0 px-1 tabla" colspan="2" style="width: 160px; border: 1px solid black;"><div><div class=" text-center"> <small>Programar</small></div></div></td>
-                                            <td colspan="2" class="p-0 px-1 tabla" style=" border-top: 1px solid black; border-right: 1px solid black;"><div><div class=" text-center"> <small></small></div></div></td>
+                                            <td class="p-0 px-1 tabla" style=" border-top: 1px solid black; border-right: 1px solid black;"><div><div class=" text-center"> <small></small></div></div></td>
                                         </tr>
                                         <tr class=""> 
                                             <td class="p-0 px-1" style="width: 230px; border-left: 1px solid black;"><div><div class=" text-center" ><small></small></div></div></td>
                                             <td class="p-0 px-1 tabla" style="width: 50px; border: 1px solid black;"><div><div class=" text-center"> <small>Semana</small></div></div></td>
                                             <td class="p-0 px-1 tabla" style="width: 50px; border: 1px solid black;"><div><div class=" text-center"> <small>Horas</small></div></div></td>
-                                            <td colspan="2" class="p-0 px-1 tabla" style="border-right: 1px solid black;"><div><div class=" text-center"> <small></small></div></div></td>
+                                            <td class="p-0 px-1 tabla" style="border-right: 1px solid black;"><div><div class=" text-center"> <small></small></div></div></td>
                                         </tr>
                                         @foreach ($etapas as $datoE)
                                             <tr class=""> 
-                                                <td class="p-0 px-1" style="width: 230px; border: 1px solid black; height:40px;"><div><div class=" text-center " ><small>{{$datoE->descripcion_etapas}}</small></div></div></td>
-                                                <td class="p-0 px-1 tabla" style="width: 50px; border: 1px solid black; height:40px;">
+                                                <td class="p-0 px-1" style="width: 230px; border: 1px solid black; height:40px;"><div><div class=" text-center parrafo" ><small>{{$datoE->descripcion_etapas}}</small></div></div></td>
+                                                <td class="p-0 px-1 tabla " style="width: 50px; border: 1px solid black; height:40px;">
                                                     <div>
-                                                        <div class=" text-center">
+                                                        <div class=" text-center parrafo">
                                                             @if ($datoE->semana_inicial)
                                                                 <div><small>{{$datoE->semana_inicial}}</small></div>
                                                                 <div style="font-size: 10px">---</div>
@@ -105,8 +105,8 @@
                                                         </div>
                                                     </div>
                                                 </td>
-                                                <td class="p-0 px-1 tabla" style="width: 50px; border: 1px solid black; height:40px;"><div><div class=" text-center"> <small>{{$datoE->horas}}</small></div></div></td>
-                                                <td colspan="2" class="p-0 px-1 tabla" style="border: 1px solid black; height:40px;"><div><div class=" text-center"> <small>{{$datoE->descripcion_competencias}}</small></div></div></td>
+                                                <td class="p-0 px-1 tabla" style="width: 50px; border: 1px solid black; height:40px;"><div><div class=" text-center parrafo"> <small>{{$datoE->horas}}</small></div></div></td>
+                                                <td class="p-0 px-1 tabla" style="border: 1px solid black; height:40px;"><div><div class=" text-center parrafo"> <small>{{$datoE->descripcion_competencias}}</small></div></div></td>
                                             </tr>
                                         @endforeach 
                                     </tbody>
@@ -124,9 +124,9 @@
                                     <tbody>
                                         <tr class=""> 
                                             <td class="p-0 px-1" style="width: 150px; border: 1px solid black; height:40px;"><div><div class="parrafo" ><small>{{$datodp->actividades}}</small></div></div></td>
-                                            <td class="p-0 px-1" style="width: 150px; border: 1px solid black; height:40px;"><div><div class=" text-center"> <small>{{$datodp->resultados}}</small></div></div></td>
-                                            <td class="p-0 px-1" style="width: 150px; border: 1px solid black; height:40px;"><div><div class=" text-center"> <small>{{$datodp->evidencia}}</small></div></div></td>
-                                            <td class="p-0 px-1" style="width: 150px; border: 1px solid black; height:40px;"><div><div class=" text-center"> <small>{{$datodp->instrumentos}}</small></div></div></td>
+                                            <td class="p-0 px-1" style="width: 150px; border: 1px solid black; height:40px;"><div><div class=" text-center parrafo"> <small>{{$datodp->resultados}}</small></div></div></td>
+                                            <td class="p-0 px-1" style="width: 150px; border: 1px solid black; height:40px;"><div><div class=" text-center parrafo"> <small>{{$datodp->evidencia}}</small></div></div></td>
+                                            <td class="p-0 px-1" style="width: 150px; border: 1px solid black; height:40px;"><div><div class=" text-center parrafo"> <small>{{$datodp->instrumentos}}</small></div></div></td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -140,9 +140,9 @@
                                     </thead>
                                     <tbody>
                                         <tr class=""> 
-                                            <td class="p-0 px-1" style="width: 200px; border: 1px solid black; height:40px;"><div><div class=" text-center" ><small>{{$datodp->asignaturas}}</small></div></div></td>
-                                            <td class="p-0 px-1" style="width: 200px; border: 1px solid black; height:40px;"><div><div class=" text-center"> <small>{{$datodp->topicos}}</small></div></div></td>
-                                            <td class="p-0 px-1" style="width: 200px; border: 1px solid black; height:40px;"><div><div class=" text-center"> <small>{{$datodp->estrategias}}</small></div></div></td>
+                                            <td class="p-0 px-1" style="width: 200px; border: 1px solid black; height:40px;"><div><div class=" text-center parrafo" ><small>{{$datodp->asignaturas}}</small></div></div></td>
+                                            <td class="p-0 px-1" style="width: 200px; border: 1px solid black; height:40px;"><div><div class=" text-center parrafo"> <small>{{$datodp->topicos}}</small></div></div></td>
+                                            <td class="p-0 px-1" style="width: 200px; border: 1px solid black; height:40px;"><div><div class=" text-center parrafo"> <small>{{$datodp->estrategias}}</small></div></div></td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -170,7 +170,7 @@
             @empty
                 <div class="row">
                     <div class="col-12 text-center">
-                        <h1>Faltan datos porfavor llene la cédula de registro para que se autocompleten el documento.</h1>
+                        <h1>Faltan datos porfavor llene la cédula de registro para que se autocomplete el documento.</h1>
                     </div>
                 </div>
             @endforelse 
@@ -245,5 +245,7 @@
 
             .parrafo{
                 text-align: justify;
+                font-size: 13px;
+
             }
 </style>

@@ -105,7 +105,7 @@ body.swal2-iosfix {
             animation: rotate-loading 1.5s linear 0s infinite normal; }
   .swal2-modal .swal2-image {
     margin: 20px auto;
-    max-width: 100%; }
+    max-width: 64%; }
   .swal2-modal .swal2-close {
     font-size: 36px;
     line-height: 36px;
@@ -318,8 +318,8 @@ body.swal2-iosfix {
   .swal2-icon.swal2-warning {
     color: #f8bb86;
     border-color: #facea8;
-    font-size: 60px;
-    line-height: 80px;
+    font-size: 25px;
+    line-height: 46px;
     text-align: center; }
   .swal2-icon.swal2-info {
     color: #3fc3ee;

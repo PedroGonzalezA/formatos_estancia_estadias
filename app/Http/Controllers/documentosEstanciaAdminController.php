@@ -106,7 +106,13 @@ class documentosEstanciaAdminController extends Controller
     public function ver_cd_estancia_f02_admin($name) {
         $nombre='/documentos/'.$name;
         $nombreD= public_path($nombre);
-        return response()->file($nombreD);
+        $resp=file_exists($nombreD);
+        if($resp==true){
+            return response()->file($nombreD);
+        }else
+        {
+            return redirect('estancia_Documentos')->with('sinRespuesta','F-02 Carta de Aceptación no ha sido encontrado');
+        }
     }
 
     public function aceptar_estancia_f02_admin($idU,$id,$name) {
@@ -147,7 +153,13 @@ class documentosEstanciaAdminController extends Controller
     public function ver_cd_estancia_f03_admin($name) {
         $nombre='/documentos/'.$name;
         $nombreD= public_path($nombre);
-        return response()->file($nombreD);
+        $resp=file_exists($nombreD);
+        if($resp==true){
+            return response()->file($nombreD);
+        }else
+        {
+            return redirect('estancia_Documentos')->with('sinRespuesta','F-03 Cédula Registro no ha sido encontrado');
+        }
     }
 
     public function aceptar_estancia_f03_admin($idU,$id,$name) {
@@ -188,7 +200,13 @@ class documentosEstanciaAdminController extends Controller
     public function ver_cd_estancia_f04_admin($name) {
         $nombre='/documentos/'.$name;
         $nombreD= public_path($nombre);
-        return response()->file($nombreD);
+        $resp=file_exists($nombreD);
+        if($resp==true){
+            return response()->file($nombreD);
+        }else
+        {
+            return redirect('estancia_Documentos')->with('sinRespuesta','F-04 Definición de proyecto no ha sido encontrado');
+        }
     }
 
     public function aceptar_estancia_f04_admin($idU,$id,$name) {
@@ -230,7 +248,13 @@ class documentosEstanciaAdminController extends Controller
     public function ver_cd_estancia_f05_admin($name) {
         $nombre='/documentos/'.$name;
         $nombreD= public_path($nombre);
-        return response()->file($nombreD);
+        $resp=file_exists($nombreD);
+        if($resp==true){
+            return response()->file($nombreD);
+        }else
+        {
+            return redirect('estancia_Documentos')->with('sinRespuesta','F-05 Carta de Liberación no ha sido encontrado');
+        }
     }
 
     public function aceptar_estancia_f05_admin($idU,$id,$name) {

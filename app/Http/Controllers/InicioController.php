@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\documentos;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\DB;
 
@@ -45,5 +46,11 @@ class InicioController extends Controller
                 return redirect('/inicio');
             }
         }
+    }
+    public function reiniciarU($id){
+        $docf=documentos::find($id);
+        $docf->id_proceso=null;
+        $docf->save();
+        return redirect('alumno_ver_editar')->with('usuarioR','Usuario reiniciado');
     }
 }

@@ -301,7 +301,7 @@ body, html{
 }
 
 .colDescargar{
-	text-align: start;
+	/* text-align: start; */
 }
 
 .colLlenar{
@@ -529,6 +529,9 @@ body, html{
 }
 .tile-icon{
 	left: 0;
+}
+.swal2-icon.swal2-warning {
+	font-size:40px;
 }
 .tile-icon > i{
 	line-height: 140px;

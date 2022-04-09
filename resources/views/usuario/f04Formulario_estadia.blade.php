@@ -40,7 +40,7 @@
                                     </td>
                                     <!--fecha-->
                                     <td class="p-0"><div class="subT text-right" style="height: 5px;"><small>Fecha:</small></div></div></td>
-                                    <td colspan="2" class="p-0" style="height: 5px;"><div><div class="text-center fecha" style="border-bottom: 1px solid black;"><small>Cancun, Quintana Roo a <?php echo date("d/m/Y");?></small> </div><div class="subT text-center"><small>LOCALIDAD, ESTADO Y FECHA (DD/MM/AA)</small></div></div></td>
+                                    <td colspan="2" class="p-0" style="height: 5px;"><div><div class="text-center fecha" style="border-bottom: 1px solid black;"><small>Cancun, Quintana Roo a <?php setlocale(LC_TIME, $fecha);echo strftime(" %d de %B del %Y");?></small> </div><div class="subT text-center"><small>LOCALIDAD, ESTADO Y FECHA (DD/MM/AA)</small></div></div></td>
                                     
                                 </tr>
                             </table>
@@ -196,8 +196,8 @@
                                     <thead class="table-secondary">
                                         <tr class="">
                                             <td class="p-0 px-1 " style="width: 230px; border-top: 1px solid black; border-left: 1px solid black;"><div><div class=" text-center" ><small>Descripción de Etapas del Proyecto</small></div></div></td>
-                                            <td class="p-0 px-1 " style="width: 80px; border-top: 1px solid black; border-left: 1px solid black;"><div><div class=" text-center"> <small>Tiempo </small></div></div></td>
-                                            <td class="p-0 px-1 " style="width: 80px; border-top: 1px solid black; border-right: 1px solid black;"><div><div class=" text-center"> <small>Aproximado </small></div></div></td>
+                                            <td class="p-0 px-1 " style="width: 200px; border-top: 1px solid black; border-left: 1px solid black;"><div><div class=" text-center"> <small>Tiempo </small></div></div></td>
+                                            <td class="p-0 px-1 " style="width: 200px; border-top: 1px solid black; border-right: 1px solid black;"><div><div class=" text-center"> <small>Aproximado </small></div></div></td>
                                             <td colspan="2" class="p-0 px-1" style=" border-top: 1px solid black; border-right: 1px solid black;"><div><div class=" text-center"> <small>Descripción de Competencias</small></div></div></td>
                                         </tr>
                                         <tr class="">
@@ -221,7 +221,7 @@
                                         </tr>
                                         <!--1-->
                                         <tr class=""> 
-                                            <td class="p-0 px-1" style="width: 270px; border: 1px solid black; height:40px;">
+                                            <td class="p-0 px-1" style="width: 230px; border: 1px solid black; height:40px;">
                                                 <div>
                                                     <div class=" text-center p-1" >
                                                         <textarea name="etapas_proyecto_1" class="form-control area" id="" cols="50" rows="2"></textarea>
@@ -251,7 +251,7 @@
                                                     </div>
                                                 </div>
                                             </td>
-                                            <td colspan="2" class="p-0 px-1 tabla" style="border: 1px solid black; height:40px;">
+                                            <td  class="p-0 px-1 tabla" style="border: 1px solid black; height:40px;">
                                                 <div>
                                                     <div class=" text-center p-1"> 
                                                         <textarea name="descripcion_competencias_1" class="form-control area" id="" cols="50" rows="2"></textarea>
@@ -261,7 +261,7 @@
                                         </tr>
                                         <!--2-->
                                         <tr class=""> 
-                                            <td class="p-0 px-1" style="width: 270px; border: 1px solid black; height:40px;">
+                                            <td class="p-0 px-1" style="width: 230px; border: 1px solid black; height:40px;">
                                                 <div>
                                                     <div class=" text-center p-1" >
                                                         <textarea name="etapas_proyecto_2" class="form-control area" id="" cols="50" rows="2"></textarea>
@@ -291,7 +291,7 @@
                                                     </div>
                                                 </div>
                                             </td>
-                                            <td colspan="2" class="p-0 px-1 tabla" style="border: 1px solid black; height:40px;">
+                                            <td class="p-0 px-1 tabla" style="border: 1px solid black; height:40px;">
                                                 <div>
                                                     <div class=" text-center p-1"> 
                                                         <textarea name="descripcion_competencias_2" class="form-control area" id="" cols="50" rows="2"></textarea>
@@ -301,7 +301,7 @@
                                         </tr>
                                         <!--3-->                     
                                         <tr class=""> 
-                                            <td class="p-0 px-1" style="width: 270px; border: 1px solid black; height:40px;">
+                                            <td class="p-0 px-1" style="width: 230px; border: 1px solid black; height:40px;">
                                                 <div>
                                                     <div class=" text-center p-1" >
                                                         <textarea name="etapas_proyecto_3" class="form-control area" id="" cols="50" rows="2"></textarea>
@@ -331,7 +331,7 @@
                                                     </div>
                                                 </div>
                                             </td>
-                                            <td colspan="2" class="p-0 px-1 tabla" style="border: 1px solid black; height:40px;">
+                                            <td  class="p-0 px-1 tabla" style="border: 1px solid black; height:40px;">
                                                 <div>
                                                     <div class=" text-center p-1"> 
                                                         <textarea name="descripcion_competencias_3" class="form-control area" id="" cols="50" rows="2"></textarea>
@@ -342,7 +342,7 @@
 
                                         <!--4-->
                                         <tr class=""> 
-                                            <td class="p-0 px-1" style="width: 270px; border: 1px solid black; height:40px;">
+                                            <td class="p-0 px-1" style="width: 230px; border: 1px solid black; height:40px;">
                                                 <div>
                                                     <div class=" text-center p-1" >
                                                         <textarea name="etapas_proyecto_4" class="form-control area" id="" cols="50" rows="2"></textarea>
@@ -372,7 +372,7 @@
                                                     </div>
                                                 </div>
                                             </td>
-                                            <td colspan="2" class="p-0 px-1 tabla" style="border: 1px solid black; height:40px;">
+                                            <td  class="p-0 px-1 tabla" style="border: 1px solid black; height:40px;">
                                                 <div>
                                                     <div class=" text-center p-1"> 
                                                         <textarea name="descripcion_competencias_4" class="form-control area" id="" cols="50" rows="2"></textarea>
@@ -384,7 +384,7 @@
 
                                         <!--5-->
                                         <tr class=""> 
-                                            <td class="p-0 px-1" style="width: 270px; border: 1px solid black; height:40px;">
+                                            <td class="p-0 px-1" style="width: 230px; border: 1px solid black; height:40px;">
                                                 <div>
                                                     <div class=" text-center p-1" >
                                                         <textarea name="etapas_proyecto_5" class="form-control area" id="" cols="50" rows="2"></textarea>
@@ -414,7 +414,7 @@
                                                     </div>
                                                 </div>
                                             </td>
-                                            <td colspan="2" class="p-0 px-1 tabla" style="border: 1px solid black; height:40px;">
+                                            <td  class="p-0 px-1 tabla" style="border: 1px solid black; height:40px;">
                                                 <div>
                                                     <div class=" text-center p-1"> 
                                                         <textarea name="descripcion_competencias_5" class="form-control area" id="" cols="50" rows="2"></textarea>
@@ -425,7 +425,7 @@
 
                                         <!--6-->
                                         <tr class=""> 
-                                            <td class="p-0 px-1" style="width: 270px; border: 1px solid black; height:40px;">
+                                            <td class="p-0 px-1" style="width: 230px; border: 1px solid black; height:40px;">
                                                 <div>
                                                     <div class=" text-center p-1" >
                                                         <textarea name="etapas_proyecto_6" class="form-control area" id="" cols="50" rows="2"></textarea>
@@ -455,7 +455,7 @@
                                                     </div>
                                                 </div>
                                             </td>
-                                            <td colspan="2" class="p-0 px-1 tabla" style="border: 1px solid black; height:40px;">
+                                            <td  class="p-0 px-1 tabla" style="border: 1px solid black; height:40px;">
                                                 <div>
                                                     <div class=" text-center p-1"> 
                                                         <textarea name="descripcion_competencias_6" class="form-control area" id="" cols="50" rows="2"></textarea>
@@ -466,7 +466,7 @@
 
                                         <!--7-->
                                         <tr class=""> 
-                                            <td class="p-0 px-1" style="width: 270px; border: 1px solid black; height:40px;">
+                                            <td class="p-0 px-1" style="width: 230px; border: 1px solid black; height:40px;">
                                                 <div>
                                                     <div class=" text-center p-1" >
                                                         <textarea name="etapas_proyecto_7" class="form-control area" id="" cols="50" rows="2"></textarea>
@@ -496,7 +496,7 @@
                                                     </div>
                                                 </div>
                                             </td>
-                                            <td colspan="2" class="p-0 px-1 tabla" style="border: 1px solid black; height:40px;">
+                                            <td  class="p-0 px-1 tabla" style="border: 1px solid black; height:40px;">
                                                 <div>
                                                     <div class=" text-center p-1"> 
                                                         <textarea name="descripcion_competencias_7" class="form-control area" id="" cols="50" rows="2"></textarea>
@@ -507,7 +507,7 @@
 
                                         <!--8-->
                                         <tr class=""> 
-                                            <td class="p-0 px-1" style="width: 270px; border: 1px solid black; height:40px;">
+                                            <td class="p-0 px-1" style="width: 230px; border: 1px solid black; height:40px;">
                                                 <div>
                                                     <div class=" text-center p-1" >
                                                         <textarea name="etapas_proyecto_8" class="form-control area" id="" cols="50" rows="2"></textarea>
@@ -537,7 +537,7 @@
                                                     </div>
                                                 </div>
                                             </td>
-                                            <td colspan="2" class="p-0 px-1 tabla" style="border: 1px solid black; height:40px;">
+                                            <td class="p-0 px-1 tabla" style="border: 1px solid black; height:40px;">
                                                 <div>
                                                     <div class=" text-center p-1"> 
                                                         <textarea name="descripcion_competencias_8" class="form-control area" id="" cols="50" rows="2"></textarea>
@@ -548,7 +548,7 @@
 
                                         <!--9-->
                                         <tr class=""> 
-                                            <td class="p-0 px-1" style="width: 270px; border: 1px solid black; height:40px;">
+                                            <td class="p-0 px-1" style="width: 230px; border: 1px solid black; height:40px;">
                                                 <div>
                                                     <div class=" text-center p-1" >
                                                         <textarea name="etapas_proyecto_9" class="form-control area" id="" cols="50" rows="2"></textarea>
@@ -578,7 +578,7 @@
                                                     </div>
                                                 </div>
                                             </td>
-                                            <td colspan="2" class="p-0 px-1 tabla" style="border: 1px solid black; height:40px;">
+                                            <td  class="p-0 px-1 tabla" style="border: 1px solid black; height:40px;">
                                                 <div>
                                                     <div class=" text-center p-1"> 
                                                         <textarea name="descripcion_competencias_9" class="form-control area" id="" cols="50" rows="2"></textarea>
@@ -589,7 +589,7 @@
 
                                         <!--10-->
                                         <tr class=""> 
-                                            <td class="p-0 px-1" style="width: 270px; border: 1px solid black; height:40px;">
+                                            <td class="p-0 px-1" style="width: 230px; border: 1px solid black; height:40px;">
                                                 <div>
                                                     <div class=" text-center p-1" >
                                                         <textarea name="etapas_proyecto_10" class="form-control area" id="" cols="50" rows="2"></textarea>
@@ -619,7 +619,7 @@
                                                     </div>
                                                 </div>
                                             </td>
-                                            <td colspan="2" class="p-0 px-1 tabla" style="border: 1px solid black; height:40px;">
+                                            <td  class="p-0 px-1 tabla" style="border: 1px solid black; height:40px;">
                                                 <div>
                                                     <div class=" text-center p-1"> 
                                                         <textarea name="descripcion_competencias_10" class="form-control area" id="" cols="50" rows="2"></textarea>
@@ -630,7 +630,7 @@
 
                                         <!--11-->
                                         <tr class=""> 
-                                            <td class="p-0 px-1" style="width: 270px; border: 1px solid black; height:40px;">
+                                            <td class="p-0 px-1" style="width: 230px; border: 1px solid black; height:40px;">
                                                 <div>
                                                     <div class=" text-center p-1" >
                                                         <textarea name="etapas_proyecto_11" class="form-control area" id="" cols="50" rows="2"></textarea>
@@ -660,7 +660,7 @@
                                                     </div>
                                                 </div>
                                             </td>
-                                            <td colspan="2" class="p-0 px-1 tabla" style="border: 1px solid black; height:40px;">
+                                            <td  class="p-0 px-1 tabla" style="border: 1px solid black; height:40px;">
                                                 <div>
                                                     <div class=" text-center p-1"> 
                                                         <textarea name="descripcion_competencias_11" class="form-control area" id="" cols="50" rows="2"></textarea>
@@ -671,7 +671,7 @@
 
                                         <!--12-->
                                         <tr class=""> 
-                                            <td class="p-0 px-1" style="width: 270px; border: 1px solid black; height:40px;">
+                                            <td class="p-0 px-1" style="width: 230px; border: 1px solid black; height:40px;">
                                                 <div>
                                                     <div class=" text-center p-1" >
                                                         <textarea name="etapas_proyecto_12" class="form-control area" id="" cols="50" rows="2"></textarea>
@@ -701,7 +701,7 @@
                                                     </div>
                                                 </div>
                                             </td>
-                                            <td colspan="2" class="p-0 px-1 tabla" style="border: 1px solid black; height:40px;">
+                                            <td  class="p-0 px-1 tabla" style="border: 1px solid black; height:40px;">
                                                 <div>
                                                     <div class=" text-center p-1"> 
                                                         <textarea name="descripcion_competencias_12" class="form-control area" id="" cols="50" rows="2"></textarea>
@@ -711,7 +711,7 @@
                                         </tr>
                                             <!--13-->
                                             <tr class=""> 
-                                            <td class="p-0 px-1" style="width: 270px; border: 1px solid black; height:40px;">
+                                            <td class="p-0 px-1" style="width: 230px; border: 1px solid black; height:40px;">
                                                 <div>
                                                     <div class=" text-center p-1" >
                                                         <textarea name="etapas_proyecto_13" class="form-control area" id="" cols="50" rows="2"></textarea>
@@ -741,7 +741,7 @@
                                                     </div>
                                                 </div>
                                             </td>
-                                            <td colspan="2" class="p-0 px-1 tabla" style="border: 1px solid black; height:40px;">
+                                            <td  class="p-0 px-1 tabla" style="border: 1px solid black; height:40px;">
                                                 <div>
                                                     <div class=" text-center p-1"> 
                                                         <textarea name="descripcion_competencias_13" class="form-control area" id="" cols="50" rows="2"></textarea>
@@ -751,7 +751,7 @@
                                         </tr>
                                             <!--14-->
                                             <tr class=""> 
-                                            <td class="p-0 px-1" style="width: 270px; border: 1px solid black; height:40px;">
+                                            <td class="p-0 px-1" style="width: 230px; border: 1px solid black; height:40px;">
                                                 <div>
                                                     <div class=" text-center p-1" >
                                                         <textarea name="etapas_proyecto_14" class="form-control area" id="" cols="50" rows="2"></textarea>
@@ -781,7 +781,7 @@
                                                     </div>
                                                 </div>
                                             </td>
-                                            <td colspan="2" class="p-0 px-1 tabla" style="border: 1px solid black; height:40px;">
+                                            <td class="p-0 px-1 tabla" style="border: 1px solid black; height:40px;">
                                                 <div>
                                                     <div class=" text-center p-1"> 
                                                         <textarea name="descripcion_competencias_14" class="form-control area" id="" cols="50" rows="2"></textarea>
@@ -791,7 +791,7 @@
                                         </tr>
                                             <!--15-->
                                             <tr class=""> 
-                                            <td class="p-0 px-1" style="width: 270px; border: 1px solid black; height:40px;">
+                                            <td class="p-0 px-1" style="width: 230px; border: 1px solid black; height:40px;">
                                                 <div>
                                                     <div class=" text-center p-1" >
                                                         <textarea name="etapas_proyecto_15" class="form-control area" id="" cols="50" rows="2"></textarea>
@@ -821,7 +821,7 @@
                                                     </div>
                                                 </div>
                                             </td>
-                                            <td colspan="2" class="p-0 px-1 tabla" style="border: 1px solid black; height:40px;">
+                                            <td class="p-0 px-1 tabla" style="border: 1px solid black; height:40px;">
                                                 <div>
                                                     <div class=" text-center p-1"> 
                                                         <textarea name="descripcion_competencias_15" class="form-control area" id="" cols="50" rows="2"></textarea>
@@ -1131,7 +1131,7 @@
                                             <td class="p-0 px-1" style="width: 270px; border: 1px solid black; height:40px;">
                                                 <div>
                                                     <div class=" text-center p-1" >
-                                                        <textarea name="etapas_proyecto_1" class="form-control area" id="" cols="50" rows="2"></textarea>
+                                                        <textarea name="etapas_proyecto_1" class="form-control area" id="" cols="50" rows="2" ></textarea>
                                                     </div>
                                                 </div>
                                             </td>

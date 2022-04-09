@@ -54,6 +54,22 @@
 </div>
 @endif
 
+@if ($message = Session::get('sinRespuesta'))
+<div class="alert alert-danger alert-block">
+    <button type="button" class="close" data-dismiss="alert">×</button>
+    <strong> {{$message}} </strong>
+</div>
+@endif
+@if ($message = Session::get('usuarioR'))
+	<script>
+		Swal.fire(
+			'Usuario reiniciado!',
+			'SU PROCESO ESTANCIA/ESTADIA HA SIDO REINICIADA',
+			'success'
+		)
+	</script>
+@endif
+
 @if ($message = Session::get('eliminar'))
 	<script>
 		Swal.fire(

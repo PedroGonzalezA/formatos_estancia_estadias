@@ -7,6 +7,8 @@ use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+
 class LoginController extends Controller
 {
 
@@ -46,8 +48,13 @@ class LoginController extends Controller
     }
 
     public function ver(){
-       
-        return view('cambiar_contra');
+        $userID=Auth::user()->id; 
+        $cedula_doc=DB::table('users')
+        ->join('respuesta_doc','users.id','=','respuesta_doc.id_usuario')
+        ->join('documentos','documentos.id','=','respuesta_doc.id_documentos')
+        ->where('users.id',$userID)
+        ->get();
+        return view('cambiar_contra',['datos'=>$cedula_doc]);
     }
     
     public function editar(Request $request){
