@@ -18,7 +18,7 @@ $(document).ready(function(){
 		icon: 'warning',
 		showCancelButton: true,
 		confirmButtonColor: '#3085d6',
-		cancelButtonColor: '#d33',
+		cancelButtonColor: '#dc3545',
 		confirmButtonText: 'Si!',
 		cancelButtonText: '<i class="zmdi zmdi-close-circle"></i> No, Cancelar!'
 		}).then((result) => {
@@ -35,7 +35,7 @@ $(document).ready(function(){
 		icon: 'warning',
 		showCancelButton: true,
 		confirmButtonColor: '#3085d6',
-		cancelButtonColor: '#d33',
+		cancelButtonColor: '#dc3545',
 		confirmButtonText: 'Si, Eliminar!',
 		cancelButtonText: '<i class="zmdi zmdi-close-circle"></i> No, Cancelar!'
 		}).then((result) => {
@@ -52,7 +52,7 @@ $(document).ready(function(){
 		icon: 'warning',
 		showCancelButton: true,
 		confirmButtonColor: '#3085d6',
-		cancelButtonColor: '#d33',
+		cancelButtonColor: '#dc3545',
 		confirmButtonText: 'Si, Eliminar!',
 		cancelButtonText: '<i class="zmdi zmdi-close-circle"></i> No, Cancelar!'
 		}).then((result) => {
@@ -64,12 +64,12 @@ $(document).ready(function(){
 	$('.btn-eliminarC-system').submit(function(e){
 		e.preventDefault();
 		Swal.fire({
-		title: 'Estas seguro de eliminar este usuario',
+		title: 'Estas seguro de eliminar este usuario Permanentemente',
 		text: "No podras revertir esta acción",
 		icon: 'warning',
 		showCancelButton: true,
 		confirmButtonColor: '#3085d6',
-		cancelButtonColor: '#d33',
+		cancelButtonColor: '#dc3545',
 		confirmButtonText: 'Si, Eliminar!',
 		cancelButtonText: '<i class="zmdi zmdi-close-circle"></i> No, Cancelar!'
 		}).then((result) => {
@@ -86,7 +86,7 @@ $(document).ready(function(){
 		icon: 'warning',
 		showCancelButton: true,
 		confirmButtonColor: '#3085d6',
-		cancelButtonColor: '#d33',
+		cancelButtonColor: '#dc3545',
 		confirmButtonText: 'Si, Restaurar!',
 		cancelButtonText: '<i class="zmdi zmdi-close-circle"></i> No, Cancelar!'
 		}).then((result) => {
@@ -104,7 +104,7 @@ $(document).ready(function(){
 		icon: 'warning',
 		showCancelButton: true,
 		confirmButtonColor: '#3085d6',
-		cancelButtonColor: '#d33',
+		cancelButtonColor: '#dc3545',
 		confirmButtonText: 'Si, Eliminar!',
 		cancelButtonText: '<i class="zmdi zmdi-close-circle"></i> No, Cancelar!'
 		}).then((result) => {
@@ -121,7 +121,7 @@ $(document).ready(function(){
 		icon: 'warning',
 		showCancelButton: true,
 		confirmButtonColor: '#3085d6',
-		cancelButtonColor: '#d33',
+		cancelButtonColor: '#dc3545',
 		confirmButtonText: 'Si, Eliminar!',
 		cancelButtonText: '<i class="zmdi zmdi-close-circle"></i> No, Cancelar!'
 		}).then((result) => {
@@ -138,7 +138,7 @@ $(document).ready(function(){
 		icon: 'warning',
 		showCancelButton: true,
 		confirmButtonColor: '#3085d6',
-		cancelButtonColor: '#d33',
+		cancelButtonColor: '#dc3545',
 		
 		confirmButtonText: 'Si, Cancelar documento!',
 		cancelButtonText: '<i class="zmdi zmdi-close-circle"></i> No, Cancelar!'
@@ -156,7 +156,7 @@ $(document).ready(function(){
 		icon: 'warning',
 		showCancelButton: true,
 		confirmButtonColor: '#3085d6',
-		cancelButtonColor: '#d33',
+		cancelButtonColor: '#dc3545',
 		confirmButtonText: 'Si, Cancelar documento!',
 		cancelButtonText: '<i class="zmdi zmdi-close-circle"></i> No, Cancelar!'
 		}).then((result) => {
@@ -173,7 +173,7 @@ $(document).ready(function(){
 		icon: 'warning',
 		showCancelButton: true,
 		confirmButtonColor: '#3085d6',
-		cancelButtonColor: '#d33',
+		cancelButtonColor: '#dc3545',
 		confirmButtonText: 'Si, Cancelar documento!',
 		cancelButtonText: '<i class="zmdi zmdi-close-circle"></i> No, Cancelar!'
 		}).then((result) => {
@@ -190,7 +190,7 @@ $(document).ready(function(){
 		icon: 'warning',
 		showCancelButton: true,
 		confirmButtonColor: '#3085d6',
-		cancelButtonColor: '#d33',
+		cancelButtonColor: '#dc3545',
 		confirmButtonText: 'Si, Cancelar documento!',
 		cancelButtonText: '<i class="zmdi zmdi-close-circle"></i> No, Cancelar!'
 		}).then((result) => {

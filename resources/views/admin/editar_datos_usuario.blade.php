@@ -34,16 +34,16 @@
 		<!-- Content page -->
 		<div class="container p-3">
             <div class="row p-4">
-                <div class="col-12 col-md-10">
+                <div class="col-12 col-md-9">
                     <div class="page-header">
                         <h2 class="text-titles">Cambiar datos <small>(Alumno)</small></h2>
                     </div>
                 </div>
-                <div class="col-12 col-md-2">
+                <div class="col-12 col-md-3">
                     @foreach ($datos as $dato)
                         <form action="{{route('eliminarUsuarioCompleto.index',$dato->id)}}"  class="btn-eliminarC-system" method="POST">
                             @csrf 
-                            <button type="submit" class="btn btn-outline-danger btnEliminarUser ">Eliminar</button>
+                            <button type="submit" class="btn btn-outline-danger btnEliminarUser ">Eliminar Permanente</button>
                         </form>
                     @endforeach
                 </div>
