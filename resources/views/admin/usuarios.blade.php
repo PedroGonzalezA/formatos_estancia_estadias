@@ -42,7 +42,7 @@
 							<div class="col-sm-12 col-md-3">
 								<form action="{{ route('agregar_usuario.index') }}" method="GET">
 									@csrf
-									<button type="submit" value="Agregar usuario" class="btn btn-outline-info buscar" > <i class="zmdi zmdi-account-add"> Agregar usuario</i></button>
+									<button type="submit" value="Agregar usuario" class="btn btn-info" > <i class="zmdi zmdi-account-add"> Agregar usuario</i></button>
 								</form>
 							</div>
 							
@@ -68,7 +68,7 @@
 										
 								</div>
 								<div class="col-3 col-sm-3 col-md-2">
-									<button type="submit" class="btn btn-outline-primary buscar"><i class="zmdi zmdi-search"></i></button>
+									<button type="submit" class="btn  buscar"><i class="zmdi zmdi-search"></i></button>
 								</div>
 								
 							</div>
@@ -86,7 +86,7 @@
 										
 								</div>
 								<div class="col-3 col-sm-3 col-md-2">
-									<button type="submit" class="btn btn-outline-primary buscar"><i class="zmdi zmdi-search"></i></button>
+									<button type="submit" class="btn buscar"><i class="zmdi zmdi-search"></i></button>
 								</div>
 								
 							</div>
@@ -172,7 +172,7 @@
 								@else
 									<form action="{{route('eliminarUsuario.index',$respuestaU->id)}}"  class="btn-eliminar-system" method="POST">
 										@csrf 
-										<button type="submit" class="btn btn-outline-danger btnEliminarUser ">Eliminar</button>
+										<button type="submit" class="btn btn-danger btnEliminarUser ">Eliminar</button>
 									</form>
 								@endif
 							</div>

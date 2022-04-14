@@ -28,9 +28,26 @@
 		<!-- NavBar -->
 		@include('plantilla/admin/navBar')
         <!-- Content page -->
-		<div class="container p-3">
+		<div class="container py-3">
 			<div class="page-header">
-				<h2 class="text-titles">Usuarios<small>(Registrados)</small> </h2>
+				<div class="row">
+					<div class="col-12 col-sm-12 col-md-3 p-1">
+						<h2 class="text-titles">Usuarios<small>(Registrados)</small> </h2>
+					</div>
+					<div class="col-12 col-sm-12 col-md-9 p-1" p-1>
+						<div class="row">
+							<div class="col-9"></div>
+							<div class="col-sm-12 col-md-3">
+								<form action="{{ route('agregar_usuario.index') }}" method="GET">
+									@csrf
+									<button type="submit" value="Agregar usuario" class="btn btn-info" > <i class="zmdi zmdi-account-add"> Agregar usuario</i></button>
+								</form>
+							</div>
+							
+						</div>
+						
+					</div>
+				</div>
 			</div>
 		</div>
 		<div class="container">
@@ -45,7 +62,7 @@
 										
 								</div>
 								<div class="col-3 col-sm-3 col-md-2">
-									<button type="submit" class="btn btn-outline-primary buscar"><i class="zmdi zmdi-search"></i></button>
+									<button type="submit" class="btn  buscar"><i class="zmdi zmdi-search"></i></button>
 								</div>
 								
 							</div>
@@ -65,7 +82,7 @@
                                                 
                                         </div>
                                         <div class="col-3 col-sm-3 col-md-2">
-											<button type="submit" class="btn btn-outline-primary buscar"><i class="zmdi zmdi-search"></i></button>
+											<button type="submit" class="btn buscar"><i class="zmdi zmdi-search"></i></button>
 										</div>
                                         
                                     </div>
@@ -74,7 +91,7 @@
                         </div>
                         <div class="col-12 col-sm-12 col-md-3">
                             <a href="{{ route('usuarios.index') }}">
-                                <input type="submit" value="Ver todos" class="btn btn-outline-success buscar">
+                                <input type="submit" value="Ver todos" class="btn btn-success">
                             </a>
                         </div>
                     </div>
@@ -89,7 +106,26 @@
 					<div class="col-12 col-sm-12 col-md-4 p-4 ">
 						<div class="row documentosUsuario" >
 							<div class="col-12 text-center tituloAlumno">
-								Alumno
+								<div class="row">
+									<div class="col-10 p-1">
+										<div class="row">
+											<div class="col-12 col-md-8">
+												Alumno
+											</div>
+											<div class="col-12 col-md-4">
+												@if ($respuestaU->deleted_at)
+													<div class="text-center"><span class="badge bg-danger text-white eliminado">Eliminado</span></div>
+												@endif
+											</div>
+										</div>
+									</div>
+									<div class="col-2 p-1">
+										<form action="{{route('ver_datos_usuario.index',$respuestaU->id)}}">
+											@csrf
+											<button type="submit" class="btn btn-info btnCambiarC"><i class="zmdi zmdi-edit"></i></button>
+										</form>
+									</div>
+								</div>
 							</div>
 							<div class="col-2 col-sm-2 col-md-2 text-center colum">
 								{{ $respuestaU->id}}
@@ -132,7 +168,7 @@
 							<div class="col-12 col-sm-12 col-md-12 text-center m-0 p-0">
 								<form action="{{route('eliminarUsuario.index',$respuestaU->id)}}" method="POST">
 									@csrf 
-									<button type="submit" class="btn btn-outline-danger btnEliminarUser">Eliminar</button>
+									<button type="submit" class="btn btn-danger btnEliminarUser">Eliminar</button>
 								</form>
 							</div>
 						</div>

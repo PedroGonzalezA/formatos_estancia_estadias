@@ -68,7 +68,7 @@
                                 @enderror                        
                                 <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
                                     <div class="pt-1 mb-4">
-                                        <button class="btn btn-dark btn-lg btn-block" type="submit">Registrar</button>
+                                        <button class="btn btn-dark btn-lg btn-block" type="submit">Guardar</button>
                                     </div>
                                 </div>                                  
                             </div>

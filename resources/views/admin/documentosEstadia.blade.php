@@ -50,7 +50,7 @@
                                             
                                     </div>
                                     <div class="col-4 col-sm-4 col-md-2">
-                                        <button type="submit" class="btn btn-outline-primary buscar"><i class="zmdi zmdi-search"></i></button>
+                                        <button type="submit" class="btn btn-primary buscar"><i class="zmdi zmdi-search"></i></button>
                                     </div>
                                 </div>
                         </form>
@@ -65,7 +65,7 @@
                                             
                                 </div>
                                 <div class="col-4 col-sm-4 col-md-2">
-                                    <button type="submit" class="btn btn-outline-primary buscar"><i class="zmdi zmdi-search"></i></button>
+                                    <button type="submit" class="btn btn-primary buscar"><i class="zmdi zmdi-search"></i></button>
                                 </div>
                             </div>
                                     
@@ -127,100 +127,100 @@
                                                 </div>
                                             </div>
                                         
-                                                    <div class="row text-center">
-                                                        <div class="col-12 nombreDoc">
-                                                            {{$respuestaC->nombre}}
+                                            <div class="row text-center">
+                                                <div class="col-12 nombreDoc">
+                                                    {{$respuestaC->nombre}}
+                                                </div>
+                                                @switch($respuestaC->estado)
+                                                    @case(0)
+                                                        <div class="col-12">
+                                                            <div class="text-center p-1"><span class="badge bg-danger text-white">Con Observaciones</span></div>
                                                         </div>
-                                                        @switch($respuestaC->estado)
-                                                            @case(0)
-                                                                <div class="col-12">
-                                                                    <div class="text-center p-1"><span class="badge bg-danger text-white">Con Observaciones</span></div>
-                                                                </div>
-                                                            @break
-                                                            @case(1)
-                                                                <div class="col-12">
-                                                                    <div class="text-center p-1"><span class="badge bg-warning">Pendiente</span></div>
-                                                                </div>
-                                                            @break
-                                                            @case(2)
-                                                                <div class="col-12">
-                                                                    <div class="text-center p-1"><span class="badge bg-success">Aceptado</span></div>
-                                                                </div>
-                                                            @break
-                                                            @default
-                                                                
-                                                        @endswitch
+                                                    @break
+                                                    @case(1)
+                                                        <div class="col-12">
+                                                            <div class="text-center p-1"><span class="badge bg-warning">Pendiente</span></div>
+                                                        </div>
+                                                    @break
+                                                    @case(2)
+                                                        <div class="col-12">
+                                                            <div class="text-center p-1"><span class="badge bg-success">Aceptado</span></div>
+                                                        </div>
+                                                    @break
+                                                    @default
+                                                        
+                                                @endswitch
+                                                <div class="col-6 p-1">
+                                                    <form method="post" action="{{ route('ver_cd_estadia_f02_admin.index',[$respuestaC->nombre]) }}">
+                                                        @csrf
+                                                        <button type="submit" class="btn btnVer" > <i class="zmdi zmdi-eye zmdi-hc-lg"></i> Ver</button>
+                                                    </form>	
+                                                </div>
+                                                
+                                                @switch($respuestaC->estado)
+                                                    @case(0)
+                                                    <!--con observaciones-->
                                                         <div class="col-6 p-1">
-                                                            <form method="post" action="{{ route('ver_cd_estadia_f02_admin.index',[$respuestaC->nombre]) }}">
+                                                            <form method="post" action="{{ route('aceptar_estadia_f02_admin.index',[$respuestaC->id_usuario,$respuestaC->id_c_aceptacion, $respuestaC->nombre]) }}">
                                                                 @csrf
-                                                                <button type="submit" class="btn btn-outline-primary btnVer" > <i class="zmdi zmdi-eye zmdi-hc-lg"></i> Ver</button>
+                                                                <button type="submit" class="btn btn-success btnAceptar" > <i class="zmdi zmdi-check zmdi-hc-lg"></i> Aceptar</button>
+                                                            </form>	
+                                                        </div>
+                                                        <div class="col-12 p-1">
+                                                            <form method="post" action="{{ route('pendiente_estadia_f02_admin.index',[$respuestaC->id_usuario,$respuestaC->id_c_aceptacion, $respuestaC->nombre]) }}">
+                                                                @csrf
+                                                                <button type="submit" class="btn btn-warning btnPendiente" >Pendiente</button>
+                                                            </form>	
+                                                        </div>
+                                                        <div class="col-12 p-1">
+                                                            <form method="post" action="{{ route('conObservaciones_estadia_f02_admin.index') }}">
+                                                                @csrf
+                                                                <input type="text" name="id_c" id="id_c" value="{{$respuestaC->id_c_aceptacion}}" class="id_d">
+        
+                                                                <button type="submit" class="btn btn-danger btnObservaciones" > <i class="zmdi zmdi-alert-circle zmdi-hc-lg"></i> Ver Obsevaciones</button>
                                                             </form>	
                                                         </div>
                                                         
-                                                        @switch($respuestaC->estado)
-                                                            @case(0)
-                                                    <!--con observaciones-->
-                                                                <div class="col-6 p-1">
-                                                                    <form method="post" action="{{ route('aceptar_estadia_f02_admin.index',[$respuestaC->id_usuario,$respuestaC->id_c_aceptacion, $respuestaC->nombre]) }}">
-                                                                        @csrf
-                                                                        <button type="submit" class="btn btn-outline-success btnAceptar" > <i class="zmdi zmdi-check zmdi-hc-lg"></i> Aceptar</button>
-                                                                    </form>	
-                                                                </div>
-                                                                <div class="col-12 p-1">
-                                                                    <form method="post" action="{{ route('pendiente_estadia_f02_admin.index',[$respuestaC->id_usuario,$respuestaC->id_c_aceptacion, $respuestaC->nombre]) }}">
-                                                                        @csrf
-                                                                        <button type="submit" class="btn btn-outline-warning btnPendiente" >Pendiente</button>
-                                                                    </form>	
-                                                                </div>
-                                                                <div class="col-12 p-1">
-                                                                    <form method="post" action="{{ route('conObservaciones_estadia_f02_admin.index') }}">
-                                                                        @csrf
-                                                                        <input type="text" name="id_c" id="id_c" value="{{$respuestaC->id_c_aceptacion}}" class="id_d">
-                
-                                                                        <button type="submit" class="btn btn-outline-danger btnObservaciones" > <i class="zmdi zmdi-alert-circle zmdi-hc-lg"></i> Ver Obsevaciones</button>
-                                                                    </form>	
-                                                                </div>
-                                                                
-                                                            @break    
+                                                    @break    
                                                     <!--pendiente-->
-                                                            @case(1)
-                                                                <div class="col-6 p-1">
-                                                                    <form method="post" action="{{ route('aceptar_estadia_f02_admin.index',[$respuestaC->id_usuario,$respuestaC->id_c_aceptacion, $respuestaC->nombre]) }}">
-                                                                        @csrf
-                                                                        <button type="submit" class="btn btn-outline-success btnAceptar" > <i class="zmdi zmdi-check zmdi-hc-lg"></i> Aceptar</button>
-                                                                    </form>	
-                                                                </div>
-                                                                <div class="col-12 p-1">
-                                                                    <form method="post" action="{{ route('observaciones_estadia_f02_admin.index') }}">
-                                                                        @csrf
-                                                                        <input type="text" name="id_c" id="id_c" value="{{$respuestaC->id_c_aceptacion}}" class="id_d">
-                                                                        <button type="submit" class="btn btn-outline-danger btnObservaciones" > <i class="zmdi zmdi-alert-circle zmdi-hc-lg"></i> Obsevaciones</button>
-                                                                    </form>	
-                                                                </div>
-                                                            @break
+                                                    @case(1)
+                                                        <div class="col-6 p-1">
+                                                            <form method="post" action="{{ route('aceptar_estadia_f02_admin.index',[$respuestaC->id_usuario,$respuestaC->id_c_aceptacion, $respuestaC->nombre]) }}">
+                                                                @csrf
+                                                                <button type="submit" class="btn btn-success btnAceptar" > <i class="zmdi zmdi-check zmdi-hc-lg"></i> Aceptar</button>
+                                                            </form>	
+                                                        </div>
+                                                        <div class="col-12 p-1">
+                                                            <form method="post" action="{{ route('observaciones_estadia_f02_admin.index') }}">
+                                                                @csrf
+                                                                <input type="text" name="id_c" id="id_c" value="{{$respuestaC->id_c_aceptacion}}" class="id_d">
+                                                                <button type="submit" class="btn btn-danger btnObservaciones" > <i class="zmdi zmdi-alert-circle zmdi-hc-lg"></i> Obsevaciones</button>
+                                                            </form>	
+                                                        </div>
+                                                    @break
                                                     <!--aceptado-->
-                                                            @case(2)
-                                                            
-                                                                <div class="col-6 p-1">
-                                                                    <form method="post" action="{{ route('pendiente_estadia_f02_admin.index',[$respuestaC->id_usuario,$respuestaC->id_c_aceptacion, $respuestaC->nombre]) }}">
-                                                                        @csrf
-                                                                        <button type="submit" class="btn btn-outline-warning btnAceptar" >Pendiente</button>
-                                                                    </form>	
-                                                                </div>
-                                                                <div class="col-12 p-1">
-                                                                    <form method="post" action="{{ route('observaciones_estadia_f02_admin.index') }}">
-                                                                        @csrf
-                                                                        <input type="text" name="id_c" id="id_c" value="{{$respuestaC->id_c_aceptacion}}" class="id_d">
-                                                                        <button type="submit" class="btn btn-outline-danger btnObservaciones" > <i class="zmdi zmdi-alert-circle zmdi-hc-lg"></i> Obsevaciones</button>
-                                                                    </form>	
-                                                                </div>
-                                                            @break
+                                                    @case(2)
+                                                    
+                                                        <div class="col-6 p-1">
+                                                            <form method="post" action="{{ route('pendiente_estadia_f02_admin.index',[$respuestaC->id_usuario,$respuestaC->id_c_aceptacion, $respuestaC->nombre]) }}">
+                                                                @csrf
+                                                                <button type="submit" class="btn btn-warning btnAceptar" >Pendiente</button>
+                                                            </form>	
+                                                        </div>
+                                                        <div class="col-12 p-1">
+                                                            <form method="post" action="{{ route('observaciones_estadia_f02_admin.index') }}">
+                                                                @csrf
+                                                                <input type="text" name="id_c" id="id_c" value="{{$respuestaC->id_c_aceptacion}}" class="id_d">
+                                                                <button type="submit" class="btn btn-danger btnObservaciones" > <i class="zmdi zmdi-alert-circle zmdi-hc-lg"></i> Obsevaciones</button>
+                                                            </form>	
+                                                        </div>
+                                                    @break
+                                                
+                                                    @default
                                                         
-                                                            @default
-                                                                
-                                                        @endswitch
-                                                        
-                                                    </div>
+                                                @endswitch
+                                                
+                                            </div>
                                     </div>
                                 @endif
                             @empty
@@ -265,7 +265,7 @@
                                             <div class="col-6 p-1">
                                                 <form class="" method="post" action="{{ route('ver_cd_estadia_f03_admin.index',[$respuestaCR->id_usuario,$respuestaCR->id_c_registro, $respuestaCR->nombre_c_r]) }}">
                                                     @csrf
-                                                    <button type="submit" class="btn btn-outline-primary btnVer" > <i class="zmdi zmdi-eye zmdi-hc-lg"></i> Ver</button>
+                                                    <button type="submit" class="btn  btnVer" > <i class="zmdi zmdi-eye zmdi-hc-lg"></i> Ver</button>
                                                 </form>	
                                             </div>
                                         
@@ -276,13 +276,13 @@
                                                     <div class="col-6 p-1">
                                                         <form method="post" action="{{ route('aceptar_estadia_f03_admin.index',[$respuestaCR->id_usuario,$respuestaCR->id_c_registro, $respuestaCR->nombre_c_r]) }}">
                                                             @csrf
-                                                            <button type="submit" class="btn btn-outline-success btnAceptar" > <i class="zmdi zmdi-check zmdi-hc-lg"></i> Aceptar</button>
+                                                            <button type="submit" class="btn btn-success btnAceptar" > <i class="zmdi zmdi-check zmdi-hc-lg"></i> Aceptar</button>
                                                         </form>	
                                                     </div>
                                                     <div class="col-12 p-1">
                                                         <form method="post" action="{{ route('pendiente_estadia_f03_admin.index',[$respuestaCR->id_usuario,$respuestaCR->id_c_registro, $respuestaCR->nombre_c_r]) }}">
                                                             @csrf
-                                                            <button type="submit" class="btn btn-outline-warning btnPendiente" >Pendiente</button>
+                                                            <button type="submit" class="btn btn-warning btnPendiente" >Pendiente</button>
                                                         </form>	
                                                     </div>
                                                     <div class="col-12 p-1">
@@ -290,7 +290,7 @@
                                                             @csrf
                                                             <input type="text" name="id_c" id="id_c" value="{{$respuestaCR->id_c_registro}}" class="id_d">
 
-                                                            <button type="submit" class="btn btn-outline-danger btnObservaciones" > <i class="zmdi zmdi-alert-circle zmdi-hc-lg"></i> Ver Obsevaciones</button>
+                                                            <button type="submit" class="btn btn-danger btnObservaciones" > <i class="zmdi zmdi-alert-circle zmdi-hc-lg"></i> Ver Obsevaciones</button>
                                                         </form>	
                                                     </div>
                                                     
@@ -300,14 +300,14 @@
                                                     <div class="col-6 p-1">
                                                         <form method="post" action="{{ route('aceptar_estadia_f03_admin.index',[$respuestaCR->id_usuario,$respuestaCR->id_c_registro, $respuestaCR->nombre_c_r]) }}">
                                                             @csrf
-                                                            <button type="submit" class="btn btn-outline-success btnAceptar" > <i class="zmdi zmdi-check zmdi-hc-lg"></i> Aceptar</button>
+                                                            <button type="submit" class="btn btn-success btnAceptar" > <i class="zmdi zmdi-check zmdi-hc-lg"></i> Aceptar</button>
                                                         </form>	
                                                     </div>
                                                     <div class="col-12 p-1">
                                                         <form method="post" action="{{ route('observaciones_estadia_f03_admin.index') }}">
                                                             @csrf
                                                             <input type="text" name="id_c" id="id_c" value="{{$respuestaCR->id_c_registro}}" class="id_d">
-                                                            <button type="submit" class="btn btn-outline-danger btnObservaciones" > <i class="zmdi zmdi-alert-circle zmdi-hc-lg"></i> Obsevaciones</button>
+                                                            <button type="submit" class="btn btn-danger btnObservaciones" > <i class="zmdi zmdi-alert-circle zmdi-hc-lg"></i> Obsevaciones</button>
                                                         </form>	
                                                     </div>
                                                 @break
@@ -317,14 +317,14 @@
                                                     <div class="col-6 p-1">
                                                         <form method="post" action="{{ route('pendiente_estadia_f03_admin.index',[$respuestaCR->id_usuario,$respuestaCR->id_c_registro, $respuestaCR->nombre_c_r]) }}">
                                                             @csrf
-                                                            <button type="submit" class="btn btn-outline-warning btnAceptar" >Pendiente</button>
+                                                            <button type="submit" class="btn btn-warning btnAceptar" >Pendiente</button>
                                                         </form>	
                                                     </div>
                                                     <div class="col-12 p-1">
                                                         <form method="post" action="{{ route('observaciones_estadia_f03_admin.index') }}">
                                                             @csrf
                                                             <input type="text" name="id_c" id="id_c" value="{{$respuestaCR->id_c_registro}}" class="id_d">
-                                                            <button type="submit" class="btn btn-outline-danger btnObservaciones" > <i class="zmdi zmdi-alert-circle zmdi-hc-lg"></i> Obsevaciones</button>
+                                                            <button type="submit" class="btn btn-danger btnObservaciones" > <i class="zmdi zmdi-alert-circle zmdi-hc-lg"></i> Obsevaciones</button>
                                                         </form>	
                                                     </div>
                                                 @break
@@ -377,7 +377,7 @@
                                                         <div class="col-6 p-1">
                                                             <form method="post" action="{{ route('ver_cd_estadia_f04_admin.index',[$respuestaDP->nombre_d_p]) }}">
                                                                 @csrf
-                                                                <button type="submit" class="btn btn-outline-primary btnVer" > <i class="zmdi zmdi-eye zmdi-hc-lg"></i> Ver</button>
+                                                                <button type="submit" class="btn btnVer" > <i class="zmdi zmdi-eye zmdi-hc-lg"></i> Ver</button>
                                                             </form>	
                                                         </div>
                                                         
@@ -387,13 +387,13 @@
                                                                 <div class="col-6 p-1">
                                                                     <form method="post" action="{{ route('aceptar_estadia_f04_admin.index',[$respuestaDP->id_usuario,$respuestaDP->id_d_proyecto, $respuestaDP->nombre_d_p]) }}">
                                                                         @csrf
-                                                                        <button type="submit" class="btn btn-outline-success btnAceptar" > <i class="zmdi zmdi-check zmdi-hc-lg"></i> Aceptar</button>
+                                                                        <button type="submit" class="btn btn-success btnAceptar" > <i class="zmdi zmdi-check zmdi-hc-lg"></i> Aceptar</button>
                                                                     </form>	
                                                                 </div>
                                                                 <div class="col-12 p-1">
                                                                     <form method="post" action="{{ route('pendiente_estadia_f04_admin.index',[$respuestaDP->id_usuario,$respuestaDP->id_d_proyecto, $respuestaDP->nombre_d_p]) }}">
                                                                         @csrf
-                                                                        <button type="submit" class="btn btn-outline-warning btnPendiente" >Pendiente</button>
+                                                                        <button type="submit" class="btn btn-warning btnPendiente" >Pendiente</button>
                                                                     </form>	
                                                                 </div>
                                                                 <div class="col-12 p-1">
@@ -401,7 +401,7 @@
                                                                         @csrf
                                                                         <input type="text" name="id_c" id="id_c" value="{{$respuestaDP->id_d_proyecto}}" class="id_d">
                 
-                                                                        <button type="submit" class="btn btn-outline-danger btnObservaciones" > <i class="zmdi zmdi-alert-circle zmdi-hc-lg"></i> Ver Obsevaciones</button>
+                                                                        <button type="submit" class="btn btn-danger btnObservaciones" > <i class="zmdi zmdi-alert-circle zmdi-hc-lg"></i> Ver Obsevaciones</button>
                                                                     </form>	
                                                                 </div>
                                                                 
@@ -411,14 +411,14 @@
                                                                 <div class="col-6 p-1">
                                                                     <form method="post" action="{{ route('aceptar_estadia_f04_admin.index',[$respuestaDP->id_usuario,$respuestaDP->id_d_proyecto, $respuestaDP->nombre_d_p]) }}">
                                                                         @csrf
-                                                                        <button type="submit" class="btn btn-outline-success btnAceptar" > <i class="zmdi zmdi-check zmdi-hc-lg"></i> Aceptar</button>
+                                                                        <button type="submit" class="btn btn-success btnAceptar" > <i class="zmdi zmdi-check zmdi-hc-lg"></i> Aceptar</button>
                                                                     </form>	
                                                                 </div>
                                                                 <div class="col-12 p-1">
                                                                     <form method="post" action="{{ route('observaciones_estadia_f04_admin.index') }}">
                                                                         @csrf
                                                                         <input type="text" name="id_c" id="id_c" value="{{$respuestaDP->id_d_proyecto}}" class="id_d">
-                                                                        <button type="submit" class="btn btn-outline-danger btnObservaciones" > <i class="zmdi zmdi-alert-circle zmdi-hc-lg"></i> Obsevaciones</button>
+                                                                        <button type="submit" class="btn btn-danger btnObservaciones" > <i class="zmdi zmdi-alert-circle zmdi-hc-lg"></i> Obsevaciones</button>
                                                                     </form>	
                                                                 </div>
                                                             @break
@@ -428,14 +428,14 @@
                                                                 <div class="col-6 p-1">
                                                                     <form method="post" action="{{ route('pendiente_estadia_f04_admin.index',[$respuestaDP->id_usuario,$respuestaDP->id_d_proyecto, $respuestaDP->nombre_d_p]) }}">
                                                                         @csrf
-                                                                        <button type="submit" class="btn btn-outline-warning btnAceptar" >Pendiente</button>
+                                                                        <button type="submit" class="btn btn-warning btnAceptar" >Pendiente</button>
                                                                     </form>	
                                                                 </div>
                                                                 <div class="col-12 p-1">
                                                                     <form method="post" action="{{ route('observaciones_estadia_f04_admin.index') }}">
                                                                         @csrf
                                                                         <input type="text" name="id_c" id="id_c" value="{{$respuestaDP->id_d_proyecto}}" class="id_d">
-                                                                        <button type="submit" class="btn btn-outline-danger btnObservaciones" > <i class="zmdi zmdi-alert-circle zmdi-hc-lg"></i> Obsevaciones</button>
+                                                                        <button type="submit" class="btn btn-danger btnObservaciones" > <i class="zmdi zmdi-alert-circle zmdi-hc-lg"></i> Obsevaciones</button>
                                                                     </form>	
                                                                 </div>
                                                             @break
@@ -488,7 +488,7 @@
                                                         <div class="col-6 p-1">
                                                             <form method="post" action="{{ route('ver_cd_estadia_f05_admin.index',[$respuestaCL->nombre_c_l]) }}">
                                                                 @csrf
-                                                                <button type="submit" class="btn btn-outline-primary btnVer" > <i class="zmdi zmdi-eye zmdi-hc-lg"></i> Ver</button>
+                                                                <button type="submit" class="btn btnVer" > <i class="zmdi zmdi-eye zmdi-hc-lg"></i> Ver</button>
                                                             </form>	
                                                         </div>
                                                         
@@ -498,13 +498,13 @@
                                                                 <div class="col-6 p-1">
                                                                     <form method="post" action="{{ route('aceptar_estadia_f05_admin.index',[$respuestaCL->id_usuario,$respuestaCL->id_c_liberacion, $respuestaCL->nombre_c_l]) }}">
                                                                         @csrf
-                                                                        <button type="submit" class="btn btn-outline-success btnAceptar" > <i class="zmdi zmdi-check zmdi-hc-lg"></i> Aceptar</button>
+                                                                        <button type="submit" class="btn btn-success btnAceptar" > <i class="zmdi zmdi-check zmdi-hc-lg"></i> Aceptar</button>
                                                                     </form>	
                                                                 </div>
                                                                 <div class="col-12 p-1">
                                                                     <form method="post" action="{{ route('pendiente_estadia_f05_admin.index',[$respuestaCL->id_usuario,$respuestaCL->id_c_liberacion, $respuestaCL->nombre_c_l]) }}">
                                                                         @csrf
-                                                                        <button type="submit" class="btn btn-outline-warning btnPendiente" >Pendiente</button>
+                                                                        <button type="submit" class="btn btn-warning btnPendiente" >Pendiente</button>
                                                                     </form>	
                                                                 </div>
                                                                 <div class="col-12 p-1">
@@ -512,7 +512,7 @@
                                                                         @csrf
                                                                         <input type="text" name="id_c" id="id_c" value="{{$respuestaCL->id_c_liberacion}}" class="id_d">
                 
-                                                                        <button type="submit" class="btn btn-outline-danger btnObservaciones" > <i class="zmdi zmdi-alert-circle zmdi-hc-lg"></i> Ver Obsevaciones</button>
+                                                                        <button type="submit" class="btn btn-danger btnObservaciones" > <i class="zmdi zmdi-alert-circle zmdi-hc-lg"></i> Ver Obsevaciones</button>
                                                                     </form>	
                                                                 </div>
                                                                 
@@ -522,14 +522,14 @@
                                                                 <div class="col-6 p-1">
                                                                     <form method="post" action="{{ route('aceptar_estadia_f05_admin.index',[$respuestaCL->id_usuario,$respuestaCL->id_c_liberacion, $respuestaCL->nombre_c_l]) }}">
                                                                         @csrf
-                                                                        <button type="submit" class="btn btn-outline-success btnAceptar" > <i class="zmdi zmdi-check zmdi-hc-lg"></i> Aceptar</button>
+                                                                        <button type="submit" class="btn btn-success btnAceptar" > <i class="zmdi zmdi-check zmdi-hc-lg"></i> Aceptar</button>
                                                                     </form>	
                                                                 </div>
                                                                 <div class="col-12 p-1">
                                                                     <form method="post" action="{{ route('observaciones_estadia_f05_admin.index') }}">
                                                                         @csrf
                                                                         <input type="text" name="id_c" id="id_c" value="{{$respuestaCL->id_c_liberacion}}" class="id_d">
-                                                                        <button type="submit" class="btn btn-outline-danger btnObservaciones" > <i class="zmdi zmdi-alert-circle zmdi-hc-lg"></i> Obsevaciones</button>
+                                                                        <button type="submit" class="btn btn-danger btnObservaciones" > <i class="zmdi zmdi-alert-circle zmdi-hc-lg"></i> Obsevaciones</button>
                                                                     </form>	
                                                                 </div>
                                                             @break
@@ -539,14 +539,14 @@
                                                                 <div class="col-6 p-1">
                                                                     <form method="post" action="{{ route('pendiente_estadia_f05_admin.index',[$respuestaCL->id_usuario,$respuestaCL->id_c_liberacion, $respuestaCL->nombre_c_l]) }}">
                                                                         @csrf
-                                                                        <button type="submit" class="btn btn-outline-warning btnAceptar" >Pendiente</button>
+                                                                        <button type="submit" class="btn btn-warning btnAceptar" >Pendiente</button>
                                                                     </form>	
                                                                 </div>
                                                                 <div class="col-12 p-1">
                                                                     <form method="post" action="{{ route('observaciones_estadia_f05_admin.index') }}">
                                                                         @csrf
                                                                         <input type="text" name="id_c" id="id_c" value="{{$respuestaCL->id_c_liberacion}}" class="id_d">
-                                                                        <button type="submit" class="btn btn-outline-danger btnObservaciones" > <i class="zmdi zmdi-alert-circle zmdi-hc-lg"></i> Obsevaciones</button>
+                                                                        <button type="submit" class="btn btn-danger btnObservaciones" > <i class="zmdi zmdi-alert-circle zmdi-hc-lg"></i> Obsevaciones</button>
                                                                     </form>	
                                                                 </div>
                                                             @break
