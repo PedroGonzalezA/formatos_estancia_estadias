@@ -153,7 +153,7 @@ Route::get('/logout', [LoginController::class, 'destroy'])
         ->name('pendiente_estancia_f02_admin.index');
 
         //observaciones  f02
-        Route::match(['post','get','put'],'/observaciones_estancia_f02/admin', [documentosEstanciaAdminController::class, 'observaciones_estancia_f02_admin'])
+        Route::match(['post','get','put'],'/observaciones_estancia_f02_admin', [documentosEstanciaAdminController::class, 'observaciones_estancia_f02_admin'])
         ->name('observaciones_estancia_f02_admin.index')
         ->middleware('auth.admin');
 
@@ -182,7 +182,7 @@ Route::get('/logout', [LoginController::class, 'destroy'])
         ->name('pendiente_estancia_f03_admin.index');
 
         //observaciones  f03
-        Route::match(['post','get','put'],'/observaciones_estancia_f03/admin', [documentosEstanciaAdminController::class, 'observaciones_estancia_f03_admin'])
+        Route::match(['post','get','put'],'/observaciones_estancia_f03_admin', [documentosEstanciaAdminController::class, 'observaciones_estancia_f03_admin'])
         ->name('observaciones_estancia_f03_admin.index')
         ->middleware('auth.admin');
 
@@ -210,7 +210,7 @@ Route::get('/logout', [LoginController::class, 'destroy'])
         ->name('pendiente_estancia_f04_admin.index');
 
         //observaciones  f04
-        Route::match(['post','get','put'],'/observaciones_estancia_f04/admin', [documentosEstanciaAdminController::class, 'observaciones_estancia_f04_admin'])
+        Route::match(['post','get','put'],'/observaciones_estancia_f04_admin', [documentosEstanciaAdminController::class, 'observaciones_estancia_f04_admin'])
         ->name('observaciones_estancia_f04_admin.index')
         ->middleware('auth.admin');
 
@@ -238,7 +238,7 @@ Route::get('/logout', [LoginController::class, 'destroy'])
         ->name('pendiente_estancia_f05_admin.index');
 
         //observaciones  f05
-        Route::match(['post','get','put'],'/observaciones_estancia_f05/admin', [documentosEstanciaAdminController::class, 'observaciones_estancia_f05_admin'])
+        Route::match(['post','get','put'],'/observaciones_estancia_f05_admin', [documentosEstanciaAdminController::class, 'observaciones_estancia_f05_admin'])
         ->name('observaciones_estancia_f05_admin.index')
         ->middleware('auth.admin');
 
@@ -279,7 +279,7 @@ Route::get('/logout', [LoginController::class, 'destroy'])
         ->name('pendiente_estadia_f02_admin.index');
 
         //observaciones  f02
-        Route::match(['post','get','put'],'/observaciones_estadia_f02/admin', [documentosEstadiaAdminController::class, 'observaciones_estadia_f02_admin'])
+        Route::match(['post','get','put'],'/observaciones_estadia_f02_admin', [documentosEstadiaAdminController::class, 'observaciones_estadia_f02_admin'])
         ->name('observaciones_estadia_f02_admin.index')
         ->middleware('auth.admin');
 
@@ -308,7 +308,7 @@ Route::get('/logout', [LoginController::class, 'destroy'])
         ->name('pendiente_estadia_f03_admin.index');
 
         //observaciones  f03
-        Route::match(['post','get','put'],'/observaciones_estadia_f03/admin', [documentosEstadiaAdminController::class, 'observaciones_estadia_f03_admin'])
+        Route::match(['post','get','put'],'/observaciones_estadia_f03_admin', [documentosEstadiaAdminController::class, 'observaciones_estadia_f03_admin'])
         ->name('observaciones_estadia_f03_admin.index')
         ->middleware('auth.admin');
 
@@ -336,7 +336,7 @@ Route::get('/logout', [LoginController::class, 'destroy'])
         ->name('pendiente_estadia_f04_admin.index');
 
         //observaciones  f04
-        Route::match(['post','get','put'],'/observaciones_estadia_f04/admin', [documentosEstadiaAdminController::class, 'observaciones_estadia_f04_admin'])
+        Route::match(['post','get','put'],'/observaciones_estadia_f04_admin', [documentosEstadiaAdminController::class, 'observaciones_estadia_f04_admin'])
         ->name('observaciones_estadia_f04_admin.index')
         ->middleware('auth.admin');
 
@@ -364,7 +364,7 @@ Route::get('/logout', [LoginController::class, 'destroy'])
         ->name('pendiente_estadia_f05_admin.index');
 
         //observaciones  f05
-        Route::match(['post','get','put'],'/observaciones_estadia_f05/admin', [documentosEstadiaAdminController::class, 'observaciones_estadia_f05_admin'])
+        Route::match(['post','get','put'],'/observaciones_estadia_f05_admin', [documentosEstadiaAdminController::class, 'observaciones_estadia_f05_admin'])
         ->name('observaciones_estadia_f05_admin.index')
         ->middleware('auth.admin');
 
