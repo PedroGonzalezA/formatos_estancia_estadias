@@ -4,7 +4,6 @@
     <title>Carta Presentacion</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     </head>
     <body>
         <!-- Define header and footer blocks before your content -->
@@ -13,7 +12,6 @@
         </header>
 
         <footer>
-            Copyright &copy; <?php echo date("d/m/y");?> 
         </footer>
 
         <!-- Wrap the content of your PDF inside a main tag -->
@@ -247,5 +245,53 @@
                 text-align: justify;
                 font-size: 13px;
 
+            }
+            .p-0{
+                padding: 0;
+            }
+            .p-1{
+                padding: .25rem!important;
+            }
+            .p-2{
+                padding: .5rem!important;
+            }
+            .m-0{
+                margin: 0;
+            }
+            .text-center{
+                text-align:center;
+            }
+            .text-left{
+               text-align: left;
+            }
+            .text-right{
+                text-align: right;
+            }
+            .table{
+                width: 100%;
+                max-width: 100%;
+                margin-bottom: 1rem;
+                background-color: transparent;
+            }
+            .table{
+                width: 100%;
+                max-width: 100%;
+                margin-bottom: 1rem;
+                background-color: transparent;
+                caption-side: bottom;
+                border-collapse: collapse;
+                --bs-table-bg: transparent;
+                --bs-table-accent-bg: transparent;
+                --bs-table-striped-color: #212529;
+                --bs-table-striped-bg: rgba(0, 0, 0, 0.05);
+                --bs-table-active-color: #212529;
+                --bs-table-active-bg: rgba(0, 0, 0, 0.1);
+                --bs-table-hover-color: #212529;
+                --bs-table-hover-bg: rgba(0, 0, 0, 0.075);
+                width: 100%;
+                margin-bottom: 1rem;
+                color: #212529;
+                vertical-align: top;
+                border-color: #dee2e6;
             }
 </style>

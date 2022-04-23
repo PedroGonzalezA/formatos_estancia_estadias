@@ -728,6 +728,29 @@
 										
 						</div>
 					</li>
+					<!--Formato reporte de evaluacion-->
+					<li class="list-group-item d-flex justify-content-between align-items-start" style="border: 1px solid rgb(210, 210, 210);">
+						<div class="row lista">
+							<div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2">
+								<div class="ms-2 me-auto">
+									Reporte de evaluacion de estancia
+								</div>
+							</div>
+						
+								
+							<div class="col-6 col-sm-12 col-md-3 col-lg-2 col-xl-2 p-1 colDescargar text-left">
+								<a href="{{ route('descarga_reporte_evaluacion_estancia.index') }}">
+									<button type="button" class="btn btn-outline-info btnDescargar"><i class="zmdi zmdi-download"> Descargar</i></button>
+								</a>
+							</div>
+							<div class="col-6 col-sm-6 col-md-5 col-lg-3 col-xl-1 p-1 colLlenar  ">
+												
+							</div>
+							<div class="col-12 col-sm-12 col-md-12 col-lg-7 p-1 colArchivo">
+												
+							</div>	
+						</div>
+					</li>
 				</ol>
 				
 		</div>

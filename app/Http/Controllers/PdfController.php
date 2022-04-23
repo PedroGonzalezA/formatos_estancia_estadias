@@ -64,8 +64,7 @@ class PdfController extends Controller
       $pdf->getDomPDF()->setHttpContext($contxt);
 
       $spanish = array('es_utf8', 'es', 'es-ES', 'Spanish_Modern_Sort', 'es_utf8', 'es_ES@euro', 'esp_esp', 'esp_spain', 'spanish_esp', 'spanish_spain', 'es_ES.utf8', 'es-es','es_MX.utf8');
-
-      $pdf -> loadView('usuario.f01_cd_estancia', ['usuario' => $alumno,'vinculacion' => $vinculacion,'fecha'=>$spanish]);
+      $pdf -> loadView('usuario.f01_cd_estancia', ['usuario' => $alumno,'vinculacion' => $vinculacion,'fecha'=>$spanish,]);
 
       return $pdf->download('F-01_Carta_Presentacion_Estancia.pdf');
    }
@@ -101,7 +100,8 @@ class PdfController extends Controller
       $pdf->getDomPDF()->setHttpContext($contxt);
       $spanish = array('es_utf8', 'es', 'es-ES', 'Spanish_Modern_Sort', 'es_utf8', 'es_ES@euro', 'esp_esp', 'esp_spain', 'spanish_esp', 'spanish_spain', 'es_ES.utf8', 'es-es','es_MX.utf8');
 
-      $pdf -> loadView('usuario.f01_cd_estadia', ['usuario' => $alumno,'vinculacion' => $vinculacion,'fecha'=>$spanish]);
+
+      $pdf -> loadView('usuario.f01_cd_estadia', ['usuario' => $alumno,'vinculacion' => $vinculacion,'fecha'=>$spanish,]);
       return $pdf->download('F-01_Carta_Presentacion_Estadia.pdf');
     }
 

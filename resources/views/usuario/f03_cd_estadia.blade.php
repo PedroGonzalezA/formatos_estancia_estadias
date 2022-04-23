@@ -4,8 +4,7 @@
     <title>Carta Presentacion</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    </head>
+</head>
     <body>
         <!-- Define header and footer blocks before your content -->
         <header>
@@ -34,20 +33,20 @@
                 @forelse ($usuario as $dato)
                         <table class="table table-borderless p-0 m-0">
                             <tr class="p-0 m-0">
-                                <th class="p-1"><div><div class="datos "><small>{{$dato->ape_paterno}}</small></div><div class="subT text-center"><small>Apellido Paterno</small></div></div></th>
-                                <th class="p-1"><div><div class="datos "><small>{{$dato->ape_materno}}</small></div><div class="subT text-center"><small>Apellido Materno</small></div></div></th>
-                                <th class="p-1"><div><div class="datos "><small>{{$dato->nombres}}</small></div><div class="subT text-center"><small>Nombre(s)</small></div></div></th>
-                                <th class="p-1"><div><div class="datos "><small>{{$dato->tel}}</small></div><div class="subT text-center"><small>Teléfono</small></div></div></th>
+                                <td colspan="1" class="p-1"><div><div class="datos "><small>{{$dato->ape_paterno}}</small></div><div class="subT text-center"><small>Apellido Paterno</small></div></div></th>
+                                <td colspan="1" class="p-1"><div><div class="datos "><small>{{$dato->ape_materno}}</small></div><div class="subT text-center"><small>Apellido Materno</small></div></div></th>
+                                <td colspan="2" class="p-1"><div><div class="datos "><small>{{$dato->nombres}}</small></div><div class="subT text-center"><small>Nombre(s)</small></div></div></th>
+                                <td colspan="2" class="p-1"><div><div class="datos "><small>{{$dato->tel}}</small></div><div class="subT text-center"><small>Teléfono</small></div></div></th>
                             </tr>
                             <tr class="p-0 m-0">
-                                <th class="p-1"><div><div class="datos "><small>{{$dato->matricula}}</small></div><div class="subT text-center"><small>Matricula</small></div></div></th>
-                                <th class="p-1"><div><div class="datos "><small>{{$dato->nombre_carrera}}</small></div><div class="subT text-center"><small>Carrera</small></div></div></th>
-                                <th class="p-1"><div><div class="datos "><small>{{$dato->email_per}}</small></div><div class="subT text-center"><small>E-mail(PERSONAL)</small></div></div></th>
-                                <th class="p-1"><div><div class="datos "><small>{{$dato->email}}</small></div><div class="subT text-center"><small>E-mail(UPQROO)</small></div></div></th>
+                                <th colspan="1" class="p-1"><div><div class="datos "><small>{{$dato->matricula}}</small></div><div class="subT text-center"><small>Matricula</small></div></div></th>
+                                <th colspan="1" class="p-1"><div><div class="datos "><small>{{$dato->nombre_carrera}}</small></div><div class="subT text-center"><small>Carrera</small></div></div></th>
+                                <th colspan="2" class="p-1"><div><div class="datos "><small>{{$dato->email_per}}</small></div><div class="subT text-center"><small>E-mail(PERSONAL)</small></div></div></th>
+                                <th colspan="2" class="p-1"><div><div class="datos "><small>{{$dato->email}}</small></div><div class="subT text-center"><small>E-mail(UPQROO)</small></div></div></th>
                             </tr>
                             <tr class="p-0 m-0">
-                                <th class="p-1"><div><div class="datos "><small>{{$dato->no_ss}}</small></div><div class="subT text-center"><small>No.SS</small></div></div></th>
-                                <td colspan="3" class="p-1" ><div><div class="datos"><small>{{$dato->direccion}}</small></div><div class="subT text-center"><small>Dirección</small></div></div></td>
+                                <td colspan="2" class="p-1"><div><div class="datos "><small>{{$dato->no_ss}}</small></div><div class="subT text-center"><small>No.SS</small></div></div></th>
+                                <td colspan="4" class="p-1" ><div><div class="datos"><small>{{$dato->direccion}}</small></div><div class="subT text-center"><small>Dirección</small></div></div></td>
                             </tr>
                         </table>
                         <div class="panel">
@@ -225,7 +224,7 @@
             @page {
             }
             body { 
-                margin-top: 1.5cm; 
+                margin-top: 1cm; 
                 margin-left: 0px; 
                 margin-right: 0px; 
                 margin-bottom: .5cm;  
@@ -270,6 +269,34 @@
             }
             .subT{
                 font-size: 13px;
+            }
+            .p-0{
+                padding: 0;
+            }
+            .p-1{
+                padding: .25rem!important;
+            }
+            .p-2{
+                padding: .5rem!important;
+            }
+            .m-0{
+                margin: 0;
+            }
+            .text-center{
+                text-align:center;
+            }
+            .text-left{
+               text-align: left;
+            }
+            .text-right{
+                text-align: right;
+            }
+            .table{
+                width: 100%;
+                max-width: 100%;
+                margin-bottom: 1rem;
+                background-color: transparent;
+                
             }
             
 </style>

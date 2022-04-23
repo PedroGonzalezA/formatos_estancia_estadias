@@ -4,7 +4,6 @@
     <title>Carta Presentacion</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
         <style>
             /** Define the margins of your page **/
             @page {
@@ -70,11 +69,11 @@
     <body>
         <!-- Define header and footer blocks before your content -->
         <header>
-            <img class="p-4" src="https://blogger.googleusercontent.com/img/a/AVvXsEjBGlMA5tjLyM8uamrykBAvv8ilziCwcI1fK3W-p3E32as4QYP246rpCxDnidFs53col0XJyJAFPjYiQ7seh7u4dynuotKzNWtKw36LMjmqd4XMjyrQo7c4_C0deo1p8re04rHIt1qxhl7w0eqG7K3SX3OWB9NhPStrkZqujcGPLZ3F2v2iUKj12xMo=s704" height="60" alt="upqroo logo">
+            <img style="padding:16px;" src="{{ public_path("firma/arriba.png" )}}" alt="Arriba" width='100%' />
         </header>
 
         <footer>
-            <img   class="p-4" src="https://blogger.googleusercontent.com/img/a/AVvXsEiQTApy1NifBFGu1O6jgfoWvtgufFqJ136h-FrtRbWKHKY3cbmi3tE8njcgse7MwaErdFbRikbQzVyaF2io8OUcYhUPu43CekTi5fdhyo4AKjzzb7WObhkJtf9m6u5YOdnSCGdnKknlnaNHxu9Blw7M8MK2bh5wTNuzUzNm6lCYmiEio6rWgt9kRy_e=s1783" height="50" alt="upqroo logo">
+            <img style="padding:4px;" src="{{ public_path("firma/abajo.png" )}}" alt="Footer" width='100%' />
         </footer>
 
         <!-- Wrap the content of your PDF inside a main tag -->
@@ -138,6 +137,7 @@
                     <br>{{$datoV->cargo_u}}
                     <br><small>c.c.p. Archivo/ Minutario </small>
                 </p>
+                
             @empty
                     Sin datos comuniquese con el encargado
             @endforelse

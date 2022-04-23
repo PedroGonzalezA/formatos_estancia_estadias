@@ -9,6 +9,7 @@ use App\Http\Controllers\carta_aceptacionController;
 use App\Http\Controllers\datosController;
 use App\Http\Controllers\definicion_proyectoController;
 use App\Http\Controllers\definicionController;
+use App\Http\Controllers\DescargaController;
 use App\Http\Controllers\documentosEstadiaAdminController;
 use App\Http\Controllers\documentosEstanciaAdminController;
 use App\Http\Controllers\EstadiaController;
@@ -514,6 +515,11 @@ Route::get('/logout', [LoginController::class, 'destroy'])
     Route::match(['post', 'delete','put'], '/f05/{id_d}/{nombre}',[PdfController::class,'cancelarF05_Estancia'])
     ->name('cancelar_f05_Estancia.index');
 
+    //reporte evaluacion
+    //Descarga
+    Route::match(['post', 'delete','put','get'],'descarga/reporte_evaluaciona_estancia', [DescargaController::class, 'descarga_reporte_estancia'])
+    ->name('descarga_reporte_evaluacion_estancia.index');
+
 //formatos estadias
     Route::match(['post','get'],'/estadia', [EstadiaController::class, 'ver'])
     ->name('estadia.index')
@@ -619,8 +625,11 @@ Route::get('/logout', [LoginController::class, 'destroy'])
     //cancelar solicitud documento f05
     Route::match(['post', 'delete','put'], '/f05_estadia/{id_d}/{nombre}',[PdfController::class,'cancelarF05_estadia'])
     ->name('cancelar_f05_estadia.index');
-        
 
+//reporte evaluacion
+    //Descarga
+    Route::match(['post', 'delete','put','get'],'descarga/reporte_evaluacion', [DescargaController::class, 'descarga_reporte_estadia'])
+    ->name('descarga_reporte_evaluacion.index');
 //fallos
     Route::match(['post','get'],'/errores', [falloController::class, 'ver'])
     ->name('fallos.index')

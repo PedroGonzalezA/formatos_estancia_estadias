@@ -4,7 +4,6 @@
     <title>Carta Presentacion</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     </head>
     <body>
         <!-- Define header and footer blocks before your content -->
@@ -225,7 +224,7 @@
             @page {
             }
             body { 
-                margin-top: 2cm; 
+                margin-top: 1cm; 
                 margin-left: 0px; 
                 margin-right: 0px; 
                 margin-bottom: .5cm;  
@@ -271,5 +270,32 @@
             .subT{
                 font-size: 13px;
             }
-            
+            .p-0{
+                padding: 0;
+            }
+            .p-1{
+                padding: .25rem!important;
+            }
+            .p-2{
+                padding: .5rem!important;
+            }
+            .m-0{
+                margin: 0;
+            }
+            .text-center{
+                text-align:center;
+            }
+            .text-left{
+               text-align: left;
+            }
+            .text-right{
+                text-align: right;
+            }
+            .table{
+                width: 100%;
+                max-width: 100%;
+                margin-bottom: 1rem;
+                background-color: transparent;
+                
+            }
 </style>

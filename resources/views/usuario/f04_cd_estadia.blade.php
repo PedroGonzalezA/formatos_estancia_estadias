@@ -4,7 +4,6 @@
     <title>Carta Presentacion</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     </head>
     <body>
         <!-- Define header and footer blocks before your content -->
@@ -111,7 +110,7 @@
                                         @endforeach 
                                     </tbody>
                                 </table>
-                            <p style="">
+                                
                                 <table class="table table-borderless p-0 m-1">
                                     <thead class="table-secondary">
                                         <tr class=""> 
@@ -123,7 +122,7 @@
                                     </thead>
                                     <tbody>
                                         <tr class=""> 
-                                            <td class="p-0 px-1" style="width: 150px; border: 1px solid black; height:40px;"><div><div class="parrafo" ><small>{{$datodp->actividades}}</small></div></div></td>
+                                            <td class="p-0 px-1" style="width: 150px; border: 1px solid black; height:40px;"><div><div class="text-center parrafo" ><small>{{$datodp->actividades}}</small></div></div></td>
                                             <td class="p-0 px-1" style="width: 150px; border: 1px solid black; height:40px;"><div><div class=" text-center parrafo"> <small>{{$datodp->resultados}}</small></div></div></td>
                                             <td class="p-0 px-1" style="width: 150px; border: 1px solid black; height:40px;"><div><div class=" text-center parrafo"> <small>{{$datodp->evidencia}}</small></div></div></td>
                                             <td class="p-0 px-1" style="width: 150px; border: 1px solid black; height:40px;"><div><div class=" text-center parrafo"> <small>{{$datodp->instrumentos}}</small></div></div></td>
@@ -183,10 +182,10 @@
             @page {
             }
             body { 
-                margin-top: 10px; 
+                margin-top: 15px; 
                 margin-left: 0px; 
                 margin-right: 0px; 
-                margin-bottom: 10px;  
+                margin-bottom: 15px;  
             }
             header {
                 position: fixed;
@@ -247,4 +246,53 @@
                 text-align: justify;
                 font-size: 13px;
             }
+            .p-0{
+                padding: 0;
+            }
+            .p-1{
+                padding: .25rem!important;
+            }
+            .p-2{
+                padding: .5rem!important;
+            }
+            .m-0{
+                margin: 0;
+            }
+            .text-center{
+                text-align:center;
+            }
+            .text-left{
+               text-align: left;
+            }
+            .text-right{
+                text-align: right;
+            }
+            .table{
+                width: 100%;
+                max-width: 100%;
+                margin-bottom: 1rem;
+                background-color: transparent;
+            }
+            .table{
+                width: 100%;
+                max-width: 100%;
+                margin-bottom: 1rem;
+                background-color: transparent;
+                caption-side: bottom;
+                border-collapse: collapse;
+                --bs-table-bg: transparent;
+                --bs-table-accent-bg: transparent;
+                --bs-table-striped-color: #212529;
+                --bs-table-striped-bg: rgba(0, 0, 0, 0.05);
+                --bs-table-active-color: #212529;
+                --bs-table-active-bg: rgba(0, 0, 0, 0.1);
+                --bs-table-hover-color: #212529;
+                --bs-table-hover-bg: rgba(0, 0, 0, 0.075);
+                width: 100%;
+                margin-bottom: 1rem;
+                color: #212529;
+                vertical-align: top;
+                border-color: #dee2e6;
+            }
+            
 </style>

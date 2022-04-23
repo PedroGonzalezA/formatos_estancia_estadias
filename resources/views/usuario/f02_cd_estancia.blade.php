@@ -4,7 +4,6 @@
     <title>Carta Presentacion</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
         <style>
             /** Define the margins of your page **/
             @page {
@@ -82,6 +81,15 @@
             .nombreP{
                 text-align: center;
             }
+            .p-0{
+                padding: 0;
+            }
+            .p-2{
+                padding: 4px;
+            }
+            .m-0{
+                margin: 0;
+            }
         </style>
     </head>
     <body>
@@ -122,7 +130,7 @@
                     <br><b>{{$dato->cargo_u}}</b>
                     <br><b>UNIVERSIDAD POLITÉCNICA DE QUINTANA ROO</b> 
                @empty
-                   Sin datos comunicarse con el adminitrador
+                    Sin datos comuniquese con el encargado
                @endforelse
            </p>
            <div class="Parrafo">
