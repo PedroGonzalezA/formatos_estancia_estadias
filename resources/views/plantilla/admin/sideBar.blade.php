@@ -45,6 +45,12 @@
                     <li>
                         <a href="{{ route('documentoEstadiaAdmin.index') }}"></i> Documentos Estadías</a>
                     </li>
+                    <li>
+                        <a href="{{ route('documentoEstadiaNacionalAdmin.index') }}"></i> Documentos Estadías nacional</a>
+                    </li>
+                    <li>
+                        <a href="{{ route('documentoServicioSocialAdmin.index') }}"></i> Documentos Servicio social</a>
+                    </li>
                 </ul>
                 <li>
                     <a href="{{ route('datos.index') }}">

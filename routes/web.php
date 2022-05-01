@@ -11,7 +11,9 @@ use App\Http\Controllers\definicion_proyectoController;
 use App\Http\Controllers\definicionController;
 use App\Http\Controllers\DescargaController;
 use App\Http\Controllers\documentosEstadiaAdminController;
+use App\Http\Controllers\documentosEstadiaNacionalAdminController;
 use App\Http\Controllers\documentosEstanciaAdminController;
+use App\Http\Controllers\documentosServicioSocialAdminController;
 use App\Http\Controllers\Estadia_NacionalesController;
 use App\Http\Controllers\EstadiaController;
 use App\Http\Controllers\EstanciaController;
@@ -25,6 +27,7 @@ use App\Http\Controllers\UsuariosController;
 use App\Models\documentos;
 use App\Models\Formulario;
 use App\Models\universidad;
+use League\CommonMark\Block\Element\Document;
 
 /*  
 |--------------------------------------------------------------------------
@@ -618,6 +621,17 @@ Route::get('/logout', [LoginController::class, 'destroy'])
         //buscardor
         Route::get('/buscar_datos_estadia', [documentosEstadiaAdminController::class, 'buscador_c'])
         ->name('buscar_estadia.index');;
+//-----------estadia nacional
+    Route::match(['post','get'],'/estadia_nacional_Documentos', [documentosEstadiaNacionalAdminController::class, 'ver'])
+    ->name('documentoEstadiaNacionalAdmin.index')
+    ->middleware('auth.admin');
+
+//-----------servicio social
+    Route::match(['post','get'],'/servicio_social_Documentos', [documentosServicioSocialAdminController::class, 'ver'])
+    ->name('documentoServicioSocialAdmin.index')
+    ->middleware('auth.admin');
+
+
 //alumno
    
 
@@ -806,7 +820,10 @@ Route::get('/logout', [LoginController::class, 'destroy'])
     ->name('descarga_carta_responsiva.index');
 
 
-//formatos estadias
+
+
+
+//-------------------formatos estadias
     Route::match(['post','get'],'/estadia', [EstadiaController::class, 'ver'])
     ->name('estadia.index')
     ->middleware('auth');
@@ -966,17 +983,21 @@ Route::get('/logout', [LoginController::class, 'destroy'])
     Route::match(['post', 'delete','put','get'],'descarga/reporte_evaluacion', [DescargaController::class, 'descarga_reporte_estadia'])
     ->name('descarga_reporte_evaluacion.index');
 
-//estadia_nacionales
+
+
+//------------------estadia_nacionales
     Route::match(['post','get'],'/estadia_nacionales', [Estadia_NacionalesController::class, 'ver'])
     ->name('estadia_nacionales.index')
     ->middleware('auth');
 
-//servicio_sociales
+
+
+//------------------------servicio_sociales
     Route::match(['post','get'],'/servicio_sociales', [servicio_socialesController::class, 'ver'])
     ->name('servicio_sociales.index')
     ->middleware('auth');
 
-//fallos
+//------------fallos
     Route::match(['post','get'],'/errores', [falloController::class, 'ver'])
     ->name('fallos.index')
     ->middleware('auth');;
