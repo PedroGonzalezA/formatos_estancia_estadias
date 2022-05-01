@@ -44,6 +44,12 @@
                         <li>
 							<a href="{{ route('estadia.index') }}"></i> Estadías</a>
 						</li>
+						<li>
+							<a href="{{ route('estadia_nacionales.index') }}"></i> Estadías nacionales</a>
+						</li>
+						<li>
+							<a href="{{ route('servicio_sociales.index') }}"></i> Servicio social</a>
+						</li>
 					</ul>
 				</li>
 				<li>

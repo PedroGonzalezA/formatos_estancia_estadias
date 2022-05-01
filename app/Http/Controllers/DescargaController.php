@@ -24,4 +24,8 @@ class DescargaController extends Controller
         $path=public_path('archivos/Formato Evaluacion Estancias.pdf');
         return response()->download($path);
     }
+    function descarga_carta_responsiva(){
+        $path=public_path('archivos/Carta de exclusión y autorización.doc');
+        return response()->download($path);
+    }
 }

@@ -64,6 +64,12 @@
             .colu2{
                 width: 360px;
             }
+            .firma{
+                width: 300px;
+            }
+            .imgfirma{
+                width: 100%
+            }
         </style>
     </head>
     <body>
@@ -127,19 +133,29 @@
                 <br>
                 <br>
                 <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
             @forelse ($vinculacion as $datoV)
                 <p class="ParrafoFirma">
                     <b>ATENTAMENTE</b>
                     <br><small>“Conocimiento, Trabajo y Virtud”</small>
                     <br>
-                    <img src="{{ public_path("firma/".$datoV->firma )}}" alt="Firma" width='10%' />
+                    <div class="firma">
+                        <img src="{{ public_path("firma/".$datoV->firma )}}" class="imgfirma" alt="Firma" />
+                    </div>
                     <br><b>{{$datoV->nombre_u}}</b>
                     <br>{{$datoV->cargo_u}}
                     <br><small>c.c.p. Archivo/ Minutario </small>
                 </p>
                 
             @empty
-                    Sin datos comuniquese con el encargado
+                     Sin datos de vinculación, comuniquese con el encargado.
             @endforelse
             
                     

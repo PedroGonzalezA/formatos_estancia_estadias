@@ -130,6 +130,78 @@ $(document).ready(function(){
 			}
 		})
 	});
+	$('.btn-cancelar-carga-horaria-system').submit(function(e){
+		e.preventDefault();
+		Swal.fire({
+		title: 'Estas seguro de cancelar el documento Carga horaria',
+		text: "No podras revertir esta acción",
+		icon: 'warning',
+		showCancelButton: true,
+		confirmButtonColor: '#3085d6',
+		cancelButtonColor: '#dc3545',
+		
+		confirmButtonText: 'Si, Cancelar documento!',
+		cancelButtonText: '<i class="zmdi zmdi-close-circle"></i> No, Cancelar!'
+		}).then((result) => {
+			if (result.isConfirmed) {
+				this.submit();
+			}
+		})
+	});
+	$('.btn-cancelar-constancia-derecho-system').submit(function(e){
+		e.preventDefault();
+		Swal.fire({
+		title: 'Estas seguro de cancelar el documento Constancia derecho',
+		text: "No podras revertir esta acción",
+		icon: 'warning',
+		showCancelButton: true,
+		confirmButtonColor: '#3085d6',
+		cancelButtonColor: '#dc3545',
+		
+		confirmButtonText: 'Si, Cancelar documento!',
+		cancelButtonText: '<i class="zmdi zmdi-close-circle"></i> No, Cancelar!'
+		}).then((result) => {
+			if (result.isConfirmed) {
+				this.submit();
+			}
+		})
+	});
+	$('.btn-cancelar-carta-responsiva-system').submit(function(e){
+		e.preventDefault();
+		Swal.fire({
+		title: 'Estas seguro de cancelar el documento Carta responsiva',
+		text: "No podras revertir esta acción",
+		icon: 'warning',
+		showCancelButton: true,
+		confirmButtonColor: '#3085d6',
+		cancelButtonColor: '#dc3545',
+		
+		confirmButtonText: 'Si, Cancelar documento!',
+		cancelButtonText: '<i class="zmdi zmdi-close-circle"></i> No, Cancelar!'
+		}).then((result) => {
+			if (result.isConfirmed) {
+				this.submit();
+			}
+		})
+	});
+	$('.btn-cancelarF1-system').submit(function(e){
+		e.preventDefault();
+		Swal.fire({
+		title: 'Estas seguro de cancelar el documento F-01 Carta de Presentación',
+		text: "No podras revertir esta acción",
+		icon: 'warning',
+		showCancelButton: true,
+		confirmButtonColor: '#3085d6',
+		cancelButtonColor: '#dc3545',
+		
+		confirmButtonText: 'Si, Cancelar documento!',
+		cancelButtonText: '<i class="zmdi zmdi-close-circle"></i> No, Cancelar!'
+		}).then((result) => {
+			if (result.isConfirmed) {
+				this.submit();
+			}
+		})
+	});
 	$('.btn-cancelarF2-system').submit(function(e){
 		e.preventDefault();
 		Swal.fire({

@@ -166,7 +166,7 @@
 								@if ($respuestaU->deleted_at)
 									<form action="{{route('restaurarUsuario.index',$respuestaU->id)}}"  class="btn-restaurar-system" method="POST">
 										@csrf 
-										<button type="submit" class="btn btn-outline-success btnEliminarUser ">Restaurar</button>
+										<button type="submit" class="btn btn-success btnEliminarUser ">Restaurar</button>
 									</form>
 									
 								@else

@@ -31,7 +31,7 @@
 		<!-- Content page -->
 		<div class="container p-3">
 			<div class="page-header">
-			  <h2 class="text-titles">Observaciones <small>(f-03_cedula de Registro Estancia)</small></h2>
+			  <h2 class="text-titles">Observaciones <small>(f-03_Cédula de Registro Estancia)</small></h2>
 			</div>
 		</div>
 		<div class="observaciones">

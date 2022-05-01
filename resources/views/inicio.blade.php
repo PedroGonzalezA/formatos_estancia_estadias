@@ -46,6 +46,16 @@
 						<button type="button" class="btn btn-outline-dark btnFormato" ><i class="zmdi zmdi-file zmdi-hc-lg"></i> Formatos estadías</button>
 					</a>
                 </li>
+				<li class="list-group-item">
+                    <a href="{{ route('estadia_nacionales.index') }}">
+						<button type="button" class="btn btn-outline-dark btnFormato" ><i class="zmdi zmdi-file zmdi-hc-lg"></i> Formatos estadías nacionales</button>
+					</a>
+                </li>
+				<li class="list-group-item">
+                    <a href="{{ route('servicio_sociales.index') }}">
+						<button type="button" class="btn btn-outline-dark btnFormato" ><i class="zmdi zmdi-file zmdi-hc-lg"></i> Formatos servicio social (Terapia fisíca)</button>
+					</a>
+                </li>
             </ul>
 		</div>
 	</section>

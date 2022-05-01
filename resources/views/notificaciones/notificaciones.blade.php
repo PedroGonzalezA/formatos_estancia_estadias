@@ -60,6 +60,13 @@
     <strong> {{$message}} </strong>
 </div>
 @endif
+
+@if ($message = Session::get('errorPDF'))
+<div class="alert alert-danger alert-block">
+    <button type="button" class="close" data-dismiss="alert">×</button>
+    <strong> {{$message}} </strong>
+</div>
+@endif
 @if ($message = Session::get('usuarioR'))
 	<script>
 		Swal.fire(
@@ -117,7 +124,42 @@
 		)
 	</script>
 @endif
-
+@if ($message = Session::get('cancelar_carga_horaria'))
+	<script>
+		Swal.fire(
+			'Cancelada!',
+			'Carga horaria Cancelada',
+			'success'
+		)
+	</script>
+@endif
+@if ($message = Session::get('cancelar_constancia_derecho'))
+	<script>
+		Swal.fire(
+			'Cancelada!',
+			'Constancia de derecho IMSS Cancelada',
+			'success'
+		)
+	</script>
+@endif
+@if ($message = Session::get('cancelar_carta_responsiva'))
+	<script>
+		Swal.fire(
+			'Cancelada!',
+			'Carta responsiva Cancelada',
+			'success'
+		)
+	</script>
+@endif
+@if ($message = Session::get('cancelarf01'))
+	<script>
+		Swal.fire(
+			'Cancelado!',
+			'F01 Cancelado',
+			'success'
+		)
+	</script>
+@endif
 @if ($message = Session::get('cancelarf02'))
 	<script>
 		Swal.fire(

@@ -115,195 +115,178 @@
                                     </td>
                                 </tr>
                             </table>
-                                <!--Errores-->
-                                @error('grupo')
-                                <p class="border border-danger rounded-md bg-red-200 w-full text-red-600 p-2 my-2">{{ $message }}</p>
-                                @enderror
-                                @error('puesto')
-                                <p class="border border-danger rounded-md bg-red-200 w-full text-red-600 p-2 my-2">{{ $message }}</p>
-                                @enderror
-                                @error('objetivosP')
-                                <p class="border border-danger rounded-md bg-red-200 w-full text-red-600 p-2 my-2">{{ $message }}</p>
-                                @enderror
-                                @error('etapas_proyecto_1')
-                                <p class="border border-danger rounded-md bg-red-200 w-full text-red-600 p-2 my-2">{{ $message }}</p>
-                                @enderror
-                                @error('fecha_inicio_1')
-                                <p class="border border-danger rounded-md bg-red-200 w-full text-red-600 p-2 my-2">{{ $message }}</p>
-                                @enderror
-                                @error('fecha_final_1')
-                                <p class="border border-danger rounded-md bg-red-200 w-full text-red-600 p-2 my-2">{{ $message }}</p>
-                                @enderror
-                                @error('tiempo_1')
-                                <p class="border border-danger rounded-md bg-red-200 w-full text-red-600 p-2 my-2">{{ $message }}</p>
-                                @enderror
-                                @error('descripcion_competencias_1')
-                                <p class="border border-danger rounded-md bg-red-200 w-full text-red-600 p-2 my-2">{{ $message }}</p>
-                                @enderror
-
-                                @error('etapas_proyecto_2')
-                                <p class="border border-danger rounded-md bg-red-200 w-full text-red-600 p-2 my-2">{{ $message }}</p>
-                                @enderror
-                                @error('fecha_inicio_2')
-                                <p class="border border-danger rounded-md bg-red-200 w-full text-red-600 p-2 my-2">{{ $message }}</p>
-                                @enderror
-                                @error('fecha_final_2')
-                                <p class="border border-danger rounded-md bg-red-200 w-full text-red-600 p-2 my-2">{{ $message }}</p>
-                                @enderror
-                                @error('tiempo_2')
-                                <p class="border border-danger rounded-md bg-red-200 w-full text-red-600 p-2 my-2">{{ $message }}</p>
-                                @enderror
-                                @error('descripcion_competencias_2')
-                                <p class="border border-danger rounded-md bg-red-200 w-full text-red-600 p-2 my-2">{{ $message }}</p>
-                                @enderror
+                                   <!--Errores-->
+                                   @error('grupo')
+                                   <p class="border border-danger rounded-md bg-red-200 w-full text-red-600 p-2 my-2">{{ $message }}</p>
+                                   @enderror
+                                   @error('puesto')
+                                   <p class="border border-danger rounded-md bg-red-200 w-full text-red-600 p-2 my-2">{{ $message }}</p>
+                                   @enderror
+                                   @error('objetivosP')
+                                   <p class="border border-danger rounded-md bg-red-200 w-full text-red-600 p-2 my-2">{{ $message }}</p>
+                                   @enderror 
+                                   @error('descripcion_competencias_1')
+                                   <p class="border border-danger rounded-md bg-red-200 w-full text-red-600 p-2 my-2">{{ $message }}</p>
+                                   @enderror
+                                   @error('etapas_proyecto_1')
+                                   <p class="border border-danger rounded-md bg-red-200 w-full text-red-600 p-2 my-2">{{ $message }}</p>
+                                   @enderror
+                                   @error('fecha_inicio_1')
+                                   <p class="border border-danger rounded-md bg-red-200 w-full text-red-600 p-2 my-2">{{ $message }}</p>
+                                   @enderror
+                                   @error('fecha_final_1')
+                                   <p class="border border-danger rounded-md bg-red-200 w-full text-red-600 p-2 my-2">{{ $message }}</p>
+                                   @enderror
+                                   @error('tiempo_1')
+                                   <p class="border border-danger rounded-md bg-red-200 w-full text-red-600 p-2 my-2">{{ $message }}</p>
+                                   @enderror
+                                   @error('descripcion_competencias_2')
+                                   <p class="border border-danger rounded-md bg-red-200 w-full text-red-600 p-2 my-2">{{ $message }}</p>
+                                   @enderror
+                                   @error('etapas_proyecto_2')
+                                   <p class="border border-danger rounded-md bg-red-200 w-full text-red-600 p-2 my-2">{{ $message }}</p>
+                                   @enderror
+                                   @error('fecha_inicio_2')
+                                   <p class="border border-danger rounded-md bg-red-200 w-full text-red-600 p-2 my-2">{{ $message }}</p>
+                                   @enderror
+                                   @error('fecha_final_2')
+                                   <p class="border border-danger rounded-md bg-red-200 w-full text-red-600 p-2 my-2">{{ $message }}</p>
+                                   @enderror
+                                   @error('tiempo_2')
+                                   <p class="border border-danger rounded-md bg-red-200 w-full text-red-600 p-2 my-2">{{ $message }}</p>
+                                   @enderror
+                                   @error('descripcion_competencias_3')
+                                   <p class="border border-danger rounded-md bg-red-200 w-full text-red-600 p-2 my-2">{{ $message }}</p>
+                                   @enderror
+                                   @error('etapas_proyecto_3')
+                                   <p class="border border-danger rounded-md bg-red-200 w-full text-red-600 p-2 my-2">{{ $message }}</p>
+                                   @enderror
+                                   @error('fecha_inicio_3')
+                                   <p class="border border-danger rounded-md bg-red-200 w-full text-red-600 p-2 my-2">{{ $message }}</p>
+                                   @enderror
+                                   @error('fecha_final_3')
+                                   <p class="border border-danger rounded-md bg-red-200 w-full text-red-600 p-2 my-2">{{ $message }}</p>
+                                   @enderror
+                                   @error('tiempo_3')
+                                   <p class="border border-danger rounded-md bg-red-200 w-full text-red-600 p-2 my-2">{{ $message }}</p>
+                                   @enderror
+                                   
+                                   @error('descripcion_competencias_4')
+                                   <p class="border border-danger rounded-md bg-red-200 w-full text-red-600 p-2 my-2">{{ $message }}</p>
+                                   @enderror
+                                   @error('etapas_proyecto_4')
+                                   <p class="border border-danger rounded-md bg-red-200 w-full text-red-600 p-2 my-2">{{ $message }}</p>
+                                   @enderror
+                             
+   
+                                   @error('descripcion_competencias_5')
+                                   <p class="border border-danger rounded-md bg-red-200 w-full text-red-600 p-2 my-2">{{ $message }}</p>
+                                   @enderror
+                                   @error('etapas_proyecto_5')
+                                   <p class="border border-danger rounded-md bg-red-200 w-full text-red-600 p-2 my-2">{{ $message }}</p>
+                                   @enderror
+                                 
+   
+                                   @error('descripcion_competencias_6')
+                                   <p class="border border-danger rounded-md bg-red-200 w-full text-red-600 p-2 my-2">{{ $message }}</p>
+                                   @enderror
+                                   @error('etapas_proyecto_6')
+                                   <p class="border border-danger rounded-md bg-red-200 w-full text-red-600 p-2 my-2">{{ $message }}</p>
+                                   @enderror
                                 
-                                @error('etapas_proyecto_3')
-                                <p class="border border-danger rounded-md bg-red-200 w-full text-red-600 p-2 my-2">{{ $message }}</p>
-                                @enderror
-                                @error('fecha_inicio_3')
-                                <p class="border border-danger rounded-md bg-red-200 w-full text-red-600 p-2 my-2">{{ $message }}</p>
-                                @enderror
-                                @error('fecha_final_3')
-                                <p class="border border-danger rounded-md bg-red-200 w-full text-red-600 p-2 my-2">{{ $message }}</p>
-                                @enderror
-                                @error('tiempo_3')
-                                <p class="border border-danger rounded-md bg-red-200 w-full text-red-600 p-2 my-2">{{ $message }}</p>
-                                @enderror
-                                @error('descripcion_competencias_3')
-                                <p class="border border-danger rounded-md bg-red-200 w-full text-red-600 p-2 my-2">{{ $message }}</p>
-                                @enderror
-
-                                @error('descripcion_competencias_4')
-                                <p class="border border-danger rounded-md bg-red-200 w-full text-red-600 p-2 my-2">{{ $message }}</p>
-                                @enderror
-                                @error('etapas_proyecto_4')
-                                <p class="border border-danger rounded-md bg-red-200 w-full text-red-600 p-2 my-2">{{ $message }}</p>
-                                @enderror
-                                @error('tiempo_4')
-                                <p class="border border-danger rounded-md bg-red-200 w-full text-red-600 p-2 my-2">{{ $message }}</p>
-                                @enderror
-                                @error('descripcion_competencias_5')
-                                <p class="border border-danger rounded-md bg-red-200 w-full text-red-600 p-2 my-2">{{ $message }}</p>
-                                @enderror
-                                @error('etapas_proyecto_5')
-                                <p class="border border-danger rounded-md bg-red-200 w-full text-red-600 p-2 my-2">{{ $message }}</p>
-                                @enderror
-                                @error('tiempo_5')
-                                <p class="border border-danger rounded-md bg-red-200 w-full text-red-600 p-2 my-2">{{ $message }}</p>
-                                @enderror
-                                @error('descripcion_competencias_6')
-                                <p class="border border-danger rounded-md bg-red-200 w-full text-red-600 p-2 my-2">{{ $message }}</p>
-                                @enderror
-                                @error('etapas_proyecto_6')
-                                <p class="border border-danger rounded-md bg-red-200 w-full text-red-600 p-2 my-2">{{ $message }}</p>
-                                @enderror
-                                @error('tiempo_6')
-                                <p class="border border-danger rounded-md bg-red-200 w-full text-red-600 p-2 my-2">{{ $message }}</p>
-                                @enderror
-                                @error('descripcion_competencias_7')
-                                <p class="border border-danger rounded-md bg-red-200 w-full text-red-600 p-2 my-2">{{ $message }}</p>
-                                @enderror
-                                @error('etapas_proyecto_7')
-                                <p class="border border-danger rounded-md bg-red-200 w-full text-red-600 p-2 my-2">{{ $message }}</p>
-                                @enderror
-                                @error('tiempo_7')
-                                <p class="border border-danger rounded-md bg-red-200 w-full text-red-600 p-2 my-2">{{ $message }}</p>
-                                @enderror
-                                @error('descripcion_competencias_8')
-                                <p class="border border-danger rounded-md bg-red-200 w-full text-red-600 p-2 my-2">{{ $message }}</p>
-                                @enderror
-                                @error('etapas_proyecto_8')
-                                <p class="border border-danger rounded-md bg-red-200 w-full text-red-600 p-2 my-2">{{ $message }}</p>
-                                @enderror
-                                @error('tiempo_8')
-                                <p class="border border-danger rounded-md bg-red-200 w-full text-red-600 p-2 my-2">{{ $message }}</p>
-                                @enderror
-                                @error('descripcion_competencias_9')
-                                <p class="border border-danger rounded-md bg-red-200 w-full text-red-600 p-2 my-2">{{ $message }}</p>
-                                @enderror
-                                @error('etapas_proyecto_9')
-                                <p class="border border-danger rounded-md bg-red-200 w-full text-red-600 p-2 my-2">{{ $message }}</p>
-                                @enderror
-                                @error('tiempo_9')
-                                <p class="border border-danger rounded-md bg-red-200 w-full text-red-600 p-2 my-2">{{ $message }}</p>
-                                @enderror
-                                @error('descripcion_competencias_10')
-                                <p class="border border-danger rounded-md bg-red-200 w-full text-red-600 p-2 my-2">{{ $message }}</p>
-                                @enderror
-                                @error('etapas_proyecto_10')
-                                <p class="border border-danger rounded-md bg-red-200 w-full text-red-600 p-2 my-2">{{ $message }}</p>
-                                @enderror
-                                @error('tiempo_10')
-                                <p class="border border-danger rounded-md bg-red-200 w-full text-red-600 p-2 my-2">{{ $message }}</p>
-                                @enderror
-                                @error('descripcion_competencias_11')
-                                <p class="border border-danger rounded-md bg-red-200 w-full text-red-600 p-2 my-2">{{ $message }}</p>
-                                @enderror
-                                @error('etapas_proyecto_11')
-                                <p class="border border-danger rounded-md bg-red-200 w-full text-red-600 p-2 my-2">{{ $message }}</p>
-                                @enderror
-                                @error('tiempo_11')
-                                <p class="border border-danger rounded-md bg-red-200 w-full text-red-600 p-2 my-2">{{ $message }}</p>
-                                @enderror
-                                @error('descripcion_competencias_12')
-                                <p class="border border-danger rounded-md bg-red-200 w-full text-red-600 p-2 my-2">{{ $message }}</p>
-                                @enderror
-                                @error('etapas_proyecto_12')
-                                <p class="border border-danger rounded-md bg-red-200 w-full text-red-600 p-2 my-2">{{ $message }}</p>
-                                @enderror
-                                @error('tiempo_12')
-                                <p class="border border-danger rounded-md bg-red-200 w-full text-red-600 p-2 my-2">{{ $message }}</p>
-                                @enderror
-                                @error('descripcion_competencias_13')
-                                <p class="border border-danger rounded-md bg-red-200 w-full text-red-600 p-2 my-2">{{ $message }}</p>
-                                @enderror
-                                @error('etapas_proyecto_13')
-                                <p class="border border-danger rounded-md bg-red-200 w-full text-red-600 p-2 my-2">{{ $message }}</p>
-                                @enderror
-                                @error('tiempo_13')
-                                <p class="border border-danger rounded-md bg-red-200 w-full text-red-600 p-2 my-2">{{ $message }}</p>
-                                @enderror
-                                @error('descripcion_competencias_14')
-                                <p class="border border-danger rounded-md bg-red-200 w-full text-red-600 p-2 my-2">{{ $message }}</p>
-                                @enderror
-                                @error('etapas_proyecto_14')
-                                <p class="border border-danger rounded-md bg-red-200 w-full text-red-600 p-2 my-2">{{ $message }}</p>
-                                @enderror
-                                @error('tiempo_14')
-                                <p class="border border-danger rounded-md bg-red-200 w-full text-red-600 p-2 my-2">{{ $message }}</p>
-                                @enderror
-                                @error('descripcion_competencias_15')
-                                <p class="border border-danger rounded-md bg-red-200 w-full text-red-600 p-2 my-2">{{ $message }}</p>
-                                @enderror
-                                @error('etapas_proyecto_15')
-                                <p class="border border-danger rounded-md bg-red-200 w-full text-red-600 p-2 my-2">{{ $message }}</p>
-                                @enderror
-                                @error('tiempo_15')
-                                <p class="border border-danger rounded-md bg-red-200 w-full text-red-600 p-2 my-2">{{ $message }}</p>
-                                @enderror
-
-                                
-                                @error('actividades')
-                                <p class="border border-danger rounded-md bg-red-200 w-full text-red-600 p-2 my-2">{{ $message }}</p>
-                                @enderror
-                                @error('resultados')
-                                <p class="border border-danger rounded-md bg-red-200 w-full text-red-600 p-2 my-2">{{ $message }}</p>
-                                @enderror
-                                @error('evidencia')
-                                <p class="border border-danger rounded-md bg-red-200 w-full text-red-600 p-2 my-2">{{ $message }}</p>
-                                @enderror
-                                @error('instrumentos')
-                                <p class="border border-danger rounded-md bg-red-200 w-full text-red-600 p-2 my-2">{{ $message }}</p>
-                                @enderror
-                                @error('asignaturas')
-                                <p class="border border-danger rounded-md bg-red-200 w-full text-red-600 p-2 my-2">{{ $message }}</p>
-                                @enderror
-                                @error('topicos')
-                                <p class="border border-danger rounded-md bg-red-200 w-full text-red-600 p-2 my-2">{{ $message }}</p>
-                                @enderror
-                                @error('estrategias')
-                                <p class="border border-danger rounded-md bg-red-200 w-full text-red-600 p-2 my-2">{{ $message }}</p>
-                                @enderror
+   
+                                   @error('descripcion_competencias_7')
+                                   <p class="border border-danger rounded-md bg-red-200 w-full text-red-600 p-2 my-2">{{ $message }}</p>
+                                   @enderror
+                                   @error('etapas_proyecto_7')
+                                   <p class="border border-danger rounded-md bg-red-200 w-full text-red-600 p-2 my-2">{{ $message }}</p>
+                                   @enderror
+                                   @error('fecha_inicio_7')
+                                   <p class="border border-danger rounded-md bg-red-200 w-full text-red-600 p-2 my-2">{{ $message }}</p>
+                                   @enderror
+                                   @error('fecha_final_7')
+                                   <p class="border border-danger rounded-md bg-red-200 w-full text-red-600 p-2 my-2">{{ $message }}</p>
+                                   @enderror
+                                   @error('tiempo_7')
+                                   <p class="border border-danger rounded-md bg-red-200 w-full text-red-600 p-2 my-2">{{ $message }}</p>
+                                   @enderror
+   
+                                   @error('descripcion_competencias_8')
+                                   <p class="border border-danger rounded-md bg-red-200 w-full text-red-600 p-2 my-2">{{ $message }}</p>
+                                   @enderror
+                                   @error('etapas_proyecto_8')
+                                   <p class="border border-danger rounded-md bg-red-200 w-full text-red-600 p-2 my-2">{{ $message }}</p>
+                                   @enderror
+                             
+                                   @error('descripcion_competencias_9')
+                                   <p class="border border-danger rounded-md bg-red-200 w-full text-red-600 p-2 my-2">{{ $message }}</p>
+                                   @enderror
+                                   @error('etapas_proyecto_9')
+                                   <p class="border border-danger rounded-md bg-red-200 w-full text-red-600 p-2 my-2">{{ $message }}</p>
+                                   @enderror
+   
+                                   @error('descripcion_competencias_10')
+                                   <p class="border border-danger rounded-md bg-red-200 w-full text-red-600 p-2 my-2">{{ $message }}</p>
+                                   @enderror
+                                   @error('etapas_proyecto_10')
+                                   <p class="border border-danger rounded-md bg-red-200 w-full text-red-600 p-2 my-2">{{ $message }}</p>
+                                   @enderror
+   
+                                   @error('descripcion_competencias_11')
+                                   <p class="border border-danger rounded-md bg-red-200 w-full text-red-600 p-2 my-2">{{ $message }}</p>
+                                   @enderror
+                                   @error('etapas_proyecto_11')
+                                   <p class="border border-danger rounded-md bg-red-200 w-full text-red-600 p-2 my-2">{{ $message }}</p>
+                                   @enderror
+   
+                                   @error('descripcion_competencias_12')
+                                   <p class="border border-danger rounded-md bg-red-200 w-full text-red-600 p-2 my-2">{{ $message }}</p>
+                                   @enderror
+                                   @error('etapas_proyecto_12')
+                                   <p class="border border-danger rounded-md bg-red-200 w-full text-red-600 p-2 my-2">{{ $message }}</p>
+                                   @enderror
+   
+                                   @error('descripcion_competencias_13')
+                                   <p class="border border-danger rounded-md bg-red-200 w-full text-red-600 p-2 my-2">{{ $message }}</p>
+                                   @enderror
+                                   @error('etapas_proyecto_13')
+                                   <p class="border border-danger rounded-md bg-red-200 w-full text-red-600 p-2 my-2">{{ $message }}</p>
+                                   @enderror
+   
+                                   @error('descripcion_competencias_14')
+                                   <p class="border border-danger rounded-md bg-red-200 w-full text-red-600 p-2 my-2">{{ $message }}</p>
+                                   @enderror
+                                   @error('etapas_proyecto_14')
+                                   <p class="border border-danger rounded-md bg-red-200 w-full text-red-600 p-2 my-2">{{ $message }}</p>
+                                   @enderror
+   
+                                   @error('descripcion_competencias_15')
+                                   <p class="border border-danger rounded-md bg-red-200 w-full text-red-600 p-2 my-2">{{ $message }}</p>
+                                   @enderror
+                                   @error('etapas_proyecto_15')
+                                   <p class="border border-danger rounded-md bg-red-200 w-full text-red-600 p-2 my-2">{{ $message }}</p>
+                                   @enderror
+                                   @error('actividades')
+                                   <p class="border border-danger rounded-md bg-red-200 w-full text-red-600 p-2 my-2">{{ $message }}</p>
+                                   @enderror
+                                   @error('resultados')
+                                   <p class="border border-danger rounded-md bg-red-200 w-full text-red-600 p-2 my-2">{{ $message }}</p>
+                                   @enderror
+                                   @error('evidencia')
+                                   <p class="border border-danger rounded-md bg-red-200 w-full text-red-600 p-2 my-2">{{ $message }}</p>
+                                   @enderror
+                                   @error('instrumentos')
+                                   <p class="border border-danger rounded-md bg-red-200 w-full text-red-600 p-2 my-2">{{ $message }}</p>
+                                   @enderror
+                                   @error('asignaturas')
+                                   <p class="border border-danger rounded-md bg-red-200 w-full text-red-600 p-2 my-2">{{ $message }}</p>
+                                   @enderror
+                                   @error('topicos')
+                                   <p class="border border-danger rounded-md bg-red-200 w-full text-red-600 p-2 my-2">{{ $message }}</p>
+                                   @enderror
+                                   @error('estrategias')
+                                   <p class="border border-danger rounded-md bg-red-200 w-full text-red-600 p-2 my-2">{{ $message }}</p>
+                                   @enderror
                                 <div class="table-responsive-sm ">
                                 <table class="table table-borderless p-0 m-1 tabla_r">
                                     <!--titulos-->

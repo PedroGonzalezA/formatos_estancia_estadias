@@ -478,6 +478,144 @@ class PdfController extends Controller
 
       }
   //cancelar documentos
+    //cancelar documento carga horaria estancia
+    public function cancelar_carga_horaria_Estancia(Request $req,$id_d,$nombre){    
+      $carta=documentos::find($id_d);
+      $carta->id_c_horaria=NULL;
+      $carta->save();
+      $nombreA=$req->get('nombreCarga_horaria');
+      $formularioA = DB::table('carga_horaria')  
+      ->where('carga_horaria.nombre_c_h', $nombreA)
+      ->delete();
+      $path=public_path().'/documentos/'.$nombreA;
+      if(File::exists($path)){
+        File::delete($path);
+        return redirect('estancia')->with('cancelar_carga_horaria','Carga horaria Cancelada');
+      }else{
+        return redirect('estancia')->with('cancelar_carga_horaria','Carga horaria Cancelada');
+      }
+    }
+    //cancelar documento carga horaria estadia
+    public function cancelar_carga_horaria_Estadia(Request $req,$id_d,$nombre){    
+      $carta=documentos::find($id_d);
+      $carta->id_c_horaria=NULL;
+      $carta->save();
+      $nombreA=$req->get('nombreCarga_horaria');
+      $formularioA = DB::table('carga_horaria')  
+      ->where('carga_horaria.nombre_c_h', $nombreA)
+      ->delete();
+      $path=public_path().'/documentos/'.$nombreA;
+      if(File::exists($path)){
+        File::delete($path);
+        return redirect('estadia')->with('cancelar_carga_horaria','Carga horaria Cancelada');
+      }else{
+        return redirect('estadia')->with('cancelar_carga_horaria','Carga horaria Cancelada');
+      }
+    }
+
+    //cancelar documento constancia derecho estancia
+    public function cancelar_constancia_derecho_Estancia(Request $req,$id_d,$nombre){    
+      $carta=documentos::find($id_d);
+      $carta->id_c_derecho=NULL;
+      $carta->save();
+      $nombreA=$req->get('nombreConstancia_derecho');
+      $formularioA = DB::table('constancia_derecho')  
+      ->where('constancia_derecho.nombre_c_d', $nombreA)
+      ->delete();
+      $path=public_path().'/documentos/'.$nombreA;
+      if(File::exists($path)){
+        File::delete($path);
+        return redirect('estadia')->with('cancelar_constancia_derecho','Constancia derecho Cancelada');
+      }else{
+        return redirect('estadia')->with('cancelar_constancia_derecho','Constancia derecho Cancelada');
+      }
+    }
+    //cancelar documento constancia derecho estadia
+    public function cancelar_constancia_derecho_Estadia(Request $req,$id_d,$nombre){    
+      $carta=documentos::find($id_d);
+      $carta->id_c_derecho=NULL;
+      $carta->save();
+      $nombreA=$req->get('nombreConstancia_derecho');
+      $formularioA = DB::table('constancia_derecho')  
+      ->where('constancia_derecho.nombre_c_d', $nombreA)
+      ->delete();
+      $path=public_path().'/documentos/'.$nombreA;
+      if(File::exists($path)){
+        File::delete($path);
+        return redirect('estadia')->with('cancelar_constancia_derecho','Constancia derecho Cancelada');
+      }else{
+        return redirect('estadia')->with('cancelar_constancia_derecho','Constancia derecho Cancelada');
+      }
+    }
+
+    //cancelar documento carta_responsiva estancia
+    public function cancelar_carta_responsiva_Estancia(Request $req,$id_d,$nombre){    
+      $carta=documentos::find($id_d);
+      $carta->id_c_responsiva=NULL;
+      $carta->save();
+      $nombreA=$req->get('nombreCarta_responsiva');
+      $formularioA = DB::table('carta_responsiva')  
+      ->where('carta_responsiva.nombre_c_r', $nombreA)
+      ->delete();
+      $path=public_path().'/documentos/'.$nombreA;
+      if(File::exists($path)){
+        File::delete($path);
+        return redirect('estadia')->with('cancelar_carta_responsiva','Carta responsiva Cancelada');
+      }else{
+        return redirect('estadia')->with('cancelar_carta_responsiva','Carta responsiva Cancelada');
+      }
+    }
+    //cancelar documento carta_responsiva estadia
+    public function cancelar_carta_responsiva_Estadia(Request $req,$id_d,$nombre){    
+      $carta=documentos::find($id_d);
+      $carta->id_c_responsiva=NULL;
+      $carta->save();
+      $nombreA=$req->get('nombreCarta_responsiva');
+      $formularioA = DB::table('carta_responsiva')  
+      ->where('carta_responsiva.nombre_c_r', $nombreA)
+      ->delete();
+      $path=public_path().'/documentos/'.$nombreA;
+      if(File::exists($path)){
+        File::delete($path);
+        return redirect('estadia')->with('cancelar_carta_responsiva','Carta responsiva Cancelada');
+      }else{
+        return redirect('estadia')->with('cancelar_carta_responsiva','Carta responsiva Cancelada');
+      }
+    }
+    //cancelar documento f01 estancia
+    public function cancelarF01_Estancia(Request $req,$id_d,$nombre){    
+      $carta=documentos::find($id_d);
+      $carta->id_c_presentacion=NULL;
+      $carta->save();
+      $nombreA=$req->get('nombreAf01');
+      $formularioA = DB::table('carta_presentacion')  
+      ->where('carta_presentacion.nombre_c_p', $nombreA)
+      ->delete();
+      $path=public_path().'/documentos/'.$nombreA;
+      if(File::exists($path)){
+        File::delete($path);
+        return redirect('estadia')->with('cancelarf01','F-01 Cancelado');
+      }else{
+        return redirect('estadia')->with('cancelarf01','F-01 Cancelado');
+      }
+    }
+    //cancelar documento f01 estadia
+    public function cancelarF01_Estadia(Request $req,$id_d,$nombre){    
+      $carta=documentos::find($id_d);
+      $carta->id_c_presentacion=NULL;
+      $carta->save();
+      $nombreA=$req->get('nombreAf01');
+      $formularioA = DB::table('carta_presentacion')  
+      ->where('carta_presentacion.nombre_c_p', $nombreA)
+      ->delete();
+      $path=public_path().'/documentos/'.$nombreA;
+      if(File::exists($path)){
+        File::delete($path);
+        return redirect('estadia')->with('cancelarf01','F-01 Cancelado');
+      }else{
+        return redirect('estadia')->with('cancelarf01','F-01 Cancelado');
+      }
+    }
     //cancelar documento f02
       public function cancelarF02_Estancia(Request $req,$id_d,$nombre){    
         $carta=documentos::find($id_d);

@@ -1,9 +1,14 @@
 <?php
 
 namespace App\Http\Controllers;
+
+use App\Models\carga_horaria;
 use App\Models\carta_aceptacion;
 use App\Models\carta_liberacion;
+use App\Models\carta_presentacion;
+use App\Models\carta_responsiva;
 use App\Models\cedula_registro;
+use App\Models\constancia_derecho;
 use App\Models\definicion_proyecto;
 use App\Models\documentos;
 use App\Models\respuesta_doc;
@@ -118,103 +123,879 @@ class EstanciaController extends Controller
         $carta_ace  = ['carta_aceptacion' => $carta_aceptacion];
         $carta_lib = ['carta_liberacion' => $carta_liberacion];
         $datos4 = Arr::collapse([$carta_ace,$carta_lib]);
-        return view('estancia',['datos'=>$datos,'definicionP'=>$datos1,'documentos'=>$datos2,'etapas'=>$datos3,'carta_aceptacion'=>$datos4]);
-   }
+
+        //datos f01 doc
+        $carta_presentacion =DB::table('users')
+        ->join('respuesta_doc','users.id','=','respuesta_doc.id_usuario')
+        ->join('documentos','documentos.id','=','respuesta_doc.id_documentos')
+        ->join('carta_presentacion','carta_presentacion.id','=','documentos.id_c_presentacion')
+        ->select('documentos.id_c_presentacion','carta_presentacion.nombre_c_p','carta_presentacion.estado_c_p','carta_presentacion.observaciones_c_p','documentos.id','respuesta_doc.id_documentos','users.name')
+        ->where('users.id',$userID)
+        ->get();
+
+        //carga horaria doc
+        $carga_horaria=DB::table('users')
+        ->join('respuesta_doc','users.id','=','respuesta_doc.id_usuario')
+        ->join('documentos','documentos.id','=','respuesta_doc.id_documentos')
+        ->join('carga_horaria','carga_horaria.id','=','documentos.id_c_horaria')
+        ->select('documentos.id_c_horaria','carga_horaria.nombre_c_h','carga_horaria.estado_c_h','carga_horaria.observaciones_c_h','documentos.id','respuesta_doc.id_documentos','users.name')
+        ->where('users.id',$userID)
+        ->get();
+        $carta_p = ['carta_presentacion' => $carta_presentacion];
+        $carga_h = ['carga_horaria' => $carga_horaria];
+        $datos5 = Arr::collapse([$carta_p,$carga_h]);
+
+        //constancia_derecho doc
+        $constancia_derecho =DB::table('users')
+        ->join('respuesta_doc','users.id','=','respuesta_doc.id_usuario')
+        ->join('documentos','documentos.id','=','respuesta_doc.id_documentos')
+        ->join('constancia_derecho','constancia_derecho.id','=','documentos.id_c_derecho')
+        ->select('documentos.id_c_derecho','constancia_derecho.nombre_c_d','constancia_derecho.estado_c_d','constancia_derecho.observaciones_c_d','documentos.id','respuesta_doc.id_documentos','users.name')
+        ->where('users.id',$userID)
+        ->get();
+
+        //carta_responsiva doc
+        $carta_responsiva=DB::table('users')
+        ->join('respuesta_doc','users.id','=','respuesta_doc.id_usuario')
+        ->join('documentos','documentos.id','=','respuesta_doc.id_documentos')
+        ->join('carta_responsiva','carta_responsiva.id','=','documentos.id_c_responsiva')
+        ->select('documentos.id_c_responsiva','carta_responsiva.nombre_c_r','carta_responsiva.estado_c_r','carta_responsiva.observaciones_c_r','documentos.id','respuesta_doc.id_documentos','users.name')
+        ->where('users.id',$userID)
+        ->get();
+        $constancia_d = ['constancia_derecho' => $constancia_derecho];
+        $carta_r = ['carta_responsiva' => $carta_responsiva];
+        $datos6 = Arr::collapse([$constancia_d,$carta_r]);
+
+        return view('estancia',['datos'=>$datos,'definicionP'=>$datos1,'documentos'=>$datos2,'etapas'=>$datos3,'carta_aceptacion'=>$datos4,'carta'=>$datos5,'carta1'=>$datos6]);
+    }
+     //subir documento sin datos carga horaria
+     public function subir_carga_horaria_estancia(Request $request, $name,$nombre){
+    
+        $request->validate([
+            "carga_horaria" => "required|mimetypes:application/pdf|max:30000"
+        ]);
+        $arrayResult = array();
+
+        try{
+            if($request->hasFile('carga_horaria')){
+                $archivo=$request->file('carga_horaria');
+                $nombreA=$archivo->getClientOriginalName();
+                $nombreAF=$name.$nombreA;
+
+                $archivo->move(public_path().'/documentos/',$nombreAF);
+                
+            }
+            $data5 = array(
+
+                'nombre_c_h'   => $nombreAF,
+                'estado_c_h'=> 1
+            );
+        
+            $response_c_horaria = carga_horaria::requestInsertcargaH($data5);
+            if (isset($response_c_horaria["code"]) && $response_c_horaria["code"] == 200) {
+                $arrayResult = array(
+                    'Response'  => array(
+                        'ok'        => true,
+                        'message'   => "Se ha guardado el registro",
+                        'code'      => "200",
+                    ),
+                );
+        
+            } else {
+                $arrayResult = array(
+                    'Response'  => array(
+                        'ok'        => false,
+                        'message'   => $response_c_horaria['message'],
+                        'code'      => $response_c_horaria['code']
+                    ),
+                );
+            }
+            $data6 = array(
+                'id_c_horaria'     =>  $response_c_horaria['id'],
+                'id_proceso'             =>  1
+            );
+            $response_documentos = documentos::requestInsertDoc($data6);
+        
+            if (isset($response_documentos["code"]) && $response_documentos["code"] == 200) {
+                $arrayResult = array(
+                    'Response'  => array(
+                        'ok'        => true,
+                        'message'   => "Se ha guardado el registro",
+                        'code'      => "200",
+                    ),
+                );
+        
+            } else {
+                $arrayResult = array(
+                    'Response'  => array(
+                        'ok'        => false,
+                        'message'   => $response_documentos['message'],
+                        'code'      => $response_documentos['code']
+                    ),
+                );
+            }
+        
+            $data7 = array(
+                'id_usuario'    => Auth::user()->id,
+                'id_documentos' => $response_documentos['id']
+            );
+        
+            $response_respuesta = respuesta_doc::requestInsertRespuesta($data7);
+            
+            
+
+        } catch(\Illuminate\Database\QueryException $ex) {
+            $arrayResult = array(
+                'Response'  => array(
+                    'message'   => "Error: " . " - " . "Fallo :v",
+                    "code"      => "500"
+                )
+            );
+        } catch( Exception $ex ){
+            $arrayResult = array(
+            'Response' => array(
+                'message' => "Error: " . " - " . $ex->getMessage(),
+                "code"    => "500"
+            )
+            );
+        }
+        $msj= json_encode($arrayResult);
+        if($msj=='{"Response":{"ok":true,"message":"Se ha guardado el registro","code":"200"}}'){
+            return redirect('estancia')->with('success','Documento agregado');
+        }else
+        {
+            return redirect('estancia')->with('errorPDF','Hay un error en el nombre de tu pdf');
+        }
+    }
+
+    //actualizar documento carga horaria
+    public function actualizar_carga_horaria_estancia(Request $request, $name,$nombre){
+        
+        $request->validate([
+            "carga_horaria" => "required|mimetypes:application/pdf|max:10000"
+        ]);
+        $arrayResult = array();
+
+        try{
+            if($request->hasFile('carga_horaria')){
+                $archivo=$request->file('carga_horaria');
+                $nombreA=$archivo->getClientOriginalName();
+                $nombreAF=$name.$nombreA;
+
+                $archivo->move(public_path().'/documentos/',$nombreAF);
+                
+            }
+            $data5 = array(
+
+                'nombre_c_h'   => $nombreAF,
+                'estado_c_h'=> 1
+            );
+        
+            $response_c_horaria = carga_horaria::requestInsertcargaH($data5);
+            if (isset($response_c_horaria["code"]) && $response_c_horaria["code"] == 200) {
+                $arrayResult = array(
+                    'Response'  => array(
+                        'ok'        => true,
+                        'message'   => "Se ha guardado el registro",
+                        'code'      => "200",
+                    ),
+                );
+        
+            } else {
+                $arrayResult = array(
+                    'Response'  => array(
+                        'ok'        => false,
+                        'message'   => $response_c_horaria['message'],
+                        'code'      => $response_c_horaria['code']
+                    ),
+                );
+            }
+            $carta=documentos::find($request->get('id_doc_carga_horaria'));
+            $carta->id_c_horaria=$response_c_horaria['id'];
+            $carta->id_proceso=1;
+            $carta->save();
+            
+
+        } catch(\Illuminate\Database\QueryException $ex) {
+            $arrayResult = array(
+                'Response'  => array(
+                    'message'   => "Error: " . " - " . "Fallo :v",
+                    "code"      => "500"
+                )
+            );
+        } catch( Exception $ex ){
+            $arrayResult = array(
+            'Response' => array(
+                'message' => "Error: " . " - " . $ex->getMessage(),
+                "code"    => "500"
+            )
+            );
+        }
+        $msj= json_encode($arrayResult);
+        if($msj=='{"Response":{"ok":true,"message":"Se ha guardado el registro","code":"200"}}'){
+            return redirect('estancia')->with('success','Documento agregado');
+        }else
+        {
+            return redirect('estancia')->with('errorPDF','Hay un error en el nombre de tu pdf');
+        }
+    }
+    public function verObservaciones_carga_horaria(){
+        $userID=Auth::user()->id; 
+        $cedula_doc=DB::table('users')
+        ->join('respuesta_doc','users.id','=','respuesta_doc.id_usuario')
+        ->join('documentos','documentos.id','=','respuesta_doc.id_documentos')
+        ->join('carga_horaria','carga_horaria.id','=','documentos.id_c_horaria')
+        ->select('documentos.id_c_horaria','carga_horaria.nombre_c_h','carga_horaria.estado_c_h','carga_horaria.observaciones_c_h','respuesta_doc.id_documentos','respuesta_doc.id_documentos','users.name')
+        ->where('users.id',$userID)
+        ->get();
+        return view('usuario.observaciones_carga_horaria',['datos'=>$cedula_doc]);
+    }
+
+    //subir documento sin datos constancia derecho
+    public function subir_constancia_derecho_estancia(Request $request, $name,$nombre){
+    
+        $request->validate([
+            "constancia_derecho" => "required|mimetypes:application/pdf|max:30000"
+        ]);
+        $arrayResult = array();
+
+        try{
+            if($request->hasFile('constancia_derecho')){
+                $archivo=$request->file('constancia_derecho');
+                $nombreA=$archivo->getClientOriginalName();
+                $nombreAF=$name.$nombreA;
+
+                $archivo->move(public_path().'/documentos/',$nombreAF);
+                
+            }
+            $data5 = array(
+
+                'nombre_c_d'   => $nombreAF,
+                'estado_c_d'=> 1
+            );
+        
+            $response_c_derecho = constancia_derecho::requestInsertconstanciaD($data5);
+            if (isset($response_c_derecho["code"]) && $response_c_derecho["code"] == 200) {
+                $arrayResult = array(
+                    'Response'  => array(
+                        'ok'        => true,
+                        'message'   => "Se ha guardado el registro",
+                        'code'      => "200",
+                    ),
+                );
+        
+            } else {
+                $arrayResult = array(
+                    'Response'  => array(
+                        'ok'        => false,
+                        'message'   => $response_c_derecho['message'],
+                        'code'      => $response_c_derecho['code']
+                    ),
+                );
+            }
+            $data6 = array(
+                'id_c_horaria'     =>  $response_c_derecho['id'],
+                'id_proceso'             =>  1
+            );
+            $response_documentos = documentos::requestInsertDoc($data6);
+        
+            if (isset($response_documentos["code"]) && $response_documentos["code"] == 200) {
+                $arrayResult = array(
+                    'Response'  => array(
+                        'ok'        => true,
+                        'message'   => "Se ha guardado el registro",
+                        'code'      => "200",
+                    ),
+                );
+        
+            } else {
+                $arrayResult = array(
+                    'Response'  => array(
+                        'ok'        => false,
+                        'message'   => $response_documentos['message'],
+                        'code'      => $response_documentos['code']
+                    ),
+                );
+            }
+        
+            $data7 = array(
+                'id_usuario'    => Auth::user()->id,
+                'id_documentos' => $response_documentos['id']
+            );
+        
+            $response_respuesta = respuesta_doc::requestInsertRespuesta($data7);
+            
+            
+
+        } catch(\Illuminate\Database\QueryException $ex) {
+            $arrayResult = array(
+                'Response'  => array(
+                    'message'   => "Error: " . " - " . "Fallo :v",
+                    "code"      => "500"
+                )
+            );
+        } catch( Exception $ex ){
+            $arrayResult = array(
+            'Response' => array(
+                'message' => "Error: " . " - " . $ex->getMessage(),
+                "code"    => "500"
+            )
+            );
+        }
+        $msj= json_encode($arrayResult);
+        if($msj=='{"Response":{"ok":true,"message":"Se ha guardado el registro","code":"200"}}'){
+            return redirect('estancia')->with('success','Documento agregado');
+        }else
+        {
+            return redirect('estancia')->with('errorPDF','Hay un error en el nombre de tu pdf');
+        }    }
+
+    //actualizar documento constancia derecho
+    public function actualizar_constancia_derecho_estancia(Request $request, $name,$nombre){
+        
+        $request->validate([
+            "constancia_derecho" => "required|mimetypes:application/pdf|max:10000"
+        ]);
+        $arrayResult = array();
+
+        try{
+            if($request->hasFile('constancia_derecho')){
+                $archivo=$request->file('constancia_derecho');
+                $nombreA=$archivo->getClientOriginalName();
+                $nombreAF=$name.$nombreA;
+
+                $archivo->move(public_path().'/documentos/',$nombreAF);
+                
+            }
+            $data5 = array(
+
+                'nombre_c_d'   => $nombreAF,
+                'estado_c_d'=> 1
+            );
+        
+            $response_c_derecho = constancia_derecho::requestInsertconstanciaD($data5);
+            if (isset($response_c_derecho["code"]) && $response_c_derecho["code"] == 200) {
+                $arrayResult = array(
+                    'Response'  => array(
+                        'ok'        => true,
+                        'message'   => "Se ha guardado el registro",
+                        'code'      => "200",
+                    ),
+                );
+        
+            } else {
+                $arrayResult = array(
+                    'Response'  => array(
+                        'ok'        => false,
+                        'message'   => $response_c_derecho['message'],
+                        'code'      => $response_c_derecho['code']
+                    ),
+                );
+            }
+            $carta=documentos::find($request->get('id_doc_constancia_derecho'));
+            $carta->id_c_derecho=$response_c_derecho['id'];
+            $carta->id_proceso=1;
+            $carta->save();
+            
+
+        } catch(\Illuminate\Database\QueryException $ex) {
+            $arrayResult = array(
+                'Response'  => array(
+                    'message'   => "Error: " . " - " . "Fallo :v",
+                    "code"      => "500"
+                )
+            );
+        } catch( Exception $ex ){
+            $arrayResult = array(
+            'Response' => array(
+                'message' => "Error: " . " - " . $ex->getMessage(),
+                "code"    => "500"
+            )
+            );
+        }
+        $msj= json_encode($arrayResult);
+        if($msj=='{"Response":{"ok":true,"message":"Se ha guardado el registro","code":"200"}}'){
+            return redirect('estancia')->with('success','Documento agregado');
+        }else
+        {
+            return redirect('estancia')->with('errorPDF','Hay un error en el nombre de tu pdf');
+        }
+    }
+    public function verObservaciones_constancia_derecho(){
+        $userID=Auth::user()->id; 
+        $cedula_doc=DB::table('users')
+        ->join('respuesta_doc','users.id','=','respuesta_doc.id_usuario')
+        ->join('documentos','documentos.id','=','respuesta_doc.id_documentos')
+        ->join('constancia_derecho','constancia_derecho.id','=','documentos.id_c_derecho')
+        ->select('documentos.id_c_derecho','constancia_derecho.nombre_c_d','constancia_derecho.estado_c_d','constancia_derecho.observaciones_c_d','respuesta_doc.id_documentos','respuesta_doc.id_documentos','users.name')
+        ->where('users.id',$userID)
+        ->get();
+        return view('usuario.observaciones_constancia_derecho',['datos'=>$cedula_doc]);
+    }
+
+    //subir documento sin datos carta responsiva
+    public function subir_carta_responsiva_estancia(Request $request, $name,$nombre){
+    
+        $request->validate([
+            "carta_responsiva" => "required|mimetypes:application/pdf|max:30000"
+        ]);
+        $arrayResult = array();
+
+        try{
+            if($request->hasFile('carta_responsiva')){
+                $archivo=$request->file('carta_responsiva');
+                $nombreA=$archivo->getClientOriginalName();
+                $nombreAF=$name.$nombreA;
+
+                $archivo->move(public_path().'/documentos/',$nombreAF);
+                
+            }
+            $data5 = array(
+
+                'nombre_c_r'   => $nombreAF,
+                'estado_c_r'=> 1
+            );
+        
+            $response_c_responsiva = carta_responsiva::requestInsertcartaR($data5);
+            if (isset($response_c_responsiva["code"]) && $response_c_responsiva["code"] == 200) {
+                $arrayResult = array(
+                    'Response'  => array(
+                        'ok'        => true,
+                        'message'   => "Se ha guardado el registro",
+                        'code'      => "200",
+                    ),
+                );
+        
+            } else {
+                $arrayResult = array(
+                    'Response'  => array(
+                        'ok'        => false,
+                        'message'   => $response_c_responsiva['message'],
+                        'code'      => $response_c_responsiva['code']
+                    ),
+                );
+            }
+            $data6 = array(
+                'id_c_responsiva'     =>  $response_c_responsiva['id'],
+                'id_proceso'             =>  1
+            );
+            $response_documentos = documentos::requestInsertDoc($data6);
+        
+            if (isset($response_documentos["code"]) && $response_documentos["code"] == 200) {
+                $arrayResult = array(
+                    'Response'  => array(
+                        'ok'        => true,
+                        'message'   => "Se ha guardado el registro",
+                        'code'      => "200",
+                    ),
+                );
+        
+            } else {
+                $arrayResult = array(
+                    'Response'  => array(
+                        'ok'        => false,
+                        'message'   => $response_documentos['message'],
+                        'code'      => $response_documentos['code']
+                    ),
+                );
+            }
+        
+            $data7 = array(
+                'id_usuario'    => Auth::user()->id,
+                'id_documentos' => $response_documentos['id']
+            );
+        
+            $response_respuesta = respuesta_doc::requestInsertRespuesta($data7);
+            
+            
+
+        } catch(\Illuminate\Database\QueryException $ex) {
+            $arrayResult = array(
+                'Response'  => array(
+                    'message'   => "Error: " . " - " . "Fallo :v",
+                    "code"      => "500"
+                )
+            );
+        } catch( Exception $ex ){
+            $arrayResult = array(
+            'Response' => array(
+                'message' => "Error: " . " - " . $ex->getMessage(),
+                "code"    => "500"
+            )
+            );
+        }
+        $msj= json_encode($arrayResult);
+        if($msj=='{"Response":{"ok":true,"message":"Se ha guardado el registro","code":"200"}}'){
+            return redirect('estancia')->with('success','Documento agregado');
+        }else
+        {
+            return redirect('estancia')->with('errorPDF','Hay un error en el nombre de tu pdf');
+        }
+    }
+
+    //actualizar documento carta responsiva
+    public function actualizar_carta_responsiva_estancia(Request $request, $name,$nombre){
+        
+        $request->validate([
+            "carta_responsiva" => "required|mimetypes:application/pdf|max:10000"
+        ]);
+        $arrayResult = array();
+
+        try{
+            if($request->hasFile('carta_responsiva')){
+                $archivo=$request->file('carta_responsiva');
+                $nombreA=$archivo->getClientOriginalName();
+                $nombreAF=$name.$nombreA;
+
+                $archivo->move(public_path().'/documentos/',$nombreAF);
+                
+            }
+            $data5 = array(
+
+                'nombre_c_r'   => $nombreAF,
+                'estado_c_r'=> 1
+            );
+        
+            $response_c_responsiva = carta_responsiva::requestInsertcartaR($data5);
+            if (isset($response_c_responsiva["code"]) && $response_c_responsiva["code"] == 200) {
+                $arrayResult = array(
+                    'Response'  => array(
+                        'ok'        => true,
+                        'message'   => "Se ha guardado el registro",
+                        'code'      => "200",
+                    ),
+                );
+        
+            } else {
+                $arrayResult = array(
+                    'Response'  => array(
+                        'ok'        => false,
+                        'message'   => $response_c_responsiva['message'],
+                        'code'      => $response_c_responsiva['code']
+                    ),
+                );
+            }
+            $carta=documentos::find($request->get('id_doc_carta_responsiva'));
+            $carta->id_c_responsiva=$response_c_responsiva['id'];
+            $carta->id_proceso=1;
+            $carta->save();
+            
+
+        } catch(\Illuminate\Database\QueryException $ex) {
+            $arrayResult = array(
+                'Response'  => array(
+                    'message'   => "Error: " . " - " . "Fallo :v",
+                    "code"      => "500"
+                )
+            );
+        } catch( Exception $ex ){
+            $arrayResult = array(
+            'Response' => array(
+                'message' => "Error: " . " - " . $ex->getMessage(),
+                "code"    => "500"
+            )
+            );
+        }
+        $msj= json_encode($arrayResult);
+        if($msj=='{"Response":{"ok":true,"message":"Se ha guardado el registro","code":"200"}}'){
+            return redirect('estancia')->with('success','Documento agregado');
+        }else
+        {
+            return redirect('estancia')->with('errorPDF','Hay un error en el nombre de tu pdf');
+        }
+
+    }
+    public function verObservaciones_carta_responsiva(){
+        $userID=Auth::user()->id; 
+        $cedula_doc=DB::table('users')
+        ->join('respuesta_doc','users.id','=','respuesta_doc.id_usuario')
+        ->join('documentos','documentos.id','=','respuesta_doc.id_documentos')
+        ->join('carta_responsiva','carta_responsiva.id','=','documentos.id_c_responsiva')
+        ->select('documentos.id_c_responsiva','carta_responsiva.nombre_c_r','carta_responsiva.estado_c_r','carta_responsiva.observaciones_c_r','respuesta_doc.id_documentos','respuesta_doc.id_documentos','users.name')
+        ->where('users.id',$userID)
+        ->get();
+        return view('usuario.observaciones_carta_responsiva',['datos'=>$cedula_doc]);
+    }
+    //subir documento sin datos f01
+    public function subirF01_estancia(Request $request, $name,$nombre){
+        $request->validate([
+            "f01" => "required|mimetypes:application/pdf|max:30000"
+        ]);
+        $arrayResult = array();
+
+        try{
+            if($request->hasFile('f01')){
+                $archivo=$request->file('f01');
+                $nombreA=$archivo->getClientOriginalName();
+                $nombreAF=$name.$nombreA;
+
+                $archivo->move(public_path().'/documentos/',$nombreAF);
+                
+            }
+            $data5 = array(
+
+                'nombre_c_p'   => $nombreAF,
+                'estado_c_p'=> 1
+            );
+        
+            $response_c_presentacion = carta_presentacion::requestInsertcartaP($data5);
+            if (isset($response_c_presentacion["code"]) && $response_c_presentacion["code"] == 200) {
+                $arrayResult = array(
+                    'Response'  => array(
+                        'ok'        => true,
+                        'message'   => "Se ha guardado el registro",
+                        'code'      => "200",
+                    ),
+                );
+        
+            } else {
+                $arrayResult = array(
+                    'Response'  => array(
+                        'ok'        => false,
+                        'message'   => $response_c_presentacion['message'],
+                        'code'      => $response_c_presentacion['code']
+                    ),
+                );
+            }
+            $data6 = array(
+                'id_c_presentacion'     =>  $response_c_presentacion['id'],
+                'id_proceso'             =>  1
+            );
+            $response_documentos = documentos::requestInsertDoc($data6);
+        
+            if (isset($response_documentos["code"]) && $response_documentos["code"] == 200) {
+                $arrayResult = array(
+                    'Response'  => array(
+                        'ok'        => true,
+                        'message'   => "Se ha guardado el registro",
+                        'code'      => "200",
+                    ),
+                );
+        
+            } else {
+                $arrayResult = array(
+                    'Response'  => array(
+                        'ok'        => false,
+                        'message'   => $response_documentos['message'],
+                        'code'      => $response_documentos['code']
+                    ),
+                );
+            }
+        
+            $data7 = array(
+                'id_usuario'    => Auth::user()->id,
+                'id_documentos' => $response_documentos['id']
+            );
+        
+            $response_respuesta = respuesta_doc::requestInsertRespuesta($data7);
+            
+            
+
+        } catch(\Illuminate\Database\QueryException $ex) {
+            $arrayResult = array(
+                'Response'  => array(
+                    'message'   => "Error: " . " - " . "Fallo :v",
+                    "code"      => "500"
+                )
+            );
+        } catch( Exception $ex ){
+            $arrayResult = array(
+            'Response' => array(
+                'message' => "Error: " . " - " . $ex->getMessage(),
+                "code"    => "500"
+            )
+            );
+        }
+        $msj= json_encode($arrayResult);
+        if($msj=='{"Response":{"ok":true,"message":"Se ha guardado el registro","code":"200"}}'){
+            return redirect('estancia')->with('success','Documento agregado');
+        }else
+        {
+            return redirect('estancia')->with('errorPDF','Hay un error en el nombre de tu pdf');
+        }
+    }
+    //actualizar documento f02
+    public function actualizarF01_estancia(Request $request, $name,$nombre){
+        
+        $request->validate([
+            "f01" => "required|mimetypes:application/pdf|max:10000"
+        ]);
+        $arrayResult = array();
+
+        try{
+            if($request->hasFile('f01')){
+                $archivo=$request->file('f01');
+                $nombreA=$archivo->getClientOriginalName();
+                $nombreAF=$name.$nombreA;
+
+                $archivo->move(public_path().'/documentos/',$nombreAF);
+                
+            }
+            $data5 = array(
+
+                'nombre_c_p'   => $nombreAF,
+                'estado_c_p'=> 1
+            );
+        
+            $response_c_presentacion = carta_presentacion::requestInsertcartaP($data5);
+            if (isset($response_c_presentacion["code"]) && $response_c_presentacion["code"] == 200) {
+                $arrayResult = array(
+                    'Response'  => array(
+                        'ok'        => true,
+                        'message'   => "Se ha guardado el registro",
+                        'code'      => "200",
+                    ),
+                );
+        
+            } else {
+                $arrayResult = array(
+                    'Response'  => array(
+                        'ok'        => false,
+                        'message'   => $response_c_presentacion['message'],
+                        'code'      => $response_c_presentacion['code']
+                    ),
+                );
+            }
+            $carta=documentos::find($request->get('id_docf01'));
+            $carta->id_c_presentacion=$response_c_presentacion['id'];
+            $carta->id_proceso=1;
+            $carta->save();
+            
+
+        } catch(\Illuminate\Database\QueryException $ex) {
+            $arrayResult = array(
+                'Response'  => array(
+                    'message'   => "Error: " . " - " . "Fallo :v",
+                    "code"      => "500"
+                )
+            );
+        } catch( Exception $ex ){
+            $arrayResult = array(
+            'Response' => array(
+                'message' => "Error: " . " - " . $ex->getMessage(),
+                "code"    => "500"
+            )
+            );
+        }
+        $msj= json_encode($arrayResult);
+        if($msj=='{"Response":{"ok":true,"message":"Se ha guardado el registro","code":"200"}}'){
+            return redirect('estancia')->with('success','Documento agregado');
+        }else
+        {
+            return redirect('estancia')->with('errorPDF','Hay un error en el nombre de tu pdf');
+        }
+    }
+    public function verObservaciones_f01(){
+        $userID=Auth::user()->id; 
+        $cedula_doc=DB::table('users')
+        ->join('respuesta_doc','users.id','=','respuesta_doc.id_usuario')
+        ->join('documentos','documentos.id','=','respuesta_doc.id_documentos')
+        ->join('carta_presentacion','carta_presentacion.id','=','documentos.id_c_presentacion')
+        ->select('documentos.id_c_presentacion','carta_presentacion.nombre_c_p','carta_presentacion.estado_c_p','carta_presentacion.observaciones_c_p','respuesta_doc.id_documentos','respuesta_doc.id_documentos','users.name')
+        ->where('users.id',$userID)
+        ->get();
+        return view('usuario.observaciones_f01',['datos'=>$cedula_doc]);
+    }
 
    //subir documento sin datos f02
-   public function subirF02_estancia(Request $request, $name,$nombre){
-    
-    $request->validate([
-        "f02" => "required|mimetypes:application/pdf|max:30000"
-    ]);
-    $arrayResult = array();
+    public function subirF02_estancia(Request $request, $name,$nombre){
+        $request->validate([
+            "f02" => "required|mimetypes:application/pdf|max:30000"
+        ]);
+        $arrayResult = array();
 
-    try{
-        if($request->hasFile('f02')){
-            $archivo=$request->file('f02');
-            $nombreA=$archivo->getClientOriginalName();
-            $nombreAF=$name.$nombreA;
+        try{
+            if($request->hasFile('f02')){
+                $archivo=$request->file('f02');
+                $nombreA=$archivo->getClientOriginalName();
+                $nombreAF=$name.$nombreA;
 
-            $archivo->move(public_path().'/documentos/',$nombreAF);
+                $archivo->move(public_path().'/documentos/',$nombreAF);
+                
+            }
+            $data5 = array(
+
+                'nombre'   => $nombreAF,
+                'estado'=> 1
+            );
+        
+            $response_c_aceptacion = carta_aceptacion::requestInsertcartaA($data5);
+            if (isset($response_c_aceptacion["code"]) && $response_c_aceptacion["code"] == 200) {
+                $arrayResult = array(
+                    'Response'  => array(
+                        'ok'        => true,
+                        'message'   => "Se ha guardado el registro",
+                        'code'      => "200",
+                    ),
+                );
+        
+            } else {
+                $arrayResult = array(
+                    'Response'  => array(
+                        'ok'        => false,
+                        'message'   => $response_c_aceptacion['message'],
+                        'code'      => $response_c_aceptacion['code']
+                    ),
+                );
+            }
+            $data6 = array(
+                'id_c_aceptacion'     =>  $response_c_aceptacion['id'],
+                'id_proceso'             =>  1
+            );
+            $response_documentos = documentos::requestInsertDoc($data6);
+        
+            if (isset($response_documentos["code"]) && $response_documentos["code"] == 200) {
+                $arrayResult = array(
+                    'Response'  => array(
+                        'ok'        => true,
+                        'message'   => "Se ha guardado el registro",
+                        'code'      => "200",
+                    ),
+                );
+        
+            } else {
+                $arrayResult = array(
+                    'Response'  => array(
+                        'ok'        => false,
+                        'message'   => $response_documentos['message'],
+                        'code'      => $response_documentos['code']
+                    ),
+                );
+            }
+        
+            $data7 = array(
+                'id_usuario'    => Auth::user()->id,
+                'id_documentos' => $response_documentos['id']
+            );
+        
+            $response_respuesta = respuesta_doc::requestInsertRespuesta($data7);
             
-        }
-        $data5 = array(
+            
 
-            'nombre'   => $nombreAF,
-            'estado'=> 1
-        );
-    
-        $response_c_aceptacion = carta_aceptacion::requestInsertcartaA($data5);
-        if (isset($response_c_aceptacion["code"]) && $response_c_aceptacion["code"] == 200) {
+        } catch(\Illuminate\Database\QueryException $ex) {
             $arrayResult = array(
                 'Response'  => array(
-                    'ok'        => true,
-                    'message'   => "Se ha guardado el registro",
-                    'code'      => "200",
-                ),
+                    'message'   => "Error: " . " - " . "Fallo :v",
+                    "code"      => "500"
+                )
             );
-    
-        } else {
+        } catch( Exception $ex ){
             $arrayResult = array(
-                'Response'  => array(
-                    'ok'        => false,
-                    'message'   => $response_c_aceptacion['message'],
-                    'code'      => $response_c_aceptacion['code']
-                ),
-            );
-        }
-        $data6 = array(
-            'id_c_aceptacion'     =>  $response_c_aceptacion['id'],
-            'id_proceso'             =>  1
-        );
-        $response_documentos = documentos::requestInsertDoc($data6);
-    
-        if (isset($response_documentos["code"]) && $response_documentos["code"] == 200) {
-            $arrayResult = array(
-                'Response'  => array(
-                    'ok'        => true,
-                    'message'   => "Se ha guardado el registro",
-                    'code'      => "200",
-                ),
-            );
-    
-        } else {
-            $arrayResult = array(
-                'Response'  => array(
-                    'ok'        => false,
-                    'message'   => $response_documentos['message'],
-                    'code'      => $response_documentos['code']
-                ),
-            );
-        }
-    
-        $data7 = array(
-            'id_usuario'    => Auth::user()->id,
-            'id_documentos' => $response_documentos['id']
-        );
-    
-        $response_respuesta = respuesta_doc::requestInsertRespuesta($data7);
-        
-        
-
-    } catch(\Illuminate\Database\QueryException $ex) {
-        $arrayResult = array(
-            'Response'  => array(
-                'message'   => "Error: " . " - " . "Fallo :v",
-                "code"      => "500"
+            'Response' => array(
+                'message' => "Error: " . " - " . $ex->getMessage(),
+                "code"    => "500"
             )
-        );
-    } catch( Exception $ex ){
-        $arrayResult = array(
-        'Response' => array(
-            'message' => "Error: " . " - " . $ex->getMessage(),
-            "code"    => "500"
-        )
-        );
+            );
+        }
+        $msj= json_encode($arrayResult);
+        if($msj=='{"Response":{"ok":true,"message":"Se ha guardado el registro","code":"200"}}'){
+            return redirect('estancia')->with('success','Documento agregado');
+        }else
+        {
+            return redirect('estancia')->with('errorPDF','Hay un error en el nombre de tu pdf');
+        }
     }
-    return redirect('estancia')->with('success','Documento agregado');
-}
-//actualizar documento f02
+    //actualizar documento f02
     public function actualizarF02_estancia(Request $request, $name,$nombre){
         
         $request->validate([
@@ -277,7 +1058,13 @@ class EstanciaController extends Controller
             )
             );
         }
-        return redirect('estancia')->with('success','Documento agregado');
+        $msj= json_encode($arrayResult);
+        if($msj=='{"Response":{"ok":true,"message":"Se ha guardado el registro","code":"200"}}'){
+            return redirect('estancia')->with('success','Documento agregado');
+        }else
+        {
+            return redirect('estancia')->with('errorPDF','Hay un error en el nombre de tu pdf');
+        }
 
     }
     public function verObservaciones_f02(){
@@ -292,7 +1079,7 @@ class EstanciaController extends Controller
         return view('usuario.observaciones_f02',['datos'=>$cedula_doc]);
     }
 
-//subir documento sin datos f03
+    //subir documento sin datos f03
     public function subirF03_estancia(Request $request, $name,$nombre){
     
         $request->validate([
@@ -384,9 +1171,15 @@ class EstanciaController extends Controller
             )
             );
         }
-        return redirect('estancia')->with('success','Documento agregado');
+        $msj= json_encode($arrayResult);
+        if($msj=='{"Response":{"ok":true,"message":"Se ha guardado el registro","code":"200"}}'){
+            return redirect('estancia')->with('success','Documento agregado');
+        }else
+        {
+            return redirect('estancia')->with('errorPDF','Hay un error en el nombre de tu pdf');
+        }
     }
-//actualizar documento f03
+    //actualizar documento f03
     public function actualizarF03_estancia(Request $request, $name,$nombre){
     
         $request->validate([
@@ -449,7 +1242,13 @@ class EstanciaController extends Controller
             )
             );
         }
-        return redirect('estancia')->with('success','Documento agregado');
+        $msj= json_encode($arrayResult);
+        if($msj=='{"Response":{"ok":true,"message":"Se ha guardado el registro","code":"200"}}'){
+            return redirect('estancia')->with('success','Documento agregado');
+        }else
+        {
+            return redirect('estancia')->with('errorPDF','Hay un error en el nombre de tu pdf');
+        }
 
     }
     public function verObservaciones_f03(){
@@ -556,9 +1355,15 @@ class EstanciaController extends Controller
             )
             );
         }
-        return redirect('estancia')->with('success','Documento agregado');
+        $msj= json_encode($arrayResult);
+        if($msj=='{"Response":{"ok":true,"message":"Se ha guardado el registro","code":"200"}}'){
+            return redirect('estancia')->with('success','Documento agregado');
+        }else
+        {
+            return redirect('estancia')->with('errorPDF','Hay un error en el nombre de tu pdf');
+        }
     }
-//actualizar documento f04
+    //actualizar documento f04
     public function actualizarF04_estancia(Request $request, $name,$nombre){
         
         $request->validate([
@@ -622,7 +1427,13 @@ class EstanciaController extends Controller
             )
             );
         }
-        return redirect('estancia')->with('success','Documento agregado');
+        $msj= json_encode($arrayResult);
+        if($msj=='{"Response":{"ok":true,"message":"Se ha guardado el registro","code":"200"}}'){
+            return redirect('estancia')->with('success','Documento agregado');
+        }else
+        {
+            return redirect('estancia')->with('errorPDF','Hay un error en el nombre de tu pdf');
+        }
 
     }
     public function verObservaciones_f04(){
@@ -636,9 +1447,8 @@ class EstanciaController extends Controller
         ->get();
         return view('usuario.observaciones_f04',['datos'=>$cedula_doc]);
     }
-
-     //subir documento sin datos f05
-     public function subirF05_estancia(Request $request, $name,$nombre){
+    //subir documento sin datos f05
+    public function subirF05_estancia(Request $request, $name,$nombre){
     
         $request->validate([
             "f05" => "required|mimetypes:application/pdf|max:10000"
@@ -729,9 +1539,15 @@ class EstanciaController extends Controller
             )
             );
         }
-        return redirect('estancia')->with('success','Documento agregado');
+        $msj= json_encode($arrayResult);
+        if($msj=='{"Response":{"ok":true,"message":"Se ha guardado el registro","code":"200"}}'){
+            return redirect('estancia')->with('success','Documento agregado');
+        }else
+        {
+            return redirect('estancia')->with('errorPDF','Hay un error en el nombre de tu pdf');
+        }
     }
-//actualizar documento f05
+    //actualizar documento f05
     public function actualizarF05_estancia(Request $request, $name,$nombre){
         
         $request->validate([
@@ -794,7 +1610,13 @@ class EstanciaController extends Controller
             )
             );
         }
-        return redirect('estancia')->with('success','Documento agregado');
+        $msj= json_encode($arrayResult);
+        if($msj=='{"Response":{"ok":true,"message":"Se ha guardado el registro","code":"200"}}'){
+            return redirect('estancia')->with('success','Documento agregado');
+        }else
+        {
+            return redirect('estancia')->with('errorPDF','Hay un error en el nombre de tu pdf');
+        }
 
     }
     //observaciones f05

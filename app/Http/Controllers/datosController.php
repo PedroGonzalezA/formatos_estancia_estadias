@@ -15,6 +15,13 @@ class datosController extends Controller
     }
 
     public function guardar(Request $request){
+        
+        $request->validate([
+            "nombre" => "required",
+            "cargo" => "required",
+            "firma" => "required"
+
+        ]);
         try{
             $nombre        = $request->input('nombre');
             $cargo       = $request->input('cargo');
@@ -69,6 +76,12 @@ class datosController extends Controller
     }
 
     public function actualizar(Request $request){
+        $request->validate([
+            "nombreA" => "required",
+            "cargoA" => "required",
+            "firmaA" => "required"
+
+        ]);
         $nombre        = $request->input('nombreA');
         $cargo       = $request->input('cargoA');
         if($request->hasFile('firmaA')){
