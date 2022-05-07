@@ -95,7 +95,7 @@ body, html{
 .dashboard-sideBar{
 	left: 0;
 	z-index: 2;
-	background-image: url('https://siev1.000webhostapp.com/MPGH/view/assets/img/menu.png');
+	background-image: url('https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiS4tERNUFY5Dvl_XhWdrLLzlt6qJt2zOkv88gzfjKHNe3FrjEHqwpCt7ORYCYg2y30iONmsG9o098I7UY0_4g17qzbRnXV1BG8yAkHTyWP4jldwOmHvDcgP2kOh69b6MRtoH87JGnmmi2GSzdF2SaTY7dq1IzCGoqm_puDVFqy1BgrtiCOfNKaQLMf/s953/menu.png');
 	border-right: 1px solid rgba(255, 255, 255, .4);
 	overflow: hidden;
 }

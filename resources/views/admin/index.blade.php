@@ -38,7 +38,7 @@
 		</div>
 		@include('notificaciones/notificaciones')
 			<div class="row">
-				<div class="col-12 col-sm-12 col-md-6 col lg-6 p-5">
+				<div class="col-12 col-sm-12 col-md-6 col lg-6 px-5 py-2">
 					<div class="row listaAdmin">
 						<div class="col-12 tituloDash">
 							<div>Administradores</div>		 
@@ -47,13 +47,13 @@
 							<a href="#!"><i class="zmdi zmdi-account  zmdi-hc-5x"></i></a>
 						</div>
 						<div class="col-6 registro">
-							<p class="registroCount">{{ $adminsCount }}</p>
+							<p class="registroCount">{{  $datos['adminsCount']  }}</p>
 							<small>Registrados</small>
 						</div>
 					</div>
 					
 				</div>
-				<div class="col-12 col-sm-12 col-md-6 col lg-6 p-5">
+				<div class="col-12 col-sm-12 col-md-6 col lg-6 px-5 py-2">
 					<div class="row listaAdmin">
 						<div class="col-12 tituloDash">
 							<div>Usuarios</div>		 
@@ -62,7 +62,81 @@
 							<a href="#!"><i class="zmdi zmdi-male-alt  zmdi-hc-5x"></i></a>
 						</div>
 						<div class="col-6 registro">
-							<p class="registroCount">{{ $usersCount }}</p>
+							<p class="registroCount">{{  $datos['usersCount'] }}</p>
+							<small>Registrados</small>
+						</div>
+					</div>
+					
+				</div>
+				<div class="col-12 col-sm-12 col-md-6 col lg-6 px-5 py-2">
+					<div class="row listaAdmin">
+						<div class="col-12 tituloDash">
+							<div>Estancia 1</div>		 
+						</div>
+						<div class="col-6" style="font-size: 30px; color:rgb(0, 0, 0);">
+							<a href="#!"><i class="zmdi zmdi-male-alt  zmdi-hc-5x"></i></a>
+						</div>
+						<div class="col-6 registro">
+							<p class="registroCount">{{ $estancia['estancia1']  }}</p>
+							<small>Registrados</small>
+						</div>
+					</div>
+					
+				</div>
+				<div class="col-12 col-sm-12 col-md-6 col lg-6 px-5 py-2">
+					<div class="row listaAdmin">
+						<div class="col-12 tituloDash">
+							<div>Estancia 2</div>		 
+						</div>
+						<div class="col-6" style="font-size: 30px; color:rgb(0, 0, 0);">
+							<a href="#!"><i class="zmdi zmdi-male-alt  zmdi-hc-5x"></i></a>
+						</div>
+						<div class="col-6 registro">
+							<p class="registroCount">{{ $estancia['estancia2']  }}</p>
+							<small>Registrados</small>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-12 col-sm-12 col-md-6 col lg-6 px-5 py-2">
+					<div class="row listaAdmin">
+						<div class="col-12 tituloDash">
+							<div>Estadía</div>		 
+						</div>
+						<div class="col-6" style="font-size: 30px; color:rgb(0, 0, 0);">
+							<a href="#!"><i class="zmdi zmdi-male-alt  zmdi-hc-5x"></i></a>
+						</div>
+						<div class="col-6 registro">
+							<p class="registroCount">{{ $estadia['estadia']  }}</p>
+							<small>Registrados</small>
+						</div>
+					</div>
+				</div>
+				<div class="col-12 col-sm-12 col-md-6 col lg-6 px-5 py-2">
+					<div class="row listaAdmin">
+						<div class="col-12 tituloDash">
+							<div>Estadía nacionales</div>		 
+						</div>
+						<div class="col-6" style="font-size: 30px; color:rgb(0, 0, 0);">
+							<a href="#!"><i class="zmdi zmdi-male-alt  zmdi-hc-5x"></i></a>
+						</div>
+						<div class="col-6 registro">
+							<p class="registroCount">{{ $estadia['estadia_nacional']  }}</p>
+							<small>Registrados</small>
+						</div>
+					</div>	
+				</div>
+
+				<div class="col-12 col-sm-12 col-md-12 col lg-12 px-5 py-2">
+					<div class="row listaAdmin">
+						<div class="col-12 tituloDash">
+							<div>Servicio social</div>		 
+						</div>
+						<div class="col-6" style="font-size: 30px; color:rgb(0, 0, 0);">
+							<a href="#!"><i class="zmdi zmdi-male-alt  zmdi-hc-5x"></i></a>
+						</div>
+						<div class="col-6 registro">
+							<p class="registroCount">{{ $servicio_social }}</p>
 							<small>Registrados</small>
 						</div>
 					</div>

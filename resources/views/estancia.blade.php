@@ -41,16 +41,12 @@
 					<!--Carga horaria-->
 					<li class="list-group-item d-flex justify-content-between align-items-start" style="border: 1px solid rgb(210, 210, 210);">
 						<div class="row lista">
-							<div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2">
+							<div class="col-12 col-sm-12 col-md-4 col-lg-3 col-xl-2">
 								<div class="ms-2 me-auto">
 									Carga Horaria
 								</div>
 							</div>
-													
-							<div class="col-6 col-sm-12 col-md-3 col-lg-2 col-xl-2 p-1 colDescargar text-left">
-					
-							</div>
-							<div class="col-6 col-sm-6 col-md-5 col-lg-3 col-xl-1 p-1 colLlenar  ">
+							<div class="col-6 col-sm-6 col-md-5 col-lg-3 col-xl-3 p-1 colLlenar  ">
 												
 							</div>
 							<!--DOC carga horaria-->
@@ -165,14 +161,12 @@
 					<!--Constacias de vigencia de derechos-->
 					<li class="list-group-item d-flex justify-content-between align-items-start" style="border: 1px solid rgb(210, 210, 210);">
 						<div class="row lista">
-							<div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2">
+							<div class="col-12 col-sm-12 col-md-4 col-lg-3 col-xl-2">
 								<div class="ms-2 me-auto">
 									Constancia de vigencia de derechos del IMSS
 								</div>
 							</div>								
-							<div class="col-6 col-sm-12 col-md-3 col-lg-2 col-xl-2 p-1 colDescargar text-left">
-							</div>
-							<div class="col-6 col-sm-6 col-md-5 col-lg-3 col-xl-1 p-1 colLlenar  ">
+							<div class="col-6 col-sm-6 col-md-5 col-lg-3 col-xl-3 p-1 colLlenar  ">
 												
 							</div>
 							<!--DOC constancia derecho-->
