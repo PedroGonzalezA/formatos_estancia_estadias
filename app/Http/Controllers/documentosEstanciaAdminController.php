@@ -157,7 +157,7 @@ class documentosEstanciaAdminController extends Controller
             return response()->file($nombreD);
         }else
         {
-            return redirect('estancia_Documentos')->with('sinRespuesta',$nombreD.'Carga horaria no ha sido encontrado');
+            return redirect('estancia_Documentos')->with('sinRespuesta',' Carga horaria no ha sido encontrado');
         }
     }
     //aceptar carga horaria
@@ -208,7 +208,7 @@ class documentosEstanciaAdminController extends Controller
             return response()->file($nombreD);
         }else
         {
-            return redirect('estancia_Documentos')->with('sinRespuesta',$nombreD.'Constancia derecho no ha sido encontrado');
+            return redirect('estancia_Documentos')->with('sinRespuesta',' Constancia derecho no ha sido encontrado');
         }
     }
 
@@ -257,7 +257,7 @@ class documentosEstanciaAdminController extends Controller
             return response()->file($nombreD);
         }else
         {
-            return redirect('estancia_Documentos')->with('sinRespuesta',$nombreD.'Carta responsiva no ha sido encontrado');
+            return redirect('estancia_Documentos')->with('sinRespuesta',' Carta responsiva no ha sido encontrado');
         }
     }
 
@@ -306,7 +306,7 @@ class documentosEstanciaAdminController extends Controller
             return response()->file($nombreD);
         }else
         {
-            return redirect('estancia_Documentos')->with('sinRespuesta',$nombreD.'F-01 Carta Presentación no ha sido encontrado');
+            return redirect('estancia_Documentos')->with('sinRespuesta',' F-01 Carta Presentación no ha sido encontrado');
         }
     }
 
@@ -355,7 +355,7 @@ class documentosEstanciaAdminController extends Controller
             return response()->file($nombreD);
         }else
         {
-            return redirect('estancia_Documentos')->with('sinRespuesta',$nombreD.'F-02 Carta de Aceptación no ha sido encontrado');
+            return redirect('estancia_Documentos')->with('sinRespuesta',' F-02 Carta de Aceptación no ha sido encontrado');
         }
     }
 
@@ -402,7 +402,7 @@ class documentosEstanciaAdminController extends Controller
             return response()->file($nombreD);
         }else
         {
-            return redirect('estancia_Documentos')->with('sinRespuesta',$nombreD.'F-03 Cédula Registro no ha sido encontrado');
+            return redirect('estancia_Documentos')->with('sinRespuesta',' F-03 Cédula Registro no ha sido encontrado');
         }
     }
 
@@ -449,7 +449,7 @@ class documentosEstanciaAdminController extends Controller
             return response()->file($nombreD);
         }else
         {
-            return redirect('estancia_Documentos')->with('sinRespuesta',$nombreD.'F-04 Definición de proyecto no ha sido encontrado');
+            return redirect('estancia_Documentos')->with('sinRespuesta',' F-04 Definición de proyecto no ha sido encontrado');
         }
     }
 
@@ -497,7 +497,7 @@ class documentosEstanciaAdminController extends Controller
             return response()->file($nombreD);
         }else
         {
-            return redirect('estancia_Documentos')->with('sinRespuesta',$nombreD.'F-05 Carta de Liberación no ha sido encontrado');
+            return redirect('estancia_Documentos')->with('sinRespuesta',' F-05 Carta de Liberación no ha sido encontrado');
         }
     }
 
