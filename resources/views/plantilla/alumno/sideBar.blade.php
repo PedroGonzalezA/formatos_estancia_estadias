@@ -39,7 +39,10 @@
 					</a>
 					<ul class="list-unstyled full-box">
 						<li>
-							<a href="{{ route('estancia.index') }}"></i> Estancias</a>
+							<a href="{{ route('estancia1.index') }}"></i> Estancias I</a> <!--- cambio para dividir estancias 1 y 2  --->
+						</li>
+						<li>
+							<a href="{{ route('estancia2.index') }}"></i> Estancias II</a> <!--- cambio para dividir estancias 1 y 2  --->
 						</li>
                         <li>
 							<a href="{{ route('estadia.index') }}"></i> Estadías</a>

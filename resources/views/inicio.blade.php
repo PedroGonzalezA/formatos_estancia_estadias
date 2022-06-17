@@ -36,10 +36,13 @@
 		<div class="container p-2">
             <ul class="list-group">
                 <li class="list-group-item">
-					<a href="{{ route('estancia.index') }}">
-						<button type="button" class="btn btn-outline-dark btnFormato" ><i class="zmdi zmdi-file zmdi-hc-lg"></i> Formatos estancias</button>
+					<a href="{{ route('estancia1.index') }}">
+						<button type="button" class="btn btn-outline-dark btnFormato" ><i class="zmdi zmdi-file zmdi-hc-lg"></i> Formatos estancias I</button>
 					</a>
-					
+				<li class="list-group-item">
+					<a href="{{ route('estancia2.index') }}">
+						<button type="button" class="btn btn-outline-dark btnFormato" ><i class="zmdi zmdi-file zmdi-hc-lg"></i> Formatos estancias II</button>
+					</a>					
                 </li>
                 <li class="list-group-item">
                     <a href="{{ route('estadia.index') }}">

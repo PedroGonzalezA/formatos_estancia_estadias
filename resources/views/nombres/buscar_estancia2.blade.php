@@ -33,19 +33,19 @@
 		<!-- Content page -->
 		<div class="container p-3">
 			<div class="page-header">
-			  <h2 class="text-titles">Documetos Registrados<small>(Estancia)</small></h2>
+			  <h2 class="text-titles">Documetos Registrados<small>(Estancia II)</small></h2>
 			</div>
 		</div>
         <div class="container">
 
                 <div class="row">
                     <div class=" col-12 col-sm-12 col-md-5">
-                        <form action="{{ route('buscar_estancia.index') }}" method="GET">
+                        <form action="{{ route('buscar_estancia2.index') }}" method="GET">
                             @csrf
                             <!-- buscar-->
                             <div class="row">
                                 <div class=" col-8 col-sm-8 col-md-10">
-                                    <input type="text" class="form-control" id="texto" name="texto" placeholder="Buscar" value="">
+                                    <input type="text" class="form-control" id="texto" name="texto" placeholder="Buscar" value="{{$texto}}">
                                             
                                 </div>
                                 <div class="col-4 col-sm-4 col-md-2">
@@ -56,12 +56,12 @@
                         </form>
                     </div>
                     <div class=" col-12 col-sm-12 col-md-5">
-                        <form  action="{{ route('buscar_estancia_c.index') }}" method="GET">
+                        <form  action="{{ route('buscar_estancia2_c.index') }}" method="GET">
                             @csrf
                             <!--Buscar datos cedula-->
                             <div class="row">
                                 <div class=" col-8 col-sm-8 col-md-10">
-                                    <input type="text" class="form-control" id="texto" name="texto" placeholder="Buscar datos cedula" value="{{$texto}}">
+                                    <input type="text" class="form-control" id="texto" name="texto" placeholder="Buscar datos cedula" value="">
                                         
                                 </div>
                                 <div class="col-4 col-sm-4 col-md-2">
@@ -114,7 +114,6 @@
                                         </div>
                                     @endif
                                 @empty
-                                    
                                 @endforelse
                                 <div class="col-12" style="background: black; color:white;">
                                     <div class="text-center">
@@ -608,7 +607,7 @@
                                                     
                                                     @switch($respuestaC->estado)
                                                         @case(0)
-                                                    <!--con observaciones-->
+                                                        <!--con observaciones-->
                                                             <div class="col-6 p-1">
                                                                 <form method="post" action="{{ route('aceptar_estancia_f02_admin.index',[$respuestaC->id_usuario,$respuestaC->id_c_aceptacion, $respuestaC->nombre]) }}">
                                                                     @csrf
@@ -631,7 +630,7 @@
                                                             </div>
                                                             
                                                         @break    
-                                                    <!--pendiente-->
+                                                        <!--pendiente-->
                                                         @case(1)
                                                             <div class="col-6 p-1">
                                                                 <form method="post" action="{{ route('aceptar_estancia_f02_admin.index',[$respuestaC->id_usuario,$respuestaC->id_c_aceptacion, $respuestaC->nombre]) }}">
@@ -647,7 +646,7 @@
                                                                 </form>	
                                                             </div>
                                                         @break
-                                                    <!--aceptado-->
+                                                        <!--aceptado-->
                                                         @case(2)
                                                         
                                                             <div class="col-6 p-1">
@@ -896,8 +895,8 @@
                                                     @endswitch
                                                     
                                                 </div>
-                                            </div>  
-                                        @endif 
+                                            </div>   
+                                        @endif
                                     @empty
                                         
                                     @endforelse                            
@@ -912,7 +911,6 @@
                                                         F-05 Carta Liberacíon
                                                     </div>
                                                 </div>
-                                                
                                                 <div class="row text-center">
                                                     <div class="col-12 nombreDoc">
                                                         {{$respuestaCL->nombre_c_l}}
