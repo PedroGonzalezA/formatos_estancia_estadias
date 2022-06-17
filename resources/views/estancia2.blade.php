@@ -32,7 +32,7 @@
 		<!-- Content page -->
 		<div class="container p-3">
 			<div class="page-header">
-			  <h2 class="text-titles">Formatos <small>(Estancias I)</small></h2>
+			  <h2 class="text-titles">Formatos <small>(Estancias II)</small></h2>
 			</div>
 		</div>
 		@include('notificaciones/notificaciones')

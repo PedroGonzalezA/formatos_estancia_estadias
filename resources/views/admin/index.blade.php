@@ -71,7 +71,7 @@
 				<div class="col-12 col-sm-12 col-md-6 col lg-6 px-5 py-2">
 					<div class="row listaAdmin">
 						<div class="col-12 tituloDash">
-							<div>Estancia 1</div>		 
+							<div>Estancia I</div>		 
 						</div>
 						<div class="col-6" style="font-size: 30px; color:rgb(0, 0, 0);">
 							<a href="#!"><i class="zmdi zmdi-male-alt  zmdi-hc-5x"></i></a>
@@ -86,7 +86,7 @@
 				<div class="col-12 col-sm-12 col-md-6 col lg-6 px-5 py-2">
 					<div class="row listaAdmin">
 						<div class="col-12 tituloDash">
-							<div>Estancia 2</div>		 
+							<div>Estancia II</div>		 
 						</div>
 						<div class="col-6" style="font-size: 30px; color:rgb(0, 0, 0);">
 							<a href="#!"><i class="zmdi zmdi-male-alt  zmdi-hc-5x"></i></a>

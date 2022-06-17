@@ -18,7 +18,7 @@ use Illuminate\Support\Facades\Auth;
 use Exception;
 use Illuminate\Support\Arr;
 use phpDocumentor\Reflection\Location;
-class EstanciaController extends Controller
+class Estancia1Controller extends Controller
 {
     //
     public function ver(){
@@ -73,6 +73,7 @@ class EstanciaController extends Controller
         ->join('respuesta_doc','users.id','=','respuesta_doc.id_usuario')
         ->join('documentos','documentos.id','=','respuesta_doc.id_documentos')
         ->where('users.id',$userID)
+        ->where('id_proceso','1') //cambio 1 para arreglar error de duplicacion de datos en estancia y estadia
         ->get();
 
         $cedula_doc=DB::table('users')
@@ -81,6 +82,7 @@ class EstanciaController extends Controller
         ->join('cedula_registro','cedula_registro.id','=','documentos.id_c_registro')
         ->select('documentos.id_c_registro','cedula_registro.nombre_c_r','cedula_registro.estado_c_r','cedula_registro.observaciones_c_r','documentos.id','respuesta_doc.id_documentos','users.name')
         ->where('users.id',$userID)
+        ->where('id_proceso','1') //cambio 1 para arreglar error de duplicacion de datos en estancia y estadia
         ->get();
 
         $docs  = ['documentos' => $documentos];
@@ -93,6 +95,7 @@ class EstanciaController extends Controller
         ->join('definicion_proyecto','definicion_proyecto.id','=','documentos.id_d_proyecto')
         ->select('documentos.id_d_proyecto','definicion_proyecto.nombre_d_p','definicion_proyecto.estado_d_p','definicion_proyecto.observaciones_d_p','documentos.id','respuesta_doc.id_documentos','users.name')
         ->where('users.id',$userID)
+        ->where('id_proceso','1') //cambio 1 para arreglar error de duplicacion de datos en estancia y estadia
         ->get();
         //etapas de proyecto
         $etapas=DB::table('users')
@@ -111,6 +114,7 @@ class EstanciaController extends Controller
         ->join('carta_aceptacion','carta_aceptacion.id','=','documentos.id_c_aceptacion')
         ->select('documentos.id_c_aceptacion','carta_aceptacion.nombre','carta_aceptacion.estado','carta_aceptacion.observaciones','documentos.id','respuesta_doc.id_documentos','users.name')
         ->where('users.id',$userID)
+        ->where('id_proceso','1') //cambio 1 para arreglar error de duplicacion de datos en estancia y estadia
         ->get();
         //datos f05 doc
         $carta_liberacion =DB::table('users')
@@ -119,6 +123,7 @@ class EstanciaController extends Controller
         ->join('carta_liberacion','carta_liberacion.id','=','documentos.id_c_liberacion')
         ->select('documentos.id_c_liberacion','carta_liberacion.nombre_c_l','carta_liberacion.estado_c_l','carta_liberacion.observaciones_c_l','documentos.id','respuesta_doc.id_documentos','users.name')
         ->where('users.id',$userID)
+        ->where('id_proceso','1') //cambio 1 para arreglar error de duplicacion de datos en estancia y estadia
         ->get();
         $carta_ace  = ['carta_aceptacion' => $carta_aceptacion];
         $carta_lib = ['carta_liberacion' => $carta_liberacion];
@@ -131,6 +136,7 @@ class EstanciaController extends Controller
         ->join('carta_presentacion','carta_presentacion.id','=','documentos.id_c_presentacion')
         ->select('documentos.id_c_presentacion','carta_presentacion.nombre_c_p','carta_presentacion.estado_c_p','carta_presentacion.observaciones_c_p','documentos.id','respuesta_doc.id_documentos','users.name')
         ->where('users.id',$userID)
+        ->where('id_proceso','1') //cambio 1 para arreglar error de duplicacion de datos en estancia y estadia
         ->get();
 
         //carga horaria doc
@@ -140,6 +146,7 @@ class EstanciaController extends Controller
         ->join('carga_horaria','carga_horaria.id','=','documentos.id_c_horaria')
         ->select('documentos.id_c_horaria','carga_horaria.nombre_c_h','carga_horaria.estado_c_h','carga_horaria.observaciones_c_h','documentos.id','respuesta_doc.id_documentos','users.name')
         ->where('users.id',$userID)
+        ->where('id_proceso','1') //cambio 1 para arreglar error de duplicacion de datos en estancia y estadia
         ->get();
         $carta_p = ['carta_presentacion' => $carta_presentacion];
         $carga_h = ['carga_horaria' => $carga_horaria];
@@ -152,6 +159,7 @@ class EstanciaController extends Controller
         ->join('constancia_derecho','constancia_derecho.id','=','documentos.id_c_derecho')
         ->select('documentos.id_c_derecho','constancia_derecho.nombre_c_d','constancia_derecho.estado_c_d','constancia_derecho.observaciones_c_d','documentos.id','respuesta_doc.id_documentos','users.name')
         ->where('users.id',$userID)
+        ->where('id_proceso','1') //cambio 1 para arreglar error de duplicacion de datos en estancia y estadia
         ->get();
 
         //carta_responsiva doc
@@ -161,12 +169,13 @@ class EstanciaController extends Controller
         ->join('carta_responsiva','carta_responsiva.id','=','documentos.id_c_responsiva')
         ->select('documentos.id_c_responsiva','carta_responsiva.nombre_c_r','carta_responsiva.estado_c_r','carta_responsiva.observaciones_c_r','documentos.id','respuesta_doc.id_documentos','users.name')
         ->where('users.id',$userID)
+        ->where('id_proceso','1') //cambio 1 para arreglar error de duplicacion de datos en estancia y estadia
         ->get();
         $constancia_d = ['constancia_derecho' => $constancia_derecho];
         $carta_r = ['carta_responsiva' => $carta_responsiva];
         $datos6 = Arr::collapse([$constancia_d,$carta_r]);
 
-        return view('estancia',['datos'=>$datos,'definicionP'=>$datos1,'documentos'=>$datos2,'etapas'=>$datos3,'carta_aceptacion'=>$datos4,'carta'=>$datos5,'carta1'=>$datos6]);
+        return view('estancia1',['datos'=>$datos,'definicionP'=>$datos1,'documentos'=>$datos2,'etapas'=>$datos3,'carta_aceptacion'=>$datos4,'carta'=>$datos5,'carta1'=>$datos6]);
     }
      //subir documento sin datos carga horaria
      public function subir_carga_horaria_estancia(Request $request, $name,$nombre){
@@ -261,10 +270,10 @@ class EstanciaController extends Controller
         }
         $msj= json_encode($arrayResult);
         if($msj=='{"Response":{"ok":true,"message":"Se ha guardado el registro","code":"200"}}'){
-            return redirect('estancia')->with('success','Documento agregado');
+            return redirect('estancia1')->with('success','Documento agregado');
         }else
         {
-            return redirect('estancia')->with('errorPDF','Hay un error en el nombre de tu pdf');
+            return redirect('estancia1')->with('errorPDF','Hay un error en el nombre de tu pdf');
         }
     }
 
@@ -333,10 +342,10 @@ class EstanciaController extends Controller
         }
         $msj= json_encode($arrayResult);
         if($msj=='{"Response":{"ok":true,"message":"Se ha guardado el registro","code":"200"}}'){
-            return redirect('estancia')->with('success','Documento agregado');
+            return redirect('estancia1')->with('success','Documento agregado');
         }else
         {
-            return redirect('estancia')->with('errorPDF','Hay un error en el nombre de tu pdf');
+            return redirect('estancia1')->with('errorPDF','Hay un error en el nombre de tu pdf');
         }
     }
     public function verObservaciones_carga_horaria(){
@@ -444,10 +453,10 @@ class EstanciaController extends Controller
         }
         $msj= json_encode($arrayResult);
         if($msj=='{"Response":{"ok":true,"message":"Se ha guardado el registro","code":"200"}}'){
-            return redirect('estancia')->with('success','Documento agregado');
+            return redirect('estancia1')->with('success','Documento agregado');
         }else
         {
-            return redirect('estancia')->with('errorPDF','Hay un error en el nombre de tu pdf');
+            return redirect('estancia1')->with('errorPDF','Hay un error en el nombre de tu pdf');
         }    }
 
     //actualizar documento constancia derecho
@@ -515,10 +524,10 @@ class EstanciaController extends Controller
         }
         $msj= json_encode($arrayResult);
         if($msj=='{"Response":{"ok":true,"message":"Se ha guardado el registro","code":"200"}}'){
-            return redirect('estancia')->with('success','Documento agregado');
+            return redirect('estancia1')->with('success','Documento agregado');
         }else
         {
-            return redirect('estancia')->with('errorPDF','Hay un error en el nombre de tu pdf');
+            return redirect('estancia1')->with('errorPDF','Hay un error en el nombre de tu pdf');
         }
     }
     public function verObservaciones_constancia_derecho(){
@@ -626,10 +635,10 @@ class EstanciaController extends Controller
         }
         $msj= json_encode($arrayResult);
         if($msj=='{"Response":{"ok":true,"message":"Se ha guardado el registro","code":"200"}}'){
-            return redirect('estancia')->with('success','Documento agregado');
+            return redirect('estancia1')->with('success','Documento agregado');
         }else
         {
-            return redirect('estancia')->with('errorPDF','Hay un error en el nombre de tu pdf');
+            return redirect('estancia1')->with('errorPDF','Hay un error en el nombre de tu pdf');
         }
     }
 
@@ -698,10 +707,10 @@ class EstanciaController extends Controller
         }
         $msj= json_encode($arrayResult);
         if($msj=='{"Response":{"ok":true,"message":"Se ha guardado el registro","code":"200"}}'){
-            return redirect('estancia')->with('success','Documento agregado');
+            return redirect('estancia1')->with('success','Documento agregado');
         }else
         {
-            return redirect('estancia')->with('errorPDF','Hay un error en el nombre de tu pdf');
+            return redirect('estancia1')->with('errorPDF','Hay un error en el nombre de tu pdf');
         }
 
     }
@@ -808,10 +817,10 @@ class EstanciaController extends Controller
         }
         $msj= json_encode($arrayResult);
         if($msj=='{"Response":{"ok":true,"message":"Se ha guardado el registro","code":"200"}}'){
-            return redirect('estancia')->with('success','Documento agregado');
+            return redirect('estancia1')->with('success','Documento agregado');
         }else
         {
-            return redirect('estancia')->with('errorPDF','Hay un error en el nombre de tu pdf');
+            return redirect('estancia1')->with('errorPDF','Hay un error en el nombre de tu pdf');
         }
     }
     //actualizar documento f02
@@ -879,10 +888,10 @@ class EstanciaController extends Controller
         }
         $msj= json_encode($arrayResult);
         if($msj=='{"Response":{"ok":true,"message":"Se ha guardado el registro","code":"200"}}'){
-            return redirect('estancia')->with('success','Documento agregado');
+            return redirect('estancia1')->with('success','Documento agregado');
         }else
         {
-            return redirect('estancia')->with('errorPDF','Hay un error en el nombre de tu pdf');
+            return redirect('estancia1')->with('errorPDF','Hay un error en el nombre de tu pdf');
         }
     }
     public function verObservaciones_f01(){
@@ -989,10 +998,10 @@ class EstanciaController extends Controller
         }
         $msj= json_encode($arrayResult);
         if($msj=='{"Response":{"ok":true,"message":"Se ha guardado el registro","code":"200"}}'){
-            return redirect('estancia')->with('success','Documento agregado');
+            return redirect('estancia1')->with('success','Documento agregado');
         }else
         {
-            return redirect('estancia')->with('errorPDF','Hay un error en el nombre de tu pdf');
+            return redirect('estancia1')->with('errorPDF','Hay un error en el nombre de tu pdf');
         }
     }
     //actualizar documento f02
@@ -1060,10 +1069,10 @@ class EstanciaController extends Controller
         }
         $msj= json_encode($arrayResult);
         if($msj=='{"Response":{"ok":true,"message":"Se ha guardado el registro","code":"200"}}'){
-            return redirect('estancia')->with('success','Documento agregado');
+            return redirect('estancia1')->with('success','Documento agregado');
         }else
         {
-            return redirect('estancia')->with('errorPDF','Hay un error en el nombre de tu pdf');
+            return redirect('estancia1')->with('errorPDF','Hay un error en el nombre de tu pdf');
         }
 
     }
@@ -1173,10 +1182,10 @@ class EstanciaController extends Controller
         }
         $msj= json_encode($arrayResult);
         if($msj=='{"Response":{"ok":true,"message":"Se ha guardado el registro","code":"200"}}'){
-            return redirect('estancia')->with('success','Documento agregado');
+            return redirect('estancia1')->with('success','Documento agregado');
         }else
         {
-            return redirect('estancia')->with('errorPDF','Hay un error en el nombre de tu pdf');
+            return redirect('estancia1')->with('errorPDF','Hay un error en el nombre de tu pdf');
         }
     }
     //actualizar documento f03
@@ -1244,10 +1253,10 @@ class EstanciaController extends Controller
         }
         $msj= json_encode($arrayResult);
         if($msj=='{"Response":{"ok":true,"message":"Se ha guardado el registro","code":"200"}}'){
-            return redirect('estancia')->with('success','Documento agregado');
+            return redirect('estancia1')->with('success','Documento agregado');
         }else
         {
-            return redirect('estancia')->with('errorPDF','Hay un error en el nombre de tu pdf');
+            return redirect('estancia1')->with('errorPDF','Hay un error en el nombre de tu pdf');
         }
 
     }
@@ -1357,10 +1366,10 @@ class EstanciaController extends Controller
         }
         $msj= json_encode($arrayResult);
         if($msj=='{"Response":{"ok":true,"message":"Se ha guardado el registro","code":"200"}}'){
-            return redirect('estancia')->with('success','Documento agregado');
+            return redirect('estancia1')->with('success','Documento agregado');
         }else
         {
-            return redirect('estancia')->with('errorPDF','Hay un error en el nombre de tu pdf');
+            return redirect('estancia1')->with('errorPDF','Hay un error en el nombre de tu pdf');
         }
     }
     //actualizar documento f04
@@ -1429,10 +1438,10 @@ class EstanciaController extends Controller
         }
         $msj= json_encode($arrayResult);
         if($msj=='{"Response":{"ok":true,"message":"Se ha guardado el registro","code":"200"}}'){
-            return redirect('estancia')->with('success','Documento agregado');
+            return redirect('estancia1')->with('success','Documento agregado');
         }else
         {
-            return redirect('estancia')->with('errorPDF','Hay un error en el nombre de tu pdf');
+            return redirect('estancia1')->with('errorPDF','Hay un error en el nombre de tu pdf');
         }
 
     }
@@ -1541,10 +1550,10 @@ class EstanciaController extends Controller
         }
         $msj= json_encode($arrayResult);
         if($msj=='{"Response":{"ok":true,"message":"Se ha guardado el registro","code":"200"}}'){
-            return redirect('estancia')->with('success','Documento agregado');
+            return redirect('estancia1')->with('success','Documento agregado');
         }else
         {
-            return redirect('estancia')->with('errorPDF','Hay un error en el nombre de tu pdf');
+            return redirect('estancia1')->with('errorPDF','Hay un error en el nombre de tu pdf');
         }
     }
     //actualizar documento f05
@@ -1612,10 +1621,10 @@ class EstanciaController extends Controller
         }
         $msj= json_encode($arrayResult);
         if($msj=='{"Response":{"ok":true,"message":"Se ha guardado el registro","code":"200"}}'){
-            return redirect('estancia')->with('success','Documento agregado');
+            return redirect('estancia1')->with('success','Documento agregado');
         }else
         {
-            return redirect('estancia')->with('errorPDF','Hay un error en el nombre de tu pdf');
+            return redirect('estancia1')->with('errorPDF','Hay un error en el nombre de tu pdf');
         }
 
     }

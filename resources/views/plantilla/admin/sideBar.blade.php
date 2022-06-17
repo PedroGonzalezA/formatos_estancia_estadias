@@ -40,7 +40,10 @@
                         <a href="{{ route('usuarios.index') }}"></i> Alumnos</a>
                     </li>
                     <li>
-                        <a href="{{ route('documentoEstanciaAdmin.index') }}"></i> Documentos Estancias</a>
+                        <a href="{{ route('documentoEstancia1Admin.index') }}"></i> Documentos Estancias I</a>
+                    </li>
+                    <li>
+                        <a href="{{ route('documentoEstancia2Admin.index') }}"></i> Documentos Estancias II</a> <!---separador de estancia 1 y 2 ------>
                     </li>
                     <li>
                         <a href="{{ route('documentoEstadiaAdmin.index') }}"></i> Documentos Estadías</a>

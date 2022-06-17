@@ -33,7 +33,7 @@
 		<!-- Content page -->
 		<div class="container p-3">
 			<div class="page-header">
-			  <h2 class="text-titles">Documentos Registrados<small>(Estancia)</small></h2>
+			  <h2 class="text-titles">Documentos Registrados<small>(Estancia I)</small></h2>
 			</div>
 		</div>
          <!---notificacion --->
@@ -41,7 +41,7 @@
             <div class="container">
                 <div class="row">
                     <div class=" col-12 col-sm-12 col-md-6">
-                        <form action="{{ route('buscar_estancia.index') }}" method="GET">
+                        <form action="{{ route('Buscar_estancia1.index') }}" method="GET">
                             @csrf
                             <!-- buscar-->
                             <div class="row">
@@ -57,7 +57,7 @@
                         </form>
                     </div>
                     <div class=" col-12 col-sm-12 col-md-6">
-                        <form  action="{{ route('buscar_estancia_c.index') }}" method="GET">
+                        <form  action="{{ route('Buscar_estancia1_c.index') }}" method="GET">
                             @csrf
                             <!--Buscar datos cedula-->
                             <div class="row">
