@@ -162,13 +162,13 @@
                                                     @case(0)
                                                     <!--con observaciones-->
                                                         <div class="col-6 p-1">
-                                                            <form method="post" action="{{ route('aceptar_estancia_carga_horaria_admin.index',[$respuestaH->id_usuario,$respuestaH->id_c_horaria, $respuestaH->nombre_c_h]) }}">
+                                                            <form method="post" action="{{ route('aceptar_estancia2_carga_horaria_admin.index',[$respuestaH->id_usuario,$respuestaH->id_c_horaria, $respuestaH->nombre_c_h]) }}">
                                                                 @csrf
                                                                 <button type="submit" class="btn btn-success btnAceptar" > <i class="zmdi zmdi-check zmdi-hc-lg"></i> Aceptar</button>
                                                             </form>	
                                                         </div>
                                                         <div class="col-12 p-1">
-                                                            <form method="post" action="{{ route('pendiente_estancia_carga_horaria_admin.index',[$respuestaH->id_usuario,$respuestaH->id_c_horaria, $respuestaH->nombre_c_h]) }}">
+                                                            <form method="post" action="{{ route('pendiente_estancia2_carga_horaria_admin.index',[$respuestaH->id_usuario,$respuestaH->id_c_horaria, $respuestaH->nombre_c_h]) }}">
                                                                 @csrf
                                                                 <button type="submit" class="btn btn-warning btnPendiente" >Pendiente</button>
                                                             </form>	
@@ -186,7 +186,7 @@
                                                     <!--pendiente-->
                                                     @case(1)
                                                         <div class="col-6 p-1">
-                                                            <form method="post" action="{{ route('aceptar_estancia_carga_horaria_admin.index',[$respuestaH->id_usuario,$respuestaH->id_c_horaria, $respuestaH->nombre_c_h]) }}">
+                                                            <form method="post" action="{{ route('aceptar_estancia2_carga_horaria_admin.index',[$respuestaH->id_usuario,$respuestaH->id_c_horaria, $respuestaH->nombre_c_h]) }}">
                                                                 @csrf
                                                                 <button type="submit" class="btn btn-success btnAceptar" > <i class="zmdi zmdi-check zmdi-hc-lg"></i> Aceptar</button>
                                                             </form>	
@@ -203,7 +203,7 @@
                                                     @case(2)
                                                     
                                                         <div class="col-6 p-1">
-                                                            <form method="post" action="{{ route('pendiente_estancia_carga_horaria_admin.index',[$respuestaH->id_usuario,$respuestaH->id_c_horaria, $respuestaH->nombre_c_h]) }}">
+                                                            <form method="post" action="{{ route('pendiente_estancia2_carga_horaria_admin.index',[$respuestaH->id_usuario,$respuestaH->id_c_horaria, $respuestaH->nombre_c_h]) }}">
                                                                 @csrf
                                                                 <button type="submit" class="btn btn-warning btnAceptar" >Pendiente</button>
                                                             </form>	
@@ -273,13 +273,13 @@
                                                     @case(0)
                                                     <!--con observaciones-->
                                                         <div class="col-6 p-1">
-                                                            <form method="post" action="{{ route('aceptar_estancia_constancia_derecho_admin.index',[$respuestaCD->id_usuario,$respuestaCD->id_c_derecho, $respuestaCD->nombre_c_d]) }}">
+                                                            <form method="post" action="{{ route('aceptar_estancia2_constancia_derecho_admin.index',[$respuestaCD->id_usuario,$respuestaCD->id_c_derecho, $respuestaCD->nombre_c_d]) }}">
                                                                 @csrf
                                                                 <button type="submit" class="btn btn-success btnAceptar" > <i class="zmdi zmdi-check zmdi-hc-lg"></i> Aceptar</button>
                                                             </form>	
                                                         </div>
                                                         <div class="col-12 p-1">
-                                                            <form method="post" action="{{ route('pendiente_estancia_constancia_derecho_admin.index',[$respuestaCD->id_usuario,$respuestaCD->id_c_derecho, $respuestaCD->nombre_c_d]) }}">
+                                                            <form method="post" action="{{ route('pendiente_estancia2_constancia_derecho_admin.index',[$respuestaCD->id_usuario,$respuestaCD->id_c_derecho, $respuestaCD->nombre_c_d]) }}">
                                                                 @csrf
                                                                 <button type="submit" class="btn btn-warning btnPendiente" >Pendiente</button>
                                                             </form>	
@@ -297,7 +297,7 @@
                                                     <!--pendiente-->
                                                     @case(1)
                                                         <div class="col-6 p-1">
-                                                            <form method="post" action="{{ route('aceptar_estancia_constancia_derecho_admin.index',[$respuestaCD->id_usuario,$respuestaCD->id_c_derecho, $respuestaCD->nombre_c_d]) }}">
+                                                            <form method="post" action="{{ route('aceptar_estancia2_constancia_derecho_admin.index',[$respuestaCD->id_usuario,$respuestaCD->id_c_derecho, $respuestaCD->nombre_c_d]) }}">
                                                                 @csrf
                                                                 <button type="submit" class="btn btn-success btnAceptar" > <i class="zmdi zmdi-check zmdi-hc-lg"></i> Aceptar</button>
                                                             </form>	
@@ -314,7 +314,7 @@
                                                     @case(2)
                                                     
                                                         <div class="col-6 p-1">
-                                                            <form method="post" action="{{ route('pendiente_estancia_constancia_derecho_admin.index',[$respuestaCD->id_usuario,$respuestaCD->id_c_derecho, $respuestaCD->nombre_c_d]) }}">
+                                                            <form method="post" action="{{ route('pendiente_estancia2_constancia_derecho_admin.index',[$respuestaCD->id_usuario,$respuestaCD->id_c_derecho, $respuestaCD->nombre_c_d]) }}">
                                                                 @csrf
                                                                 <button type="submit" class="btn btn-warning btnAceptar" >Pendiente</button>
                                                             </form>	

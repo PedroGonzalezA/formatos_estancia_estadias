@@ -152,14 +152,14 @@ class documentosEstancia2AdminController extends Controller
         }
     }
     //aceptar carga horaria
-    public function aceptar_estancia_carga_horaria_admin($idU,$id,$name) {
+    public function aceptar_estancia2_carga_horaria_admin($idU,$id,$name) {
         $carta=carga_horaria::find($id);
         $carta->estado_c_h=2;
         $carta->save();
          return redirect('estancia2_Documentos')->with('aceptado','Carga horaria Aceptado');
     }
     //pendiente carga horaria
-    public function pendiente_estancia_carga_horaria_admin($idU,$id,$name) {
+    public function pendiente_estancia2_carga_horaria_admin($idU,$id,$name) {
         $carta=carga_horaria::find($id);
         $carta->estado_c_h=1;
         $carta->save();
@@ -203,14 +203,14 @@ class documentosEstancia2AdminController extends Controller
         }
     }
 
-    public function aceptar_estancia_constancia_derecho_admin($idU,$id,$name) {
+    public function aceptar_estancia2_constancia_derecho_admin($idU,$id,$name) {
         $carta=constancia_derecho::find($id);
         $carta->estado_c_d=2;
         $carta->save();
          return redirect('estancia2_Documentos')->with('aceptado','Constancia derecho Aceptado');
     }
     
-    public function pendiente_estancia_constancia_derecho_admin($idU,$id,$name) {
+    public function pendiente_estancia2_constancia_derecho_admin($idU,$id,$name) {
         $carta=constancia_derecho::find($id);
         $carta->estado_c_d=1;
         $carta->save();
@@ -252,14 +252,14 @@ class documentosEstancia2AdminController extends Controller
         }
     }
 
-    public function aceptar_estancia_carta_responsiva_admin($idU,$id,$name) {
+    public function aceptar_estancia2_carta_responsiva_admin($idU,$id,$name) {
         $carta=carta_responsiva::find($id);
         $carta->estado_c_r=2;
         $carta->save();
          return redirect('estancia2_Documentos')->with('aceptado','Carta responsiva Aceptado');
     }
     
-    public function pendiente_estancia_carta_responsiva_admin($idU,$id,$name) {
+    public function pendiente_estancia2_carta_responsiva_admin($idU,$id,$name) {
         $carta=carta_responsiva::find($id);
         $carta->estado_c_r=1;
         $carta->save();
@@ -301,14 +301,14 @@ class documentosEstancia2AdminController extends Controller
         }
     }
 
-    public function aceptar_estancia_f01_admin($idU,$id,$name) {
+    public function aceptar_estancia2_f01_admin($idU,$id,$name) {
         $carta=carta_presentacion::find($id);
         $carta->estado_c_p=2;
         $carta->save();
          return redirect('estancia2_Documentos')->with('aceptado','F-01 Aceptado');
     }
     
-    public function pendiente_estancia_f01_admin($idU,$id,$name) {
+    public function pendiente_estancia2_f01_admin($idU,$id,$name) {
         $carta=carta_presentacion::find($id);
         $carta->estado_c_p=1;
         $carta->save();
@@ -350,13 +350,13 @@ class documentosEstancia2AdminController extends Controller
         }
     }
 
-    public function aceptar_estancia_f02_admin($idU,$id,$name) {
+    public function aceptar_estancia2_f02_admin($idU,$id,$name) {
         $carta=carta_aceptacion::find($id);
         $carta->estado=2;
         $carta->save();
          return redirect('estancia2_Documentos')->with('success','F-02 Aceptado');
     }
-    public function pendiente_estancia_f02_admin($idU,$id,$name) {
+    public function pendiente_estancia2_f02_admin($idU,$id,$name) {
         $carta=carta_aceptacion::find($id);
         $carta->estado=1;
         $carta->save();
@@ -397,13 +397,13 @@ class documentosEstancia2AdminController extends Controller
         }
     }
 
-    public function aceptar_estancia_f03_admin($idU,$id,$name) {
+    public function aceptar_estancia2_f03_admin($idU,$id,$name) {
         $carta=cedula_registro::find($id);
         $carta->estado_c_r=2;
         $carta->save();
          return redirect('estancia2_Documentos')->with('success','F-03 Aceptado');
     }
-    public function pendiente_estancia_f03_admin($idU,$id,$name) {
+    public function pendiente_estancia2_f03_admin($idU,$id,$name) {
         $carta=cedula_registro::find($id);
         $carta->estado_c_r=1;
         $carta->save();
@@ -444,13 +444,13 @@ class documentosEstancia2AdminController extends Controller
         }
     }
 
-    public function aceptar_estancia_f04_admin($idU,$id,$name) {
+    public function aceptar_estancia2_f04_admin($idU,$id,$name) {
         $carta=definicion_proyecto::find($id);
         $carta->estado_d_p=2;
         $carta->save();
          return redirect('estancia2_Documentos')->with('success','F-04 Aceptado');
     }
-    public function pendiente_estancia_f04_admin($idU,$id,$name) {
+    public function pendiente_estancia2_f04_admin($idU,$id,$name) {
         $carta=definicion_proyecto::find($id);
         $carta->estado_d_p=1;
         $carta->save();
@@ -492,13 +492,13 @@ class documentosEstancia2AdminController extends Controller
         }
     }
 
-    public function aceptar_estancia_f05_admin($idU,$id,$name) {
+    public function aceptar_estancia2_f05_admin($idU,$id,$name) {
         $carta=carta_liberacion::find($id);
         $carta->estado_c_l=2;
         $carta->save();
          return redirect('estancia2_Documentos')->with('success','F-05 Aceptado');
     }
-    public function pendiente_estancia_f05_admin($idU,$id,$name) {
+    public function pendiente_estancia2_f05_admin($idU,$id,$name) {
         $carta=carta_liberacion::find($id);
         $carta->estado_c_l=1;
         $carta->save();

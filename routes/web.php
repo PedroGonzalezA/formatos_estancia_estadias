@@ -153,12 +153,12 @@ Route::get('/logout', [LoginController::class, 'destroy'])
          ->middleware('auth.admin');
  
          //aceptar carga horaria
-         Route::match(['post','get','put'],'/aceptar_estancia_carga_horaria/admin/{idU}/{id}/{name}', [documentosEstancia1AdminController::class, 'aceptar_estancia_carga_horaria_admin'])
-         ->name('aceptar_estancia_carga_horaria_admin.index');
+         Route::match(['post','get','put'],'/aceptar_estancia1_carga_horaria/admin/{idU}/{id}/{name}', [documentosEstancia1AdminController::class, 'aceptar_estancia_carga_horaria_admin'])
+         ->name('aceptar_estancia1_carga_horaria_admin.index');
  
          //pendiente constancia derecho
-         Route::match(['post','get','put'],'/pendiente_estancia_carga_horaria/admin/{idU}/{id}/{name}', [documentosEstancia1AdminController::class, 'pendiente_estancia_carga_horaria_admin'])
-         ->name('pendiente_estancia_carga_horaria_admin.index');
+         Route::match(['post','get','put'],'/pendiente_estancia1_carga_horaria/admin/{idU}/{id}/{name}', [documentosEstancia1AdminController::class, 'pendiente_estancia_carga_horaria_admin'])
+         ->name('pendiente_estancia1_carga_horaria_admin.index');
  
          //observaciones  constancia derecho
          Route::match(['post','get','put'],'/observaciones_estancia_carga_horaria_admin', [documentosEstancia1AdminController::class, 'observaciones_estancia_carga_horaria_admin'])
@@ -180,12 +180,12 @@ Route::get('/logout', [LoginController::class, 'destroy'])
          ->middleware('auth.admin');
  
          //aceptar  constancia derecho
-         Route::match(['post','get','put'],'/aceptar_estancia_constancia_derecho/admin/{idU}/{id}/{name}', [documentosEstancia1AdminController::class, 'aceptar_estancia_constancia_derecho_admin'])
-         ->name('aceptar_estancia_constancia_derecho_admin.index');
+         Route::match(['post','get','put'],'/aceptar_estancia1_constancia_derecho/admin/{idU}/{id}/{name}', [documentosEstancia1AdminController::class, 'aceptar_estancia_constancia_derecho_admin'])
+         ->name('aceptar_estancia1_constancia_derecho_admin.index');
  
          //pendiente constancia derecho
-         Route::match(['post','get','put'],'/pendiente_estancia_constancia_derecho/admin/{idU}/{id}/{name}', [documentosEstancia1AdminController::class, 'pendiente_estancia_constancia_derecho_admin'])
-         ->name('pendiente_estancia_constancia_derecho_admin.index');
+         Route::match(['post','get','put'],'/pendiente_estancia1_constancia_derecho/admin/{idU}/{id}/{name}', [documentosEstancia1AdminController::class, 'pendiente_estancia_constancia_derecho_admin'])
+         ->name('pendiente_estancia1_constancia_derecho_admin.index');
  
          //observaciones  constancia derecho
          Route::match(['post','get','put'],'/observaciones_estancia_constancia_derecho_admin', [documentosEstancia1AdminController::class, 'observaciones_estancia_constancia_derecho_admin'])
@@ -208,12 +208,12 @@ Route::get('/logout', [LoginController::class, 'destroy'])
          ->middleware('auth.admin');
  
          //aceptar  carta responsiva
-         Route::match(['post','get','put'],'/aceptar_estancia_carta_responsiva/admin/{idU}/{id}/{name}', [documentosEstancia1AdminController::class, 'aceptar_estancia_carta_responsiva_admin'])
-         ->name('aceptar_estancia_carta_responsiva_admin.index');
+         Route::match(['post','get','put'],'/aceptar_estancia1_carta_responsiva/admin/{idU}/{id}/{name}', [documentosEstancia1AdminController::class, 'aceptar_estancia_carta_responsiva_admin'])
+         ->name('aceptar_estancia1_carta_responsiva_admin.index');
  
          //pendiente carta responsiva
-         Route::match(['post','get','put'],'/pendiente_estancia_carta_responsiva/admin/{idU}/{id}/{name}', [documentosEstancia1AdminController::class, 'pendiente_estancia_carta_responsiva_admin'])
-         ->name('pendiente_estancia_carta_responsiva_admin.index');
+         Route::match(['post','get','put'],'/pendiente_estancia1_carta_responsiva/admin/{idU}/{id}/{name}', [documentosEstancia1AdminController::class, 'pendiente_estancia_carta_responsiva_admin'])
+         ->name('pendiente_estancia1_carta_responsiva_admin.index');
  
          //observaciones  carta responsiva
          Route::match(['post','get','put'],'/observaciones_estancia_carta_responsiva_admin', [documentosEstancia1AdminController::class, 'observaciones_estancia_carta_responsiva_admin'])
@@ -236,12 +236,12 @@ Route::get('/logout', [LoginController::class, 'destroy'])
         ->middleware('auth.admin');
 
         //aceptar  f01
-        Route::match(['post','get','put'],'/aceptar_estancia_f01/admin/{idU}/{id}/{name}', [documentosEstancia1AdminController::class, 'aceptar_estancia_f01_admin'])
-        ->name('aceptar_estancia_f01_admin.index');
+        Route::match(['post','get','put'],'/aceptar_estancia1_f01/admin/{idU}/{id}/{name}', [documentosEstancia1AdminController::class, 'aceptar_estancia_f01_admin'])
+        ->name('aceptar_estancia1_f01_admin.index');
 
         //pendiente f01
-        Route::match(['post','get','put'],'/pendiente_estancia_f01/admin/{idU}/{id}/{name}', [documentosEstancia1AdminController::class, 'pendiente_estancia_f01_admin'])
-        ->name('pendiente_estancia_f01_admin.index');
+        Route::match(['post','get','put'],'/pendiente_estancia1_f01/admin/{idU}/{id}/{name}', [documentosEstancia1AdminController::class, 'pendiente_estancia_f01_admin'])
+        ->name('pendiente_estancia1_f01_admin.index');
 
         //observaciones  f01
         Route::match(['post','get','put'],'/observaciones_estancia_f01_admin', [documentosEstancia1AdminController::class, 'observaciones_estancia_f01_admin'])
@@ -264,12 +264,12 @@ Route::get('/logout', [LoginController::class, 'destroy'])
         ->middleware('auth.admin');
 
         //aceptar  f02
-        Route::match(['post','get','put'],'/aceptar_estancia_f02/admin/{idU}/{id}/{name}', [documentosEstancia1AdminController::class, 'aceptar_estancia_f02_admin'])
-        ->name('aceptar_estancia_f02_admin.index');
+        Route::match(['post','get','put'],'/aceptar_estancia1_f02/admin/{idU}/{id}/{name}', [documentosEstancia1AdminController::class, 'aceptar_estancia_f02_admin'])
+        ->name('aceptar_estancia1_f02_admin.index');
 
         //pendiente f02
-        Route::match(['post','get','put'],'/pendiente_estancia_f02/admin/{idU}/{id}/{name}', [documentosEstancia1AdminController::class, 'pendiente_estancia_f02_admin'])
-        ->name('pendiente_estancia_f02_admin.index');
+        Route::match(['post','get','put'],'/pendiente_estancia1_f02/admin/{idU}/{id}/{name}', [documentosEstancia1AdminController::class, 'pendiente_estancia_f02_admin'])
+        ->name('pendiente_estancia1_f02_admin.index');
 
         //observaciones  f02
         Route::match(['post','get','put'],'/observaciones_estancia_f02_admin', [documentosEstancia1AdminController::class, 'observaciones_estancia_f02_admin'])
@@ -293,12 +293,12 @@ Route::get('/logout', [LoginController::class, 'destroy'])
         ->middleware('auth.admin');
 
         //aceptar  f03
-        Route::match(['post','get','put'],'/aceptar_estancia_f03/admin/{idU}/{id}/{name}', [documentosEstancia1AdminController::class, 'aceptar_estancia_f03_admin'])
-        ->name('aceptar_estancia_f03_admin.index');
+        Route::match(['post','get','put'],'/aceptar_estancia1_f03/admin/{idU}/{id}/{name}', [documentosEstancia1AdminController::class, 'aceptar_estancia_f03_admin'])
+        ->name('aceptar_estancia1_f03_admin.index');
 
         //pendiente f03
-        Route::match(['post','get','put'],'/pendiente_estancia_f03/admin/{idU}/{id}/{name}', [documentosEstancia1AdminController::class, 'pendiente_estancia_f03_admin'])
-        ->name('pendiente_estancia_f03_admin.index');
+        Route::match(['post','get','put'],'/pendiente_estancia1_f03/admin/{idU}/{id}/{name}', [documentosEstancia1AdminController::class, 'pendiente_estancia_f03_admin'])
+        ->name('pendiente_estancia1_f03_admin.index');
 
         //observaciones  f03
         Route::match(['post','get','put'],'/observaciones_estancia_f03_admin', [documentosEstancia1AdminController::class, 'observaciones_estancia_f03_admin'])
@@ -321,12 +321,12 @@ Route::get('/logout', [LoginController::class, 'destroy'])
         ->middleware('auth.admin');
 
         //aceptar  f04
-        Route::match(['post','get','put'],'/aceptar_estancia_f04/admin/{idU}/{id}/{name}', [documentosEstancia1AdminController::class, 'aceptar_estancia_f04_admin'])
-        ->name('aceptar_estancia_f04_admin.index');
+        Route::match(['post','get','put'],'/aceptar_estancia1_f04/admin/{idU}/{id}/{name}', [documentosEstancia1AdminController::class, 'aceptar_estancia_f04_admin'])
+        ->name('aceptar_estancia1_f04_admin.index');
 
         //pendiente f04
-        Route::match(['post','get','put'],'/pendiente_estancia_f04/admin/{idU}/{id}/{name}', [documentosEstancia1AdminController::class, 'pendiente_estancia_f04_admin'])
-        ->name('pendiente_estancia_f04_admin.index');
+        Route::match(['post','get','put'],'/pendiente_estancia1_f04/admin/{idU}/{id}/{name}', [documentosEstancia1AdminController::class, 'pendiente_estancia_f04_admin'])
+        ->name('pendiente_estancia1_f04_admin.index');
 
         //observaciones  f04
         Route::match(['post','get','put'],'/observaciones_estancia_f04_admin', [documentosEstancia1AdminController::class, 'observaciones_estancia_f04_admin'])
@@ -349,12 +349,12 @@ Route::get('/logout', [LoginController::class, 'destroy'])
         ->middleware('auth.admin');
 
         //aceptar  f05
-        Route::match(['post','get','put'],'/aceptar_estancia_f05/admin/{idU}/{id}/{name}', [documentosEstancia1AdminController::class, 'aceptar_estancia_f05_admin'])
-        ->name('aceptar_estancia_f05_admin.index');
+        Route::match(['post','get','put'],'/aceptar_estancia1_f05/admin/{idU}/{id}/{name}', [documentosEstancia1AdminController::class, 'aceptar_estancia_f05_admin'])
+        ->name('aceptar_estancia1_f05_admin.index');
 
         //pendiente f05
-        Route::match(['post','get','put'],'/pendiente_estancia_f05/admin/{idU}/{id}/{name}', [documentosEstancia1AdminController::class, 'pendiente_estancia_f05_admin'])
-        ->name('pendiente_estancia_f05_admin.index');
+        Route::match(['post','get','put'],'/pendiente_estancia1_f05/admin/{idU}/{id}/{name}', [documentosEstancia1AdminController::class, 'pendiente_estancia_f05_admin'])
+        ->name('pendiente_estancia1_f05_admin.index');
 
         //observaciones  f05
         Route::match(['post','get','put'],'/observaciones_estancia_f05_admin', [documentosEstancia1AdminController::class, 'observaciones_estancia_f05_admin'])
@@ -394,11 +394,11 @@ Route::get('/logout', [LoginController::class, 'destroy'])
 
      //aceptar carga horaria
      Route::match(['post','get','put'],'/aceptar_estancia_carga_horaria/admin/{idU}/{id}/{name}', [documentosEstancia2AdminController::class, 'aceptar_estancia_carga_horaria_admin'])
-     ->name('aceptar_estancia_carga_horaria_admin.index');
+     ->name('aceptar_estancia2_carga_horaria_admin.index');
 
      //pendiente constancia derecho
      Route::match(['post','get','put'],'/pendiente_estancia_carga_horaria/admin/{idU}/{id}/{name}', [documentosEstancia2AdminController::class, 'pendiente_estancia_carga_horaria_admin'])
-     ->name('pendiente_estancia_carga_horaria_admin.index');
+     ->name('pendiente_estancia2_carga_horaria_admin.index');
 
      //observaciones  constancia derecho
      Route::match(['post','get','put'],'/observaciones_estancia_carga_horaria_admin', [documentosEstancia2AdminController::class, 'observaciones_estancia_carga_horaria_admin'])
@@ -421,11 +421,11 @@ Route::get('/logout', [LoginController::class, 'destroy'])
 
      //aceptar  constancia derecho
      Route::match(['post','get','put'],'/aceptar_estancia_constancia_derecho/admin/{idU}/{id}/{name}', [documentosEstancia2AdminController::class, 'aceptar_estancia_constancia_derecho_admin'])
-     ->name('aceptar_estancia_constancia_derecho_admin.index');
+     ->name('aceptar_estancia2_constancia_derecho_admin.index');
 
      //pendiente constancia derecho
      Route::match(['post','get','put'],'/pendiente_estancia_constancia_derecho/admin/{idU}/{id}/{name}', [documentosEstancia2AdminController::class, 'pendiente_estancia_constancia_derecho_admin'])
-     ->name('pendiente_estancia_constancia_derecho_admin.index');
+     ->name('pendiente_estancia2_constancia_derecho_admin.index');
 
      //observaciones  constancia derecho
      Route::match(['post','get','put'],'/observaciones_estancia_constancia_derecho_admin', [documentosEstancia2AdminController::class, 'observaciones_estancia_constancia_derecho_admin'])
@@ -449,11 +449,11 @@ Route::get('/logout', [LoginController::class, 'destroy'])
 
      //aceptar  carta responsiva
      Route::match(['post','get','put'],'/aceptar_estancia_carta_responsiva/admin/{idU}/{id}/{name}', [documentosEstancia2AdminController::class, 'aceptar_estancia_carta_responsiva_admin'])
-     ->name('aceptar_estancia_carta_responsiva_admin.index');
+     ->name('aceptar_estancia2_carta_responsiva_admin.index');
 
      //pendiente carta responsiva
      Route::match(['post','get','put'],'/pendiente_estancia_carta_responsiva/admin/{idU}/{id}/{name}', [documentosEstancia2AdminController::class, 'pendiente_estancia_carta_responsiva_admin'])
-     ->name('pendiente_estancia_carta_responsiva_admin.index');
+     ->name('pendiente_estancia2_carta_responsiva_admin.index');
 
      //observaciones  carta responsiva
      Route::match(['post','get','put'],'/observaciones_estancia_carta_responsiva_admin', [documentosEstancia2AdminController::class, 'observaciones_estancia_carta_responsiva_admin'])
@@ -477,11 +477,11 @@ Route::get('/logout', [LoginController::class, 'destroy'])
 
     //aceptar  f01
     Route::match(['post','get','put'],'/aceptar_estancia_f01/admin/{idU}/{id}/{name}', [documentosEstancia2AdminController::class, 'aceptar_estancia_f01_admin'])
-    ->name('aceptar_estancia_f01_admin.index');
+    ->name('aceptar_estancia2_f01_admin.index');
 
     //pendiente f01
     Route::match(['post','get','put'],'/pendiente_estancia_f01/admin/{idU}/{id}/{name}', [documentosEstancia2AdminController::class, 'pendiente_estancia_f01_admin'])
-    ->name('pendiente_estancia_f01_admin.index');
+    ->name('pendiente_estancia2_f01_admin.index');
 
     //observaciones  f01
     Route::match(['post','get','put'],'/observaciones_estancia_f01_admin', [documentosEstancia2AdminController::class, 'observaciones_estancia_f01_admin'])
@@ -505,11 +505,11 @@ Route::get('/logout', [LoginController::class, 'destroy'])
 
     //aceptar  f02
     Route::match(['post','get','put'],'/aceptar_estancia_f02/admin/{idU}/{id}/{name}', [documentosEstancia2AdminController::class, 'aceptar_estancia_f02_admin'])
-    ->name('aceptar_estancia_f02_admin.index');
+    ->name('aceptar_estancia2_f02_admin.index');
 
     //pendiente f02
     Route::match(['post','get','put'],'/pendiente_estancia_f02/admin/{idU}/{id}/{name}', [documentosEstancia2AdminController::class, 'pendiente_estancia_f02_admin'])
-    ->name('pendiente_estancia_f02_admin.index');
+    ->name('pendiente_estancia2_f02_admin.index');
 
     //observaciones  f02
     Route::match(['post','get','put'],'/observaciones_estancia_f02_admin', [documentosEstancia2AdminController::class, 'observaciones_estancia_f02_admin'])
@@ -534,11 +534,11 @@ Route::get('/logout', [LoginController::class, 'destroy'])
 
     //aceptar  f03
     Route::match(['post','get','put'],'/aceptar_estancia_f03/admin/{idU}/{id}/{name}', [documentosEstancia2AdminController::class, 'aceptar_estancia_f03_admin'])
-    ->name('aceptar_estancia_f03_admin.index');
+    ->name('aceptar_estancia2_f03_admin.index');
 
     //pendiente f03
     Route::match(['post','get','put'],'/pendiente_estancia_f03/admin/{idU}/{id}/{name}', [documentosEstancia2AdminController::class, 'pendiente_estancia_f03_admin'])
-    ->name('pendiente_estancia_f03_admin.index');
+    ->name('pendiente_estancia2_f03_admin.index');
 
     //observaciones  f03
     Route::match(['post','get','put'],'/observaciones_estancia_f03_admin', [documentosEstancia2AdminController::class, 'observaciones_estancia_f03_admin'])
@@ -562,11 +562,11 @@ Route::get('/logout', [LoginController::class, 'destroy'])
 
     //aceptar  f04
     Route::match(['post','get','put'],'/aceptar_estancia_f04/admin/{idU}/{id}/{name}', [documentosEstancia2AdminController::class, 'aceptar_estancia_f04_admin'])
-    ->name('aceptar_estancia_f04_admin.index');
+    ->name('aceptar_estancia2_f04_admin.index');
 
     //pendiente f04
     Route::match(['post','get','put'],'/pendiente_estancia_f04/admin/{idU}/{id}/{name}', [documentosEstancia2AdminController::class, 'pendiente_estancia_f04_admin'])
-    ->name('pendiente_estancia_f04_admin.index');
+    ->name('pendiente_estancia2_f04_admin.index');
 
     //observaciones  f04
     Route::match(['post','get','put'],'/observaciones_estancia_f04_admin', [documentosEstancia2AdminController::class, 'observaciones_estancia_f04_admin'])
@@ -590,11 +590,11 @@ Route::get('/logout', [LoginController::class, 'destroy'])
 
     //aceptar  f05
     Route::match(['post','get','put'],'/aceptar_estancia_f05/admin/{idU}/{id}/{name}', [documentosEstancia2AdminController::class, 'aceptar_estancia_f05_admin'])
-    ->name('aceptar_estancia_f05_admin.index');
+    ->name('aceptar_estancia2_f05_admin.index');
 
     //pendiente f05
     Route::match(['post','get','put'],'/pendiente_estancia_f05/admin/{idU}/{id}/{name}', [documentosEstancia2AdminController::class, 'pendiente_estancia_f05_admin'])
-    ->name('pendiente_estancia_f05_admin.index');
+    ->name('pendiente_estancia2_f05_admin.index');
 
     //observaciones  f05
     Route::match(['post','get','put'],'/observaciones_estancia_f05_admin', [documentosEstancia2AdminController::class, 'observaciones_estancia_f05_admin'])

@@ -18,7 +18,7 @@
         <!-- Wrap the content of your PDF inside a main tag -->
             <div class="container">
                 <div class="col-6">
-                    <a href="{{ route('estancia.index') }}" class="btn "  ><i class="zmdi zmdi-arrow-left"></i></a>
+                    <a href="{{ route('estancia1.index') }}" class="btn "  ><i class="zmdi zmdi-arrow-left"></i></a>
                 </div>
                 <p class="text-center p-0 m-0"><b>Universidad Politécnica de Quintana Roo</b><br>Dirección de Vinculación, Difusión y Extensión Universitaria</p>
                 @forelse ($datos['cedula'] as $dato)                            
