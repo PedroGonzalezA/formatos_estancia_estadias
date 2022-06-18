@@ -38,7 +38,7 @@
 				@csrf
 					<div class="row">
 							<div class="col-12 p-0">
-									<a href="{{ route('documentoEstanciaAdmin.index') }}" class="btn "  ><i class="zmdi zmdi-arrow-left"></i></a>
+									<a href="{{ route('documentoEstancia1Admin.index') }}" class="btn "  ><i class="zmdi zmdi-arrow-left"></i></a>
 							</div>
 							<div class="col-12 p-1">
 								<input type="text" name="observaciones" value="{{$dato->observaciones_c_h}}" class="observaciones" >
