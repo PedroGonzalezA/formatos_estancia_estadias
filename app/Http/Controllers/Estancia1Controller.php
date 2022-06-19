@@ -177,8 +177,8 @@ class Estancia1Controller extends Controller
 
         return view('estancia1',['datos'=>$datos,'definicionP'=>$datos1,'documentos'=>$datos2,'etapas'=>$datos3,'carta_aceptacion'=>$datos4,'carta'=>$datos5,'carta1'=>$datos6]);
     }
-     //subir documento sin datos carga horaria
-     public function subir_carga_horaria_estancia(Request $request, $name,$nombre){
+    //subir documento sin datos carga horaria
+    public function subir_carga_horaria_estancia1(Request $request, $name,$nombre){
     
         $request->validate([
             "carga_horaria" => "required|mimetypes:application/pdf|max:30000"
@@ -278,7 +278,7 @@ class Estancia1Controller extends Controller
     }
 
     //actualizar documento carga horaria
-    public function actualizar_carga_horaria_estancia(Request $request, $name,$nombre){
+    public function actualizar_carga_horaria_estancia1(Request $request, $name,$nombre){
         
         $request->validate([
             "carga_horaria" => "required|mimetypes:application/pdf|max:10000"
@@ -361,7 +361,7 @@ class Estancia1Controller extends Controller
     }
 
     //subir documento sin datos constancia derecho
-    public function subir_constancia_derecho_estancia(Request $request, $name,$nombre){
+    public function subir_constancia_derecho_estancia1(Request $request, $name,$nombre){
     
         $request->validate([
             "constancia_derecho" => "required|mimetypes:application/pdf|max:30000"
@@ -460,7 +460,7 @@ class Estancia1Controller extends Controller
         }    }
 
     //actualizar documento constancia derecho
-    public function actualizar_constancia_derecho_estancia(Request $request, $name,$nombre){
+    public function actualizar_constancia_derecho_estancia1(Request $request, $name,$nombre){
         
         $request->validate([
             "constancia_derecho" => "required|mimetypes:application/pdf|max:10000"
@@ -543,7 +543,7 @@ class Estancia1Controller extends Controller
     }
 
     //subir documento sin datos carta responsiva
-    public function subir_carta_responsiva_estancia(Request $request, $name,$nombre){
+    public function subir_carta_responsiva_estancia1(Request $request, $name,$nombre){
     
         $request->validate([
             "carta_responsiva" => "required|mimetypes:application/pdf|max:30000"
@@ -643,7 +643,7 @@ class Estancia1Controller extends Controller
     }
 
     //actualizar documento carta responsiva
-    public function actualizar_carta_responsiva_estancia(Request $request, $name,$nombre){
+    public function actualizar_carta_responsiva_estancia1(Request $request, $name,$nombre){
         
         $request->validate([
             "carta_responsiva" => "required|mimetypes:application/pdf|max:10000"
@@ -726,7 +726,7 @@ class Estancia1Controller extends Controller
         return view('usuario.observaciones_carta_responsiva',['datos'=>$cedula_doc]);
     }
     //subir documento sin datos f01
-    public function subirF01_estancia(Request $request, $name,$nombre){
+    public function subirF01_estancia1(Request $request, $name,$nombre){
         $request->validate([
             "f01" => "required|mimetypes:application/pdf|max:30000"
         ]);
@@ -824,7 +824,7 @@ class Estancia1Controller extends Controller
         }
     }
     //actualizar documento f02
-    public function actualizarF01_estancia(Request $request, $name,$nombre){
+    public function actualizarF01_estancia1(Request $request, $name,$nombre){
         
         $request->validate([
             "f01" => "required|mimetypes:application/pdf|max:10000"
@@ -907,7 +907,7 @@ class Estancia1Controller extends Controller
     }
 
    //subir documento sin datos f02
-    public function subirF02_estancia(Request $request, $name,$nombre){
+    public function subirF02_estancia1(Request $request, $name,$nombre){
         $request->validate([
             "f02" => "required|mimetypes:application/pdf|max:30000"
         ]);
@@ -1005,7 +1005,7 @@ class Estancia1Controller extends Controller
         }
     }
     //actualizar documento f02
-    public function actualizarF02_estancia(Request $request, $name,$nombre){
+    public function actualizarF02_estancia1(Request $request, $name,$nombre){
         
         $request->validate([
             "f02" => "required|mimetypes:application/pdf|max:10000"
@@ -1089,7 +1089,7 @@ class Estancia1Controller extends Controller
     }
 
     //subir documento sin datos f03
-    public function subirF03_estancia(Request $request, $name,$nombre){
+    public function subirF03_estancia1(Request $request, $name,$nombre){
     
         $request->validate([
             "f03" => "required|mimetypes:application/pdf|max:10000"
@@ -1189,7 +1189,7 @@ class Estancia1Controller extends Controller
         }
     }
     //actualizar documento f03
-    public function actualizarF03_estancia(Request $request, $name,$nombre){
+    public function actualizarF03_estancia1(Request $request, $name,$nombre){
     
         $request->validate([
             "f03" => "required|mimetypes:application/pdf|max:10000"
@@ -1273,7 +1273,7 @@ class Estancia1Controller extends Controller
     }
 
     //subir documento sin datos f04
-    public function subirF04_estancia(Request $request, $name,$nombre){
+    public function subirF04_estancia1(Request $request, $name,$nombre){
     
         $request->validate([
             "f04" => "required|mimetypes:application/pdf|max:10000"
@@ -1373,7 +1373,7 @@ class Estancia1Controller extends Controller
         }
     }
     //actualizar documento f04
-    public function actualizarF04_estancia(Request $request, $name,$nombre){
+    public function actualizarF04_estancia1(Request $request, $name,$nombre){
         
         $request->validate([
             "f04" => "required|mimetypes:application/pdf|max:10000"
@@ -1457,7 +1457,7 @@ class Estancia1Controller extends Controller
         return view('usuario.observaciones_f04',['datos'=>$cedula_doc]);
     }
     //subir documento sin datos f05
-    public function subirF05_estancia(Request $request, $name,$nombre){
+    public function subirF05_estancia1(Request $request, $name,$nombre){
     
         $request->validate([
             "f05" => "required|mimetypes:application/pdf|max:10000"
@@ -1557,7 +1557,7 @@ class Estancia1Controller extends Controller
         }
     }
     //actualizar documento f05
-    public function actualizarF05_estancia(Request $request, $name,$nombre){
+    public function actualizarF05_estancia1(Request $request, $name,$nombre){
         
         $request->validate([
             "f05" => "required|mimetypes:application/pdf|max:10000"
