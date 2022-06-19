@@ -126,7 +126,7 @@
 									@empty
 									<!-- enviar carga horaria con datos-->
 										@forelse ($documentos['documentos'] as $dato)														
-											<form action="{{ route('actualizar_carga_horaria_estancia.index',[auth()->user()->name,$datoD->name]) }}" method="post" enctype="multipart/form-data" >
+											<form action="{{ route('actualizar_carga_horaria_estancia1.index',[auth()->user()->name,$datoD->name]) }}" method="post" enctype="multipart/form-data" >
 												@csrf
 													<input type="text" class="id_d" value="{{$datoD->id_documentos}}" name="id_doc_carga_horaria">
 													<span class="btn  fileinput-button">
@@ -142,7 +142,7 @@
 									@endforelse	
 								@empty
 									<!-- enviar carga horaria vacio-->
-									<form action="{{ route('subir_carga_horaria_estancia.index',[auth()->user()->name,auth()->user()->name]) }}" method="post" enctype="multipart/form-data" >
+									<form action="{{ route('subir_carga_horaria_estancia1.index',[auth()->user()->name,auth()->user()->name]) }}" method="post" enctype="multipart/form-data" >
 										@csrf
 										<span class="btn  fileinput-button">
 											<i class="zmdi zmdi-file"></i>
@@ -247,7 +247,7 @@
 									@empty
 									<!-- enviar constancia derecho con datos-->
 										@forelse ($documentos['documentos'] as $dato)														
-											<form action="{{ route('actualizar_constancia_derecho_estancia.index',[auth()->user()->name,$datoD->name]) }}" method="post" enctype="multipart/form-data" >
+											<form action="{{ route('actualizar_constancia_derecho_estancia1.index',[auth()->user()->name,$datoD->name]) }}" method="post" enctype="multipart/form-data" >
 												@csrf
 													<input type="text" class="id_d" value="{{$datoD->id_documentos}}" name="id_doc_constancia_derecho">
 													<span class="btn  fileinput-button">
@@ -263,7 +263,7 @@
 									@endforelse	
 								@empty
 									<!-- enviar constancia derecho vacio-->
-									<form action="{{ route('subir_constancia_derecho_estancia.index',[auth()->user()->name,auth()->user()->name]) }}" method="post" enctype="multipart/form-data" >
+									<form action="{{ route('subir_constancia_derecho_estancia1.index',[auth()->user()->name,auth()->user()->name]) }}" method="post" enctype="multipart/form-data" >
 										@csrf
 										<span class="btn  fileinput-button">
 											<i class="zmdi zmdi-file"></i>
@@ -375,7 +375,7 @@
 									@empty
 									<!-- enviar carta responsiva con datos-->
 										@forelse ($documentos['documentos'] as $dato)														
-											<form action="{{ route('actualizar_carta_responsiva_estancia.index',[auth()->user()->name,$datoD->name]) }}" method="post" enctype="multipart/form-data" >
+											<form action="{{ route('actualizar_carta_responsiva_estancia1.index',[auth()->user()->name,$datoD->name]) }}" method="post" enctype="multipart/form-data" >
 												@csrf
 													<input type="text" class="id_d" value="{{$datoD->id_documentos}}" name="id_doc_carta_responsiva">
 													<span class="btn  fileinput-button">
@@ -391,7 +391,7 @@
 									@endforelse	
 								@empty
 									<!-- enviar carta responsiva vacio-->
-									<form action="{{ route('subir_carta_responsiva_estancia.index',[auth()->user()->name,auth()->user()->name]) }}" method="post" enctype="multipart/form-data" >
+									<form action="{{ route('subir_carta_responsiva_estancia1.index',[auth()->user()->name,auth()->user()->name]) }}" method="post" enctype="multipart/form-data" >
 										@csrf
 										<span class="btn  fileinput-button">
 											<i class="zmdi zmdi-file"></i>
@@ -502,7 +502,7 @@
 									@empty
 									<!-- enviar cedula registro con datos-->
 										@forelse ($documentos['documentos'] as $dato)														
-											<form action="{{ route('actualizar_f01_estancia.index',[auth()->user()->name,$datoD->name]) }}" method="post" enctype="multipart/form-data" >
+											<form action="{{ route('actualizar_f01_estancia1.index',[auth()->user()->name,$datoD->name]) }}" method="post" enctype="multipart/form-data" >
 												@csrf
 													<input type="text" class="id_d" value="{{$datoD->id_documentos}}" name="id_docf01">
 													<span class="btn  fileinput-button">
@@ -518,7 +518,7 @@
 									@endforelse	
 								@empty
 								<!-- enviar cedula registro vacio-->
-									<form action="{{ route('subir_f01_estancia.index',[auth()->user()->name,auth()->user()->name]) }}" method="post" enctype="multipart/form-data" >
+									<form action="{{ route('subir_f01_estancia1.index',[auth()->user()->name,auth()->user()->name]) }}" method="post" enctype="multipart/form-data" >
 										@csrf
 										<span class="btn  fileinput-button">
 											<i class="zmdi zmdi-file"></i>
@@ -627,7 +627,7 @@
 														@empty
 														<!-- enviar cedula registro con datos-->
 															@forelse ($documentos['documentos'] as $dato)														
-																<form action="{{ route('actualizar_f02_estancia.index',[auth()->user()->name,$datoD->name]) }}" method="post" enctype="multipart/form-data" >
+																<form action="{{ route('actualizar_f02_estancia1.index',[auth()->user()->name,$datoD->name]) }}" method="post" enctype="multipart/form-data" >
 																	@csrf
 																		<input type="text" class="id_d" value="{{$datoD->id_documentos}}" name="id_docf02">
 																		<span class="btn  fileinput-button">
@@ -643,7 +643,7 @@
 														@endforelse	
 												@empty
 												<!-- enviar cedula registro vacio-->
-													<form action="{{ route('subir_f02_estancia.index',[auth()->user()->name,auth()->user()->name]) }}" method="post" enctype="multipart/form-data" >
+													<form action="{{ route('subir_f02_estancia1.index',[auth()->user()->name,auth()->user()->name]) }}" method="post" enctype="multipart/form-data" >
 														@csrf
 														<span class="btn  fileinput-button">
 															<i class="zmdi zmdi-file"></i>
@@ -799,7 +799,7 @@
 													<div class="col-12 col-md-9 py-1">
 														<!-- enviar cedula registro con datos-->
 														@forelse ($documentos['documentos'] as $dato)														
-															<form action="{{ route('actualizar_f03_estancia.index',[auth()->user()->name,$datoD->name]) }}" method="post" enctype="multipart/form-data" >
+															<form action="{{ route('actualizar_f03_estancia1.index',[auth()->user()->name,$datoD->name]) }}" method="post" enctype="multipart/form-data" >
 																@csrf
 																	<input type="text" class="id_d" value="{{$datoD->id_documentos}}" name="id_docf03">
 																	<span class="btn  fileinput-button">
@@ -832,7 +832,7 @@
 											</div>
 											<div class="col-12 col-md-9 py-1">
 												<!-- enviar cedula registro vacio-->
-												<form action="{{ route('subir_f03_estancia.index',[auth()->user()->name,auth()->user()->name]) }}" method="post" enctype="multipart/form-data" >
+												<form action="{{ route('subir_f03_estancia1.index',[auth()->user()->name,auth()->user()->name]) }}" method="post" enctype="multipart/form-data" >
 													@csrf
 													<span class="btn  fileinput-button">
 														<i class="zmdi zmdi-file"></i>
@@ -1010,7 +1010,7 @@
 													<div class="col-12 col-md-9 py-1">
 														<!-- enviar cedula registro con datos-->
 														@forelse ($documentos['documentos'] as $dato)														
-															<form action="{{ route('actualizar_f04_estancia.index',[auth()->user()->name,$datoD->name]) }}" method="post" enctype="multipart/form-data" >
+															<form action="{{ route('actualizar_f04_estancia1.index',[auth()->user()->name,$datoD->name]) }}" method="post" enctype="multipart/form-data" >
 																@csrf
 																	<input type="text" class="id_d" value="{{$datoD->id_documentos}}" name="id_docf04">
 																	<span class="btn  fileinput-button">
@@ -1045,7 +1045,7 @@
 											</div>
 											<div class="col-12 col-md-9 py-1">
 												<!-- enviar cedula registro vacio-->
-												<form action="{{ route('subir_f04_estancia.index',[auth()->user()->name,auth()->user()->name]) }}" method="post" enctype="multipart/form-data" >
+												<form action="{{ route('subir_f04_estancia1.index',[auth()->user()->name,auth()->user()->name]) }}" method="post" enctype="multipart/form-data" >
 													@csrf
 													<span class="btn  fileinput-button">
 														<i class="zmdi zmdi-file"></i>
@@ -1169,7 +1169,7 @@
 										@empty
 										<!-- enviar cedula registro con datos-->
 											@forelse ($documentos['documentos'] as $dato)														
-												<form action="{{ route('actualizar_f05_estancia.index',[auth()->user()->name,$datoD->name]) }}" method="post" enctype="multipart/form-data" >
+												<form action="{{ route('actualizar_f05_estancia1.index',[auth()->user()->name,$datoD->name]) }}" method="post" enctype="multipart/form-data" >
 													@csrf
 														<input type="text" class="id_d" value="{{$datoD->id_documentos}}" name="id_docf05">
 														<span class="btn  fileinput-button">
@@ -1185,7 +1185,7 @@
 										@endforelse	
 								@empty
 								<!-- enviar cedula registro vacio-->
-									<form action="{{ route('subir_f05_estancia.index',[auth()->user()->name,auth()->user()->name]) }}" method="post" enctype="multipart/form-data" >
+									<form action="{{ route('subir_f05_estancia1.index',[auth()->user()->name,auth()->user()->name]) }}" method="post" enctype="multipart/form-data" >
 										@csrf
 										<span class="btn  fileinput-button">
 											<i class="zmdi zmdi-file"></i>

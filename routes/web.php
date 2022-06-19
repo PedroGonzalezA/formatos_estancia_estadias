@@ -153,11 +153,11 @@ Route::get('/logout', [LoginController::class, 'destroy'])
          ->middleware('auth.admin');
  
          //aceptar carga horaria
-         Route::match(['post','get','put'],'/aceptar_estancia1_carga_horaria/admin/{idU}/{id}/{name}', [documentosEstancia1AdminController::class, 'aceptar_estancia_carga_horaria_admin'])
+         Route::match(['post','get','put'],'/aceptar_estancia1_carga_horaria/admin/{idU}/{id}/{name}', [documentosEstancia1AdminController::class, 'aceptar_estancia1_carga_horaria_admin'])
          ->name('aceptar_estancia1_carga_horaria_admin.index');
  
          //pendiente constancia derecho
-         Route::match(['post','get','put'],'/pendiente_estancia1_carga_horaria/admin/{idU}/{id}/{name}', [documentosEstancia1AdminController::class, 'pendiente_estancia_carga_horaria_admin'])
+         Route::match(['post','get','put'],'/pendiente_estancia1_carga_horaria/admin/{idU}/{id}/{name}', [documentosEstancia1AdminController::class, 'pendiente_estancia1_carga_horaria_admin'])
          ->name('pendiente_estancia1_carga_horaria_admin.index');
  
          //observaciones  constancia derecho
@@ -180,11 +180,11 @@ Route::get('/logout', [LoginController::class, 'destroy'])
          ->middleware('auth.admin');
  
          //aceptar  constancia derecho
-         Route::match(['post','get','put'],'/aceptar_estancia1_constancia_derecho/admin/{idU}/{id}/{name}', [documentosEstancia1AdminController::class, 'aceptar_estancia_constancia_derecho_admin'])
+         Route::match(['post','get','put'],'/aceptar_estancia1_constancia_derecho/admin/{idU}/{id}/{name}', [documentosEstancia1AdminController::class, 'aceptar_estancia1_constancia_derecho_admin'])
          ->name('aceptar_estancia1_constancia_derecho_admin.index');
  
          //pendiente constancia derecho
-         Route::match(['post','get','put'],'/pendiente_estancia1_constancia_derecho/admin/{idU}/{id}/{name}', [documentosEstancia1AdminController::class, 'pendiente_estancia_constancia_derecho_admin'])
+         Route::match(['post','get','put'],'/pendiente_estancia1_constancia_derecho/admin/{idU}/{id}/{name}', [documentosEstancia1AdminController::class, 'pendiente_estancia1_constancia_derecho_admin'])
          ->name('pendiente_estancia1_constancia_derecho_admin.index');
  
          //observaciones  constancia derecho
@@ -208,11 +208,11 @@ Route::get('/logout', [LoginController::class, 'destroy'])
          ->middleware('auth.admin');
  
          //aceptar  carta responsiva
-         Route::match(['post','get','put'],'/aceptar_estancia1_carta_responsiva/admin/{idU}/{id}/{name}', [documentosEstancia1AdminController::class, 'aceptar_estancia_carta_responsiva_admin'])
+         Route::match(['post','get','put'],'/aceptar_estancia1_carta_responsiva/admin/{idU}/{id}/{name}', [documentosEstancia1AdminController::class, 'aceptar_estancia1_carta_responsiva_admin'])
          ->name('aceptar_estancia1_carta_responsiva_admin.index');
  
          //pendiente carta responsiva
-         Route::match(['post','get','put'],'/pendiente_estancia1_carta_responsiva/admin/{idU}/{id}/{name}', [documentosEstancia1AdminController::class, 'pendiente_estancia_carta_responsiva_admin'])
+         Route::match(['post','get','put'],'/pendiente_estancia1_carta_responsiva/admin/{idU}/{id}/{name}', [documentosEstancia1AdminController::class, 'pendiente_estancia1_carta_responsiva_admin'])
          ->name('pendiente_estancia1_carta_responsiva_admin.index');
  
          //observaciones  carta responsiva
@@ -236,11 +236,11 @@ Route::get('/logout', [LoginController::class, 'destroy'])
         ->middleware('auth.admin');
 
         //aceptar  f01
-        Route::match(['post','get','put'],'/aceptar_estancia1_f01/admin/{idU}/{id}/{name}', [documentosEstancia1AdminController::class, 'aceptar_estancia_f01_admin'])
+        Route::match(['post','get','put'],'/aceptar_estancia1_f01/admin/{idU}/{id}/{name}', [documentosEstancia1AdminController::class, 'aceptar_estancia1_f01_admin'])
         ->name('aceptar_estancia1_f01_admin.index');
 
         //pendiente f01
-        Route::match(['post','get','put'],'/pendiente_estancia1_f01/admin/{idU}/{id}/{name}', [documentosEstancia1AdminController::class, 'pendiente_estancia_f01_admin'])
+        Route::match(['post','get','put'],'/pendiente_estancia1_f01/admin/{idU}/{id}/{name}', [documentosEstancia1AdminController::class, 'pendiente_estancia1_f01_admin'])
         ->name('pendiente_estancia1_f01_admin.index');
 
         //observaciones  f01
@@ -264,11 +264,11 @@ Route::get('/logout', [LoginController::class, 'destroy'])
         ->middleware('auth.admin');
 
         //aceptar  f02
-        Route::match(['post','get','put'],'/aceptar_estancia1_f02/admin/{idU}/{id}/{name}', [documentosEstancia1AdminController::class, 'aceptar_estancia_f02_admin'])
+        Route::match(['post','get','put'],'/aceptar_estancia1_f02/admin/{idU}/{id}/{name}', [documentosEstancia1AdminController::class, 'aceptar_estancia1_f02_admin'])
         ->name('aceptar_estancia1_f02_admin.index');
 
         //pendiente f02
-        Route::match(['post','get','put'],'/pendiente_estancia1_f02/admin/{idU}/{id}/{name}', [documentosEstancia1AdminController::class, 'pendiente_estancia_f02_admin'])
+        Route::match(['post','get','put'],'/pendiente_estancia1_f02/admin/{idU}/{id}/{name}', [documentosEstancia1AdminController::class, 'pendiente_estancia1_f02_admin'])
         ->name('pendiente_estancia1_f02_admin.index');
 
         //observaciones  f02
@@ -293,11 +293,11 @@ Route::get('/logout', [LoginController::class, 'destroy'])
         ->middleware('auth.admin');
 
         //aceptar  f03
-        Route::match(['post','get','put'],'/aceptar_estancia1_f03/admin/{idU}/{id}/{name}', [documentosEstancia1AdminController::class, 'aceptar_estancia_f03_admin'])
+        Route::match(['post','get','put'],'/aceptar_estancia1_f03/admin/{idU}/{id}/{name}', [documentosEstancia1AdminController::class, 'aceptar_estancia1_f03_admin'])
         ->name('aceptar_estancia1_f03_admin.index');
 
         //pendiente f03
-        Route::match(['post','get','put'],'/pendiente_estancia1_f03/admin/{idU}/{id}/{name}', [documentosEstancia1AdminController::class, 'pendiente_estancia_f03_admin'])
+        Route::match(['post','get','put'],'/pendiente_estancia1_f03/admin/{idU}/{id}/{name}', [documentosEstancia1AdminController::class, 'pendiente_estancia1_f03_admin'])
         ->name('pendiente_estancia1_f03_admin.index');
 
         //observaciones  f03
@@ -321,11 +321,11 @@ Route::get('/logout', [LoginController::class, 'destroy'])
         ->middleware('auth.admin');
 
         //aceptar  f04
-        Route::match(['post','get','put'],'/aceptar_estancia1_f04/admin/{idU}/{id}/{name}', [documentosEstancia1AdminController::class, 'aceptar_estancia_f04_admin'])
+        Route::match(['post','get','put'],'/aceptar_estancia1_f04/admin/{idU}/{id}/{name}', [documentosEstancia1AdminController::class, 'aceptar_estancia1_f04_admin'])
         ->name('aceptar_estancia1_f04_admin.index');
 
         //pendiente f04
-        Route::match(['post','get','put'],'/pendiente_estancia1_f04/admin/{idU}/{id}/{name}', [documentosEstancia1AdminController::class, 'pendiente_estancia_f04_admin'])
+        Route::match(['post','get','put'],'/pendiente_estancia1_f04/admin/{idU}/{id}/{name}', [documentosEstancia1AdminController::class, 'pendiente_estancia1_f04_admin'])
         ->name('pendiente_estancia1_f04_admin.index');
 
         //observaciones  f04
@@ -349,11 +349,11 @@ Route::get('/logout', [LoginController::class, 'destroy'])
         ->middleware('auth.admin');
 
         //aceptar  f05
-        Route::match(['post','get','put'],'/aceptar_estancia1_f05/admin/{idU}/{id}/{name}', [documentosEstancia1AdminController::class, 'aceptar_estancia_f05_admin'])
+        Route::match(['post','get','put'],'/aceptar_estancia1_f05/admin/{idU}/{id}/{name}', [documentosEstancia1AdminController::class, 'aceptar_estancia1_f05_admin'])
         ->name('aceptar_estancia1_f05_admin.index');
 
         //pendiente f05
-        Route::match(['post','get','put'],'/pendiente_estancia1_f05/admin/{idU}/{id}/{name}', [documentosEstancia1AdminController::class, 'pendiente_estancia_f05_admin'])
+        Route::match(['post','get','put'],'/pendiente_estancia1_f05/admin/{idU}/{id}/{name}', [documentosEstancia1AdminController::class, 'pendiente_estancia1_f05_admin'])
         ->name('pendiente_estancia1_f05_admin.index');
 
         //observaciones  f05
@@ -393,11 +393,11 @@ Route::get('/logout', [LoginController::class, 'destroy'])
      ->middleware('auth.admin');
 
      //aceptar carga horaria
-     Route::match(['post','get','put'],'/aceptar_estancia_carga_horaria/admin/{idU}/{id}/{name}', [documentosEstancia2AdminController::class, 'aceptar_estancia_carga_horaria_admin'])
+     Route::match(['post','get','put'],'/aceptar_estancia_carga_horaria/admin/{idU}/{id}/{name}', [documentosEstancia2AdminController::class, 'aceptar_estancia2_carga_horaria_admin'])
      ->name('aceptar_estancia2_carga_horaria_admin.index');
 
      //pendiente constancia derecho
-     Route::match(['post','get','put'],'/pendiente_estancia_carga_horaria/admin/{idU}/{id}/{name}', [documentosEstancia2AdminController::class, 'pendiente_estancia_carga_horaria_admin'])
+     Route::match(['post','get','put'],'/pendiente_estancia_carga_horaria/admin/{idU}/{id}/{name}', [documentosEstancia2AdminController::class, 'pendiente_estancia2_carga_horaria_admin'])
      ->name('pendiente_estancia2_carga_horaria_admin.index');
 
      //observaciones  constancia derecho
@@ -420,11 +420,11 @@ Route::get('/logout', [LoginController::class, 'destroy'])
      ->middleware('auth.admin');
 
      //aceptar  constancia derecho
-     Route::match(['post','get','put'],'/aceptar_estancia_constancia_derecho/admin/{idU}/{id}/{name}', [documentosEstancia2AdminController::class, 'aceptar_estancia_constancia_derecho_admin'])
+     Route::match(['post','get','put'],'/aceptar_estancia_constancia_derecho/admin/{idU}/{id}/{name}', [documentosEstancia2AdminController::class, 'aceptar_estancia2_constancia_derecho_admin'])
      ->name('aceptar_estancia2_constancia_derecho_admin.index');
 
      //pendiente constancia derecho
-     Route::match(['post','get','put'],'/pendiente_estancia_constancia_derecho/admin/{idU}/{id}/{name}', [documentosEstancia2AdminController::class, 'pendiente_estancia_constancia_derecho_admin'])
+     Route::match(['post','get','put'],'/pendiente_estancia_constancia_derecho/admin/{idU}/{id}/{name}', [documentosEstancia2AdminController::class, 'pendiente_estancia2_constancia_derecho_admin'])
      ->name('pendiente_estancia2_constancia_derecho_admin.index');
 
      //observaciones  constancia derecho
@@ -448,11 +448,11 @@ Route::get('/logout', [LoginController::class, 'destroy'])
      ->middleware('auth.admin');
 
      //aceptar  carta responsiva
-     Route::match(['post','get','put'],'/aceptar_estancia_carta_responsiva/admin/{idU}/{id}/{name}', [documentosEstancia2AdminController::class, 'aceptar_estancia_carta_responsiva_admin'])
+     Route::match(['post','get','put'],'/aceptar_estancia_carta_responsiva/admin/{idU}/{id}/{name}', [documentosEstancia2AdminController::class, 'aceptar_estancia2_carta_responsiva_admin'])
      ->name('aceptar_estancia2_carta_responsiva_admin.index');
 
      //pendiente carta responsiva
-     Route::match(['post','get','put'],'/pendiente_estancia_carta_responsiva/admin/{idU}/{id}/{name}', [documentosEstancia2AdminController::class, 'pendiente_estancia_carta_responsiva_admin'])
+     Route::match(['post','get','put'],'/pendiente_estancia_carta_responsiva/admin/{idU}/{id}/{name}', [documentosEstancia2AdminController::class, 'pendiente_estancia2_carta_responsiva_admin'])
      ->name('pendiente_estancia2_carta_responsiva_admin.index');
 
      //observaciones  carta responsiva
@@ -476,11 +476,11 @@ Route::get('/logout', [LoginController::class, 'destroy'])
     ->middleware('auth.admin');
 
     //aceptar  f01
-    Route::match(['post','get','put'],'/aceptar_estancia_f01/admin/{idU}/{id}/{name}', [documentosEstancia2AdminController::class, 'aceptar_estancia_f01_admin'])
+    Route::match(['post','get','put'],'/aceptar_estancia_f01/admin/{idU}/{id}/{name}', [documentosEstancia2AdminController::class, 'aceptar_estancia2_f01_admin'])
     ->name('aceptar_estancia2_f01_admin.index');
 
     //pendiente f01
-    Route::match(['post','get','put'],'/pendiente_estancia_f01/admin/{idU}/{id}/{name}', [documentosEstancia2AdminController::class, 'pendiente_estancia_f01_admin'])
+    Route::match(['post','get','put'],'/pendiente_estancia_f01/admin/{idU}/{id}/{name}', [documentosEstancia2AdminController::class, 'pendiente_estancia2_f01_admin'])
     ->name('pendiente_estancia2_f01_admin.index');
 
     //observaciones  f01
@@ -504,11 +504,11 @@ Route::get('/logout', [LoginController::class, 'destroy'])
     ->middleware('auth.admin');
 
     //aceptar  f02
-    Route::match(['post','get','put'],'/aceptar_estancia_f02/admin/{idU}/{id}/{name}', [documentosEstancia2AdminController::class, 'aceptar_estancia_f02_admin'])
+    Route::match(['post','get','put'],'/aceptar_estancia_f02/admin/{idU}/{id}/{name}', [documentosEstancia2AdminController::class, 'aceptar_estancia2_f02_admin'])
     ->name('aceptar_estancia2_f02_admin.index');
 
     //pendiente f02
-    Route::match(['post','get','put'],'/pendiente_estancia_f02/admin/{idU}/{id}/{name}', [documentosEstancia2AdminController::class, 'pendiente_estancia_f02_admin'])
+    Route::match(['post','get','put'],'/pendiente_estancia_f02/admin/{idU}/{id}/{name}', [documentosEstancia2AdminController::class, 'pendiente_estancia2_f02_admin'])
     ->name('pendiente_estancia2_f02_admin.index');
 
     //observaciones  f02
@@ -533,11 +533,11 @@ Route::get('/logout', [LoginController::class, 'destroy'])
     ->middleware('auth.admin');
 
     //aceptar  f03
-    Route::match(['post','get','put'],'/aceptar_estancia_f03/admin/{idU}/{id}/{name}', [documentosEstancia2AdminController::class, 'aceptar_estancia_f03_admin'])
+    Route::match(['post','get','put'],'/aceptar_estancia_f03/admin/{idU}/{id}/{name}', [documentosEstancia2AdminController::class, 'aceptar_estancia2_f03_admin'])
     ->name('aceptar_estancia2_f03_admin.index');
 
     //pendiente f03
-    Route::match(['post','get','put'],'/pendiente_estancia_f03/admin/{idU}/{id}/{name}', [documentosEstancia2AdminController::class, 'pendiente_estancia_f03_admin'])
+    Route::match(['post','get','put'],'/pendiente_estancia_f03/admin/{idU}/{id}/{name}', [documentosEstancia2AdminController::class, 'pendiente_estancia2_f03_admin'])
     ->name('pendiente_estancia2_f03_admin.index');
 
     //observaciones  f03
@@ -561,11 +561,11 @@ Route::get('/logout', [LoginController::class, 'destroy'])
     ->middleware('auth.admin');
 
     //aceptar  f04
-    Route::match(['post','get','put'],'/aceptar_estancia_f04/admin/{idU}/{id}/{name}', [documentosEstancia2AdminController::class, 'aceptar_estancia_f04_admin'])
+    Route::match(['post','get','put'],'/aceptar_estancia_f04/admin/{idU}/{id}/{name}', [documentosEstancia2AdminController::class, 'aceptar_estancia2_f04_admin'])
     ->name('aceptar_estancia2_f04_admin.index');
 
     //pendiente f04
-    Route::match(['post','get','put'],'/pendiente_estancia_f04/admin/{idU}/{id}/{name}', [documentosEstancia2AdminController::class, 'pendiente_estancia_f04_admin'])
+    Route::match(['post','get','put'],'/pendiente_estancia_f04/admin/{idU}/{id}/{name}', [documentosEstancia2AdminController::class, 'pendiente_estancia2_f04_admin'])
     ->name('pendiente_estancia2_f04_admin.index');
 
     //observaciones  f04
@@ -589,11 +589,11 @@ Route::get('/logout', [LoginController::class, 'destroy'])
     ->middleware('auth.admin');
 
     //aceptar  f05
-    Route::match(['post','get','put'],'/aceptar_estancia_f05/admin/{idU}/{id}/{name}', [documentosEstancia2AdminController::class, 'aceptar_estancia_f05_admin'])
+    Route::match(['post','get','put'],'/aceptar_estancia_f05/admin/{idU}/{id}/{name}', [documentosEstancia2AdminController::class, 'aceptar_estancia2_f05_admin'])
     ->name('aceptar_estancia2_f05_admin.index');
 
     //pendiente f05
-    Route::match(['post','get','put'],'/pendiente_estancia_f05/admin/{idU}/{id}/{name}', [documentosEstancia2AdminController::class, 'pendiente_estancia_f05_admin'])
+    Route::match(['post','get','put'],'/pendiente_estancia_f05/admin/{idU}/{id}/{name}', [documentosEstancia2AdminController::class, 'pendiente_estancia2_f05_admin'])
     ->name('pendiente_estancia2_f05_admin.index');
 
     //observaciones  f05
@@ -898,41 +898,42 @@ Route::get('/logout', [LoginController::class, 'destroy'])
 
 
 //formato estancias 1
-    Route::match(['post','get'],'/estancia1', [Estancia1Controller::class, 'ver'])
+ Route::match(['post','get'],'/estancia1', [Estancia1Controller::class, 'ver'])
     ->name('estancia1.index')
     ->middleware('auth');
 
-    //enviar documento carga horaria con datos
-    Route::match(['post', 'delete','put'],'actualizar/carga_horaria/{name}/{nombre}', [Estancia1Controller::class, 'actualizar_carga_horaria_estancia'])
-    ->name('actualizar_carga_horaria_estancia.index');
+ //enviar documento carga horaria con datos
+    Route::match(['post', 'delete','put'],'actualizar/carga_horaria1/{name}/{nombre}', [Estancia1Controller::class, 'actualizar_carga_horaria_estancia1'])
+    ->name('actualizar_carga_horaria_estancia1.index');
 
     //enviar documento carga horaria sin datos 
-    Route::match(['post', 'delete','put','get'],'subir/carga_horaria/{name}/{nombre}', [Estancia1Controller::class, 'subir_carga_horaria_estancia'])
-    ->name('subir_carga_horaria_estancia.index');
+    Route::match(['post', 'delete','put','get'],'subir/carga_horaria1/{name}/{nombre}', [Estancia1Controller::class, 'subir_carga_horaria_estancia1'])
+    ->name('subir_carga_horaria_estancia1.index');
+
 
     //cancelar solicitud documento carga horaria
     Route::match(['post', 'delete','put'], '/carga_horaria/{id_d}/{nombre}',[PdfController::class,'cancelar_carga_horaria_Estancia'])
     ->name('cancelar_carga_horaria_Estancia.index');
 
     //enviar documento constancia derecho con datos
-    Route::match(['post', 'delete','put'],'actualizar/constancia_derecho/{name}/{nombre}', [Estancia1Controller::class, 'actualizar_constancia_derecho_estancia'])
-    ->name('actualizar_constancia_derecho_estancia.index');
+    Route::match(['post', 'delete','put'],'actualizar/constancia_derecho1/{name}/{nombre}', [Estancia1Controller::class, 'actualizar_constancia_derecho_estancia1'])
+    ->name('actualizar_constancia_derecho_estancia1.index');
 
     //enviar documento constancia derecho sin datos 
-    Route::match(['post', 'delete','put','get'],'subir/constancia_derecho/{name}/{nombre}', [Estancia1Controller::class, 'subir_constancia_derecho_estancia'])
-    ->name('subir_constancia_derecho_estancia.index');
+    Route::match(['post', 'delete','put','get'],'subir/constancia_derecho1/{name}/{nombre}', [Estancia1Controller::class, 'subir_constancia_derecho_estancia1'])
+    ->name('subir_constancia_derecho_estancia1.index');
 
     //cancelar solicitud documento constancia derecho
     Route::match(['post', 'delete','put'], '/constancia_derecho/{id_d}/{nombre}',[PdfController::class,'cancelar_constancia_derecho_Estancia'])
     ->name('cancelar_constancia_derecho_Estancia.index');
     
     //enviar documento carta responsiva con datos
-    Route::match(['post', 'delete','put'],'actualizar/carta_responsiva/{name}/{nombre}', [Estancia1Controller::class, 'actualizar_carta_responsiva_estancia'])
-    ->name('actualizar_carta_responsiva_estancia.index');
+    Route::match(['post', 'delete','put'],'actualizar/carta_responsiva1/{name}/{nombre}', [Estancia1Controller::class, 'actualizar_carta_responsiva_estancia1'])
+    ->name('actualizar_carta_responsiva_estancia1.index');
 
     //enviar documento carta responsiva sin datos 
-    Route::match(['post', 'delete','put','get'],'subir/carta_responsiva/{name}/{nombre}', [Estancia1Controller::class, 'subir_carta_responsiva_estancia'])
-    ->name('subir_carta_responsiva_estancia.index');
+    Route::match(['post', 'delete','put','get'],'subir/carta_responsiva1/{name}/{nombre}', [Estancia1Controller::class, 'subir_carta_responsiva_estancia1'])
+    ->name('subir_carta_responsiva_estancia1.index');
 
     //cancelar solicitud documento carta responsiva
     Route::match(['post', 'delete','put'], '/carta_responsiva/{id_d}/{nombre}',[PdfController::class,'cancelar_carta_responsiva_Estancia'])
@@ -943,12 +944,12 @@ Route::get('/logout', [LoginController::class, 'destroy'])
     ->name('descarga_cd_estancia_f01.index');
 
      //enviar documento f01 con datos
-     Route::match(['post', 'delete','put'],'actualizar/f01/{name}/{nombre}', [Estancia1Controller::class, 'actualizarF01_estancia'])
-     ->name('actualizar_f01_estancia.index');
+     Route::match(['post', 'delete','put'],'actualizar/f011/{name}/{nombre}', [Estancia1Controller::class, 'actualizarF01_estancia1'])
+     ->name('actualizar_f01_estancia1.index');
  
      //enviar documento f01 sin datos 
-     Route::match(['post', 'delete','put','get'],'subir/f01/{name}/{nombre}', [Estancia1Controller::class, 'subirF01_estancia'])
-     ->name('subir_f01_estancia.index');
+     Route::match(['post', 'delete','put','get'],'subir/f011/{name}/{nombre}', [Estancia1Controller::class, 'subirF01_estancia'])
+     ->name('subir_f01_estancia1.index');
  
      //cancelar solicitud documento f01
      Route::match(['post', 'delete','put'], '/f01/{id_d}/{nombre}',[PdfController::class,'cancelarF01_Estancia'])
@@ -959,12 +960,12 @@ Route::get('/logout', [LoginController::class, 'destroy'])
     ->name('descarga_cd_estancia_f02.index');
 
     //enviar documento f02 con datos
-    Route::match(['post', 'delete','put'],'actualizar/f02/{name}/{nombre}', [Estancia1Controller::class, 'actualizarF02_estancia'])
-    ->name('actualizar_f02_estancia.index');
+    Route::match(['post', 'delete','put'],'actualizar/f021/{name}/{nombre}', [Estancia1Controller::class, 'actualizarF02_estancia1'])
+    ->name('actualizar_f02_estancia1.index');
 
     //enviar documento f02 sin datos 
-    Route::match(['post', 'delete','put','get'],'subir/f02/{name}/{nombre}', [Estancia1Controller::class, 'subirF02_estancia'])
-    ->name('subir_f02_estancia.index');
+    Route::match(['post', 'delete','put','get'],'subir/f021/{name}/{nombre}', [Estancia1Controller::class, 'subirF02_estancia1'])
+    ->name('subir_f02_estancia1.index');
 
     //cancelar solicitud documento f02
     Route::match(['post', 'delete','put'], '/f02/{id_d}/{nombre}',[PdfController::class,'cancelarF02_Estancia'])
@@ -992,12 +993,12 @@ Route::get('/logout', [LoginController::class, 'destroy'])
     ->name('eliminar_f03');
 
     //enviar documento f03 con datos
-    Route::match(['post', 'delete','put'],'actualizar/f03/{name}/{nombre}', [Estancia1Controller::class, 'actualizarF03_estancia'])
-    ->name('actualizar_f03_estancia.index');
+    Route::match(['post', 'delete','put'],'actualizar/f031/{name}/{nombre}', [Estancia1Controller::class, 'actualizarF03_estancia1'])
+    ->name('actualizar_f03_estancia1.index');
 
     //enviar documento f03 sin datos 
-    Route::match(['post', 'delete','put','get'],'subir/f03/{name}/{nombre}', [Estancia1Controller::class, 'subirF03_estancia'])
-    ->name('subir_f03_estancia.index');
+    Route::match(['post', 'delete','put','get'],'subir/f031/{name}/{nombre}', [Estancia1Controller::class, 'subirF03_estancia1'])
+    ->name('subir_f03_estancia1.index');
 
     //cancelar solicitud documento f03
     Route::match(['post', 'delete','put'], '/f03/{id_d}/{nombre}',[PdfController::class,'cancelarF03_Estancia'])
@@ -1023,12 +1024,12 @@ Route::get('/logout', [LoginController::class, 'destroy'])
     ->name('descarga_cd_estancia_f04.index');
 
     //enviar documento f04 con datos
-    Route::match(['post', 'delete','put'],'actualizar/f04/{name}/{nombre}', [Estancia1Controller::class, 'actualizarF04_estancia'])
-    ->name('actualizar_f04_estancia.index');
+    Route::match(['post', 'delete','put'],'actualizar/f041/{name}/{nombre}', [Estancia1Controller::class, 'actualizarF04_estancia1'])
+    ->name('actualizar_f04_estancia1.index');
 
     //enviar documento f04 sin datos 
-    Route::match(['post', 'delete','put','get'],'subir/f04/{name}/{nombre}', [Estancia1Controller::class, 'subirF04_estancia'])
-    ->name('subir_f04_estancia.index');
+    Route::match(['post', 'delete','put','get'],'subir/f041/{name}/{nombre}', [Estancia1Controller::class, 'subirF04_estancia1'])
+    ->name('subir_f04_estancia1.index');
 
     //cancelar solicitud documento f04
     Route::match(['post', 'delete','put'], '/f04_estancia/{id_d}/{nombre}',[PdfController::class,'cancelarF04_Estancia'])
@@ -1039,12 +1040,12 @@ Route::get('/logout', [LoginController::class, 'destroy'])
     ->name('descarga_cd_estancia_f05.index');
 
     //enviar documento f05 con datos
-    Route::match(['post', 'delete','put'],'actualizar/f05/{name}/{nombre}', [Estancia1Controller::class, 'actualizarF05_estancia'])
-    ->name('actualizar_f05_estancia.index');
+    Route::match(['post', 'delete','put'],'actualizar/f051/{name}/{nombre}', [Estancia1Controller::class, 'actualizarF05_estancia1'])
+    ->name('actualizar_f05_estancia1.index');
    
     //enviar documento f05 sin datos 
-    Route::match(['post', 'delete','put','get'],'subir/f05/{name}/{nombre}', [Estancia1Controller::class, 'subirF05_estancia'])
-    ->name('subir_f05_estancia.index');
+    Route::match(['post', 'delete','put','get'],'subir/f051/{name}/{nombre}', [Estancia1Controller::class, 'subirF05_estancia1'])
+    ->name('subir_f05_estancia1.index');
 
     //cancelar solicitud documento f05
     Route::match(['post', 'delete','put'], '/f05/{id_d}/{nombre}',[PdfController::class,'cancelarF05_Estancia'])
@@ -1066,36 +1067,36 @@ Route::get('/logout', [LoginController::class, 'destroy'])
  ->middleware('auth');
 
  //enviar documento carga horaria con datos
- Route::match(['post', 'delete','put'],'actualizar/carga_horaria/{name}/{nombre}', [Estancia2Controller::class, 'actualizar_carga_horaria_estancia'])
- ->name('actualizar_carga_horaria_estancia.index');
+ Route::match(['post', 'delete','put'],'actualizar/carga_horaria2/{name}/{nombre}', [Estancia2Controller::class, 'actualizar_carga_horaria_estancia2'])
+ ->name('actualizar_carga_horaria_estancia2.index');
 
  //enviar documento carga horaria sin datos 
- Route::match(['post', 'delete','put','get'],'subir/carga_horaria/{name}/{nombre}', [Estancia2Controller::class, 'subir_carga_horaria_estancia'])
- ->name('subir_carga_horaria_estancia.index');
+ Route::match(['post', 'delete','put','get'],'subir/carga_horaria2/{name}/{nombre}', [Estancia2Controller::class, 'subir_carga_horaria_estancia2'])
+ ->name('subir_carga_horaria_estancia2.index');
 
  //cancelar solicitud documento carga horaria
  Route::match(['post', 'delete','put'], '/carga_horaria/{id_d}/{nombre}',[PdfController::class,'cancelar_carga_horaria_Estancia'])
  ->name('cancelar_carga_horaria_Estancia.index');
 
  //enviar documento constancia derecho con datos
- Route::match(['post', 'delete','put'],'actualizar/constancia_derecho/{name}/{nombre}', [Estancia2Controller::class, 'actualizar_constancia_derecho_estancia'])
- ->name('actualizar_constancia_derecho_estancia.index');
+ Route::match(['post', 'delete','put'],'actualizar/constancia_derecho2/{name}/{nombre}', [Estancia2Controller::class, 'actualizar_constancia_derecho_estancia2'])
+ ->name('actualizar_constancia_derecho_estancia2.index');
 
  //enviar documento constancia derecho sin datos 
- Route::match(['post', 'delete','put','get'],'subir/constancia_derecho/{name}/{nombre}', [Estancia2Controller::class, 'subir_constancia_derecho_estancia'])
- ->name('subir_constancia_derecho_estancia.index');
+ Route::match(['post', 'delete','put','get'],'subir/constancia_derecho2/{name}/{nombre}', [Estancia2Controller::class, 'subir_constancia_derecho_estancia2'])
+ ->name('subir_constancia_derecho_estancia2.index');
 
  //cancelar solicitud documento constancia derecho
  Route::match(['post', 'delete','put'], '/constancia_derecho/{id_d}/{nombre}',[PdfController::class,'cancelar_constancia_derecho_Estancia'])
  ->name('cancelar_constancia_derecho_Estancia.index');
 
  //enviar documento carta responsiva con datos
- Route::match(['post', 'delete','put'],'actualizar/carta_responsiva/{name}/{nombre}', [Estancia2Controller::class, 'actualizar_carta_responsiva_estancia'])
- ->name('actualizar_carta_responsiva_estancia.index');
+ Route::match(['post', 'delete','put'],'actualizar/carta_responsiva2/{name}/{nombre}', [Estancia2Controller::class, 'actualizar_carta_responsiva_estancia2'])
+ ->name('actualizar_carta_responsiva_estancia2.index');
 
  //enviar documento carta responsiva sin datos 
- Route::match(['post', 'delete','put','get'],'subir/carta_responsiva/{name}/{nombre}', [Estancia2Controller::class, 'subir_carta_responsiva_estancia'])
- ->name('subir_carta_responsiva_estancia.index');
+ Route::match(['post', 'delete','put','get'],'subir/carta_responsiva2/{name}/{nombre}', [Estancia2Controller::class, 'subir_carta_responsiva_estancia2'])
+ ->name('subir_carta_responsiva_estancia2.index');
 
  //cancelar solicitud documento carta responsiva
  Route::match(['post', 'delete','put'], '/carta_responsiva/{id_d}/{nombre}',[PdfController::class,'cancelar_carta_responsiva_Estancia'])
@@ -1106,12 +1107,12 @@ Route::get('/logout', [LoginController::class, 'destroy'])
  ->name('descarga_cd_estancia_f01.index');
 
  //enviar documento f01 con datos
- Route::match(['post', 'delete','put'],'actualizar/f01/{name}/{nombre}', [Estancia2Controller::class, 'actualizarF01_estancia'])
- ->name('actualizar_f01_estancia.index');
+ Route::match(['post', 'delete','put'],'actualizar/f012/{name}/{nombre}', [Estancia2Controller::class, 'actualizarF01_estancia2'])
+ ->name('actualizar_f01_estancia2.index');
 
  //enviar documento f01 sin datos 
- Route::match(['post', 'delete','put','get'],'subir/f01/{name}/{nombre}', [Estancia2Controller::class, 'subirF01_estancia'])
- ->name('subir_f01_estancia.index');
+ Route::match(['post', 'delete','put','get'],'subir/f012/{name}/{nombre}', [Estancia2Controller::class, 'subirF01_estancia2'])
+ ->name('subir_f01_estancia2.index');
 
  //cancelar solicitud documento f01
  Route::match(['post', 'delete','put'], '/f01/{id_d}/{nombre}',[PdfController::class,'cancelarF01_Estancia'])
@@ -1122,12 +1123,12 @@ Route::get('/logout', [LoginController::class, 'destroy'])
  ->name('descarga_cd_estancia_f02.index');
 
  //enviar documento f02 con datos
- Route::match(['post', 'delete','put'],'actualizar/f02/{name}/{nombre}', [Estancia2Controller::class, 'actualizarF02_estancia'])
- ->name('actualizar_f02_estancia.index');
+ Route::match(['post', 'delete','put'],'actualizar/f022/{name}/{nombre}', [Estancia2Controller::class, 'actualizarF02_estancia2'])
+ ->name('actualizar_f02_estancia2.index');
 
  //enviar documento f02 sin datos 
- Route::match(['post', 'delete','put','get'],'subir/f02/{name}/{nombre}', [Estancia2Controller::class, 'subirF02_estancia'])
- ->name('subir_f02_estancia.index');
+ Route::match(['post', 'delete','put','get'],'subir/f022/{name}/{nombre}', [Estancia2Controller::class, 'subirF02_estancia2'])
+ ->name('subir_f02_estancia2.index');
 
  //cancelar solicitud documento f02
  Route::match(['post', 'delete','put'], '/f02/{id_d}/{nombre}',[PdfController::class,'cancelarF02_Estancia'])
@@ -1155,12 +1156,12 @@ Route::get('/logout', [LoginController::class, 'destroy'])
  ->name('eliminar_f03');
 
  //enviar documento f03 con datos
- Route::match(['post', 'delete','put'],'actualizar/f03/{name}/{nombre}', [Estancia2Controller::class, 'actualizarF03_estancia'])
- ->name('actualizar_f03_estancia.index');
+ Route::match(['post', 'delete','put'],'actualizar/f032/{name}/{nombre}', [Estancia2Controller::class, 'actualizarF03_estancia2'])
+ ->name('actualizar_f03_estancia2.index');
 
  //enviar documento f03 sin datos 
- Route::match(['post', 'delete','put','get'],'subir/f03/{name}/{nombre}', [Estancia2Controller::class, 'subirF03_estancia'])
- ->name('subir_f03_estancia.index');
+ Route::match(['post', 'delete','put','get'],'subir/f032/{name}/{nombre}', [Estancia2Controller::class, 'subirF03_estancia2'])
+ ->name('subir_f03_estancia2.index');
 
  //cancelar solicitud documento f03
  Route::match(['post', 'delete','put'], '/f03/{id_d}/{nombre}',[PdfController::class,'cancelarF03_Estancia'])
@@ -1186,12 +1187,12 @@ Route::get('/logout', [LoginController::class, 'destroy'])
  ->name('descarga_cd_estancia_f04.index');
 
  //enviar documento f04 con datos
- Route::match(['post', 'delete','put'],'actualizar/f04/{name}/{nombre}', [Estancia2Controller::class, 'actualizarF04_estancia'])
- ->name('actualizar_f04_estancia.index');
+ Route::match(['post', 'delete','put'],'actualizar/f042/{name}/{nombre}', [Estancia2Controller::class, 'actualizarF04_estancia2'])
+ ->name('actualizar_f04_estancia2.index');
 
  //enviar documento f04 sin datos 
- Route::match(['post', 'delete','put','get'],'subir/f04/{name}/{nombre}', [Estancia2Controller::class, 'subirF04_estancia'])
- ->name('subir_f04_estancia.index');
+ Route::match(['post', 'delete','put','get'],'subir/f042/{name}/{nombre}', [Estancia2Controller::class, 'subirF04_estancia2'])
+ ->name('subir_f04_estancia2.index');
 
  //cancelar solicitud documento f04
  Route::match(['post', 'delete','put'], '/f04_estancia/{id_d}/{nombre}',[PdfController::class,'cancelarF04_Estancia'])
@@ -1202,12 +1203,12 @@ Route::get('/logout', [LoginController::class, 'destroy'])
  ->name('descarga_cd_estancia_f05.index');
 
  //enviar documento f05 con datos
- Route::match(['post', 'delete','put'],'actualizar/f05/{name}/{nombre}', [Estancia2Controller::class, 'actualizarF05_estancia'])
- ->name('actualizar_f05_estancia.index');
+ Route::match(['post', 'delete','put'],'actualizar/f052/{name}/{nombre}', [Estancia2Controller::class, 'actualizarF05_estancia2'])
+ ->name('actualizar_f05_estancia2.index');
 
  //enviar documento f05 sin datos 
- Route::match(['post', 'delete','put','get'],'subir/f05/{name}/{nombre}', [Estancia2Controller::class, 'subirF05_estancia'])
- ->name('subir_f05_estancia.index');
+ Route::match(['post', 'delete','put','get'],'subir/f052/{name}/{nombre}', [Estancia2Controller::class, 'subirF05_estancia2'])
+ ->name('subir_f05_estancia2.index');
 
  //cancelar solicitud documento f05
  Route::match(['post', 'delete','put'], '/f05/{id_d}/{nombre}',[PdfController::class,'cancelarF05_Estancia'])
