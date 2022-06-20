@@ -1060,7 +1060,7 @@
 							@empty
 								<!--llenar formmulario  f04-->
 								<div class="col-6 col-sm-6 col-md-2 col-lg-2 col-xl-2 p-0 colLlenar">
-									<a href="{{ route('f04Formulario.index') }}">
+									<a href="{{ route('f04Formulario2.index') }}">
 										<button type="button" class="btn btn-outline-dark btnLlenarDp" >Llenar Definición de Proyecto</button>
 									</a>
 								</div>
