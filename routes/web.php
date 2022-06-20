@@ -1139,7 +1139,7 @@ Route::get('/logout', [LoginController::class, 'destroy'])
  ->name('home.index')
  ->middleware('auth');
 
- Route::post('/home', [CedulaController::class, 'store'])
+ Route::post('/home', [CedulaController::class, 'store2'])
     ->name('home.store');
 
 
@@ -1170,13 +1170,13 @@ Route::get('/logout', [LoginController::class, 'destroy'])
 
  //llenar datos f04
  Route::get('/usuario_estancia/f04-definicion_de_proyecto', [definicionController::class, 'ver'])
- ->name('f04Formulario.index')
+ ->name('f04Formulario2.index')
  ->middleware('auth');
 
 
  //guardar f04
- Route::post('/usuario/f04-definicion_de_proyecto', [definicion_proyectoController::class, 'store'])
- ->name('f04Guardar.index');
+ Route::post('/usuario/f04-definicion_de_proyecto', [definicion_proyectoController::class, 'store2'])
+ ->name('f04Guardar2.index');
 
  //eliminar f04
  Route::match(['post', 'delete','put','get'],'/f04/{id_a}/{id_a_e}/{id_p}/{id_d}',[PdfController::class,'eliminarF04'])
