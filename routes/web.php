@@ -1135,12 +1135,12 @@ Route::get('/logout', [LoginController::class, 'destroy'])
  ->name('cancelar_f02_Estancia.index');
 
  //llenar f03
- Route::get('/home', [CedulaController::class, 'ver'])
- ->name('home.index')
+ Route::get('/home2', [CedulaController::class, 'ver'])
+ ->name('home2.index')
  ->middleware('auth');
 
- Route::post('/home', [CedulaController::class, 'store2'])
-    ->name('home.store');
+ Route::post('/home2', [CedulaController::class, 'store2'])
+    ->name('home.store2');
 
 
  //descargar sin datos f03
@@ -1169,7 +1169,7 @@ Route::get('/logout', [LoginController::class, 'destroy'])
 
 
  //llenar datos f04
- Route::get('/usuario_estancia/f04-definicion_de_proyecto', [definicionController::class, 'ver'])
+ Route::get('/usuario_estancia/f04-definicion_de_proyecto2', [definicionController::class, 'ver2'])
  ->name('f04Formulario2.index')
  ->middleware('auth');
 
