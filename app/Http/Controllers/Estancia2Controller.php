@@ -40,7 +40,9 @@ class Estancia2Controller extends Controller
         $datosCedulaFormulario = DB::table('users')
         ->join('respuesta', 'users.id', '=', 'respuesta.id_usuario')
         ->join('formulario', 'respuesta.id_formulario', '=', 'formulario.id')
+        ->join('alumno', 'formulario.id_alumno', '=', 'alumno.id')
         ->where('users.id',$userID)
+        ->where('alumno.id_procesos',2)
         ->get();
 
         $u   = ['user' => $users];
