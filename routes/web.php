@@ -1010,10 +1010,9 @@ Route::get('/logout', [LoginController::class, 'destroy'])
     ->name('f04Formulario.index')
     ->middleware('auth');
 
-
     //guardar f04
-    Route::post('/usuario/f04-definicion_de_proyecto', [definicion_proyectoController::class, 'store'])
-    ->name('f04Guardar.index');
+    Route::post('/usuario/f04-definicion_de_proyecto1', [definicion_proyectoController::class, 'store'])
+    ->name('f04Guardar1.index');
 
     //eliminar f04
     Route::match(['post', 'delete','put','get'],'/f04/{id_a}/{id_a_e}/{id_p}/{id_d}',[PdfController::class,'eliminarF04'])

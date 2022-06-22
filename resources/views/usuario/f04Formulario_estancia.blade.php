@@ -22,7 +22,7 @@
                 </div>
                 <p class="text-center p-0 m-0"><b>Universidad Politécnica de Quintana Roo</b><br>Dirección de Vinculación, Difusión y Extensión Universitaria</p>
                 @forelse ($datos['cedula'] as $dato)                            
-                    <form  method="POST" action="{{ route('f04Guardar.index') }}">
+                    <form  method="POST" action="{{ route('f04Guardar1.index') }}">
                         @csrf
                         <!--titulo-->
                         <table class="table table-borderless p-0 m-1 tabla_r" >
@@ -1026,7 +1026,7 @@
                             <button class="btn btn-dark btn-lg btn-block" type="submit"><i > Guardar</i></button>
                     </form> 
                 @empty
-                    <form  method="POST" action="{{ route('f04Guardar.index') }}">
+                    <form  method="POST" action="{{ route('f04Guardar1.index') }}">
                         @csrf
                         <!--titulo-->
                         <table class="table table-borderless p-0 m-1 tabla_r" >
