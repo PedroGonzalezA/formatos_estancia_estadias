@@ -77,7 +77,7 @@
 																</form>
 															</div>
 															<div class="col-12 col-sm-3">
-																<a href="{{ route('observaciones_carga_horaria_estancia.index') }}">
+																<a href="{{ route('observaciones_carga_horaria_estancia1.index') }}">
 																	<button type="submit" class="btn btn-outline-danger divObservacionf02" ><i class="zmdi zmdi-folder-person">  Observaciones</i> </button>
 																</a>	
 															</div>
@@ -197,7 +197,7 @@
 																</form>
 															</div>
 															<div class="col-12 col-sm-3">
-																<a href="{{ route('obsevaciones_constancia_derecho_estancia.index') }}">
+																<a href="{{ route('obsevaciones1_constancia_derecho.index') }}">
 																	<button type="submit" class="btn btn-outline-danger divObservacionf02" ><i class="zmdi zmdi-folder-person">  Observaciones</i> </button>
 																</a>	
 															</div>
@@ -325,7 +325,7 @@
 																</form>
 															</div>
 															<div class="col-12 col-sm-3">
-																<a href="{{ route('obsevaciones_carta_responsiva_estancia.index') }}">
+																<a href="{{ route('obsevaciones1_carta_responsiva.index') }}">
 																	<button type="submit" class="btn btn-outline-danger divObservacionf02" ><i class="zmdi zmdi-folder-person">  Observaciones</i> </button>
 																</a>	
 															</div>
@@ -453,7 +453,7 @@
 																</form>
 															</div>
 															<div class="col-12 col-sm-3">
-																<a href="{{ route('obsevaciones_f01_estancia.index') }}">
+																<a href="{{ route('obsevaciones1_f01_estancia.index') }}">
 																	<button type="submit" class="btn btn-outline-danger divObservacionf02" ><i class="zmdi zmdi-folder-person">  Observaciones</i> </button>
 																</a>	
 															</div>
@@ -578,7 +578,7 @@
 																								</form>
 																							</div>
 																							<div class="col-12 col-sm-3">
-																								<a href="{{ route('obsevaciones_f02.index') }}">
+																								<a href="{{ route('obsevaciones1_f02.index') }}">
 																									<button type="submit" class="btn btn-outline-danger divObservacionf02" ><i class="zmdi zmdi-folder-person">  Observaciones</i> </button>
 																								</a>	
 																							</div>
@@ -713,7 +713,7 @@
 																		</form>
 																	</div>
 																	<div class="col-12 col-sm-2">
-																		<a href="{{ route('obsevaciones_f03.index') }}">
+																		<a href="{{ route('obsevaciones1_f03.index') }}">
 																			<button type="submit" class="btn btn-outline-danger divObservacionf02" ><i class="zmdi zmdi-folder-person">  Observaciones</i> </button>
 																		</a>	
 																	</div>
@@ -916,7 +916,7 @@
 																					</form>
 																				</div>
 																				<div class="col-12 col-sm-2">
-																					<a href="{{ route('obsevaciones_f04.index') }}">
+																					<a href="{{ route('obsevaciones1_f04.index') }}">
 																						<button type="submit" class="btn btn-outline-danger divObservacionf02" ><i class="zmdi zmdi-folder-person">  Observaciones</i> </button>
 																					</a>	
 																				</div>
@@ -1120,7 +1120,7 @@
 																				</form>
 																			</div>
 																			<div class="col-12 col-sm-3">
-																				<a href="{{ route('obsevaciones_f05.index') }}">
+																				<a href="{{ route('obsevaciones1_f05.index') }}">
 																					<button type="submit" class="btn btn-outline-danger divObservacionf02" ><i class="zmdi zmdi-folder-person">  Observaciones</i> </button>
 																				</a>	
 																			</div>

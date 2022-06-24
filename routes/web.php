@@ -1421,8 +1421,8 @@ Route::get('/logout', [LoginController::class, 'destroy'])
     ->middleware('auth');;
 //---observaciones documentos estancia 1 ------
     //Ver Observaciones  Carga horaria del admin vista usuario
-    Route::match(['post','get'],'/observaciones_carga_horaria', [Estancia1Controller::class, 'verObservaciones_carga_horaria'])
-    ->name('observaciones_carga_horaria_estancia.index')
+    Route::match(['post','get'],'/observaciones1_carga_horaria', [Estancia1Controller::class, 'verObservaciones1_carga_horaria'])
+    ->name('observaciones_carga_horaria_estancia1.index')
     ->middleware('auth');
 
     //Ver Observaciones  Carga horaria del admin vista usuario estadia
@@ -1431,8 +1431,8 @@ Route::get('/logout', [LoginController::class, 'destroy'])
     ->middleware('auth');
 
     //Ver Observaciones Constancia derecho del admin vista usuario
-    Route::match(['post','get'],'/observaciones_constancia_derecho', [Estancia1Controller::class, 'verObservaciones_constancia_derecho'])
-    ->name('obsevaciones_constancia_derecho.index')
+    Route::match(['post','get'],'/observaciones1_constancia_derecho', [Estancia1Controller::class, 'verObservaciones1_constancia_derecho'])
+    ->name('obsevaciones1_constancia_derecho.index')
     ->middleware('auth');
 
     //Ver Observaciones Constancia derecho del admin vista usuario estadia
@@ -1441,8 +1441,8 @@ Route::get('/logout', [LoginController::class, 'destroy'])
     ->middleware('auth');
     
      //Ver Observaciones Carta responsiva del admin vista usuario
-     Route::match(['post','get'],'/observaciones_carta_responsiva', [Estancia1Controller::class, 'verObservaciones_carta_responsiva'])
-     ->name('obsevaciones_carta_responsiva.index')
+     Route::match(['post','get'],'/observaciones1_carta_responsiva', [Estancia1Controller::class, 'verObservaciones1_carta_responsiva'])
+     ->name('obsevaciones1_carta_responsiva.index')
      ->middleware('auth');
  
      //Ver Observaciones Carta responsiva del admin vista usuario estadia
@@ -1451,8 +1451,8 @@ Route::get('/logout', [LoginController::class, 'destroy'])
      ->middleware('auth');
 
     //Ver Observaciones  f01 del admin vista usuario
-    Route::match(['post','get'],'/observaciones_f02', [Estancia1Controller::class, 'verObservaciones_f02'])
-    ->name('obsevaciones_f02.index')
+    Route::match(['post','get'],'/observaciones1_f02', [Estancia1Controller::class, 'verObservaciones1_f02'])
+    ->name('obsevaciones1_f02.index')
     ->middleware('auth');
 
     //Ver Observaciones  f01 del admin vista usuario estadia
@@ -1461,8 +1461,8 @@ Route::get('/logout', [LoginController::class, 'destroy'])
     ->middleware('auth');
 
     //Ver Observaciones  f02 del admin vista usuario
-    Route::match(['post','get'],'/observaciones_f01', [Estancia1Controller::class, 'verObservaciones_f01'])
-    ->name('obsevaciones_f01_estancia.index')
+    Route::match(['post','get'],'/observaciones1_f01', [Estancia1Controller::class, 'verObservaciones1_f01'])
+    ->name('obsevaciones_f01_estancia1.index')
     ->middleware('auth');
 
      //Ver Observaciones  f02 del admin vista usuario estadia
@@ -1471,8 +1471,8 @@ Route::get('/logout', [LoginController::class, 'destroy'])
      ->middleware('auth');
      
     //Ver Observaciones  f03 del admin vista usuario
-    Route::match(['post','get'],'/observaciones_f03', [Estancia1Controller::class, 'verObservaciones_f03'])
-    ->name('obsevaciones_f03.index')
+    Route::match(['post','get'],'/observaciones1_f03', [Estancia1Controller::class, 'verObservaciones1_f03'])
+    ->name('obsevaciones1_f03.index')
     ->middleware('auth');
 
 
@@ -1482,8 +1482,8 @@ Route::get('/logout', [LoginController::class, 'destroy'])
     ->middleware('auth');
 
     //Ver Observaciones  f04 del admin vista usuario
-    Route::match(['post','get'],'/observaciones_f04', [Estancia1Controller::class, 'verObservaciones_f04'])
-    ->name('obsevaciones_f04.index')
+    Route::match(['post','get'],'/observaciones1_f04', [Estancia1Controller::class, 'verObservaciones1_f04'])
+    ->name('obsevaciones1_f04.index')
     ->middleware('auth');
 
      //Ver Observaciones  f04 del admin vista usuario estadia
@@ -1492,8 +1492,8 @@ Route::get('/logout', [LoginController::class, 'destroy'])
      ->middleware('auth');
 
     //Ver Observaciones  f05 del admin vista usuario
-    Route::match(['post','get'],'/observaciones_f05', [Estancia1Controller::class, 'verObservaciones_f05'])
-    ->name('obsevaciones_f05.index')
+    Route::match(['post','get'],'/observaciones1_f05', [Estancia1Controller::class, 'verObservaciones1_f05'])
+    ->name('obsevaciones1_f05.index')
     ->middleware('auth');
 
      //Ver Observaciones  f05 del admin vista usuario  estadia
@@ -1502,82 +1502,41 @@ Route::get('/logout', [LoginController::class, 'destroy'])
      ->middleware('auth');
 //--------Observaciones documentos estancia 2 ------
     //Ver Observaciones  Carga horaria del admin vista usuario
-    Route::match(['post','get'],'/observaciones_carga_horaria', [Estancia2Controller::class, 'verObservaciones_carga_horaria'])
-    ->name('observaciones_carga_horaria_estancia.index')
-    ->middleware('auth');
-
-    //Ver Observaciones  Carga horaria del admin vista usuario estadia
-    Route::match(['post','get'],'/observaciones_carga_horaria_Estadia', [EstadiaController::class, 'verObservaciones_carga_horaria_Estadia'])
-    ->name('obsevaciones_carga_horaria_estadia.index')
+    Route::match(['post','get'],'/observaciones2_carga_horaria', [Estancia2Controller::class, 'verObservaciones2_carga_horaria'])
+    ->name('observaciones_carga_horaria_estancia2.index')
     ->middleware('auth');
 
     //Ver Observaciones Constancia derecho del admin vista usuario
-    Route::match(['post','get'],'/observaciones_constancia_derecho', [Estancia2Controller::class, 'verObservaciones_constancia_derecho'])
-    ->name('obsevaciones_constancia_derecho.index')
-    ->middleware('auth');
-
-    //Ver Observaciones Constancia derecho del admin vista usuario estadia
-    Route::match(['post','get'],'/observaciones_constancia_derecho_Estadia', [EstadiaController::class, 'verObservaciones_constancia_derecho_Estadia'])
-    ->name('obsevaciones_constancia_derecho_estadia.index')
+    Route::match(['post','get'],'/observaciones2_constancia_derecho', [Estancia2Controller::class, 'verObservaciones2_constancia_derecho'])
+    ->name('obsevaciones2_constancia_derecho.index')
     ->middleware('auth');
     
      //Ver Observaciones Carta responsiva del admin vista usuario
-     Route::match(['post','get'],'/observaciones_carta_responsiva', [Estancia2Controller::class, 'verObservaciones_carta_responsiva'])
-     ->name('obsevaciones_carta_responsiva.index')
+     Route::match(['post','get'],'/observaciones2_carta_responsiva', [Estancia2Controller::class, 'verObservaciones2_carta_responsiva'])
+     ->name('obsevaciones2_carta_responsiva.index')
      ->middleware('auth');
  
-     //Ver Observaciones Carta responsiva del admin vista usuario estadia
-     Route::match(['post','get'],'/observaciones_carta_responsiva_Estadia', [EstadiaController::class, 'verObservaciones_carta_responsiva_Estadia'])
-     ->name('obsevaciones_carta_responsiva_estadia.index')
-     ->middleware('auth');
-
     //Ver Observaciones  f01 del admin vista usuario
-    Route::match(['post','get'],'/observaciones_f02', [Estancia2Controller::class, 'verObservaciones_f02'])
-    ->name('obsevaciones_f02.index')
-    ->middleware('auth');
-
-    //Ver Observaciones  f01 del admin vista usuario estadia
-    Route::match(['post','get'],'/observaciones_f01_Estadia', [EstadiaController::class, 'verObservaciones_f01_Estadia'])
-    ->name('obsevaciones_f01_estadia.index')
+    Route::match(['post','get'],'/observaciones2_f02', [Estancia2Controller::class, 'verObservaciones2_f02'])
+    ->name('obsevaciones2_f02.index')
     ->middleware('auth');
 
     //Ver Observaciones  f02 del admin vista usuario
-    Route::match(['post','get'],'/observaciones_f01', [Estancia2Controller::class, 'verObservaciones_f01'])
-    ->name('obsevaciones_f01_estancia.index')
+    Route::match(['post','get'],'/observaciones2_f01', [Estancia2Controller::class, 'verObservaciones2_f01'])
+    ->name('obsevaciones2_f01_estancia.index')
     ->middleware('auth');
-
-     //Ver Observaciones  f02 del admin vista usuario estadia
-     Route::match(['post','get'],'/observaciones_f02_Estadia', [EstadiaController::class, 'verObservaciones_f02_Estadia'])
-     ->name('obsevaciones_f02_estadia.index')
-     ->middleware('auth');
      
     //Ver Observaciones  f03 del admin vista usuario
-    Route::match(['post','get'],'/observaciones_f03', [Estancia2Controller::class, 'verObservaciones_f03'])
-    ->name('obsevaciones_f03.index')
-    ->middleware('auth');
-
-
-    //Ver Observaciones f03 del admin vista usuario estadia
-    Route::match(['post','get'],'/observaciones_estadia', [EstadiaController::class, 'verObservaciones_f03_estadia'])
-    ->name('obsevaciones_f03_estadia.index')
+    Route::match(['post','get'],'/observaciones2_f03', [Estancia2Controller::class, 'verObservaciones2_f03'])
+    ->name('obsevaciones2_f03.index')
     ->middleware('auth');
 
     //Ver Observaciones  f04 del admin vista usuario
-    Route::match(['post','get'],'/observaciones_f04', [Estancia2Controller::class, 'verObservaciones_f04'])
-    ->name('obsevaciones_f04.index')
+    Route::match(['post','get'],'/observaciones2_f04', [Estancia2Controller::class, 'verObservaciones2_f04'])
+    ->name('obsevaciones2_f04.index')
     ->middleware('auth');
-
-     //Ver Observaciones  f04 del admin vista usuario estadia
-     Route::match(['post','get'],'/observaciones_f04_Estadia', [EstadiaController::class, 'verObservaciones_f04_Estadia'])
-     ->name('obsevaciones_f04_estadia.index')
-     ->middleware('auth');
 
     //Ver Observaciones  f05 del admin vista usuario
-    Route::match(['post','get'],'/observaciones_f05', [Estancia2Controller::class, 'verObservaciones_f05'])
-    ->name('obsevaciones_f05.index')
+    Route::match(['post','get'],'/observaciones2_f05', [Estancia2Controller::class, 'verObservaciones2_f05'])
+    ->name('obsevaciones2_f05.index')
     ->middleware('auth');
-
-     //Ver Observaciones  f05 del admin vista usuario  estadia
-     Route::match(['post','get'],'/observaciones_f05_Estadia', [EstadiaController::class, 'verObservaciones_f05_Estadia'])
-     ->name('obsevaciones_f05_estadia.index')
-     ->middleware('auth');

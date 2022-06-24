@@ -350,7 +350,7 @@ class Estancia1Controller extends Controller
             return redirect('estancia1')->with('errorPDF','Hay un error en el nombre de tu pdf');
         }
     }
-    public function verObservaciones_carga_horaria(){
+    public function verObservaciones1_carga_horaria(){
         $userID=Auth::user()->id; 
         $cedula_doc=DB::table('users')
         ->join('respuesta_doc','users.id','=','respuesta_doc.id_usuario')
@@ -358,6 +358,7 @@ class Estancia1Controller extends Controller
         ->join('carga_horaria','carga_horaria.id','=','documentos.id_c_horaria')
         ->select('documentos.id_c_horaria','carga_horaria.nombre_c_h','carga_horaria.estado_c_h','carga_horaria.observaciones_c_h','respuesta_doc.id_documentos','respuesta_doc.id_documentos','users.name')
         ->where('users.id',$userID)
+        ->where('id_proceso','1')
         ->get();
         return view('usuario.observaciones_carga_horaria',['datos'=>$cedula_doc]);
     }
@@ -532,7 +533,7 @@ class Estancia1Controller extends Controller
             return redirect('estancia1')->with('errorPDF','Hay un error en el nombre de tu pdf');
         }
     }
-    public function verObservaciones_constancia_derecho(){
+    public function verObservaciones1_constancia_derecho(){
         $userID=Auth::user()->id; 
         $cedula_doc=DB::table('users')
         ->join('respuesta_doc','users.id','=','respuesta_doc.id_usuario')
@@ -540,6 +541,7 @@ class Estancia1Controller extends Controller
         ->join('constancia_derecho','constancia_derecho.id','=','documentos.id_c_derecho')
         ->select('documentos.id_c_derecho','constancia_derecho.nombre_c_d','constancia_derecho.estado_c_d','constancia_derecho.observaciones_c_d','respuesta_doc.id_documentos','respuesta_doc.id_documentos','users.name')
         ->where('users.id',$userID)
+        ->where('id_proceso','1')
         ->get();
         return view('usuario.observaciones_constancia_derecho',['datos'=>$cedula_doc]);
     }
@@ -716,7 +718,7 @@ class Estancia1Controller extends Controller
         }
 
     }
-    public function verObservaciones_carta_responsiva(){
+    public function verObservaciones1_carta_responsiva(){
         $userID=Auth::user()->id; 
         $cedula_doc=DB::table('users')
         ->join('respuesta_doc','users.id','=','respuesta_doc.id_usuario')
@@ -724,6 +726,7 @@ class Estancia1Controller extends Controller
         ->join('carta_responsiva','carta_responsiva.id','=','documentos.id_c_responsiva')
         ->select('documentos.id_c_responsiva','carta_responsiva.nombre_c_r','carta_responsiva.estado_c_r','carta_responsiva.observaciones_c_r','respuesta_doc.id_documentos','respuesta_doc.id_documentos','users.name')
         ->where('users.id',$userID)
+        ->where('id_proceso','1')
         ->get();
         return view('usuario.observaciones_carta_responsiva',['datos'=>$cedula_doc]);
     }
@@ -896,7 +899,7 @@ class Estancia1Controller extends Controller
             return redirect('estancia1')->with('errorPDF','Hay un error en el nombre de tu pdf');
         }
     }
-    public function verObservaciones_f01(){
+    public function verObservaciones1_f01(){
         $userID=Auth::user()->id; 
         $cedula_doc=DB::table('users')
         ->join('respuesta_doc','users.id','=','respuesta_doc.id_usuario')
@@ -904,6 +907,7 @@ class Estancia1Controller extends Controller
         ->join('carta_presentacion','carta_presentacion.id','=','documentos.id_c_presentacion')
         ->select('documentos.id_c_presentacion','carta_presentacion.nombre_c_p','carta_presentacion.estado_c_p','carta_presentacion.observaciones_c_p','respuesta_doc.id_documentos','respuesta_doc.id_documentos','users.name')
         ->where('users.id',$userID)
+        ->where('id_proceso','1')
         ->get();
         return view('usuario.observaciones_f01',['datos'=>$cedula_doc]);
     }
@@ -1078,7 +1082,7 @@ class Estancia1Controller extends Controller
         }
 
     }
-    public function verObservaciones_f02(){
+    public function verObservaciones1_f02(){
         $userID=Auth::user()->id; 
         $cedula_doc=DB::table('users')
         ->join('respuesta_doc','users.id','=','respuesta_doc.id_usuario')
@@ -1086,6 +1090,7 @@ class Estancia1Controller extends Controller
         ->join('carta_aceptacion','carta_aceptacion.id','=','documentos.id_c_aceptacion')
         ->select('documentos.id_c_aceptacion','carta_aceptacion.nombre','carta_aceptacion.estado','carta_aceptacion.observaciones','respuesta_doc.id_documentos','respuesta_doc.id_documentos','users.name')
         ->where('users.id',$userID)
+        ->where('id_proceso','1')
         ->get();
         return view('usuario.observaciones_f02',['datos'=>$cedula_doc]);
     }
@@ -1262,7 +1267,7 @@ class Estancia1Controller extends Controller
         }
 
     }
-    public function verObservaciones_f03(){
+    public function verObservaciones1_f03(){
         $userID=Auth::user()->id; 
         $cedula_doc=DB::table('users')
         ->join('respuesta_doc','users.id','=','respuesta_doc.id_usuario')
@@ -1270,6 +1275,7 @@ class Estancia1Controller extends Controller
         ->join('cedula_registro','cedula_registro.id','=','documentos.id_c_registro')
         ->select('documentos.id_c_registro','cedula_registro.nombre_c_r','cedula_registro.estado_c_r','cedula_registro.observaciones_c_r','respuesta_doc.id_documentos','respuesta_doc.id_documentos','users.name')
         ->where('users.id',$userID)
+        ->where('id_proceso','1')
         ->get();
         return view('usuario.observaciones_f03',['datos'=>$cedula_doc]);
     }
@@ -1447,7 +1453,7 @@ class Estancia1Controller extends Controller
         }
 
     }
-    public function verObservaciones_f04(){
+    public function verObservaciones1_f04(){
         $userID=Auth::user()->id; 
         $cedula_doc=DB::table('users')
         ->join('respuesta_doc','users.id','=','respuesta_doc.id_usuario')
@@ -1455,6 +1461,7 @@ class Estancia1Controller extends Controller
         ->join('definicion_proyecto','definicion_proyecto.id','=','documentos.id_d_proyecto')
         ->select('documentos.id_d_proyecto','definicion_proyecto.nombre_d_p','definicion_proyecto.estado_d_p','definicion_proyecto.observaciones_d_p','respuesta_doc.id_documentos','respuesta_doc.id_documentos','users.name')
         ->where('users.id',$userID)
+        ->where('id_proceso','1')
         ->get();
         return view('usuario.observaciones_f04',['datos'=>$cedula_doc]);
     }
@@ -1631,7 +1638,7 @@ class Estancia1Controller extends Controller
 
     }
     //observaciones f05
-    public function verObservaciones_f05(){
+    public function verObservaciones1_f05(){
         $userID=Auth::user()->id; 
         $cedula_doc=DB::table('users')
         ->join('respuesta_doc','users.id','=','respuesta_doc.id_usuario')
@@ -1639,6 +1646,7 @@ class Estancia1Controller extends Controller
         ->join('carta_liberacion','carta_liberacion.id','=','documentos.id_c_liberacion')
         ->select('documentos.id_c_liberacion','carta_liberacion.nombre_c_l','carta_liberacion.estado_c_l','carta_liberacion.observaciones_c_l','respuesta_doc.id_documentos','respuesta_doc.id_documentos','users.name')
         ->where('users.id',$userID)
+        ->where('id_proceso','1')
         ->get();
         return view('usuario.observaciones_f05',['datos'=>$cedula_doc]);
     }
