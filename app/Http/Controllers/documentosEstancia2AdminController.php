@@ -170,7 +170,7 @@ class documentosEstancia2AdminController extends Controller
         $id_c   = ['id_c'=>$request->input('id_c')];
         
         $datos = Arr::collapse([$id_c]);
-        return view('admin.observaciones_estancia_carga_horaria',['datos'=>$datos]);
+        return view('admin.observaciones_estancia2_carga_horaria',['datos'=>$datos]);
     }
     //vista observaciones con observaciones carga horaria
     public function conObservaciones_estancia_carga_horaria_admin(Request $request) {
@@ -227,7 +227,7 @@ class documentosEstancia2AdminController extends Controller
         $id_c   = ['id_c'=>$request->input('id_c')];
         
         $datos = Arr::collapse([$id_c]);
-        return view('admin.observaciones_estancia_constancia_derecho',['datos'=>$datos]);
+        return view('admin.observaciones_estancia2_constancia_derecho',['datos'=>$datos]);
     }
 
     public function  guardarObservaciones_estancia_constancia_derecho_admin(Request $request,$id){
@@ -276,7 +276,7 @@ class documentosEstancia2AdminController extends Controller
         $id_c   = ['id_c'=>$request->input('id_c')];
         
         $datos = Arr::collapse([$id_c]);
-        return view('admin.observaciones_estancia_carta_responsiva',['datos'=>$datos]);
+        return view('admin.observaciones_estancia2_carta_responsiva',['datos'=>$datos]);
     }
 
     public function  guardarObservaciones_estancia_carta_responsiva_admin(Request $request,$id){
@@ -325,7 +325,7 @@ class documentosEstancia2AdminController extends Controller
         $id_c   = ['id_c'=>$request->input('id_c')];
         
         $datos = Arr::collapse([$id_c]);
-        return view('admin.observaciones_estancia_f01',['datos'=>$datos]);
+        return view('admin.observaciones_estancia2_f01',['datos'=>$datos]);
     }
 
     public function  guardarObservaciones_estancia_f01_admin(Request $request,$id){
@@ -373,7 +373,7 @@ class documentosEstancia2AdminController extends Controller
         $id_c   = ['id_c'=>$request->input('id_c')];
         
         $datos = Arr::collapse([$id_c]);
-        return view('admin.observaciones_estancia_f02',['datos'=>$datos]);
+        return view('admin.observaciones_estancia2_f02',['datos'=>$datos]);
     }
 
     public function  guardarObservaciones_estancia_f02_admin(Request $request,$id){
@@ -420,7 +420,7 @@ class documentosEstancia2AdminController extends Controller
         $id_c   = ['id_c'=>$request->input('id_c')];
         
         $datos = Arr::collapse([$id_c]);
-        return view('admin.observaciones_estancia',['datos'=>$datos]);
+        return view('admin.observaciones_estancia2',['datos'=>$datos]);
     }
 
     public function  guardarObservaciones_estancia_f03_admin(Request $request,$id){
@@ -467,7 +467,7 @@ class documentosEstancia2AdminController extends Controller
         $id_c   = ['id_c'=>$request->input('id_c')];
         
         $datos = Arr::collapse([$id_c]);
-        return view('admin.observaciones_estancia_f04',['datos'=>$datos]);
+        return view('admin.observaciones_estancia2_f04',['datos'=>$datos]);
     }
 
     public function  guardarObservaciones_estancia_f04_admin(Request $request,$id){
@@ -515,7 +515,7 @@ class documentosEstancia2AdminController extends Controller
         $id_c   = ['id_c'=>$request->input('id_c')];
         
         $datos = Arr::collapse([$id_c]);
-        return view('admin.observaciones_estancia_f05',['datos'=>$datos]);
+        return view('admin.observaciones_estancia2_f05',['datos'=>$datos]);
     }
 
     public function  guardarObservaciones_estancia_f05_admin(Request $request,$id){
