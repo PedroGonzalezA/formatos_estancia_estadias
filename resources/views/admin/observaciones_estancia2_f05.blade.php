@@ -29,15 +29,15 @@
 		@include('plantilla/admin/navBar')
         <div class="container p-3">
 			<div class="page-header">
-			  <h2 class="text-titles">Observaciones <small>(Carta responsiva Estancia)</small></h2>
+			  <h2 class="text-titles">Observaciones <small>(f-05_Carta Liberacion Estancia)</small></h2>
 			</div>
 		</div>
         <div class="container">
-				<form action="{{ route('guardarObservaciones_estancia_carta_responsiva_admin.index',[$datos['id_c']]) }}" method="post" enctype="multipart/form-data" >
+				<form action="{{ route('guardarObservaciones_estancia_f05_admin.index',[$datos['id_c']]) }}" method="post" enctype="multipart/form-data" >
                     @csrf
                     <div class="row">
                         <div class="col-12 p-0">
-                                <a href="{{ route('documentoEstancia1Admin.index') }}" class="btn "  ><i class="zmdi zmdi-arrow-left"></i></a>
+                                <a href="{{ route('documentoEstancia2Admin.index') }}" class="btn "  ><i class="zmdi zmdi-arrow-left"></i></a>
                         </div>
                         <div class="col-12 p-1">
                             <textarea class="form-control" id="observaciones" rows="3" name="observaciones"></textarea>
