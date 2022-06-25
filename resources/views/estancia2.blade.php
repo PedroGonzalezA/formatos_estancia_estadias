@@ -60,7 +60,7 @@
 														<!--Observaciones-->
 														<div class="row">
 															<div class="col-12 col-sm-9">
-																<form class="btn-cancelar-carga-horaria-system" action="{{ route('cancelar_carga_horaria_Estancia.index',[$datoCH->id_documentos,$datoCH->name]) }}" method="POST" enctype="multipart/form-data">
+																<form class="btn-cancelar-carga-horaria-system" action="{{ route('cancelar_carga_horaria_Estancia2.index',[$datoCH->id_documentos,$datoCH->name]) }}" method="POST" enctype="multipart/form-data">
 																	@csrf
 																	<div class="row">
 																		<div class="col-12 col-sm-9 id_d" >
@@ -89,7 +89,7 @@
 													<!--pendiente-->
 													<div class="row">
 														<div class="col-12 col-sm-9">
-															<form class="btn-cancelar-carga-horaria-system" action="{{ route('cancelar_carga_horaria_Estancia.index',[$datoCH->id_documentos,$datoCH->name]) }}" method="POST" enctype="multipart/form-data">
+															<form class="btn-cancelar-carga-horaria-system" action="{{ route('cancelar_carga_horaria_Estancia2.index',[$datoCH->id_documentos,$datoCH->name]) }}" method="POST" enctype="multipart/form-data">
 																@csrf
 																<div class="row">
 																	<div class="col-12 col-sm-9 px-3 py-1 id_d" >
@@ -180,7 +180,7 @@
 														<!--Observaciones-->
 														<div class="row">
 															<div class="col-12 col-sm-9">
-																<form class="btn-cancelar-constancia-derecho-system" action="{{ route('cancelar_constancia_derecho_Estancia.index',[$datoCD->id_documentos,$datoCD->name]) }}" method="POST" enctype="multipart/form-data">
+																<form class="btn-cancelar-constancia-derecho-system" action="{{ route('cancelar_constancia_derecho_Estancia2.index',[$datoCD->id_documentos,$datoCD->name]) }}" method="POST" enctype="multipart/form-data">
 																	@csrf
 																	<div class="row">
 																		<div class="col-12 col-sm-9 id_d" >
@@ -209,7 +209,7 @@
 													<!--pendiente-->
 													<div class="row">
 														<div class="col-12 col-sm-9">
-															<form class="btn-cancelar-constancia-derecho-system" action="{{ route('cancelar_constancia_derecho_Estancia.index',[$datoCD->id_documentos,$datoCD->name]) }}" method="POST" enctype="multipart/form-data">
+															<form class="btn-cancelar-constancia-derecho-system" action="{{ route('cancelar_constancia_derecho_Estancia2.index',[$datoCD->id_documentos,$datoCD->name]) }}" method="POST" enctype="multipart/form-data">
 																@csrf
 																<div class="row">
 																	<div class="col-12 col-sm-9 px-3 py-1 id_d" >
@@ -308,7 +308,7 @@
 														<!--Observaciones-->
 														<div class="row">
 															<div class="col-12 col-sm-9">
-																<form class="btn-cancelar-carta-responsiva-system" action="{{ route('cancelar_carta_responsiva_Estancia.index',[$datoCR->id_documentos,$datoCR->name]) }}" method="POST" enctype="multipart/form-data">
+																<form class="btn-cancelar-carta-responsiva-system" action="{{ route('cancelar_carta_responsiva_Estancia2.index',[$datoCR->id_documentos,$datoCR->name]) }}" method="POST" enctype="multipart/form-data">
 																	@csrf
 																	<div class="row">
 																		<div class="col-12 col-sm-9 id_d" >
@@ -337,7 +337,7 @@
 													<!--pendiente-->
 													<div class="row">
 														<div class="col-12 col-sm-9">
-															<form class="btn-cancelar-carta-responsiva-system" action="{{ route('cancelar_carta_responsiva_Estancia.index',[$datoCR->id_documentos,$datoCR->name]) }}" method="POST" enctype="multipart/form-data">
+															<form class="btn-cancelar-carta-responsiva-system" action="{{ route('cancelar_carta_responsiva_Estancia2.index',[$datoCR->id_documentos,$datoCR->name]) }}" method="POST" enctype="multipart/form-data">
 																@csrf
 																<div class="row">
 																	<div class="col-12 col-sm-9 px-3 py-1 id_d" >
@@ -436,7 +436,7 @@
 														<!--Observaciones-->
 														<div class="row">
 															<div class="col-12 col-sm-9">
-																<form class="btn-cancelarF1-system" action="{{ route('cancelar_f01_Estancia.index',[$datoCP->id_documentos,$datoCP->name]) }}" method="POST" enctype="multipart/form-data">
+																<form class="btn-cancelarF1-system" action="{{ route('cancelar_f01_Estancia2.index',[$datoCP->id_documentos,$datoCP->name]) }}" method="POST" enctype="multipart/form-data">
 																	@csrf
 																	<div class="row">
 																		<div class="col-12 col-sm-9 id_d" >
@@ -465,7 +465,7 @@
 													<!--pendiente-->
 													<div class="row">
 														<div class="col-12 col-sm-9">
-															<form class="btn-cancelarF1-system" action="{{ route('cancelar_f01_Estancia.index',[$datoCP->id_documentos,$datoCP->name]) }}" method="POST" enctype="multipart/form-data">
+															<form class="btn-cancelarF1-system" action="{{ route('cancelar_f01_Estancia2.index',[$datoCP->id_documentos,$datoCP->name]) }}" method="POST" enctype="multipart/form-data">
 																@csrf
 																<div class="row">
 																	<div class="col-12 col-sm-9 px-3 py-1 id_d" >
@@ -561,7 +561,7 @@
 																						<!--Observaciones-->
 																						<div class="row">
 																							<div class="col-12 col-sm-9">
-																								<form class="btn-cancelarF2-system" action="{{ route('cancelar_f02_Estancia.index',[$datoCA->id_documentos,$datoCA->name]) }}" method="POST" enctype="multipart/form-data">
+																								<form class="btn-cancelarF2-system" action="{{ route('cancelar_f02_Estancia2.index',[$datoCA->id_documentos,$datoCA->name]) }}" method="POST" enctype="multipart/form-data">
 																									@csrf
 																									<div class="row">
 																										<div class="col-12 col-sm-9 id_d" >
@@ -590,7 +590,7 @@
 																					<!--pendiente-->
 																					<div class="row">
 																						<div class="col-12 col-sm-9">
-																							<form class="btn-cancelarF2-system" action="{{ route('cancelar_f02_Estancia.index',[$datoCA->id_documentos,$datoCA->name]) }}" method="POST" enctype="multipart/form-data">
+																							<form class="btn-cancelarF2-system" action="{{ route('cancelar_f02_Estancia2.index',[$datoCA->id_documentos,$datoCA->name]) }}" method="POST" enctype="multipart/form-data">
 																								@csrf
 																								<div class="row">
 																									<div class="col-12 col-sm-9 px-3 py-1 id_d" >
@@ -684,7 +684,7 @@
 																<div class="row">
 																	<!--ELIMINAR F03-->
 																	<div class="col-6 col-sm-6 col-md-2 py-1 colLlenar">
-																		<form class="btn-eliminarCR-system" method="post" action="{{ route('eliminar_f03',[$dato->id_alumno,$dato->id_empresa,$dato->id_asesor_emp,$dato->id_asesor_aca,$dato->id_proyecto]) }}">
+																		<form class="btn-eliminarCR-system" method="post" action="{{ route('eliminar_f032',[$dato->id_alumno,$dato->id_empresa,$dato->id_asesor_emp,$dato->id_asesor_aca,$dato->id_proyecto]) }}">
 																			@csrf
 																			<button type="submit" class="btn btn-outline-danger btnCancelar" >Eliminar</button>
 																		</form>											
@@ -696,7 +696,7 @@
 																		</a>
 																	</div>
 																	<div class="col-12 col-sm-7">
-																		<form class="btn-cancelarF3-system" action="{{ route('cancelar_f03_Estancia.index',[$datoC->id_documentos,$datoC->name]) }}" method="POST" enctype="multipart/form-data">
+																		<form class="btn-cancelarF3-system" action="{{ route('cancelar_f03_Estancia2.index',[$datoC->id_documentos,$datoC->name]) }}" method="POST" enctype="multipart/form-data">
 																			@csrf
 																			<div class="row">
 																				<div class="col-12 col-sm-9 id_d" >
@@ -726,7 +726,7 @@
 															<div class="row">
 																<!--ELIMINAR F03-->
 																<div class="col-6 col-sm-6 col-md-5 col-lg-3 col-xl-2 p-1 colLlenar">
-																	<form class="btn-eliminarCR-system" method="post" action="{{ route('eliminar_f03',[$dato->id_alumno,$dato->id_empresa,$dato->id_asesor_emp,$dato->id_asesor_aca,$dato->id_proyecto]) }}">
+																	<form class="btn-eliminarCR-system" method="post" action="{{ route('eliminar_f032',[$dato->id_alumno,$dato->id_empresa,$dato->id_asesor_emp,$dato->id_asesor_aca,$dato->id_proyecto]) }}">
 																		@csrf
 																		<button type="submit" class="btn btn-outline-danger btnCancelar" >Eliminar</button>
 																	</form>											
@@ -738,7 +738,7 @@
 																	</a>
 																</div>
 																<div class="col-12 col-sm-7">
-																	<form class="btn-cancelarF3-system" action="{{ route('cancelar_f03_Estancia.index',[$datoC->id_documentos,$datoC->name]) }}" method="POST" enctype="multipart/form-data">
+																	<form class="btn-cancelarF3-system" action="{{ route('cancelar_f03_Estancia2.index',[$datoC->id_documentos,$datoC->name]) }}" method="POST" enctype="multipart/form-data">
 																		@csrf
 																		<div class="row">
 																			<div class="col-12 col-sm-9 px-3 py-1 id_d" >
@@ -785,7 +785,7 @@
 												<div class="row">
 													<!--ELIMINAR F03-->
 													<div class="col-6 col-sm-6 col-md-2 py-1 colLlenar">
-														<form class="btn-eliminarCR-system" method="post" action="{{ route('eliminar_f03',[$dato->id_alumno,$dato->id_empresa,$dato->id_asesor_emp,$dato->id_asesor_aca,$dato->id_proyecto]) }}">
+														<form class="btn-eliminarCR-system" method="post" action="{{ route('eliminar_f032',[$dato->id_alumno,$dato->id_empresa,$dato->id_asesor_emp,$dato->id_asesor_aca,$dato->id_proyecto]) }}">
 															@csrf
 															<button type="submit" class="btn btn-outline-danger btnCancelar" >Eliminar</button>
 														</form>											
@@ -819,7 +819,7 @@
 										<div class="row">
 											<!--ELIMINAR F03-->
 											<div class="col-6 col-sm-6 col-md-2 py-1 colLlenar">
-												<form class="btn-eliminarCR-system" method="post" action="{{ route('eliminar_f03',[$dato->id_alumno,$dato->id_empresa,$dato->id_asesor_emp,$dato->id_asesor_aca,$dato->id_proyecto]) }}">
+												<form class="btn-eliminarCR-system" method="post" action="{{ route('eliminar_f032',[$dato->id_alumno,$dato->id_empresa,$dato->id_asesor_emp,$dato->id_asesor_aca,$dato->id_proyecto]) }}">
 													@csrf
 													<button type="submit" class="btn btn-outline-danger btnCancelar" >Eliminar</button>
 												</form>											
@@ -884,7 +884,7 @@
 																			<div class="row">
 																				<!--eliminar F04-->
 																				<div class="col-6 col-sm-6 col-md-2 py-1 colLlenar">
-																					<form class="btn-eliminarDP-system" method="post" action="{{ route('eliminar_f04.index',[$dato->id_alumno,$dato->id_asesor_emp,$dato->id_proyecto,$dato->id_detalle]) }}">
+																					<form class="btn-eliminarDP-system" method="post" action="{{ route('eliminar_f042.index',[$dato->id_alumno,$dato->id_asesor_emp,$dato->id_proyecto,$dato->id_detalle]) }}">
 																						@csrf
 																						@foreach ($etapas['etapas'] as $datoE )
 																							<input type="text" name="id_etapas_{{$datoE->numero}}" value="{{$datoE->id}}" class="id_d" >
@@ -899,7 +899,7 @@
 																					</a>
 																				</div>
 																				<div class="col-12 col-sm-7">
-																					<form class="btn-cancelarF4-system" action="{{ route('cancelar_f04_Estancia.index',[$datoDP->id_documentos,$datoDP->name]) }}" method="POST" enctype="multipart/form-data">
+																					<form class="btn-cancelarF4-system" action="{{ route('cancelar_f04_Estancia2.index',[$datoDP->id_documentos,$datoDP->name]) }}" method="POST" enctype="multipart/form-data">
 																						@csrf
 																						<div class="row">
 																							<div class="col-12 col-sm-9 id_d" >
@@ -929,7 +929,7 @@
 																			<div class="row">
 																				<!--eliminar F04-->
 																				<div class="col-6 col-sm-6 col-md-2 p-1 colLlenar">
-																					<form class="btn-eliminarDP-system" method="post" action="{{ route('eliminar_f04.index',[$dato->id_alumno,$dato->id_asesor_emp,$dato->id_proyecto,$dato->id_detalle]) }}">
+																					<form class="btn-eliminarDP-system" method="post" action="{{ route('eliminar_f042.index',[$dato->id_alumno,$dato->id_asesor_emp,$dato->id_proyecto,$dato->id_detalle]) }}">
 																						@csrf
 																						@foreach ($etapas['etapas'] as $datoE )
 																							<input type="text" name="id_etapas_{{$datoE->numero}}" value="{{$datoE->id}}" class="id_d" >
@@ -944,7 +944,7 @@
 																					</a>
 																				</div>
 																				<div class="col-12 col-sm-7">
-																					<form class="btn-cancelarF4-system" action="{{ route('cancelar_f04_Estancia.index',[$datoDP->id_documentos,$datoDP->name]) }}" method="POST" enctype="multipart/form-data">
+																					<form class="btn-cancelarF4-system" action="{{ route('cancelar_f04_Estancia2.index',[$datoDP->id_documentos,$datoDP->name]) }}" method="POST" enctype="multipart/form-data">
 																						@csrf
 																						<div class="row">
 																							<div class="col-12 col-sm-9 px-3 py-1 id_d" >
@@ -993,7 +993,7 @@
 												<div class="row">
 													<!--eliminar F04-->
 													<div class="col-6 col-sm-6 col-md-2 py-1 colLlenar">
-														<form class="btn-eliminarDP-system" method="post" action="{{ route('eliminar_f04.index',[$dato->id_alumno,$dato->id_asesor_emp,$dato->id_proyecto,$dato->id_detalle]) }}">
+														<form class="btn-eliminarDP-system" method="post" action="{{ route('eliminar_f042.index',[$dato->id_alumno,$dato->id_asesor_emp,$dato->id_proyecto,$dato->id_detalle]) }}">
 															@csrf
 															@foreach ($etapas['etapas'] as $datoE )
 																<input type="text" name="id_etapas_{{$datoE->numero}}" value="{{$datoE->id}}" class="id_d" >
@@ -1029,7 +1029,7 @@
 										<div class="row">
 											<!--eliminar F04-->
 											<div class="col-6 col-sm-6 col-md-2 py-1 colLlenar">
-												<form class="btn-eliminarDP-system" method="post" action="{{ route('eliminar_f04.index',[$dato->id_alumno,$dato->id_asesor_emp,$dato->id_proyecto,$dato->id_detalle]) }}">
+												<form class="btn-eliminarDP-system" method="post" action="{{ route('eliminar_f042.index',[$dato->id_alumno,$dato->id_asesor_emp,$dato->id_proyecto,$dato->id_detalle]) }}">
 													@csrf
 													@foreach ($etapas['etapas'] as $datoE )
 														<input type="text" name="id_etapas_{{$datoE->numero}}" value="{{$datoE->id}}" class="id_d" >
@@ -1103,7 +1103,7 @@
 																		<!--Observaciones-->
 																		<div class="row">
 																			<div class="col-12 col-sm-9">
-																				<form class="btn-cancelarF5-system" action="{{ route('cancelar_f05_Estancia.index',[$datoCL->id_documentos,$datoCL->name]) }}" method="POST" enctype="multipart/form-data">
+																				<form class="btn-cancelarF5-system" action="{{ route('cancelar_f05_Estancia2.index',[$datoCL->id_documentos,$datoCL->name]) }}" method="POST" enctype="multipart/form-data">
 																					@csrf
 																					<div class="row">
 																						<div class="col-12 col-sm-9 id_d" >
@@ -1132,7 +1132,7 @@
 																	<!--pendiente-->
 																	<div class="row">
 																		<div class="col-12 col-sm-9">
-																			<form class="btn-cancelarF5-system" action="{{ route('cancelar_f05_Estancia.index',[$datoCL->id_documentos,$datoCL->name]) }}" method="POST" enctype="multipart/form-data">
+																			<form class="btn-cancelarF5-system" action="{{ route('cancelar_f05_Estancia2.index',[$datoCL->id_documentos,$datoCL->name]) }}" method="POST" enctype="multipart/form-data">
 																				@csrf
 																				<div class="row">
 																					<div class="col-12 col-sm-9 px-3 py-1 id_d" >
