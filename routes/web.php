@@ -1074,8 +1074,8 @@ Route::get('/logout', [LoginController::class, 'destroy'])
  ->name('subir_carga_horaria_estancia2.index');
 
  //cancelar solicitud documento carga horaria
- Route::match(['post', 'delete','put'], '/carga_horaria/{id_d}/{nombre}',[PdfController::class,'cancelar_carga_horaria_Estancia'])
- ->name('cancelar_carga_horaria_Estancia.index');
+ Route::match(['post', 'delete','put'], '/carga_horaria2/{id_d}/{nombre}',[PdfController::class,'cancelar_carga_horaria_Estancia2'])
+ ->name('cancelar_carga_horaria_Estancia2.index');
 
  //enviar documento constancia derecho con datos
  Route::match(['post', 'delete','put'],'actualizar/constancia_derecho2/{name}/{nombre}', [Estancia2Controller::class, 'actualizar_constancia_derecho_estancia2'])
@@ -1086,8 +1086,8 @@ Route::get('/logout', [LoginController::class, 'destroy'])
  ->name('subir_constancia_derecho_estancia2.index');
 
  //cancelar solicitud documento constancia derecho
- Route::match(['post', 'delete','put'], '/constancia_derecho/{id_d}/{nombre}',[PdfController::class,'cancelar_constancia_derecho_Estancia'])
- ->name('cancelar_constancia_derecho_Estancia.index');
+ Route::match(['post', 'delete','put'], '/constancia_derecho2/{id_d}/{nombre}',[PdfController::class,'cancelar_constancia_derecho_Estancia2'])
+ ->name('cancelar_constancia_derecho_Estancia2.index');
 
  //enviar documento carta responsiva con datos
  Route::match(['post', 'delete','put'],'actualizar/carta_responsiva2/{name}/{nombre}', [Estancia2Controller::class, 'actualizar_carta_responsiva_estancia2'])
@@ -1098,8 +1098,8 @@ Route::get('/logout', [LoginController::class, 'destroy'])
  ->name('subir_carta_responsiva_estancia2.index');
 
  //cancelar solicitud documento carta responsiva
- Route::match(['post', 'delete','put'], '/carta_responsiva/{id_d}/{nombre}',[PdfController::class,'cancelar_carta_responsiva_Estancia'])
- ->name('cancelar_carta_responsiva_Estancia.index');
+ Route::match(['post', 'delete','put'], '/carta_responsiva2/{id_d}/{nombre}',[PdfController::class,'cancelar_carta_responsiva_Estancia2'])
+ ->name('cancelar_carta_responsiva_Estancia2.index');
 
  //descargar con datos f01
  Route::get('/descarga_cd_estancia_f01', [PdfController::class, 'descarga_cd_f01_estancia'])
@@ -1114,8 +1114,8 @@ Route::get('/logout', [LoginController::class, 'destroy'])
  ->name('subir_f01_estancia2.index');
 
  //cancelar solicitud documento f01
- Route::match(['post', 'delete','put'], '/f01/{id_d}/{nombre}',[PdfController::class,'cancelarF01_Estancia'])
- ->name('cancelar_f01_Estancia.index');
+ Route::match(['post', 'delete','put'], '/f012/{id_d}/{nombre}',[PdfController::class,'cancelarF01_Estancia2'])
+ ->name('cancelar_f01_Estancia2.index');
 
  //descargar con datos f02
  Route::get('/descarga_cd_estancia_f02', [PdfController::class, 'descarga_cd_f02_estancia'])
@@ -1130,8 +1130,8 @@ Route::get('/logout', [LoginController::class, 'destroy'])
  ->name('subir_f02_estancia2.index');
 
  //cancelar solicitud documento f02
- Route::match(['post', 'delete','put'], '/f02/{id_d}/{nombre}',[PdfController::class,'cancelarF02_Estancia'])
- ->name('cancelar_f02_Estancia.index');
+ Route::match(['post', 'delete','put'], '/f02/{id_d}/{nombre}',[PdfController::class,'cancelarF02_Estancia2'])
+ ->name('cancelar_f02_Estancia2.index');
 
  //llenar f03
  Route::get('/home2', [CedulaController::class, 'ver'])
@@ -1151,8 +1151,8 @@ Route::get('/logout', [LoginController::class, 'destroy'])
  ->name('descarga_cd_estancia_f03.index');
 
  //eliminar f03 estancia
- Route::match(['post', 'delete','put','get'],'/f03Estancia/{id_a}/{id_e}/{id_a_e}/{id_a_a}/{id_p}',[PdfController::class,'eliminarF03Estancia'])
- ->name('eliminar_f03');
+ Route::match(['post', 'delete','put','get'],'/f03Estancia2/{id_a}/{id_e}/{id_a_e}/{id_a_a}/{id_p}',[PdfController::class,'eliminarF03Estancia2'])
+ ->name('eliminar_f032');
 
  //enviar documento f03 con datos
  Route::match(['post', 'delete','put'],'actualizar/f032/{name}/{nombre}', [Estancia2Controller::class, 'actualizarF03_estancia2'])
@@ -1163,8 +1163,8 @@ Route::get('/logout', [LoginController::class, 'destroy'])
  ->name('subir_f03_estancia2.index');
 
  //cancelar solicitud documento f03
- Route::match(['post', 'delete','put'], '/f03/{id_d}/{nombre}',[PdfController::class,'cancelarF03_Estancia'])
- ->name('cancelar_f03_Estancia.index');
+ Route::match(['post', 'delete','put'], '/f032/{id_d}/{nombre}',[PdfController::class,'cancelarF03_Estancia2'])
+ ->name('cancelar_f03_Estancia2.index');
 
 
  //llenar datos f04
@@ -1178,8 +1178,8 @@ Route::get('/logout', [LoginController::class, 'destroy'])
  ->name('f04Guardar2.index');
 
  //eliminar f04
- Route::match(['post', 'delete','put','get'],'/f04/{id_a}/{id_a_e}/{id_p}/{id_d}',[PdfController::class,'eliminarF04'])
- ->name('eliminar_f04.index');
+ Route::match(['post', 'delete','put','get'],'/f042/{id_a}/{id_a_e}/{id_p}/{id_d}',[PdfController::class,'eliminarF042'])
+ ->name('eliminar_f042.index');
 
  //descargar f04 con datos
  Route::get('/descarga_cd_estacia_f04', [PdfController::class, 'descarga_cd_estancia_f04'])
@@ -1194,8 +1194,8 @@ Route::get('/logout', [LoginController::class, 'destroy'])
  ->name('subir_f04_estancia2.index');
 
  //cancelar solicitud documento f04
- Route::match(['post', 'delete','put'], '/f04_estancia/{id_d}/{nombre}',[PdfController::class,'cancelarF04_Estancia'])
- ->name('cancelar_f04_Estancia.index');
+ Route::match(['post', 'delete','put'], '/f04_estancia2/{id_d}/{nombre}',[PdfController::class,'cancelarF04_Estancia2'])
+ ->name('cancelar_f04_Estancia2.index');
 
  //descargar f05 con datos
  Route::get('/descarga_cd_estacia_f05', [PdfController::class, 'descarga_cd_estancia_f05'])
@@ -1210,8 +1210,8 @@ Route::get('/logout', [LoginController::class, 'destroy'])
  ->name('subir_f05_estancia2.index');
 
  //cancelar solicitud documento f05
- Route::match(['post', 'delete','put'], '/f05/{id_d}/{nombre}',[PdfController::class,'cancelarF05_Estancia'])
- ->name('cancelar_f05_Estancia.index');
+ Route::match(['post', 'delete','put'], '/f052/{id_d}/{nombre}',[PdfController::class,'cancelarF05_Estancia2'])
+ ->name('cancelar_f05_Estancia2.index');
 
  //reporte evaluacion
  //Descarga

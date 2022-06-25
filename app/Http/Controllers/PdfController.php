@@ -377,7 +377,17 @@ class PdfController extends Controller
         Asesor_Emp::find($id_a_e)->delete();
         Asesor_Aca::find($id_a_a)->delete();
         Proyecto::find($id_p)->delete();
-        return redirect('estancia')->with('eliminarF03','F-03 Eliminado');
+        return redirect('estancia1')->with('eliminarF03','F-03 Eliminado');
+      }
+      //eliminar f03 estancia
+      public function eliminarF03Estancia2($id_a,$id_e,$id_a_e,$id_a_a,$id_p){    
+
+        Alumno::find($id_a)->delete();
+        Empresa::find($id_e)->delete();
+        Asesor_Emp::find($id_a_e)->delete();
+        Asesor_Aca::find($id_a_a)->delete();
+        Proyecto::find($id_p)->delete();
+        return redirect('estancia2')->with('eliminarF03','F-03 Eliminado');
       }
       //eliminar f03 estadia
 
@@ -430,7 +440,50 @@ class PdfController extends Controller
         $etapas13 = etapas_del_proyecto::find($id_etapa_13)->delete();
         $etapas14 = etapas_del_proyecto::find($id_etapa_14)->delete();
         $etapas15 = etapas_del_proyecto::find($id_etapa_15)->delete();
-        return redirect('estancia')->with('eliminarF04','F-04 Eliminado');
+        return redirect('estancia1')->with('eliminarF04','F-04 Eliminado');
+
+      }
+      //eliminar f04 estancia
+      public function eliminarF042(Request $req,$id_a,$id_a_e,$id_p,$id_d){    
+        $userID=Auth::user()->id; 
+
+        alumno_def::find($id_a)->delete();
+        asesor_empresarial_def::find($id_a_e)->delete();
+        proyecto_def::find($id_p)->delete();
+        detalle_def::find($id_d)->delete();
+
+        $id_etapa_1=$req->get('id_etapas_1');
+        $id_etapa_2=$req->get('id_etapas_2');
+        $id_etapa_3=$req->get('id_etapas_3');
+        $id_etapa_4=$req->get('id_etapas_4');
+        $id_etapa_5=$req->get('id_etapas_5');
+        $id_etapa_6=$req->get('id_etapas_6');
+        $id_etapa_7=$req->get('id_etapas_7');
+        $id_etapa_8=$req->get('id_etapas_8');
+        $id_etapa_9=$req->get('id_etapas_9');
+        $id_etapa_10=$req->get('id_etapas_10');
+        $id_etapa_11=$req->get('id_etapas_11');
+        $id_etapa_12=$req->get('id_etapas_12');
+        $id_etapa_13=$req->get('id_etapas_13');
+        $id_etapa_14=$req->get('id_etapas_14');
+        $id_etapa_15=$req->get('id_etapas_15');
+
+        $etapas1 = etapas_del_proyecto::find($id_etapa_1)->delete();
+        $etapas2 = etapas_del_proyecto::find($id_etapa_2)->delete();
+        $etapas3 = etapas_del_proyecto::find($id_etapa_3)->delete();
+        $etapas4 = etapas_del_proyecto::find($id_etapa_4)->delete();
+        $etapas5 = etapas_del_proyecto::find($id_etapa_5)->delete();
+        $etapas6 = etapas_del_proyecto::find($id_etapa_6)->delete();
+        $etapas7 = etapas_del_proyecto::find($id_etapa_7)->delete();
+        $etapas8 = etapas_del_proyecto::find($id_etapa_8)->delete();
+        $etapas9 = etapas_del_proyecto::find($id_etapa_9)->delete();
+        $etapas10 = etapas_del_proyecto::find($id_etapa_10)->delete();
+        $etapas11 = etapas_del_proyecto::find($id_etapa_11)->delete();
+        $etapas12 = etapas_del_proyecto::find($id_etapa_12)->delete();
+        $etapas13 = etapas_del_proyecto::find($id_etapa_13)->delete();
+        $etapas14 = etapas_del_proyecto::find($id_etapa_14)->delete();
+        $etapas15 = etapas_del_proyecto::find($id_etapa_15)->delete();
+        return redirect('estancia2')->with('eliminarF04','F-04 Eliminado');
 
       }
 
@@ -478,7 +531,7 @@ class PdfController extends Controller
 
       }
   //cancelar documentos
-    //cancelar documento carga horaria estancia
+    //cancelar documento carga horaria estancia2
     public function cancelar_carga_horaria_Estancia(Request $req,$id_d,$nombre){    
       $carta=documentos::find($id_d);
       $carta->id_c_horaria=NULL;
@@ -490,9 +543,25 @@ class PdfController extends Controller
       $path=public_path().'/documentos/'.$nombreA;
       if(File::exists($path)){
         File::delete($path);
-        return redirect('estancia')->with('cancelar_carga_horaria','Carga horaria Cancelada');
+        return redirect('estancia1')->with('cancelar_carga_horaria','Carga horaria Cancelada');
       }else{
-        return redirect('estancia')->with('cancelar_carga_horaria','Carga horaria Cancelada');
+        return redirect('estancia1')->with('cancelar_carga_horaria','Carga horaria Cancelada');
+      }
+    }
+    public function cancelar_carga_horaria_Estancia2(Request $req,$id_d,$nombre){    
+      $carta=documentos::find($id_d);
+      $carta->id_c_horaria=NULL;
+      $carta->save();
+      $nombreA=$req->get('nombreCarga_horaria');
+      $formularioA = DB::table('carga_horaria')  
+      ->where('carga_horaria.nombre_c_h', $nombreA)
+      ->delete();
+      $path=public_path().'/documentos/'.$nombreA;
+      if(File::exists($path)){
+        File::delete($path);
+        return redirect('estancia2')->with('cancelar_carga_horaria','Carga horaria Cancelada');
+      }else{
+        return redirect('estancia2')->with('cancelar_carga_horaria','Carga horaria Cancelada');
       }
     }
     //cancelar documento carga horaria estadia
@@ -525,9 +594,26 @@ class PdfController extends Controller
       $path=public_path().'/documentos/'.$nombreA;
       if(File::exists($path)){
         File::delete($path);
-        return redirect('estadia')->with('cancelar_constancia_derecho','Constancia derecho Cancelada');
+        return redirect('estancia1')->with('cancelar_constancia_derecho','Constancia derecho Cancelada');
       }else{
-        return redirect('estadia')->with('cancelar_constancia_derecho','Constancia derecho Cancelada');
+        return redirect('estancia1')->with('cancelar_constancia_derecho','Constancia derecho Cancelada');
+      }
+    }
+    //cancelar documento constancia derecho estancia
+    public function cancelar_constancia_derecho_Estancia2(Request $req,$id_d,$nombre){    
+      $carta=documentos::find($id_d);
+      $carta->id_c_derecho=NULL;
+      $carta->save();
+      $nombreA=$req->get('nombreConstancia_derecho');
+      $formularioA = DB::table('constancia_derecho')  
+      ->where('constancia_derecho.nombre_c_d', $nombreA)
+      ->delete();
+      $path=public_path().'/documentos/'.$nombreA;
+      if(File::exists($path)){
+        File::delete($path);
+        return redirect('estancia2')->with('cancelar_constancia_derecho','Constancia derecho Cancelada');
+      }else{
+        return redirect('estancia2')->with('cancelar_constancia_derecho','Constancia derecho Cancelada');
       }
     }
     //cancelar documento constancia derecho estadia
@@ -560,9 +646,26 @@ class PdfController extends Controller
       $path=public_path().'/documentos/'.$nombreA;
       if(File::exists($path)){
         File::delete($path);
-        return redirect('estadia')->with('cancelar_carta_responsiva','Carta responsiva Cancelada');
+        return redirect('estancia')->with('cancelar_carta_responsiva','Carta responsiva Cancelada');
       }else{
-        return redirect('estadia')->with('cancelar_carta_responsiva','Carta responsiva Cancelada');
+        return redirect('estancia')->with('cancelar_carta_responsiva','Carta responsiva Cancelada');
+      }
+    }
+    //cancelar documento carta_responsiva estancia
+    public function cancelar_carta_responsiva_Estancia2(Request $req,$id_d,$nombre){    
+      $carta=documentos::find($id_d);
+      $carta->id_c_responsiva=NULL;
+      $carta->save();
+      $nombreA=$req->get('nombreCarta_responsiva');
+      $formularioA = DB::table('carta_responsiva')  
+      ->where('carta_responsiva.nombre_c_r', $nombreA)
+      ->delete();
+      $path=public_path().'/documentos/'.$nombreA;
+      if(File::exists($path)){
+        File::delete($path);
+        return redirect('estancia2')->with('cancelar_carta_responsiva','Carta responsiva Cancelada');
+      }else{
+        return redirect('estancia2')->with('cancelar_carta_responsiva','Carta responsiva Cancelada');
       }
     }
     //cancelar documento carta_responsiva estadia
@@ -594,9 +697,26 @@ class PdfController extends Controller
       $path=public_path().'/documentos/'.$nombreA;
       if(File::exists($path)){
         File::delete($path);
-        return redirect('estadia')->with('cancelarf01','F-01 Cancelado');
+        return redirect('estancia1')->with('cancelarf01','F-01 Cancelado');
       }else{
-        return redirect('estadia')->with('cancelarf01','F-01 Cancelado');
+        return redirect('estancia1')->with('cancelarf01','F-01 Cancelado');
+      }
+    }
+    //cancelar documento f01 estancia 2
+    public function cancelarF01_Estancia2(Request $req,$id_d,$nombre){    
+      $carta=documentos::find($id_d);
+      $carta->id_c_presentacion=NULL;
+      $carta->save();
+      $nombreA=$req->get('nombreAf01');
+      $formularioA = DB::table('carta_presentacion')  
+      ->where('carta_presentacion.nombre_c_p', $nombreA)
+      ->delete();
+      $path=public_path().'/documentos/'.$nombreA;
+      if(File::exists($path)){
+        File::delete($path);
+        return redirect('estancia2')->with('cancelarf01','F-01 Cancelado');
+      }else{
+        return redirect('estancia2')->with('cancelarf01','F-01 Cancelado');
       }
     }
     //cancelar documento f01 estadia
@@ -628,11 +748,28 @@ class PdfController extends Controller
         $path=public_path().'/documentos/'.$nombreA;
         if(File::exists($path)){
           File::delete($path);
-          return redirect('estancia')->with('cancelarf02','F-02 Cancelado');
+          return redirect('estancia1')->with('cancelarf02','F-02 Cancelado');
         }else{
-          return redirect('estancia')->with('cancelarf02','F-02 Cancelado');
+          return redirect('estancia1')->with('cancelarf02','F-02 Cancelado');
         }
       }
+    //cancelar documento f02
+    public function cancelarF02_Estancia2(Request $req,$id_d,$nombre){    
+      $carta=documentos::find($id_d);
+      $carta->id_c_aceptacion=NULL;
+      $carta->save();
+      $nombreA=$req->get('nombreAf02');
+      $formularioA = DB::table('carta_aceptacion')  
+      ->where('carta_aceptacion.nombre', $nombreA)
+      ->delete();
+      $path=public_path().'/documentos/'.$nombreA;
+      if(File::exists($path)){
+        File::delete($path);
+        return redirect('estancia2')->with('cancelarf02','F-02 Cancelado');
+      }else{
+        return redirect('estancia2')->with('cancelarf02','F-02 Cancelado');
+      }
+    }
       //cancelar documento f02 estadia
       public function cancelarF02_Estadia(Request $req,$id_d,$nombre){    
         $carta=documentos::find($id_d);
@@ -662,12 +799,28 @@ class PdfController extends Controller
         $path=public_path().'/documentos/'.$nombreA;
         if(File::exists($path)){
            File::delete($path);
-           return redirect('estancia')->with('cancelarf03','F-03 Cancelado');
+           return redirect('estancia1')->with('cancelarf03','F-03 Cancelado');
         }else{
-          return redirect('estancia')->with('cancelarf03','F-03 Cancelado');
+          return redirect('estancia1')->with('cancelarf03','F-03 Cancelado');
         }
       }
-
+      //cancelar documento f03
+      public function cancelarF03_Estancia2(Request $req,$id_d,$nombre){    
+        $carta=documentos::find($id_d);
+        $carta->id_c_registro=NULL;
+        $carta->save();
+        $nombreA=$req->get('nombreAf03');
+        $formularioA = DB::table('cedula_registro')  
+        ->where('cedula_registro.nombre_c_r', $nombreA)
+        ->delete();
+        $path=public_path().'/documentos/'.$nombreA;
+        if(File::exists($path)){
+           File::delete($path);
+           return redirect('estancia2')->with('cancelarf03','F-03 Cancelado');
+        }else{
+          return redirect('estancia2')->with('cancelarf03','F-03 Cancelado');
+        }
+      }
       public function cancelarF03_Estadia(Request $req,$id_d,$nombre){    
         $carta=documentos::find($id_d);
         $carta->id_c_registro=NULL;
@@ -697,12 +850,28 @@ class PdfController extends Controller
           $path=public_path().'/documentos/'.$nombreA;
           if(File::exists($path)){
              File::delete($path);
-             return redirect('estancia')->with('cancelarf04','F-04 Cancelado');
+             return redirect('estancia1')->with('cancelarf04','F-04 Cancelado');
           }else{
-            return redirect('estancia')->with('cancelarf04','F-04 Cancelado');
+            return redirect('estancia1')->with('cancelarf04','F-04 Cancelado');
           }
         }
-
+        //cancelar documento f04 2
+        public function cancelarF04_Estancia2(Request $req,$id_d,$nombre){    
+          $carta=documentos::find($id_d);
+          $carta->id_d_proyecto=NULL;
+          $carta->save();
+          $nombreA=$req->get('nombreAf04');
+          $formularioA = DB::table('definicion_proyecto')  
+          ->where('definicion_proyecto.nombre_d_p', $nombreA)
+          ->delete();
+          $path=public_path().'/documentos/'.$nombreA;
+          if(File::exists($path)){
+             File::delete($path);
+             return redirect('estancia2')->with('cancelarf04','F-04 Cancelado');
+          }else{
+            return redirect('estancia2')->with('cancelarf04','F-04 Cancelado');
+          }
+        }
         //cancelar documento f04 estadia
         public function cancelarF04_Estadia(Request $req,$id_d,$nombre){    
           $carta=documentos::find($id_d);
@@ -733,9 +902,26 @@ class PdfController extends Controller
           $path=public_path().'/documentos/'.$nombreA;
           if(File::exists($path)){
              File::delete($path);
-             return redirect('estancia')->with('cancelarf05','F-05 Eliminado');
+             return redirect('estancia1')->with('cancelarf05','F-05 Eliminado');
           }else{
-            return redirect('estancia')->with('cancelarf05','F-05 Eliminado');
+            return redirect('estancia1')->with('cancelarf05','F-05 Eliminado');
+          }
+        }
+        //cancelar documento f05 2
+        public function cancelarF05_Estancia2(Request $req,$id_d,$nombre){    
+          $carta=documentos::find($id_d);
+          $carta->id_c_liberacion=NULL;
+          $carta->save();
+          $nombreA=$req->get('nombreAf05');
+          $formularioA = DB::table('carta_liberacion')  
+          ->where('carta_liberacion.nombre_c_l', $nombreA)
+          ->delete();
+          $path=public_path().'/documentos/'.$nombreA;
+          if(File::exists($path)){
+             File::delete($path);
+             return redirect('estancia2')->with('cancelarf05','F-05 Eliminado');
+          }else{
+            return redirect('estancia2')->with('cancelarf05','F-05 Eliminado');
           }
         }
          //cancelar documento f05 estadia
