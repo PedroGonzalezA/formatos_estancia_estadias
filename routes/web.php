@@ -940,7 +940,7 @@ Route::get('/logout', [LoginController::class, 'destroy'])
     ->name('cancelar_carta_responsiva_Estancia.index');
 
     //descargar con datos f01
-    Route::get('/descarga_cd_estancia_f01', [PdfController::class, 'descarga_cd_f01_estancia'])
+    Route::get('/descarga_cd_estancia_f01', [DescargaController::class, 'descarga_carta_presentacion'])
     ->name('descarga_cd_estancia_f01.index');
 
      //enviar documento f01 con datos
@@ -968,7 +968,7 @@ Route::get('/logout', [LoginController::class, 'destroy'])
     ->name('subir_f02_estancia1.index');
 
     //cancelar solicitud documento f02
-    Route::match(['post', 'delete','put'], '/f02/{id_d}/{nombre}',[PdfController::class,'cancelarF02_Estancia'])
+    Route::match(['post', 'delete','put'], '/f021/{id_d}/{nombre}',[PdfController::class,'cancelarF02_Estancia'])
     ->name('cancelar_f02_Estancia.index');
 
     //llenar f03
@@ -1102,7 +1102,7 @@ Route::get('/logout', [LoginController::class, 'destroy'])
  ->name('cancelar_carta_responsiva_Estancia2.index');
 
  //descargar con datos f01
- Route::get('/descarga_cd_estancia_f01', [PdfController::class, 'descarga_cd_f01_estancia'])
+ Route::get('/descarga_cd_estancia_f01', [DescargaController::class, 'descarga_carta_presentacion'])
  ->name('descarga_cd_estancia_f01.index');
 
  //enviar documento f01 con datos

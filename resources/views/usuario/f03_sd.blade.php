@@ -9,7 +9,7 @@
     <body>
         <!-- Define header and footer blocks before your content -->
         <header>
-
+         <img style="padding:16px;" src="{{ public_path("firma/registrocedula.png" )}}" alt="Arriba" width='100%' />
         </header>
 
         <footer>

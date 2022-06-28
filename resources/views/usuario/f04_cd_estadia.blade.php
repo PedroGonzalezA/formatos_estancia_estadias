@@ -8,7 +8,7 @@
     <body>
         <!-- Define header and footer blocks before your content -->
         <header>
-
+        <img style="padding:16px;" src="{{ public_path("firma/registrodefinicion.png" )}}" alt="Arriba" width='100%' />
         </header>
 
         <footer>
