@@ -58,7 +58,7 @@ class Estancia1Controller extends Controller
         ->join('proyecto_def', 'formulario_def.id_proyecto', '=', 'proyecto_def.id')
         ->join('detalle_def','formulario_def.id_detalle','=','detalle_def.id')
         ->where('users.id',$userID)
-
+        ->where('alumno.id_procesos',1)
         ->get();
         $datosDefinicionProyecto = DB::table('users')
         ->join('respuesta_def', 'users.id', '=', 'respuesta_def.id_usuario')

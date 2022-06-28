@@ -41,6 +41,7 @@ class EstadiaController extends Controller
         ->join('respuesta', 'users.id', '=', 'respuesta.id_usuario')
         ->join('formulario', 'respuesta.id_formulario', '=', 'formulario.id')
         ->where('users.id',$userID)
+        ->where('alumno.id_procesos',3)
         ->get();
 
         $u   = ['user' => $users];
@@ -56,7 +57,7 @@ class EstadiaController extends Controller
         ->join('proyecto_def', 'formulario_def.id_proyecto', '=', 'proyecto_def.id')
         ->join('detalle_def','formulario_def.id_detalle','=','detalle_def.id')
         ->where('users.id',$userID)
-
+        ->where('alumno.id_procesos',3)
         ->get();
         $datosDefinicionProyecto = DB::table('users')
         ->join('respuesta_def', 'users.id', '=', 'respuesta_def.id_usuario')
@@ -362,6 +363,7 @@ class EstadiaController extends Controller
         ->join('carga_horaria','carga_horaria.id','=','documentos.id_c_horaria')
         ->select('documentos.id_c_horaria','carga_horaria.nombre_c_h','carga_horaria.estado_c_h','carga_horaria.observaciones_c_h','respuesta_doc.id_documentos','respuesta_doc.id_documentos','users.name')
         ->where('users.id',$userID)
+        ->where('id_proceso','3')
         ->get();
         return view('usuario.observaciones_carga_horaria_estadia',['datos'=>$cedula_doc]);
     }
@@ -546,6 +548,7 @@ class EstadiaController extends Controller
         ->join('constancia_derecho','constancia_derecho.id','=','documentos.id_c_derecho')
         ->select('documentos.id_c_derecho','constancia_derecho.nombre_c_d','constancia_derecho.estado_c_d','constancia_derecho.observaciones_c_d','respuesta_doc.id_documentos','respuesta_doc.id_documentos','users.name')
         ->where('users.id',$userID)
+        ->where('id_proceso','3')
         ->get();
         return view('usuario.observaciones_constancia_derecho_estadia',['datos'=>$cedula_doc]);
     }
@@ -729,6 +732,7 @@ class EstadiaController extends Controller
         ->join('carta_responsiva','carta_responsiva.id','=','documentos.id_c_responsiva')
         ->select('documentos.id_c_responsiva','carta_responsiva.nombre_c_r','carta_responsiva.estado_c_r','carta_responsiva.observaciones_c_r','respuesta_doc.id_documentos','respuesta_doc.id_documentos','users.name')
         ->where('users.id',$userID)
+        ->where('id_proceso','3')
         ->get();
         return view('usuario.observaciones_carta_responsiva_estadia',['datos'=>$cedula_doc]);
     }
@@ -912,6 +916,7 @@ class EstadiaController extends Controller
         ->join('carta_presentacion','carta_presentacion.id','=','documentos.id_c_presentacion')
         ->select('documentos.id_c_presentacion','carta_presentacion.nombre_c_p','carta_presentacion.estado_c_p','carta_presentacion.observaciones_c_p','respuesta_doc.id_documentos','respuesta_doc.id_documentos','users.name')
         ->where('users.id',$userID)
+        ->where('id_proceso','3')
         ->get();
         return view('usuario.observaciones_f01_estadia',['datos'=>$cedula_doc]);
     }
@@ -1094,6 +1099,7 @@ class EstadiaController extends Controller
         ->join('carta_aceptacion','carta_aceptacion.id','=','documentos.id_c_aceptacion')
         ->select('documentos.id_c_aceptacion','carta_aceptacion.nombre','carta_aceptacion.estado','carta_aceptacion.observaciones','respuesta_doc.id_documentos','respuesta_doc.id_documentos','users.name')
         ->where('users.id',$userID)
+        ->where('id_proceso','3')
         ->get();
         return view('usuario.observaciones_f02_estadia',['datos'=>$cedula_doc]);
     }
@@ -1278,6 +1284,7 @@ class EstadiaController extends Controller
         ->join('cedula_registro','cedula_registro.id','=','documentos.id_c_registro')
         ->select('documentos.id_c_registro','cedula_registro.nombre_c_r','cedula_registro.estado_c_r','cedula_registro.observaciones_c_r','respuesta_doc.id_documentos','respuesta_doc.id_documentos','users.name')
         ->where('users.id',$userID)
+        ->where('id_proceso','3')
         ->get();
         return view('usuario.observaciones_f03_estadia',['datos'=>$cedula_doc]);
     }
@@ -1462,6 +1469,7 @@ class EstadiaController extends Controller
         ->join('definicion_proyecto','definicion_proyecto.id','=','documentos.id_d_proyecto')
         ->select('documentos.id_d_proyecto','definicion_proyecto.nombre_d_p','definicion_proyecto.estado_d_p','definicion_proyecto.observaciones_d_p','respuesta_doc.id_documentos','respuesta_doc.id_documentos','users.name')
         ->where('users.id',$userID)
+        ->where('id_proceso','3')
         ->get();
         return view('usuario.observaciones_f04_estadia',['datos'=>$cedula_doc]);
     }
@@ -1647,6 +1655,7 @@ class EstadiaController extends Controller
         ->join('carta_liberacion','carta_liberacion.id','=','documentos.id_c_liberacion')
         ->select('documentos.id_c_liberacion','carta_liberacion.nombre_c_l','carta_liberacion.estado_c_l','carta_liberacion.observaciones_c_l','respuesta_doc.id_documentos','respuesta_doc.id_documentos','users.name')
         ->where('users.id',$userID)
+        ->where('id_proceso','3')
         ->get();
         return view('usuario.observaciones_f05_estadia',['datos'=>$cedula_doc]);
     }

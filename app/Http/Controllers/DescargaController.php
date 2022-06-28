@@ -28,4 +28,8 @@ class DescargaController extends Controller
         $path=public_path('archivos/Carta de exclusión y autorización.doc');
         return response()->download($path);
     }
+    function descarga_carta_presentacion(){
+        $path=public_path('archivos/carta de presentacion.docx');
+        return response()->download($path);
+    }
 }
