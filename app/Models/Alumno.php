@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use DB;
+use Illuminate\Support\Facades\DB;
 use Exception;
 
 class Alumno extends Model
@@ -45,7 +45,7 @@ class Alumno extends Model
 
         try{
             
-            $alumnoId = \DB::table('alumno')->insertGetId($data);
+            $alumnoId = DB::table('alumno')->insertGetId($data);
             
             $arrayResponse = array(
                 "code"      => 200,
