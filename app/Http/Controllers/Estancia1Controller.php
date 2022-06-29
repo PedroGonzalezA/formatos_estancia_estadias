@@ -35,6 +35,7 @@ class Estancia1Controller extends Controller
         ->join('carreras', 'carreras.id_carrera', '=', 'alumno.id_carrera')
         ->select('formulario.id_alumno','formulario.id_empresa','formulario.id_asesor_emp','formulario.id_asesor_aca','formulario.id_proyecto','formulario.id','respuesta.id_usuario','carreras.nombre_carrera','users.name','alumno.ape_paterno','alumno.ape_materno','alumno.nombres','alumno.tel','alumno.matricula','alumno.email_per','alumno.email','alumno.no_ss','alumno.direccion','alumno.id_carrera','empresa.nombre_emp','empresa.giro','empresa.id_tipo','empresa.direccion_emp','empresa.ape_paterno_rh','empresa.ape_materno_rh','empresa.nombres_rh','empresa.tel_lada','empresa.tel_num','empresa.tel_ext','empresa.email_emp','asesor_empresarial.ape_paterno_ae','asesor_empresarial.ape_materno_ae','asesor_empresarial.nombres_ae','asesor_empresarial.id_cargo_ae','asesor_empresarial.tel_lada_ae','asesor_empresarial.tel_num_ae','asesor_empresarial.email_ae','asesor_academico.ape_paterno_aa','asesor_academico.ape_materno_aa','asesor_academico.nombres_aa','asesor_academico.id_cargo_aa','asesor_academico.tel_lada_aa','asesor_academico.tel_num_aa','asesor_academico.email_aa','proyecto.nombre_proyecto')
         ->where('users.id',$userID)
+        ->where('alumno.id_procesos',1)
         ->get();
 
         $datosCedulaFormulario = DB::table('users')
@@ -58,7 +59,7 @@ class Estancia1Controller extends Controller
         ->join('proyecto_def', 'formulario_def.id_proyecto', '=', 'proyecto_def.id')
         ->join('detalle_def','formulario_def.id_detalle','=','detalle_def.id')
         ->where('users.id',$userID)
-        ->where('alumno.id_procesos',1)
+        ->where('alumno_def.id_proceso',1)
         ->get();
         $datosDefinicionProyecto = DB::table('users')
         ->join('respuesta_def', 'users.id', '=', 'respuesta_def.id_usuario')

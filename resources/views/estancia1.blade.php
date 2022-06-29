@@ -691,7 +691,7 @@
 																	</div>
 																	<!--Descargar F03-->
 																	<div class="col-6 col-sm-6 col-md-1 py-1 colDescargar text-center">
-																		<a href="{{ route('descarga_cd_estancia_f03.index') }}">
+																		<a href="{{ route('descarga_cd_estancia_f03.index',[1]) }}">
 																			<button type="button" class="btn btn-outline-info btnDescargar"><i class="zmdi zmdi-download"> Descargar</i></button>
 																		</a>
 																	</div>
@@ -733,7 +733,7 @@
 																</div>
 																<!--Descargar F03-->
 																<div class="col-12 col-sm-12 col-md-3 col-lg-2 col-xl-1 p-1 colDescargar text-center">
-																	<a href="{{ route('descarga_cd_estancia_f03.index') }}">
+																	<a href="{{ route('descarga_cd_estancia_f03.index',[1]) }}">
 																		<button type="button" class="btn btn-outline-info btnDescargar"><i class="zmdi zmdi-download"> Descargar</i></button>
 																	</a>
 																</div>
@@ -761,7 +761,7 @@
 																	<div class="row">
 																		<!--Descargar F03-->
 																		<div class="col-12 col-sm-12 col-md-1 py-1 colDescargar text-center">
-																			<a href="{{ route('descarga_cd_estancia_f03.index') }}">
+																			<a href="{{ route('descarga_cd_estancia_f03.index',[1]) }}">
 																				<button type="button" class="btn btn-outline-info btnDescargar"><i class="zmdi zmdi-download"> Descargar</i></button>
 																			</a>
 																		</div>
@@ -792,7 +792,7 @@
 													</div>
 													<!--Descargar F03-->
 													<div class="col-6 col-sm-6 col-md-1 py-1 colDescargar text-center">
-														<a href="{{ route('descarga_cd_estancia_f03.index') }}">
+														<a href="{{ route('descarga_cd_estancia_f03.index',[1]) }}">
 															<button type="button" class="btn btn-outline-info btnDescargar"><i class="zmdi zmdi-download"> Descargar</i></button>
 														</a>
 													</div>
@@ -826,7 +826,7 @@
 											</div>
 											<!--Descargar F03-->
 											<div class="col-6 col-sm-6 col-md-1 py-1 colDescargar text-center">
-												<a href="{{ route('descarga_cd_estancia_f03.index') }}">
+												<a href="{{ route('descarga_cd_estancia_f03.index',[1]) }}">
 													<button type="button" class="btn btn-outline-info btnDescargar"><i class="zmdi zmdi-download"> Descargar</i></button>
 												</a>
 											</div>
