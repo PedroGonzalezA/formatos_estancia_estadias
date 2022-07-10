@@ -72,11 +72,11 @@
                             </div>
                         </form>
                     </div>
-                    <div class=" col-12 col-sm-12 col-md-6"> 
-                            <div class="row">
-                                <div class=" col-4 col-sm-4 col-md-6">
+                    <div class=" col-12 col-sm-12 col-md-12"> 
+                            <div class="row align-items-center">
+                                <div class=" col-4 col-sm-4 col-md-3">
                                     <label for="select">Filtros</label>
-                                    <select class="form-select" aria-label="Default select" id="filtros" name="filtros" onchange="mostrarFiltros();">
+                                    <select class="form-select" aria-label="Default select" id="filtros" name="filtros" onchange="mostrarFiltros(),validaCheckbox()">
                                         <option value="1">Ninguno</option>
                                         <option value="2">Carga horaria</option>
                                         <option value="3">Constancia derecho</option>
@@ -88,6 +88,16 @@
                                         <option value="9">F05</option>
                                       </select>
                                 </div>
+                                <div class=" col-4 col-sm-4 col-md-6">
+                                </div>
+                                <div class=" col-4 col-sm-4 col-md-3">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="" id="checkbox">
+                                        <label class="form-check-label" for="checkbox">
+                                          No mostrar celdas vacias
+                                        </label>
+                                      </div>
+                                </div>
                             </div>
                     </div>
                 </div>
@@ -98,7 +108,7 @@
         @forelse($documentos['documentos'] as $respuestaD)
             <div class="row p-4 ">
                 <div class="col-12 ">
-                    <div class="row documentosUsuario">
+                    <div class="row documentosUsuario saber-contenido" id="saber-contenido">
                         <div class="col-12" style="background: black; color:white;">
                             <div class="text-center">Usuario</div>
                         </div>   
@@ -131,16 +141,17 @@
                         @empty
                             
                         @endforelse
-                         <div class="col-12" style="background: black; color:white;">
+                        <div class="col-12" style="background: black; color:white;">
                             <div class="text-center">
                                 Documentos
                             </div>
                         </div>
+                        {{-- 10 hijos --}}
                         <!--carga_horaria-->
                         @if ($respuestaD->id_c_horaria)
                             @forelse ($documentos3['carga_horaria'] as $respuestaH)
                                 @if ($respuestaH->name==$respuestaD->name)
-                                    <div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-3 doc carga-horaria" >
+                                    <div class="saber-carga col-12 col-sm-12 col-md-12 col-lg-4 col-xl-3 doc carga-horaria" >
                                             <div class="row text-center divNombreCard">
                                                 <div class="col-12">
                                                      Carga horaria
@@ -245,13 +256,17 @@
                                 @endif
                             @empty
                                 
-                            @endforelse    
+                            @endforelse   
+                            @else
+                            <div class="saber-carga d-none col-0 col-sm-0 col-md-0 col-lg-0 col-xl-0 carga-horaria" >
+                            </div>
                         @endif
+
                         <!--constancia derecho-->
                         @if ($respuestaD->id_c_derecho)
                             @forelse ($documentos4['constancia_derecho'] as $respuestaCD)
                                 @if ($respuestaCD->name==$respuestaD->name)
-                                    <div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-3 doc constancia-derecho" >
+                                    <div class="saber-constancia col-12 col-sm-12 col-md-12 col-lg-4 col-xl-3 doc constancia-derecho" >
                                             <div class="row text-center divNombreCard">
                                                 <div class="col-12">
                                                     Constancia  de derecho IMSS
@@ -356,13 +371,17 @@
                                 @endif
                             @empty
                                 
-                            @endforelse    
+                            @endforelse  
+                            @else
+                            <div class="saber-constancia d-none col-0 col-sm-0 col-md-0 col-lg-0 col-xl-0  constancia-derecho" >  
+                            </div>
                         @endif
+
                         <!--carta responsiva-->
                         @if ($respuestaD->id_c_responsiva)
                             @forelse ($documentos4['carta_responsiva'] as $respuestaCR)
                                 @if ($respuestaCR->name==$respuestaD->name)
-                                    <div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-3 doc carta-responsiva" >
+                                    <div class="saber-carta col-12 col-sm-12 col-md-12 col-lg-4 col-xl-3 doc carta-responsiva" >
                                             <div class="row text-center divNombreCard">
                                                 <div class="col-12">
                                                     Carta Responsiva
@@ -467,13 +486,17 @@
                                 @endif
                             @empty
                                 
-                            @endforelse    
+                            @endforelse  
+                            @else  
+                            <div class="saber-carta d-none col-0 col-sm-0 col-md-0 col-lg-0 col-xl-0 carta-responsiva" >
+                            </div>
                         @endif
+
                         <!--f01-->
                         @if ($respuestaD->id_c_presentacion)
                             @forelse ($documentos3['carta_presentacion'] as $respuestaCP)
                                 @if ($respuestaCP->name==$respuestaD->name)
-                                    <div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-3 doc f01" >
+                                    <div class="saber-f01 col-12 col-sm-12 col-md-12 col-lg-4 col-xl-3 doc f01" >
                                             <div class="row text-center divNombreCard">
                                                 <div class="col-12">
                                                     F-01 Carta Presentación
@@ -578,13 +601,17 @@
                                 @endif
                             @empty
                                 
-                            @endforelse    
+                            @endforelse   
+                            @else
+                            <div class="saber-f01 d-none col-0 col-sm-0 col-md-0 col-lg-0 col-xl-0 f01" > 
+                            </div>
                         @endif
+
                         <!--f02-->
                         @if ($respuestaD->id_c_aceptacion)
                             @forelse ($documentos1['carta_aceptacion'] as $respuestaC)
                                 @if ($respuestaC->name==$respuestaD->name)
-                                    <div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-3 doc f02" >
+                                    <div class="saber-f02 col-12 col-sm-12 col-md-12 col-lg-4 col-xl-3 doc f02" >
                                             <div class="row text-center divNombreCard">
                                                 <div class="col-12">
                                                     F-02 Carta Aceptación
@@ -690,12 +717,16 @@
                             @empty
                                 
                             @endforelse
+                            @else
+                            <div class="saber-f02 d-none col-0 col-sm-0 col-md-0 col-lg-0 col-xl-0 f02" > 
+                            </div>
                         @endif
+                        
                         <!--f03-->
                         @if($respuestaD->id_c_registro)
                             @forelse ($documentos2['cedula_registro'] as $respuestaCR)
                                 @if ($respuestaCR->name==$respuestaD->name)
-                                    <div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-3 doc f03" >
+                                    <div class="saber-f03 col-12 col-sm-12 col-md-12 col-lg-4 col-xl-3 doc f03" >
                                             
                                         <div class="row text-center divNombreCard">
                                             <div class="col-12">
@@ -804,12 +835,16 @@
                             @empty
                                 
                             @endforelse
+                            @else
+                            <div class="saber-f03 d-none col-0 col-sm-0 col-md-0 col-lg-0 col-xl-0 f03" > 
+                            </div>
                         @endif
+                        
                         <!--f04-->
                         @if ($respuestaD->id_d_proyecto)
                             @forelse ($documentos1['definicion_proyecto'] as $respuestaDP)
                                 @if ($respuestaDP->name==$respuestaD->name)
-                                    <div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-3 doc f04" >
+                                    <div class="saber-f04 col-12 col-sm-12 col-md-12 col-lg-4 col-xl-3 doc f04" >
                                             <div class="row text-center divNombreCard">
                                                 <div class="col-12">
                                                     F-04 Definicíon Proyecto
@@ -914,13 +949,17 @@
                                 @endif
                             @empty
                                 
-                            @endforelse                            
+                            @endforelse  
+                            @else
+                            <div class=" saber-f04 col col-sm-0 d-none col-md col-lg-0 col-xl-0 f04" > 
+                            </div>                          
                         @endif
+
                         <!--f05-->
                         @if ($respuestaD->id_c_liberacion)
                             @forelse ($documentos2['carta_liberacion'] as $respuestaCL)
                                 @if ($respuestaCL->name==$respuestaD->name)
-                                    <div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-3 doc f05" >
+                                    <div class="saber-f05 col-12 col-sm-12 col-md-12 col-lg-4 col-xl-3 doc f05" >
                                             <div class="row text-center divNombreCard">
                                                 <div class="col-12">
                                                     F-05 Carta Liberacíon
@@ -1025,7 +1064,10 @@
                                 @endif   
                             @empty
                                 
-                            @endforelse             
+                            @endforelse  
+                            @else
+                            <div class="saber-f05 d-none col-0 col-sm-0 col-md-0 col-lg-0 col-xl-0 f05" > 
+                            </div>           
                         @endif
                     </div>  
                 </div>

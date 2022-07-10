@@ -78,7 +78,8 @@ function verFiltros(value){
 	if(value == 2){
 		for(let i = 0; i < carga_horaria.length; i++){
 			carga_horaria[i].style.display = "block";
-		}	
+		}
+		
 	}
 
 	// CONSTANCIA DE DERECHO
@@ -129,4 +130,280 @@ function verFiltros(value){
 			f05[i].style.display = 'block';
 		}
 	}
+
+
 }
+
+// Para el checkbox
+
+	
+var checkbox = document.getElementById('checkbox');
+var sin_hijos = document.getElementsByClassName('saber-contenido');
+
+checkbox.addEventListener("change", validaCheckbox, false);
+function validaCheckbox(){
+	
+var valor = document.getElementById("filtros").value;
+	var checked = checkbox.checked;
+
+		if(checked && valor == 2){
+			// alert('checkbox1 esta seleccionado');
+			var data = document.getElementsByClassName("saber-carga");
+			for(let i = 0; i <data.length; i++){
+				if (data[i].childNodes.length > 1) {
+			  //   console.log(data[i]);
+				}else{
+					let datapadre1 = data[i].parentNode;
+					let datapadre2 = datapadre1.parentNode;
+					let datapadre3 = datapadre2.parentNode;
+					datapadre3.style.display = 'none';
+				}
+			}
+		}else{
+			var data = document.getElementsByClassName("saber-carga");
+			for(let i = 0; i <data.length; i++){
+				if (data[i].childNodes.length > 1) {
+				// console.log(data[i]);
+				}else{
+					let datapadre1 = data[i].parentNode;
+					let datapadre2 = datapadre1.parentNode;
+					let datapadre3 = datapadre2.parentNode;
+					datapadre3.style.display = 'block';
+				}
+			}
+		}
+
+		////
+
+		if(checked && valor == 3){
+			// alert('checkbox1 esta seleccionado');
+			var data3 = document.getElementsByClassName("saber-constancia");
+			for(let i = 0; i <data3.length; i++){
+				if (data3[i].childNodes.length > 1) {
+			  //   console.log(data[i]);
+				}else{
+					let datapadre1 = data3[i].parentNode;
+					let datapadre2 = datapadre1.parentNode;
+					let datapadre3 = datapadre2.parentNode;
+					datapadre3.style.display = 'none';
+				}
+			}
+		}
+		if(checked && valor == 1){
+
+
+
+			// alert('checkbox1 esta seleccionado');
+			var data1 = document.getElementsByClassName("saber-carga");
+			for(let i = 0; i <data1.length; i++){
+				if (data1[i].childNodes.length > 1) {
+					
+				}else{
+					let datapadre1 = data1[i].parentNode;
+					let datapadre2 = datapadre1.parentNode;
+					let datapadre3 = datapadre2.parentNode;
+					datapadre3.style.display = 'block';
+				}
+			}
+			var data2 = document.getElementsByClassName("saber-constancia");
+			for(let i = 0; i <data2.length; i++){
+				if (data2[i].childNodes.length > 1) {
+			  //   console.log(data[i]);
+				}else{
+					let datapadre1 = data2[i].parentNode;
+					let datapadre2 = datapadre1.parentNode;
+					let datapadre3 = datapadre2.parentNode;
+					datapadre3.style.display = 'block';
+				}
+			}
+
+			var data3 = document.getElementsByClassName("saber-constancia");
+			for(let i = 0; i <data3.length; i++){
+				if (data3[i].childNodes.length > 1) {
+			  //   console.log(data[i]);
+				}else{
+					let datapadre1 = data3[i].parentNode;
+					let datapadre2 = datapadre1.parentNode;
+					let datapadre3 = datapadre2.parentNode;
+					datapadre3.style.display = 'none';
+				}
+			}
+
+			var data4 = document.getElementsByClassName("saber-carta");
+			for(let i = 0; i <data4.length; i++){
+				if (data4[i].childNodes.length > 1) {
+			  //   console.log(data[i]);
+				}else{
+					let datapadre1 = data4[i].parentNode;
+					let datapadre2 = datapadre1.parentNode;
+					let datapadre3 = datapadre2.parentNode;
+					datapadre3.style.display = 'block';
+				}
+			}
+
+			var data5 = document.getElementsByClassName("saber-f01");
+			for(let i = 0; i <data5.length; i++){
+				if (data5[i].childNodes.length > 1) {
+			  //   console.log(data[i]);
+				}else{
+					let datapadre1 = data5[i].parentNode;
+					let datapadre2 = datapadre1.parentNode;
+					let datapadre3 = datapadre2.parentNode;
+					datapadre3.style.display = 'block';
+				}
+			}
+
+			var data6 = document.getElementsByClassName("saber-f02");
+			for(let i = 0; i <data6.length; i++){
+				if (data6[i].childNodes.length > 1) {
+					
+				}else{
+					let datapadre1 = data6[i].parentNode;
+					let datapadre2 = datapadre1.parentNode;
+					let datapadre3 = datapadre2.parentNode;
+					datapadre3.style.display = 'block';
+				}
+			}
+
+			var data7 = document.getElementsByClassName("saber-f03");
+			for(let i = 0; i <data7.length; i++){
+				if (data7[i].childNodes.length > 1) {
+			    
+				}else{
+					let datapadre1 = data7[i].parentNode;
+					let datapadre2 = datapadre1.parentNode;
+					let datapadre3 = datapadre2.parentNode;
+					datapadre3.style.display = 'block';
+				}
+			}
+
+			var data8 = document.getElementsByClassName("saber-f04");
+			for(let i = 0; i <data8.length; i++){
+				if (data8[i].childNodes.length > 1) {
+			  //   console.log(data[i]);
+				}else{
+					let datapadre1 = data8[i].parentNode;
+					let datapadre2 = datapadre1.parentNode;
+					let datapadre3 = datapadre2.parentNode;
+					datapadre3.style.display = 'block';
+				}
+			}
+
+			var data9 = document.getElementsByClassName("saber-f05");
+			for(let i = 0; i <data9.length; i++){
+				if (data9[i].childNodes.length > 1) {
+					
+				}else{
+					let datapadre1 = data9[i].parentNode;
+					let datapadre2 = datapadre1.parentNode;
+					let datapadre3 = datapadre2.parentNode;
+					datapadre3.style.display = 'block';
+				}
+			}
+
+			
+			for(let i = 0; i < data5.length ; i++){
+
+			if( data6[i].childNodes.length <= 1 && data1[i].childNodes.length <= 1 && data2[i].childNodes.length <= 1 
+				&& data3[i].childNodes.length <= 1 && data4[i].childNodes.length <= 1 
+				&& data5[i].childNodes.length <= 1 && data7[i].childNodes.length <= 1  && data8[i].childNodes.length <= 1 
+				&& data9[i].childNodes.length <= 1){
+					
+					let datapadre1 = data5[i].parentNode;
+					let datapadre2 = datapadre1.parentNode;
+					let datapadre3 = datapadre2.parentNode;
+					datapadre3.style.display = 'none';
+					console.log("El no tiene hijos",datapadre3);
+				}
+			}
+		}
+
+		if(checked && valor == 4){
+			// alert('checkbox1 esta seleccionado');
+			var data4 = document.getElementsByClassName("saber-carta");
+			for(let i = 0; i <data4.length; i++){
+				if (data4[i].childNodes.length > 1) {
+			  //   console.log(data[i]);
+				}else{
+					let datapadre1 = data4[i].parentNode;
+					let datapadre2 = datapadre1.parentNode;
+					let datapadre3 = datapadre2.parentNode;
+					datapadre3.style.display = 'none';
+				}
+			}
+		}
+		if(checked && valor == 5){
+			// alert('checkbox1 esta seleccionado');
+			var data5 = document.getElementsByClassName("saber-f01");
+			for(let i = 0; i <data5.length; i++){
+				if (data5[i].childNodes.length > 1) {
+			  //   console.log(data[i]);
+				}else{
+					let datapadre1 = data5[i].parentNode;
+					let datapadre2 = datapadre1.parentNode;
+					let datapadre3 = datapadre2.parentNode;
+					datapadre3.style.display = 'none';
+				}
+			}
+		}
+		if(checked && valor == 6){
+			// alert('checkbox1 esta seleccionado');
+			var data6 = document.getElementsByClassName("saber-f02");
+			for(let i = 0; i <data6.length; i++){
+				if (data6[i].childNodes.length > 1) {
+			  //   console.log(data[i]);
+				}else{
+					let datapadre1 = data6[i].parentNode;
+					let datapadre2 = datapadre1.parentNode;
+					let datapadre3 = datapadre2.parentNode;
+					datapadre3.style.display = 'none';
+				}
+			}
+		}
+		if(checked && valor == 7){
+			// alert('checkbox1 esta seleccionado');
+			var data7 = document.getElementsByClassName("saber-f03");
+			for(let i = 0; i <data7.length; i++){
+				if (data7[i].childNodes.length > 1) {
+			  //   console.log(data[i]);
+				}else{
+					let datapadre1 = data7[i].parentNode;
+					let datapadre2 = datapadre1.parentNode;
+					let datapadre3 = datapadre2.parentNode;
+					datapadre3.style.display = 'none';
+				}
+			}
+		}
+		if(checked && valor == 8){
+			// alert('checkbox1 esta seleccionado');
+			var data8 = document.getElementsByClassName("saber-f04");
+			for(let i = 0; i <data8.length; i++){
+				if (data8[i].childNodes.length > 1) {
+			  //   console.log(data[i]);
+				}else{
+					let datapadre1 = data8[i].parentNode;
+					let datapadre2 = datapadre1.parentNode;
+					let datapadre3 = datapadre2.parentNode;
+					datapadre3.style.display = 'none';
+				}
+			}
+		}
+		if(checked && valor == 9){
+			// alert('checkbox1 esta seleccionado');
+			var data9 = document.getElementsByClassName("saber-f05");
+			for(let i = 0; i <data9.length; i++){
+				if (data9[i].childNodes.length > 1) {
+			  //   console.log(data[i]);
+				}else{
+					let datapadre1 = data9[i].parentNode;
+					let datapadre2 = datapadre1.parentNode;
+					let datapadre3 = datapadre2.parentNode;
+					datapadre3.style.display = 'none';
+				}
+			}
+		}
+		
+}
+
+
+
