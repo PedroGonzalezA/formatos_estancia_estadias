@@ -12,12 +12,16 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Auth;
 use RealRashid\SweetAlert\Facades\Alert;
+use Maatwebsite\Excel\Facades\Excel;
+
+use App\Exports\UsersExport;
 class UsuariosController extends Controller
 {
+
     public function create() {;
 
         try {
-
+            $alumnos = DB::table('alumno')->get();
             $users = DB::table('users')->orderBy('id','ASC')->get();
 
 
@@ -36,7 +40,7 @@ class UsuariosController extends Controller
             $r   = ['respuestas' => $respuestas];
             $datos = Arr::collapse([$u,$r]);
     
-            return view('admin.usuarios', ['datos'=>$datos]);
+            return view('admin.usuarios', ['datos'=>$datos, 'alumnos'=>$alumnos]);
         } catch(\Illuminate\Database\QueryException $ex ) {
             dd("Error");
         } catch(Exception $ex ) {
@@ -153,4 +157,6 @@ class UsuariosController extends Controller
         $user->save();
         return redirect()->to('/usuarios')->with('success','Datos cambiados');
     }
+
+    
 }
