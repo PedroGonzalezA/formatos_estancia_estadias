@@ -44,6 +44,7 @@
 									@csrf
 									<button type="submit" value="Agregar usuario" class="btn btn-info" > <i class="zmdi zmdi-account-add"> Agregar usuario</i></button>
 								</form>
+								<button onclick="armarExcel();" class="btn btn-secondary btn-sm mt-2"> Generar excel</button>
 							</div>
 							
 						</div>
@@ -199,6 +200,18 @@
 	<script src="./js/main.js"></script>
 	<script>
 		$.material.init();
+	</script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.13.1/xlsx.full.min.js"></script> 
+	<script>
+		function armarExcel(){
+			var user = {!! json_encode($alumnos) !!};
+
+		 filename='alumnos.xlsx';
+        var ws = XLSX.utils.json_to_sheet(user);
+        var wb = XLSX.utils.book_new();
+        XLSX.utils.book_append_sheet(wb, ws, "People");
+        XLSX.writeFile(wb,filename);
+		}
 	</script>
 </body>
 </html>
