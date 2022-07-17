@@ -985,7 +985,7 @@ Route::get('/logout', [LoginController::class, 'destroy'])
     ->name('descarga_sd_estancia_f03.index');
 
     //descargar con datos f03
-    Route::get('/descarga_cd_estancia_f03', [PdfController::class, 'descarga_cd_estancia_f03'])
+    Route::get('/descarga_cd_estancia_f03/{id_proces}', [PdfController::class, 'descarga_cd_estancia_f03'])
     ->name('descarga_cd_estancia_f03.index');
 
     //eliminar f03 estancia
@@ -1134,7 +1134,7 @@ Route::get('/logout', [LoginController::class, 'destroy'])
  ->name('cancelar_f02_Estancia2.index');
 
  //llenar f03
- Route::get('/home2', [CedulaController::class, 'ver'])
+ Route::get('/home2', [CedulaController::class, 'ver2'])
  ->name('home2.index')
  ->middleware('auth');
 
@@ -1147,8 +1147,7 @@ Route::get('/logout', [LoginController::class, 'destroy'])
  ->name('descarga_sd_estancia_f03.index');
 
  //descargar con datos f03
- Route::get('/descarga_cd_estancia_f03', [PdfController::class, 'descarga_cd_estancia_f03'])
- ->name('descarga_cd_estancia_f03.index');
+
 
  //eliminar f03 estancia
  Route::match(['post', 'delete','put','get'],'/f03Estancia2/{id_a}/{id_e}/{id_a_e}/{id_a_a}/{id_p}',[PdfController::class,'eliminarF03Estancia2'])
@@ -1315,7 +1314,7 @@ Route::get('/logout', [LoginController::class, 'destroy'])
     ->name('descarga_sd_estadia_f03.index');
 
     //descargar con datos f03
-    Route::get('/descarga_cd_estadia_f03', [PdfController::class, 'descarga_cd_estadia_f03'])
+    Route::get('/descarga_cd_estadia_f03/{id_proces}', [PdfController::class, 'descarga_cd_estadia_f03'])
     ->name('descarga_cd_estadia_f03.index');
 
     //eliminar f03

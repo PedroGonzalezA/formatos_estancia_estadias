@@ -498,6 +498,8 @@ class documentosEstadiaAdminController extends Controller
     
     public function buscador(Request $request){        
         $texto   =trim($request->get('texto'));
+        $estatus =trim($request->get('estatus'));
+        $año     =trim($request->get('año'));
 
         $users0 = DB::table('users')
         ->where('users.name','LIKE','%'.$texto.'%')
@@ -521,6 +523,8 @@ class documentosEstadiaAdminController extends Controller
         ->join('respuesta_doc','users.id','=','respuesta_doc.id_usuario')
         ->join('documentos','documentos.id','=','respuesta_doc.id_documentos')
         ->where('documentos.id_proceso','3')
+        ->where('documentos.estatus','LIKE','%'.$estatus.'%')
+        ->where('documentos.updated_at','LIKE','%'.$año.'%')
         ->get();
 
         $users1   = ['usuarios' => $users];
@@ -593,8 +597,12 @@ class documentosEstadiaAdminController extends Controller
         $c_d   = ['constancia_derecho' => $doc_constancia_derecho];
         $c_res   = ['carta_responsiva' => $doc_carta_responsiva];
         $datos4 = Arr::collapse([$c_d,$c_res]);
+
+        $alumnos = DB::table('alumno')
+        ->where('id_procesos','1')
+        ->get();
         
-        return view('nombres.paginas',['nombres'=>$nombres,'texto'=>$texto,'documentos'=>$users0,'documentos1'=>$datos,'documentos2'=>$datos1,'documentos3'=>$datos2,'documentos4'=>$datos3,'documentos5'=>$datos4]);
+        return view('nombres.paginas',['nombres'=>$nombres,'texto'=>$texto,'documentos'=>$users0,'documentos1'=>$datos,'documentos2'=>$datos1,'documentos3'=>$datos2,'documentos4'=>$datos3,'documentos5'=>$datos4,'alumnos'=>$alumnos]);
     }
     public function buscador_c(Request $request){        
         $texto   =trim($request->get('texto'));

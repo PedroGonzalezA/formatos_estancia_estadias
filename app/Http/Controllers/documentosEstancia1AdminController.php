@@ -531,6 +531,8 @@ class documentosEstancia1AdminController extends Controller
     //buscar datos de usuario
     public function buscador_estancia1(Request $request){        
         $texto   =trim($request->get('texto'));
+        $estatus =trim($request->get('estatus'));
+        $año     =trim($request->get('año'));
 
         $users0 = DB::table('users')
         ->where('users.name','LIKE','%'.$texto.'%')
@@ -554,6 +556,8 @@ class documentosEstancia1AdminController extends Controller
         ->join('respuesta_doc','users.id','=','respuesta_doc.id_usuario')
         ->join('documentos','documentos.id','=','respuesta_doc.id_documentos')
         ->where('documentos.id_proceso','1')
+        ->where('documentos.estatus','LIKE','%'.$estatus.'%')
+        ->where('documentos.updated_at','LIKE','%'.$año.'%')
         ->get();
 
         $users1   = ['usuarios' => $users];
@@ -626,7 +630,11 @@ class documentosEstancia1AdminController extends Controller
         $c_res   = ['carta_responsiva' => $doc_carta_responsiva];
         $datos4 = Arr::collapse([$c_d,$c_res]);
 
-        return view('nombres.Buscar_estancia1',['nombres'=>$nombres,'texto'=>$texto,'documentos'=>$users0,'documentos1'=>$datos,'documentos2'=>$datos1,'documentos3'=>$datos2,'documentos4'=>$datos3,'documentos5'=>$datos4]);
+        $alumnos = DB::table('alumno')
+        ->where('id_procesos','1')
+        ->get();
+
+        return view('nombres.Buscar_estancia1',['nombres'=>$nombres,'texto'=>$texto,'documentos'=>$users0,'documentos1'=>$datos,'documentos2'=>$datos1,'documentos3'=>$datos2,'documentos4'=>$datos3,'documentos5'=>$datos4,'alumnos'=>$alumnos]);
     }
 
     //buscar usuario lleno cedula de registro

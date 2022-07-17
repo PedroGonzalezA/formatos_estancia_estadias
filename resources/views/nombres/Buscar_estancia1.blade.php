@@ -45,11 +45,21 @@
                             <!-- buscar-->
                             <div class="row">
                                 <div class=" col-8 col-sm-8 col-md-10">
-                                    <input type="text" class="form-control" id="texto" name="texto" placeholder="Buscar" value="{{$texto}}">
-                                            
+                                    <input type="text" class="form-control" id="texto" name="texto" placeholder="Buscar" value="{{$texto}}">        
                                 </div>
                                 <div class="col-4 col-sm-4 col-md-2">
 									<button type="submit" class="btn btn-primary buscar"><i class="zmdi zmdi-search"></i></button>
+                                </div>
+                                <div class=" col-8 col-sm-8 col-md-6">
+                                    <select class="form-control" id="estatus" name="estatus"  value="{{$estatus}}">
+                                      <option value=""> </option> 
+                                      <option value="enero-abril">enero-abril</option>
+                                      <option value="mayo-agosto">mayo-agosto</option>
+                                      <option value="septiembre-octubre">septiembre-diciembre</option>
+                                    </select>  
+                                </div>          
+                                <div class=" col-8 col-sm-8 col-md-4">
+                                    <input type="number" class="form-control" id="año" name="año" placeholder="ejem 2022" value="{{$año}}" min="1999" max="2050">
                                 </div>
                             </div>
                                     
@@ -69,6 +79,7 @@
                                 </div>
                             </div>
                         </form>
+                        <button onclick="armarExcel();" class="btn btn-secondary btn-sm mt-2"> Generar excel</button>
                     </div>
                     <div class="col-12 col-sm-6 col-md-2">
                         <a href="{{ route('documentoEstancia1Admin.index') }}">
@@ -1038,6 +1049,18 @@
 	<script src="./js/main.js"></script>
 	<script>
 		$.material.init();
+	</script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.13.1/xlsx.full.min.js"></script> 
+	<script>
+		function armarExcel(){
+			var user = {!! json_encode($alumnos) !!};
+
+		 filename='alumnos.xlsx';
+        var ws = XLSX.utils.json_to_sheet(user);
+        var wb = XLSX.utils.book_new();
+        XLSX.utils.book_append_sheet(wb, ws, "People");
+        XLSX.writeFile(wb,filename);
+		}
 	</script>
 </body>
 

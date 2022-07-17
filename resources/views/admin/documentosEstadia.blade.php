@@ -46,12 +46,22 @@
                               <!-- buscar-->
                                 <div class="row">
                                     <div class=" col-8 col-sm-8 col-md-10">
-                                        <input type="text" class="form-control" id="texto" name="texto" placeholder="Buscar" value="">
-                                            
+                                        <input type="text" class="form-control" id="texto" name="texto" placeholder="Buscar" value="">   
                                     </div>
                                     <div class="col-4 col-sm-4 col-md-2">
-                                        <button type="submit" class="btn btn-primary buscar"><i class="zmdi zmdi-search"></i></button>
-                                    </div>
+                                    <button type="submit" class="btn btn-primary buscar"><i class="zmdi zmdi-search"></i></button>
+                                     </div>
+                                <div class=" col-8 col-sm-8 col-md-6">
+                                    <select class="form-control" id="estatus" name="estatus" placeholder="estatus">
+                                      <option value=""> </option>   
+                                      <option value="enero-abril">enero-abril</option>
+                                      <option value="mayo-agosto">mayo-agosto</option>
+                                      <option value="septiembre-octubre">septiembre-diciembre</option>
+                                    </select>
+                                  </div>
+                                   <div class=" col-8 col-sm-8 col-md-4">
+                                    <input type="number" class="form-control" id="año" name="año" placeholder="ejem 2022" value="" min="1999" max="2050">
+                                   </div> 
                                 </div>
                         </form>
                     </div>

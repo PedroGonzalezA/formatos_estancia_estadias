@@ -150,8 +150,8 @@ class PdfController extends Controller
 
     //descargar f03 estancia
 
-    public function descarga_cd_estancia_f03(){
-        $userID=Auth::user()->id; 
+    public function descarga_cd_estancia_f03($id_proces){
+        $userID=Auth::user()->id;
 
         $users = DB::table('users')
         ->join('respuesta', 'users.id', '=', 'respuesta.id_usuario')
@@ -168,7 +168,7 @@ class PdfController extends Controller
         ->join('cargo as CA', 'asesor_academico.id_cargo_aa', '=', 'CA.id_cargo')
         ->select('CA.nombre_cargo','CE.nombre_cargo','tipo.nombre_tipo','procesos.nombre_proceso','carreras.nombre_carrera','users.name','alumno.ape_paterno','alumno.ape_materno','alumno.nombres','alumno.tel','alumno.matricula','alumno.email_per','alumno.email','alumno.no_ss','alumno.direccion','alumno.id_carrera','empresa.nombre_emp','empresa.giro','empresa.id_tipo','empresa.direccion_emp','empresa.ape_paterno_rh','empresa.ape_materno_rh','empresa.nombres_rh','empresa.tel_lada','empresa.tel_num','empresa.tel_ext','empresa.email_emp','asesor_empresarial.ape_paterno_ae','asesor_empresarial.ape_materno_ae','asesor_empresarial.nombres_ae','asesor_empresarial.id_cargo_ae','asesor_empresarial.tel_lada_ae','asesor_empresarial.tel_num_ae','asesor_empresarial.email_ae','asesor_academico.ape_paterno_aa','asesor_academico.ape_materno_aa','asesor_academico.nombres_aa','asesor_academico.id_cargo_aa','asesor_academico.tel_lada_aa','asesor_academico.tel_num_aa','asesor_academico.email_aa','proyecto.nombre_proyecto')
         ->where('users.id',$userID)
-
+        ->where('alumno.id_procesos', $id_proces)
         ->get();
 
         view()->share('usuario.f03_cd',$users);
@@ -178,7 +178,7 @@ class PdfController extends Controller
         return $pdf->download('F-03_Cedula_Registro_Estancia.pdf');
     }
     //descargar f03 estadia
-    public function descarga_cd_estadia_f03(){
+    public function descarga_cd_estadia_f03($id_proces){
         $userID=Auth::user()->id; 
 
         $users = DB::table('users')
@@ -196,6 +196,7 @@ class PdfController extends Controller
         ->join('cargo as CA', 'asesor_academico.id_cargo_aa', '=', 'CA.id_cargo')
         ->select('CA.nombre_cargo','CE.nombre_cargo','tipo.nombre_tipo','procesos.nombre_proceso','carreras.nombre_carrera','users.name','alumno.ape_paterno','alumno.ape_materno','alumno.nombres','alumno.tel','alumno.matricula','alumno.email_per','alumno.email','alumno.no_ss','alumno.direccion','alumno.id_carrera','empresa.nombre_emp','empresa.giro','empresa.id_tipo','empresa.direccion_emp','empresa.ape_paterno_rh','empresa.ape_materno_rh','empresa.nombres_rh','empresa.tel_lada','empresa.tel_num','empresa.tel_ext','empresa.email_emp','asesor_empresarial.ape_paterno_ae','asesor_empresarial.ape_materno_ae','asesor_empresarial.nombres_ae','asesor_empresarial.id_cargo_ae','asesor_empresarial.tel_lada_ae','asesor_empresarial.tel_num_ae','asesor_empresarial.email_ae','asesor_academico.ape_paterno_aa','asesor_academico.ape_materno_aa','asesor_academico.nombres_aa','asesor_academico.id_cargo_aa','asesor_academico.tel_lada_aa','asesor_academico.tel_num_aa','asesor_academico.email_aa','proyecto.nombre_proyecto')
         ->where('users.id',$userID)
+        ->where('alumno.id_procesos', $id_proces)
         ->get();
 
         view()->share('usuario.f03_cd_estadia',$users);
