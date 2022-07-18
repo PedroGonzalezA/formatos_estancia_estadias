@@ -3,12 +3,12 @@
     <head>
     <title>Carta Presentacion</title>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=yes">
     </head>
     <body>
         <!-- Define header and footer blocks before your content -->
         <header>
-         <img style="padding:16px;" src="{{ public_path("firma/registrodefinicion.png" )}}" alt="Arriba" width='100%' />
+         <img style="padding:2px;" src="{{ public_path("firma/registrodefinicion.png" )}}" alt="Arriba" width='100%' />
         </header>
 
         <footer>
@@ -181,7 +181,7 @@
             @page {
             }
             body { 
-                margin-top: 10px; 
+                margin-top: 120px; 
                 margin-left: 0px; 
                 margin-right: 0px; 
                 margin-bottom: 10px;  
@@ -191,7 +191,7 @@
                 top: -60px;
                 left: 0px;
                 right: 0px;
-                height: 50px;
+                height: 0px;
 
                 /** Extra personal styles **/
                 background-color: transparent;

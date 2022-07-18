@@ -694,7 +694,7 @@
 																				</form>											
 																			</div>
 																			<div class="col-6 col-sm-6 col-md-1 py-1 colDescargar ">
-																				<a href="{{ route('descarga_cd_estadia_f03.index') }}">
+																				<a href="{{ route('descarga_cd_estadia_f03.index'),[3] }}">
 																					<button type="button" class="btn btn-outline-info btnDescargar"><i class="zmdi zmdi-download"> Descargar</i></button>
 																				</a>
 																			</div>
@@ -731,7 +731,7 @@
 																			</form>											
 																		</div>
 																		<div class="col-6 col-sm-6 col-md-1 py-1 colDescargar text-center">
-																			<a href="{{ route('descarga_cd_estadia_f03.index') }}">
+																			<a href="{{ route('descarga_cd_estadia_f03.index',[3]) }}">
 																				<button type="button" class="btn btn-outline-info btnDescargar"><i class="zmdi zmdi-download"> Descargar</i></button>
 																			</a>
 																		</div>
@@ -760,7 +760,7 @@
 																	<!--aceptado-->
 																		<div class="row">	
 																			<div class="col-12 col-sm-12 col-md-1 py-1 colDescargar ">
-																				<a href="{{ route('descarga_cd_estadia_f03.index') }}">
+																				<a href="{{ route('descarga_cd_estadia_f03.index',[3]) }}">
 																					<button type="button" class="btn btn-outline-info btnDescargar"><i class="zmdi zmdi-download"> Descargar</i></button>
 																				</a>
 																			</div>
@@ -789,7 +789,7 @@
 													</form>											
 												</div>
 												<div class="col-6 col-sm-6 col-md-1 py-1 colDescargar ">
-													<a href="{{ route('descarga_cd_estadia_f03.index') }}">
+													<a href="{{ route('descarga_cd_estadia_f03.index',[3]) }}">
 														<button type="button" class="btn btn-outline-info btnDescargar"><i class="zmdi zmdi-download"> Descargar</i></button>
 													</a>
 												</div>
@@ -821,7 +821,7 @@
 												</form>											
 											</div>
 											<div class="col-6 col-sm-6 col-md-1 py-1 colDescargar ">
-												<a href="{{ route('descarga_cd_estadia_f03.index') }}">
+												<a href="{{ route('descarga_cd_estadia_f03.index',[3]) }}">
 													<button type="button" class="btn btn-outline-info btnDescargar"><i class="zmdi zmdi-download"> Descargar</i></button>
 												</a>
 											</div>
