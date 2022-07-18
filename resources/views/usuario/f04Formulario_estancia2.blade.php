@@ -33,7 +33,6 @@
                                             <div class="subT text-center">
                                                 <small>[ Estancia ]</small> 
                                                 <select class="form-control text-center " name="id_proceso" id="" required>
-                                                    <option value="1">Estancia 1</option>
                                                     <option value="2">Estancia 2</option>
                                                 </select>
                                             </div>

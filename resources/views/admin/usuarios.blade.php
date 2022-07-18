@@ -201,7 +201,7 @@
 	<script>
 		$.material.init();
 	</script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.13.1/xlsx.full.min.js"></script> 
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.13.1/xlsx.full.min.js"></script> 
 	<script>
 		function armarExcel(){
 			var user = {!! json_encode($alumnos) !!};

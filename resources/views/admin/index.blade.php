@@ -59,7 +59,7 @@
 							<div>Usuarios</div>		 
 						</div>
 						<div class="col-6" style="font-size: 30px; color:rgb(0, 0, 0);">
-							<a href="#!"><i class="zmdi zmdi-male-alt  zmdi-hc-5x"></i></a>
+							<a href="{{ route('usuarios.index') }}"><i class="zmdi zmdi-male-alt  zmdi-hc-5x"></i></a>
 						</div>
 						<div class="col-6 registro">
 							<p class="registroCount">{{  $datos['usersCount'] }}</p>
@@ -74,7 +74,7 @@
 							<div>Estancia I</div>		 
 						</div>
 						<div class="col-6" style="font-size: 30px; color:rgb(0, 0, 0);">
-							<a href="#!"><i class="zmdi zmdi-male-alt  zmdi-hc-5x"></i></a>
+							<a href="{{ route('documentoEstancia1Admin.index') }}"><i class="zmdi zmdi-male-alt  zmdi-hc-5x"></i></a>
 						</div>
 						<div class="col-6 registro">
 							<p class="registroCount">{{ $estancia['estancia1']  }}</p>
@@ -89,7 +89,7 @@
 							<div>Estancia II</div>		 
 						</div>
 						<div class="col-6" style="font-size: 30px; color:rgb(0, 0, 0);">
-							<a href="#!"><i class="zmdi zmdi-male-alt  zmdi-hc-5x"></i></a>
+							<a href="{{ route('documentoEstancia2Admin.index') }}"><i class="zmdi zmdi-male-alt  zmdi-hc-5x"></i></a>
 						</div>
 						<div class="col-6 registro">
 							<p class="registroCount">{{ $estancia['estancia2']  }}</p>
@@ -104,7 +104,7 @@
 							<div>Estadía</div>		 
 						</div>
 						<div class="col-6" style="font-size: 30px; color:rgb(0, 0, 0);">
-							<a href="#!"><i class="zmdi zmdi-male-alt  zmdi-hc-5x"></i></a>
+							<a href="{{ route('documentoEstadiaAdmin.index') }}"><i class="zmdi zmdi-male-alt  zmdi-hc-5x"></i></a>
 						</div>
 						<div class="col-6 registro">
 							<p class="registroCount">{{ $estadia['estadia']  }}</p>

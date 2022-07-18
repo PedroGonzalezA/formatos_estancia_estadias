@@ -22,7 +22,7 @@
                 </div>
                 <p class="text-center p-0 m-0"><b>Universidad Politécnica de Quintana Roo</b><br>Dirección de Vinculación, Difusión y Extensión Universitaria</p>
                 @forelse ($datos['cedula'] as $dato)                            
-                    <form  method="POST" action="{{ route('f04Guardar1.index') }}">
+                    <form  method="POST" action="{{ route('f04Guardar1.index') }}"> 
                         @csrf
                         <!--titulo-->
                         <table class="table table-borderless p-0 m-1 tabla_r" >
@@ -34,7 +34,6 @@
                                                 <small>[ Estancia ]</small> 
                                                 <select class="form-control text-center " name="id_proceso" id="" required>
                                                     <option value="1">Estancia 1</option>
-                                                    <option value="2">Estancia 2</option>
                                                 </select>
                                             </div>
                                         </div>

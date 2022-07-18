@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 use Exception;
 
 class etapas_del_proyecto extends Model
@@ -14,6 +15,23 @@ class etapas_del_proyecto extends Model
 
     public static function requestInsertEtapas($data,$data1,$data2,$data3,$data4,$data5,$data6,$data7,$data8,$data9,$data10,$data11,$data12,$data13,$data14) {
 
+        try{
+            $userID=Auth::user()->id; 
+            $etapas=DB::table('users')
+            ->join('respuesta_etapa','users.id','=','respuesta_etapa.id_usuario')
+            ->join('etapas_del_proyecto','etapas_del_proyecto.id','=','respuesta_etapa.id_etapa_proyecto')
+            ->select('etapas_del_proyecto.id')
+            ->where('users.id',$userID)
+            ->get();
+            foreach ($etapas as $item => $array) {
+                foreach ($array as $key => $id) {
+                    etapas_del_proyecto::find($id)->delete();
+                 }
+            }
+            
+        }catch(Exception $e){
+
+        }
         try{
 
             $response = self::insertEtapas($data,$data1,$data2,$data3,$data4,$data5,$data6,$data7,$data8,$data9,$data10,$data11,$data12,$data13,$data14);

@@ -843,7 +843,7 @@
 							@empty
 									<!-- llenar cedula registro vacio-->
 									<div class="col-6 col-sm-6 col-md-6 col-lg-2 col-xl-2 p-1 colLlenar">
-										<a href="{{ route('home.index') }}">
+										<a href="{{ route('home.index',[3]) }}">
 											<button type="button" class="btn btn-outline-dark btnLlenar" >Llenar Cedula de Registro</button>
 										</a>
 									</div>
@@ -891,7 +891,7 @@
 																				</div>
 																				<!-- DESCARGAR DOC 04-->
 																				<div class="col-6 col-sm-6 col-md-1 py-1 colDescargar text-centerr">
-																					<a href="{{ route('descarga_cd_estadia_f04.index') }}">
+																					<a href="{{ route('descarga_cd_estadia_f04.index',[3]) }}">
 																						<button type="button" class="btn btn-outline-info btnDescargar"><i class="zmdi zmdi-download"> Descargar</i></button>
 																					</a>
 																				</div>
@@ -936,7 +936,7 @@
 																			</div>
 																			<!-- DESCARGAR DOC 04-->
 																			<div class="col-6 col-sm-6 col-md-1 py-1 colDescargar text-centerr">
-																				<a href="{{ route('descarga_cd_estadia_f04.index') }}">
+																				<a href="{{ route('descarga_cd_estadia_f04.index',[3]) }}">
 																					<button type="button" class="btn btn-outline-info btnDescargar"><i class="zmdi zmdi-download"> Descargar</i></button>
 																				</a>
 																			</div>
@@ -964,7 +964,7 @@
 																				<div class="row">
 																					<!-- DESCARGAR DOC 04-->
 																					<div class="col-12 col-sm-12 col-md-1 py-1 colDescargar text-centerr">
-																						<a href="{{ route('descarga_cd_estadia_f04.index') }}">
+																						<a href="{{ route('descarga_cd_estadia_f04.index',[3]) }}">
 																							<button type="button" class="btn btn-outline-info btnDescargar"><i class="zmdi zmdi-download"> Descargar</i></button>
 																						</a>
 																					</div>
@@ -998,7 +998,7 @@
 													</div>
 													<!-- DESCARGAR DOC 04-->
 													<div class="col-6 col-sm-6 col-md-1 py-1 colDescargar text-centerr">
-														<a href="{{ route('descarga_cd_estadia_f04.index') }}">
+														<a href="{{ route('descarga_cd_estadia_f04.index',[3]) }}">
 															<button type="button" class="btn btn-outline-info btnDescargar"><i class="zmdi zmdi-download"> Descargar</i></button>
 														</a>
 													</div>
@@ -1035,7 +1035,7 @@
 											</div>
 											<!-- DESCARGAR DOC 04-->
 											<div class="col-6 col-sm-6 col-md-1 py-1 colDescargar text-centerr">
-												<a href="{{ route('descarga_cd_estadia_f04.index') }}">
+												<a href="{{ route('descarga_cd_estadia_f04.index',[3]) }}">
 													<button type="button" class="btn btn-outline-info btnDescargar"><i class="zmdi zmdi-download"> Descargar</i></button>
 												</a>
 											</div>

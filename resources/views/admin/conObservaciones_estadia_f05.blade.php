@@ -38,13 +38,10 @@
 				@csrf
 					<div class="row">
 							<div class="col-12 p-0">
-									<a href="{{ route('documentoEstadiaAdmin.index') }}" class="btn "  ><i class="zmdi zmdi-arrow-left"></i></a>
+									<a href="" class="btn "  ><i class="zmdi zmdi-arrow-left"></i></a>
 							</div>
 							<div class="col-12 p-1">
 								<input type="text" name="observaciones" value="{{$dato->observaciones_c_l}}" class="observaciones" >
-							</div>
-							<div class="col-12 p-1">
-								<button class="btn btn-dark btn-lg btn-block" type="submit">Guardar</button>
 							</div>
 					</div>
 				</form>

@@ -64,7 +64,9 @@ class Estancia2Controller extends Controller
         $datosDefinicionProyecto = DB::table('users')
         ->join('respuesta_def', 'users.id', '=', 'respuesta_def.id_usuario')
         ->join('formulario_def', 'respuesta_def.id_formulario', '=', 'formulario_def.id')
+        ->join('alumno_def', 'formulario_def.id_alumno', '=', 'alumno_def.id')
         ->where('users.id',$userID)
+        ->where('alumno_def.id_proceso',2)
         ->get();
 
         $defP  = ['def' => $definicionProyecto];
@@ -222,19 +224,9 @@ class Estancia2Controller extends Controller
                     ),
                 );
             }
-
-            if ($date='01' | $date='02' | $date='03' | $date='04' ){
-                $estatus3 = 'enero-abril';
-             } elseif ( $date='05' | $date='06' | $date='07' | $date='08' ) {
-                $estatus3 = 'mayo-abril';
-             } elseif ($date='09' | $date='10' | $date='11' | $date='12'){
-                $estatus3 = 'septiembre-diciembre';
-             }
-
             $data6 = array(
                 'id_c_horaria'     =>  $response_c_horaria['id'],
-                'id_proceso'       =>  2,
-                'estatus'          =>  $estatus3
+                'id_proceso'             =>  2
             );
             $response_documentos = documentos::requestInsertDoc($data6);
         

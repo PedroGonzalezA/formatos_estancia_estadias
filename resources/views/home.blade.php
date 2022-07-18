@@ -113,9 +113,18 @@
                 <div class="form-group col-6">
                     <label for="">Proceso:</label>
                     <select class="form-control" name="id_procesos" id="">
-                        <option value="1">Estancia 1</option>
-                        <option value="2">Estancia 2</option>
-                        <option value="3">Estadía</option>
+                        @switch($proceso)
+                            @case(1)
+                                <option value="1">Estancia 1</option>
+                                @break
+                            @case(2)
+                                <option value="2">Estancia 2</option>
+                                @break
+                            @case(3)
+                                <option value="3">Estadía</option>
+                                @break
+                            @default   
+                        @endswitch                        
                     </select>
                 </div>
                 <div class="form-group col-md-6">
