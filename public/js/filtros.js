@@ -346,6 +346,18 @@ var valor = document.getElementById("filtros").value;
 				}
 			}
 		}
+		if(checked == false && valor == 5){
+			var data5 = document.getElementsByClassName("saber-f01");
+			for(let i = 0; i <data5.length; i++){
+				
+					let datapadre1 = data5[i].parentNode;
+					let datapadre2 = datapadre1.parentNode;
+					let datapadre3 = datapadre2.parentNode;
+					datapadre3.style.display = 'block';
+				
+			}
+		}
+
 		if(checked && valor == 6){
 			// alert('checkbox1 esta seleccionado');
 			var data6 = document.getElementsByClassName("saber-f02");
@@ -360,6 +372,18 @@ var valor = document.getElementById("filtros").value;
 				}
 			}
 		}
+		if(checked == false && valor == 6){
+			var data6 = document.getElementsByClassName("saber-f02");
+			for(let i = 0; i <data6.length; i++){
+				
+					let datapadre1 = data6[i].parentNode;
+					let datapadre2 = datapadre1.parentNode;
+					let datapadre3 = datapadre2.parentNode;
+					datapadre3.style.display = 'block';
+				
+			}
+		}
+
 		if(checked && valor == 7){
 			// alert('checkbox1 esta seleccionado');
 			var data7 = document.getElementsByClassName("saber-f03");
@@ -374,6 +398,18 @@ var valor = document.getElementById("filtros").value;
 				}
 			}
 		}
+		if(checked == false && valor == 7){
+			var data7 = document.getElementsByClassName("saber-f03");
+			for(let i = 0; i <data7.length; i++){
+				
+					let datapadre1 = data7[i].parentNode;
+					let datapadre2 = datapadre1.parentNode;
+					let datapadre3 = datapadre2.parentNode;
+					datapadre3.style.display = 'block';
+				
+			}
+		}
+
 		if(checked && valor == 8){
 			// alert('checkbox1 esta seleccionado');
 			var data8 = document.getElementsByClassName("saber-f04");
@@ -388,6 +424,18 @@ var valor = document.getElementById("filtros").value;
 				}
 			}
 		}
+		if(checked == false && valor == 8){
+			var data8 = document.getElementsByClassName("saber-f04");
+			for(let i = 0; i <data8.length; i++){
+				
+					let datapadre1 = data8[i].parentNode;
+					let datapadre2 = datapadre1.parentNode;
+					let datapadre3 = datapadre2.parentNode;
+					datapadre3.style.display = 'block';
+				
+			}
+		}
+
 		if(checked && valor == 9){
 			// alert('checkbox1 esta seleccionado');
 			var data9 = document.getElementsByClassName("saber-f05");
@@ -400,6 +448,17 @@ var valor = document.getElementById("filtros").value;
 					let datapadre3 = datapadre2.parentNode;
 					datapadre3.style.display = 'none';
 				}
+			}
+		}
+		if(checked == false && valor == 9){
+			var data9 = document.getElementsByClassName("saber-f05");
+			for(let i = 0; i <data9.length; i++){
+				
+					let datapadre1 = data9[i].parentNode;
+					let datapadre2 = datapadre1.parentNode;
+					let datapadre3 = datapadre2.parentNode;
+					datapadre3.style.display = 'block';
+				
 			}
 		}
 		
