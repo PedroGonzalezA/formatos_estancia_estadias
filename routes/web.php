@@ -1266,7 +1266,7 @@ Route::get('/logout', [LoginController::class, 'destroy'])
     ->name('cancelar_carta_responsiva_Estadia.index');
  //f01
     //descargar con datos f01
-    Route::get('/descarga_cd_estadia_f01', [PdfController::class, 'descarga_cd_f01_estadia'])
+    Route::get('/descarga_cd_estadia_f01', [DescargaController::class, 'descarga_carta_presentacion_estadia'])
     ->name('descarga_cd_estadia_f01.index');
 
     //llenar f01
