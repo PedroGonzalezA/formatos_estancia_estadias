@@ -34,7 +34,7 @@
 		</div>
         <div class="container">
             @forelse ($datos as $dato)
-				<form action="{{ route('guardarObservaciones_estadia_f03_admin.index',[$id['id_c']]) }}" method="post" enctype="multipart/form-data" >
+				<form action="" method="post" enctype="multipart/form-data" >
 				@csrf
 					<div class="row">
 							<div class="col-12 p-0">
@@ -42,9 +42,6 @@
 							</div>
 							<div class="col-12 p-1">
 								<input type="text" name="observaciones" value="{{$dato->observaciones_c_r}}" class="observaciones" >
-							</div>
-							<div class="col-12 p-1">
-								<button class="btn btn-dark btn-lg btn-block" type="submit">Guardar</button>
 							</div>
 					</div>
 				</form>

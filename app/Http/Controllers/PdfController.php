@@ -206,7 +206,7 @@ class PdfController extends Controller
         return $pdf->download('F-03_Cedula_Registro_Estadia.pdf');
     }
     //descargar f04 estancia
-    public function descarga_cd_estancia_f04(){
+    public function descarga_cd_estancia_f04($id_proces){
       $userID=Auth::user()->id; 
 
       $users = DB::table('users')
@@ -220,6 +220,7 @@ class PdfController extends Controller
       ->join('carreras', 'carreras.id_carrera', '=', 'alumno.id_carrera')
       ->select('carreras.nombre_carrera','users.name','alumno.ape_paterno','alumno.ape_materno','alumno.nombres','alumno.tel','alumno.matricula','alumno.email_per','alumno.email','alumno.no_ss','alumno.direccion','alumno.id_carrera','empresa.nombre_emp','empresa.giro','empresa.id_tipo','empresa.direccion_emp','empresa.ape_paterno_rh','empresa.ape_materno_rh','empresa.nombres_rh','empresa.tel_lada','empresa.tel_num','empresa.tel_ext','empresa.email_emp','asesor_empresarial.ape_paterno_ae','asesor_empresarial.ape_materno_ae','asesor_empresarial.nombres_ae','asesor_empresarial.id_cargo_ae','asesor_empresarial.tel_lada_ae','asesor_empresarial.tel_num_ae','asesor_empresarial.email_ae','asesor_academico.ape_paterno_aa','asesor_academico.ape_materno_aa','asesor_academico.nombres_aa','asesor_academico.id_cargo_aa','asesor_academico.tel_lada_aa','asesor_academico.tel_num_aa','asesor_academico.email_aa','proyecto.nombre_proyecto',)
       ->where('users.id',$userID)
+      ->where('alumno.id_procesos',$id_proces)
 
       ->get();
  
@@ -231,6 +232,7 @@ class PdfController extends Controller
       ->join('proyecto_def', 'formulario_def.id_proyecto', '=', 'proyecto_def.id')
       ->join('detalle_def','formulario_def.id_detalle','=','detalle_def.id')
       ->where('users.id',$userID)
+      ->where('alumno_def.id_proceso',$id_proces)
       ->get();
       
       //etapas de proyecto
@@ -426,21 +428,25 @@ class PdfController extends Controller
         $id_etapa_14=$req->get('id_etapas_14');
         $id_etapa_15=$req->get('id_etapas_15');
 
-        $etapas1 = etapas_del_proyecto::find($id_etapa_1)->delete();
-        $etapas2 = etapas_del_proyecto::find($id_etapa_2)->delete();
-        $etapas3 = etapas_del_proyecto::find($id_etapa_3)->delete();
-        $etapas4 = etapas_del_proyecto::find($id_etapa_4)->delete();
-        $etapas5 = etapas_del_proyecto::find($id_etapa_5)->delete();
-        $etapas6 = etapas_del_proyecto::find($id_etapa_6)->delete();
-        $etapas7 = etapas_del_proyecto::find($id_etapa_7)->delete();
-        $etapas8 = etapas_del_proyecto::find($id_etapa_8)->delete();
-        $etapas9 = etapas_del_proyecto::find($id_etapa_9)->delete();
-        $etapas10 = etapas_del_proyecto::find($id_etapa_10)->delete();
-        $etapas11 = etapas_del_proyecto::find($id_etapa_11)->delete();
-        $etapas12 = etapas_del_proyecto::find($id_etapa_12)->delete();
-        $etapas13 = etapas_del_proyecto::find($id_etapa_13)->delete();
-        $etapas14 = etapas_del_proyecto::find($id_etapa_14)->delete();
-        $etapas15 = etapas_del_proyecto::find($id_etapa_15)->delete();
+        try {
+          $etapas1 = etapas_del_proyecto::find($id_etapa_1)->delete();
+          $etapas2 = etapas_del_proyecto::find($id_etapa_2)->delete();
+          $etapas3 = etapas_del_proyecto::find($id_etapa_3)->delete();
+          $etapas4 = etapas_del_proyecto::find($id_etapa_4)->delete();
+          $etapas5 = etapas_del_proyecto::find($id_etapa_5)->delete();
+          $etapas6 = etapas_del_proyecto::find($id_etapa_6)->delete();
+          $etapas7 = etapas_del_proyecto::find($id_etapa_7)->delete();
+          $etapas8 = etapas_del_proyecto::find($id_etapa_8)->delete();
+          $etapas9 = etapas_del_proyecto::find($id_etapa_9)->delete();
+          $etapas10 = etapas_del_proyecto::find($id_etapa_10)->delete();
+          $etapas11 = etapas_del_proyecto::find($id_etapa_11)->delete();
+          $etapas12 = etapas_del_proyecto::find($id_etapa_12)->delete();
+          $etapas13 = etapas_del_proyecto::find($id_etapa_13)->delete();
+          $etapas14 = etapas_del_proyecto::find($id_etapa_14)->delete();
+          $etapas15 = etapas_del_proyecto::find($id_etapa_15)->delete();
+        } catch (\Throwable $th) {
+          //throw $th;
+        }
         return redirect('estancia1')->with('eliminarF04','F-04 Eliminado');
 
       }
@@ -469,21 +475,25 @@ class PdfController extends Controller
         $id_etapa_14=$req->get('id_etapas_14');
         $id_etapa_15=$req->get('id_etapas_15');
 
-        $etapas1 = etapas_del_proyecto::find($id_etapa_1)->delete();
-        $etapas2 = etapas_del_proyecto::find($id_etapa_2)->delete();
-        $etapas3 = etapas_del_proyecto::find($id_etapa_3)->delete();
-        $etapas4 = etapas_del_proyecto::find($id_etapa_4)->delete();
-        $etapas5 = etapas_del_proyecto::find($id_etapa_5)->delete();
-        $etapas6 = etapas_del_proyecto::find($id_etapa_6)->delete();
-        $etapas7 = etapas_del_proyecto::find($id_etapa_7)->delete();
-        $etapas8 = etapas_del_proyecto::find($id_etapa_8)->delete();
-        $etapas9 = etapas_del_proyecto::find($id_etapa_9)->delete();
-        $etapas10 = etapas_del_proyecto::find($id_etapa_10)->delete();
-        $etapas11 = etapas_del_proyecto::find($id_etapa_11)->delete();
-        $etapas12 = etapas_del_proyecto::find($id_etapa_12)->delete();
-        $etapas13 = etapas_del_proyecto::find($id_etapa_13)->delete();
-        $etapas14 = etapas_del_proyecto::find($id_etapa_14)->delete();
-        $etapas15 = etapas_del_proyecto::find($id_etapa_15)->delete();
+        try {
+          $etapas1 = etapas_del_proyecto::find($id_etapa_1)->delete();
+          $etapas2 = etapas_del_proyecto::find($id_etapa_2)->delete();
+          $etapas3 = etapas_del_proyecto::find($id_etapa_3)->delete();
+          $etapas4 = etapas_del_proyecto::find($id_etapa_4)->delete();
+          $etapas5 = etapas_del_proyecto::find($id_etapa_5)->delete();
+          $etapas6 = etapas_del_proyecto::find($id_etapa_6)->delete();
+          $etapas7 = etapas_del_proyecto::find($id_etapa_7)->delete();
+          $etapas8 = etapas_del_proyecto::find($id_etapa_8)->delete();
+          $etapas9 = etapas_del_proyecto::find($id_etapa_9)->delete();
+          $etapas10 = etapas_del_proyecto::find($id_etapa_10)->delete();
+          $etapas11 = etapas_del_proyecto::find($id_etapa_11)->delete();
+          $etapas12 = etapas_del_proyecto::find($id_etapa_12)->delete();
+          $etapas13 = etapas_del_proyecto::find($id_etapa_13)->delete();
+          $etapas14 = etapas_del_proyecto::find($id_etapa_14)->delete();
+          $etapas15 = etapas_del_proyecto::find($id_etapa_15)->delete();
+        } catch (\Throwable $th) {
+          //throw $th;
+        }
         return redirect('estancia2')->with('eliminarF04','F-04 Eliminado');
 
       }
@@ -513,21 +523,25 @@ class PdfController extends Controller
         $id_etapa_14=$req->get('id_etapas_14');
         $id_etapa_15=$req->get('id_etapas_15');
 
-        $etapas1 = etapas_del_proyecto::find($id_etapa_1)->delete();
-        $etapas2 = etapas_del_proyecto::find($id_etapa_2)->delete();
-        $etapas3 = etapas_del_proyecto::find($id_etapa_3)->delete();
-        $etapas4 = etapas_del_proyecto::find($id_etapa_4)->delete();
-        $etapas5 = etapas_del_proyecto::find($id_etapa_5)->delete();
-        $etapas6 = etapas_del_proyecto::find($id_etapa_6)->delete();
-        $etapas7 = etapas_del_proyecto::find($id_etapa_7)->delete();
-        $etapas8 = etapas_del_proyecto::find($id_etapa_8)->delete();
-        $etapas9 = etapas_del_proyecto::find($id_etapa_9)->delete();
-        $etapas10 = etapas_del_proyecto::find($id_etapa_10)->delete();
-        $etapas11 = etapas_del_proyecto::find($id_etapa_11)->delete();
-        $etapas12 = etapas_del_proyecto::find($id_etapa_12)->delete();
-        $etapas13 = etapas_del_proyecto::find($id_etapa_13)->delete();
-        $etapas14 = etapas_del_proyecto::find($id_etapa_14)->delete();
-        $etapas15 = etapas_del_proyecto::find($id_etapa_15)->delete();
+        try {
+          $etapas1 = etapas_del_proyecto::find($id_etapa_1)->delete();
+          $etapas2 = etapas_del_proyecto::find($id_etapa_2)->delete();
+          $etapas3 = etapas_del_proyecto::find($id_etapa_3)->delete();
+          $etapas4 = etapas_del_proyecto::find($id_etapa_4)->delete();
+          $etapas5 = etapas_del_proyecto::find($id_etapa_5)->delete();
+          $etapas6 = etapas_del_proyecto::find($id_etapa_6)->delete();
+          $etapas7 = etapas_del_proyecto::find($id_etapa_7)->delete();
+          $etapas8 = etapas_del_proyecto::find($id_etapa_8)->delete();
+          $etapas9 = etapas_del_proyecto::find($id_etapa_9)->delete();
+          $etapas10 = etapas_del_proyecto::find($id_etapa_10)->delete();
+          $etapas11 = etapas_del_proyecto::find($id_etapa_11)->delete();
+          $etapas12 = etapas_del_proyecto::find($id_etapa_12)->delete();
+          $etapas13 = etapas_del_proyecto::find($id_etapa_13)->delete();
+          $etapas14 = etapas_del_proyecto::find($id_etapa_14)->delete();
+          $etapas15 = etapas_del_proyecto::find($id_etapa_15)->delete();
+        } catch (\Throwable $th) {
+          //throw $th;
+        }
         return redirect('estadia')->with('eliminarF04','F-04 Eliminado');
 
       }

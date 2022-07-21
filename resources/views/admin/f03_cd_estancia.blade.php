@@ -259,7 +259,7 @@
                 line-height: 35px;
             }
             .panel{
-                background-color: #16355a;
+                background-color: #4F2117;
                 color: white;
                 padding: 3px 3px 3px 3px;
             }

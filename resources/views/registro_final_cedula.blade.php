@@ -40,19 +40,19 @@
                     
                     @switch($dato->id_procesos)
                         @case(1)
-                            <a href="{{ route('descarga_cd_estancia_f03.index') }}">
+                            <a href="{{ route('descarga_cd_estancia_f03.index',[1]) }}">
                                 <button type="button" class="btn btn-outline-info btnDes"><i class="zmdi zmdi-download"> Descargar</i></button>
                             </a>
                         @break
                     
                         @case(2)
-                            <a href="{{ route('descarga_cd_estancia_f03.index') }}">
+                            <a href="{{ route('descarga_cd_estancia_f03.index',[2]) }}">
                                 <button type="button" class="btn btn-outline-info btnDes"><i class="zmdi zmdi-download"> Descargar</i></button>
                             </a>
                         @break
 
                         @case(3)
-                            <a href="{{ route('descarga_cd_estadia_f03.index') }}">
+                            <a href="{{ route('descarga_cd_estadia_f03.index',[3]) }}">
                                 <button type="button" class="btn btn-outline-info btnDes"><i class="zmdi zmdi-download"> Descargar</i></button>
                             </a>
                         @break

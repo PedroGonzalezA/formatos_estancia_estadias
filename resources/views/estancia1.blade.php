@@ -43,7 +43,7 @@
 						<div class="row lista">
 							<div class="col-12 col-sm-12 col-md-4 col-lg-3 col-xl-2">
 								<div class="ms-2 me-auto">
-									Carga Horaria
+									1.- Carga Horaria
 								</div>
 							</div>
 							<div class="col-6 col-sm-6 col-md-5 col-lg-3 col-xl-3 p-1 colLlenar  ">
@@ -163,7 +163,7 @@
 						<div class="row lista">
 							<div class="col-12 col-sm-12 col-md-4 col-lg-3 col-xl-2">
 								<div class="ms-2 me-auto">
-									Constancia de vigencia de derechos del IMSS
+									2.- Constancia de vigencia de derechos del IMSS
 								</div>
 							</div>								
 							<div class="col-6 col-sm-6 col-md-5 col-lg-3 col-xl-3 p-1 colLlenar  ">
@@ -284,7 +284,7 @@
 						<div class="row lista">
 							<div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2">
 								<div class="ms-2 me-auto">
-									Formato de carta responsiva
+									3.- Carta de exclusion de responsabilidad
 								</div>
 							</div>
 						
@@ -413,7 +413,7 @@
 							<div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2">
 								<div class="ms-2 me-auto">
 									<div class="fw-bold">F01</div>
-									Carta de Presentación
+									4.- Carta de Presentación
 								</div>
 							</div>
 						
@@ -540,7 +540,7 @@
 							<div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2">
 								<div class="ms-2 me-auto">
 									<div class="fw-bold">F02</div>
-									Carta de Aceptación
+									5.- Carta de Aceptación
 								</div>
 							</div>
 							<!--Descargar 02-->
@@ -666,7 +666,7 @@
 							<div class="col-6 col-sm-6 col-md-6 col-lg-3 col-xl-2">
 								<div class="ms-2 me-auto">
 									<div class="fw-bold">F03</div>
-									Cédula de Registro
+									6.- Cédula de Registro
 								</div>
 							</div>
 						
@@ -847,7 +847,7 @@
 							@empty
 								<!-- llenar cedula registro vacio-->
 								<div class="col-6 col-sm-6 col-md-6 col-lg-2 col-xl-2 p-1 colLlenar">
-									<a href="{{ route('home.index') }}">
+									<a href="{{ route('home.index',[1]) }}">
 										<button type="button" class="btn btn-outline-dark btnLlenar" >Llenar Cedula de Registro</button>
 									</a>
 								</div>
@@ -868,7 +868,7 @@
 						<div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2">
 								<div class="ms-2 me-auto">
 									<div class="fw-bold">F04</div>
-									Definición de Proyecto
+									7.- Definición de Proyecto
 								</div>
 							</div>
 							
@@ -894,7 +894,7 @@
 																				</div>
 																				<!--Descargar F04-->
 																				<div class="col-6 col-sm-6 col-md-1 py-1 colDescargar text-centerr">
-																					<a href="{{ route('descarga_cd_estancia_f04.index') }}">
+																					<a href="{{ route('descarga_cd_estancia_f04.index',[1]) }}">
 																						<button type="button" class="btn btn-outline-info btnDescargar"><i class="zmdi zmdi-download"> Descargar</i></button>
 																					</a>
 																				</div>
@@ -939,7 +939,7 @@
 																				</div>
 																				<!--Descargar F04-->
 																				<div class="col-6 col-sm-6 col-md-1 p-1 colDescargar text-centerr">
-																					<a href="{{ route('descarga_cd_estancia_f04.index') }}">
+																					<a href="{{ route('descarga_cd_estancia_f04.index',[1]) }}">
 																						<button type="button" class="btn btn-outline-info btnDescargar"><i class="zmdi zmdi-download"> Descargar</i></button>
 																					</a>
 																				</div>
@@ -969,7 +969,7 @@
 																				<div class="row">
 																					<!--Descargar f04-->
 																					<div class="col-12 col-sm-12 col-md-1 py-1 colDescargar text-centerr">
-																						<a href="{{ route('descarga_cd_estancia_f04.index') }}">
+																						<a href="{{ route('descarga_cd_estancia_f04.index',[1]) }}">
 																							<button type="button" class="btn btn-outline-info btnDescargar"><i class="zmdi zmdi-download"> Descargar</i></button>
 																						</a>
 																					</div>
@@ -1003,7 +1003,7 @@
 													</div>
 													<!--Descargar F04-->
 													<div class="col-6 col-sm-6 col-md-1 py-1 colDescargar text-centerr">
-														<a href="{{ route('descarga_cd_estancia_f04.index') }}">
+														<a href="{{ route('descarga_cd_estancia_f04.index',[1]) }}">
 															<button type="button" class="btn btn-outline-info btnDescargar"><i class="zmdi zmdi-download"> Descargar</i></button>
 														</a>
 													</div>
@@ -1039,7 +1039,7 @@
 											</div>
 											<!--Descargar F04-->
 											<div class="col-6 col-sm-6 col-md-1 py-1 colDescargar text-centerr">
-												<a href="{{ route('descarga_cd_estancia_f04.index') }}">
+												<a href="{{ route('descarga_cd_estancia_f04.index',[1]) }}">
 													<button type="button" class="btn btn-outline-info btnDescargar"><i class="zmdi zmdi-download"> Descargar</i></button>
 												</a>
 											</div>
@@ -1080,7 +1080,7 @@
 							<div class="col-6 col-sm-6 col-md-4 col-lg-3 col-xl-2">
 								<div class="ms-2 me-auto">
 									<div class="fw-bold">F05</div>
-									Carta de Liberación
+									8.- Carta de Liberación
 								</div>
 							</div>
 							<!--Descargar f05-->

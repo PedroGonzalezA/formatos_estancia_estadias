@@ -19,7 +19,7 @@
             <p class="text-center"><b>Universidad Politécnica de Quintana Roo</b><br>Dirección de Vinculación, Difusión y Extensión Universitaria</p>
             <div>
                 @forelse ($usuario as $dato)
-                    <div class="text-center" style="display: inline-block; width:550px;"><b>CÉDULA DE REGISTRO DE ESTACIA</b></div>
+                    <div class="text-center" style="display: inline-block; width:550px;"><b></b></div>
                     <div class="text-right" style="display: inline-block; width:140px;">
                         <div class="datos" style="width: 90px; display: inline-block;">{{$dato->nombre_proceso}} </div>
                     </div>
@@ -257,7 +257,7 @@
                 line-height: 35px;
             }
             .panel{
-                background-color: #16355a;
+                background-color: #4F2117;
                 color: white;
                 padding: 3px 3px 3px 3px;
             }

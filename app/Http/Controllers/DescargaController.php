@@ -32,4 +32,8 @@ class DescargaController extends Controller
         $path=public_path('archivos/carta de presentacion.docx');
         return response()->download($path);
     }
+    function descarga_carta_presentacion_estadia(){
+        $path=public_path('archivos/carta de presentacion estadia.docx');
+        return response()->download($path);
+    }
 }

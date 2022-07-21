@@ -22,7 +22,7 @@
                         @forelse ($datos as $datodp)
                                 <table class="table table-borderless p-0 m-1" >
                                     <tr class="p-0 m-0">
-                                        <td class="p-0"><div><div class="titulo text-center">  DEFINICIÓN DEL PROYECTO</div><div class="subT text-center"><small>[Estadía] </small></div></div></td>
+                                        <td class="p-0"><div><div class="titulo text-center">  </div><div class="subT text-center"><small>[Estadía] </small></div></div></td>
                                         <td class="p-0"><div class="subT text-right" style="height: 5px;"><small>Fecha:</small></div></div></td>
                                         <td colspan="2" class="p-0" style="height: 5px;"><div><div class="text-center" style="border-bottom: 1px solid black;"><small>Cancun, Quintana Roo a <?php setlocale(LC_TIME, $fecha);echo strftime(" %d de %B del %Y");?></small> </div><div class="subT text-center"><small>LOCALIDAD, ESTADO Y FECHA (DD/MM/AA)</small></div></div></td>
                                         

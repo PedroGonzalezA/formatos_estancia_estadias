@@ -17,8 +17,8 @@ use Illuminate\Support\Facades\DB;
 
 class CedulaController extends Controller
 {   
-    public function ver(){
-        return view('home');
+    public function ver($id_proces){
+        return view('home',['proceso'=>$id_proces]);
     }
     public function ver2(){
         return view('home2');
@@ -346,7 +346,7 @@ class CedulaController extends Controller
             );
         }
 
-        return redirect('registro_final_cedula')->with('success','F-03 Agregado');
+        return redirect(route('registro_final_cedula.index',[$procesos]))->with('success','F-03 Agregado');
     }
     public function store2(Request $request) {
         
@@ -671,7 +671,7 @@ class CedulaController extends Controller
             );
         }
 
-        return redirect('registro_final_cedula')->with('success','F-03 Agregado');
+        return redirect(route('registro_final_cedula.index',[$procesos]))->with('success','F-03 Agregado');
     }
 
 

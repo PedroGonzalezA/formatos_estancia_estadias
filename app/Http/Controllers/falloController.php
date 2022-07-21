@@ -14,13 +14,15 @@ class falloController extends Controller
         return view('fallos');
     }
 
-    public function verRegistroFinalCedula(){
+    public function verRegistroFinalCedula($id_proces){
         $userID=Auth::user()->id; 
 
         $datosCedulaFormulario = DB::table('users')
         ->join('respuesta', 'users.id', '=', 'respuesta.id_usuario')
         ->join('formulario', 'respuesta.id_formulario', '=', 'formulario.id')
+        ->join('alumno', 'formulario.id_alumno', '=', 'alumno.id')
         ->where('users.id',$userID)
+        ->where('alumno.id_procesos',$id_proces)
         ->get();
 
         
@@ -29,6 +31,7 @@ class falloController extends Controller
         ->join('formulario', 'respuesta.id_formulario', '=', 'formulario.id')
         ->join('alumno', 'formulario.id_alumno', '=', 'alumno.id')
         ->where('users.id',$userID)
+        ->where('alumno.id_procesos',$id_proces)
         ->get();
 
             $datosCF   = ['datosCedula' => $datosCedulaFormulario];
@@ -44,12 +47,15 @@ class falloController extends Controller
         ->join('proyecto_def', 'formulario_def.id_proyecto', '=', 'proyecto_def.id')
         ->join('detalle_def','formulario_def.id_detalle','=','detalle_def.id')
         ->where('users.id',$userID)
+        ->where('alumno_def.id_proceso',$id_proces)
 
         ->get();
         $datosDefinicionProyecto = DB::table('users')
         ->join('respuesta_def', 'users.id', '=', 'respuesta_def.id_usuario')
         ->join('formulario_def', 'respuesta_def.id_formulario', '=', 'formulario_def.id')
+        ->join('alumno_def', 'formulario_def.id_alumno', '=', 'alumno_def.id')
         ->where('users.id',$userID)
+        ->where('alumno_def.id_proceso',$id_proces)
         ->get();
 
             $defP  = ['def' => $definicionProyecto];
