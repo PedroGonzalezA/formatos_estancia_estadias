@@ -170,8 +170,8 @@ Route::get('/logout', [LoginController::class, 'destroy'])
          ->name('guardarObservaciones_estancia_carga_horaria_admin.index');
  
          //con Observaciones constancia derecho
-         Route::match(['post','get'],'/con_Observaciones_estancia_carga_horaria_admin/{idU}', [documentosEstancia1AdminController::class, 'conObservaciones_estancia_carga_horaria_admin'])
-         ->name('conObservaciones_estancia_carga_horaria_admin.index')
+         Route::match(['post','get'],'/con_Observaciones_estancia_carga_horaria_admin1', [documentosEstancia1AdminController::class, 'conObservaciones_estancia_carga_horaria_admin'])
+         ->name('conObservaciones_estancia_carga_horaria_admin1.index')
          ->middleware('auth.admin');
     //constancia derecho
          //ver con datos constancia derecho
@@ -222,7 +222,7 @@ Route::get('/logout', [LoginController::class, 'destroy'])
  
  
          //guardar observaciones carta responsiva
-         Route::match(['get','post','put'],'/guardar_observaciones_estancia_carta_responsiva_admin/{id}/{idU}', [documentosEstancia1AdminController::class, 'guardarObservaciones_estancia_carta_responsiva_admin'])
+         Route::match(['get','post','put'],'/guardar_observaciones_estancia2_carta_responsiva_admin/{id}/{idU}', [documentosEstancia1AdminController::class, 'guardarObservaciones_estancia_carta_responsiva_admin'])
          ->name('guardarObservaciones_estancia_carta_responsiva_admin.index');
  
          //con Observaciones  carta responsiva
@@ -411,7 +411,7 @@ Route::get('/logout', [LoginController::class, 'destroy'])
 
      //con Observaciones constancia derecho
      Route::match(['post','get'],'/con_Observaciones_estancia_carga_horaria_admin', [documentosEstancia2AdminController::class, 'conObservaciones_estancia_carga_horaria_admin'])
-     ->name('conObservaciones_estancia_carga_horaria_admin.index')
+     ->name('conObservaciones_estancia_carga_horaria_admin2.index')
      ->middleware('auth.admin');
  //constancia derecho
      //ver con datos constancia derecho
@@ -462,7 +462,7 @@ Route::get('/logout', [LoginController::class, 'destroy'])
 
 
      //guardar observaciones carta responsiva
-     Route::match(['get','post','put'],'/guardar_observaciones_estancia_carta_responsiva_admin/{id}/{idU}', [documentosEstancia2AdminController::class, 'guardarObservaciones_estancia_carta_responsiva_admin'])
+     Route::match(['get','post','put'],'/guardar_observaciones_estancia2_carta_responsiva_admin/{id}/{idU}', [documentosEstancia2AdminController::class, 'guardarObservaciones_estancia_carta_responsiva_admin'])
      ->name('guardarObservaciones_estancia2_carta_responsiva_admin.index');
 
      //con Observaciones  carta responsiva
@@ -490,7 +490,7 @@ Route::get('/logout', [LoginController::class, 'destroy'])
 
 
     //guardar observaciones f01
-    Route::match(['get','post','put'],'/guardar_observaciones_estancia_f01_admin/{id}/{idU}', [documentosEstancia2AdminController::class, 'guardarObservaciones_estancia_f01_admin'])
+    Route::match(['get','post','put'],'/guardar_observaciones_estancia2_f01_admin/{id}/{idU}', [documentosEstancia2AdminController::class, 'guardarObservaciones_estancia_f01_admin'])
     ->name('guardarObservaciones_estancia2_f01_admin.index');
 
     //con Observaciones  f01
@@ -518,7 +518,7 @@ Route::get('/logout', [LoginController::class, 'destroy'])
 
 
     //guardar observaciones f02
-    Route::match(['get','post','put'],'/guardar_observaciones_estancia_f02_admin/{id}/{idU}', [documentosEstancia2AdminController::class, 'guardarObservaciones_estancia_f02_admin'])
+    Route::match(['get','post','put'],'/guardar_observaciones_estancia2_f02_admin/{id}/{idU}', [documentosEstancia2AdminController::class, 'guardarObservaciones_estancia_f02_admin'])
     ->name('guardarObservaciones_estancia2_f02_admin.index');
 
     //con Observaciones  f02
@@ -547,7 +547,7 @@ Route::get('/logout', [LoginController::class, 'destroy'])
 
 
     //guardar observaciones f03
-    Route::match(['get','post','put'],'/guardar_observaciones_estancia_f03_admin/{id}/{idU}', [documentosEstancia2AdminController::class, 'guardarObservaciones_estancia_f03_admin'])
+    Route::match(['get','post','put'],'/guardar_observaciones_estancia2_f03_admin/{id}/{idU}', [documentosEstancia2AdminController::class, 'guardarObservaciones_estancia_f03_admin'])
     ->name('guardarObservaciones_estancia2_f03_admin.index');
 
     //con Observaciones  f03
@@ -575,7 +575,7 @@ Route::get('/logout', [LoginController::class, 'destroy'])
 
 
     //guardar observaciones f04
-    Route::match(['get','post','put'],'/guardar_observaciones_estancia_f04_admin/{id}/{idU}', [documentosEstancia2AdminController::class, 'guardarObservaciones_estancia_f04_admin'])
+    Route::match(['get','post','put'],'/guardar_observaciones_estancia2_f04_admin/{id}/{idU}', [documentosEstancia2AdminController::class, 'guardarObservaciones_estancia_f04_admin'])
     ->name('guardarObservaciones_estancia2_f04_admin.index');
 
     //con Observaciones  f04
@@ -603,7 +603,7 @@ Route::get('/logout', [LoginController::class, 'destroy'])
 
 
     //guardar observaciones f05
-    Route::match(['get','post','put'],'/guardar_observaciones_estancia_f05_admin/{id}/{idU}', [documentosEstancia2AdminController::class, 'guardarObservaciones_estancia_f05_admin'])
+    Route::match(['get','post','put'],'/guardar_observaciones_estancia2_f05_admin/{id}/{idU}', [documentosEstancia2AdminController::class, 'guardarObservaciones_estancia_f05_admin'])
     ->name('guardarObservaciones_estancia2_f05_admin.index');
 
     //con Observaciones  f05

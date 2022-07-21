@@ -188,7 +188,7 @@
                                                                     </form>	
                                                                 </div>
                                                                 <div class="col-12 p-1">
-                                                                    <form method="post" action="{{ route('conObservaciones_estancia_carga_horaria_admin.index') }}">
+                                                                    <form method="post" action="{{ route('conObservaciones_estancia_carga_horaria_admin2.index') }}">
                                                                         @csrf
                                                                         <input type="text" name="id_c" id="id_c" value="{{$respuestaH->id_c_horaria}}" class="id_d">
                 
