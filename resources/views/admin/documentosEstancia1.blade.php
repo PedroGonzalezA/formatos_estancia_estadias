@@ -329,7 +329,7 @@
                                                             </form>	
                                                         </div>
                                                         <div class="col-12 p-1">
-                                                            <form method="post" action="{{ route('observaciones_estancia1_constancia_derecho_admin.index',[$respuestaH->id_usuario]) }}">
+                                                            <form method="post" action="{{ route('observaciones_estancia1_constancia_derecho_admin.index',[$respuestaCD->id_usuario]) }}">
                                                                 @csrf
                                                                 <input type="text" name="id_c" id="id_c" value="{{$respuestaCD->id_c_derecho}}" class="id_d">
                                                                 <button type="submit" class="btn btn-danger btnObservaciones" > <i class="zmdi zmdi-alert-circle zmdi-hc-lg"></i> Observaciones</button>
