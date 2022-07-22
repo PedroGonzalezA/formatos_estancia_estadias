@@ -10,11 +10,13 @@
     @switch($status)
         @case(1)<!--Aceptado-->
         <h1>Estatus de tu documento</h1>
-        <p>Buen dia Alumno de la UPQROO te mandamos este correo para informarte que tu documento "{{$nameDoc}}"  fue aceptado</p>
+        <p>Estimado estudiante </p>
+        <p>Este documento "{{$nameDoc}}" fue aceptado</p>
             @break
         @case(2)<!--Obervaciones-->
-        <h1>Estatus de tu documento</h1>
-        <p>Buen dia Alumno de la UPQROO te mandamos este correo para informarte que tu documento "{{$nameDoc}}"  tiene ciertas errores, favor de revisar la pagina de <a href="ceduladeregistro.upqroo.edu.mx/">Estancias y Estadias</a></p>
+        <p>Favor de verificar que el documento "{{$nameDoc}}" que no corresponde al documento solicitado.</p>
+        <br>
+        <p>Entra a la página: <a href="ceduladeregistro.upqroo.edu.mx/">Estancias y Estadías</a></p>
             @break
         @default
             

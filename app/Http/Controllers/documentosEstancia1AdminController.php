@@ -654,7 +654,7 @@ class documentosEstancia1AdminController extends Controller
         ->where('id_procesos','1')
         ->get();
 
-        return view('nombres.paginas',['nombres'=>$nombres,'texto'=>$texto,'estatus'=>$estatus,'año'=>$año,'documentos'=>$users0,'documentos1'=>$datos,'documentos2'=>$datos1,'documentos3'=>$datos2,'documentos4'=>$datos3,'documentos5'=>$datos4,'alumnos'=>$alumnos]);
+        return view('nombres.Buscar_estancia1',['nombres'=>$nombres,'texto'=>$texto,'estatus'=>$estatus,'año'=>$año,'documentos'=>$users0,'documentos1'=>$datos,'documentos2'=>$datos1,'documentos3'=>$datos2,'documentos4'=>$datos3,'documentos5'=>$datos4,'alumnos'=>$alumnos]);
     }
 
     //buscar usuario lleno cedula de registro
