@@ -24,7 +24,7 @@ use App\Http\Controllers\FormulariosController;
 use App\Http\Controllers\InicioController;
 use App\Http\Controllers\PdfController;
 use App\Http\Controllers\ScrollController;
-use App\Http\Controllers\servicio_socialesController;
+use App\Http\Controllers\ServicioSocialesController;
 use App\Http\Controllers\UsuariosController;
 use App\Models\documentos;
 use App\Models\Formulario;
@@ -1393,9 +1393,167 @@ Route::get('/logout', [LoginController::class, 'destroy'])
 
 
 //------------------------servicio_sociales
-    Route::match(['post','get'],'/servicio_sociales', [servicio_socialesController::class, 'ver'])
+    Route::match(['post','get'],'/servicio_sociales1', [ServicioSocialesController::class, 'ver'])
     ->name('servicio_sociales.index')
     ->middleware('auth');
+
+     //enviar documento carga horaria con datos
+     Route::match(['post', 'delete','put'],'actualizar/carga_horaria5/{name}/{nombre}', [ServicioSocialesController::class, 'actualizar_carga_horaria_ServicioSocial'])
+     ->name('actualizar_carga_horaria_ServicioSocial.index');
+ 
+     //enviar documento carga horaria sin datos 
+     Route::match(['post', 'delete','put','get'],'subir/carga_horaria5/{name}/{nombre}', [ServicioSocialesController::class, 'subir_carga_horaria_ServicioSocial'])
+     ->name('subir_carga_horaria_ServicioSocial.index');
+ 
+ 
+     //cancelar solicitud documento carga horaria
+     Route::match(['post', 'delete','put'], '/carga_horaria/{id_d}/{nombre}',[PdfController::class,'cancelar_carga_horaria_Servicio'])
+     ->name('cancelar_carga_horaria_ServicioSocial.index');
+ 
+     //enviar documento constancia derecho con datos
+     Route::match(['post', 'delete','put'],'actualizar/constancia_derecho5/{name}/{nombre}', [ServicioSocialesController::class, 'actualizar_constancia_derecho_ServicioSocial'])
+     ->name('actualizar_constancia_derecho_ServicioSocial.index');
+ 
+     //enviar documento constancia derecho sin datos 
+     Route::match(['post', 'delete','put','get'],'subir/constancia_derecho5/{name}/{nombre}', [ServicioSocialesController::class, 'subir_constancia_derecho_ServicioSocial'])
+     ->name('subir_constancia_derecho_ServicioSocial.index');
+ 
+     //cancelar solicitud documento constancia derecho
+     Route::match(['post', 'delete','put'], '/constancia_derecho/{id_d}/{nombre}',[PdfController::class,'cancelar_constancia_derecho_Servicio'])
+     ->name('cancelar_constancia_derecho_ServicioSocial.index');
+     
+     //enviar documento carta responsiva con datos
+     Route::match(['post', 'delete','put'],'actualizar/carta_responsiva5/{name}/{nombre}', [ServicioSocialesController::class, 'actualizar_carta_responsiva_ServicioSocial'])
+     ->name('actualizar_carta_responsiva_ServicioSocial.index');
+ 
+     //enviar documento carta responsiva sin datos 
+     Route::match(['post', 'delete','put','get'],'subir/carta_responsiva5/{name}/{nombre}', [ServicioSocialesController::class, 'subir_carta_responsiva_ServicioSocial'])
+     ->name('subir_carta_responsiva_ServicioSocial.index');
+ 
+     //cancelar solicitud documento carta responsiva
+     Route::match(['post', 'delete','put'], '/carta_responsiva/{id_d}/{nombre}',[PdfController::class,'cancelar_carta_responsiva_Servicio'])
+     ->name('cancelar_carta_responsiva_ServicioSocial.index');
+ 
+     //descargar con datos f01
+     Route::get('/descarga_cd_servicio_f015', [DescargaController::class, 'descarga_carta_presentacion_ServicioSocial'])
+     ->name('descarga_cd_servicio_f01.index');
+ 
+      //enviar documento f01 con datos
+      Route::match(['post', 'delete','put'],'actualizar/f015/{name}/{nombre}', [ServicioSocialesController::class, 'actualizarF01_ServicioSocial'])
+      ->name('actualizar_f01_ServicioSocial.index');
+  
+      //enviar documento f01 sin datos 
+      Route::match(['post', 'delete','put','get'],'subir/f015/{name}/{nombre}', [ServicioSocialesController::class, 'subirF01_ServicioSocial'])
+      ->name('subir_f01_ServicioSocial.index');
+  
+      //cancelar solicitud documento f01
+      Route::match(['post', 'delete','put'], '/f015/{id_d}/{nombre}',[PdfController::class,'cancelarF01_Servicio'])
+      ->name('cancelar_f01_ServicioSocial.index');
+ 
+     //descargar con datos f02
+     Route::get('/descarga_cd_estancia_f025', [DescargaController::class, 'descarga_cd_f02_Servicio'])
+     ->name('descarga_cd_servicio_f02.index');
+ 
+     //enviar documento f02 con datos
+     Route::match(['post', 'delete','put'],'actualizar/f025/{name}/{nombre}', [ServicioSocialesController::class, 'actualizarF02_ServicioSocial'])
+     ->name('actualizar_f02_ServicioSocial.index');
+ 
+     //enviar documento f02 sin datos 
+     Route::match(['post', 'delete','put','get'],'subir/f025/{name}/{nombre}', [ServicioSocialesController::class, 'subirF02_ServicioSocial'])
+     ->name('subir_f02_ServicioSocial.index');
+ 
+     //cancelar solicitud documento f02
+     Route::match(['post', 'delete','put'], '/f025/{id_d}/{nombre}',[PdfController::class,'cancelarF02_Servicio'])
+     ->name('cancelar_f02_ServicioSocial.index');
+ 
+     //llenar f03
+     Route::get('/home/{id_proces}', [CedulaController::class, 'ver'])
+     ->name('home.index')
+     ->middleware('auth');
+     
+     Route::post('/home', [CedulaController::class, 'store'])
+         ->name('home.store');
+     
+     
+     //descargar sin datos f03
+     Route::get('/descarga_sd_servicio_f03', [DescargaController::class, 'descarga_sd_Servicio_f03'])
+     ->name('descarga_sd_servicio_f03.index');
+ 
+     //descargar con datos f03
+     Route::get('/descarga_cd_servicio_f03/{id_proces}', [PdfController::class, 'descarga_cd_Servicio_f03'])
+     ->name('descarga_cd_servicio_f03.index');
+ 
+     //eliminar f03 estancia
+     Route::match(['post', 'delete','put','get'],'/f03Servicio/{id_a}/{id_e}/{id_a_e}/{id_a_a}/{id_p}',[PdfController::class,'eliminarF03Servicio'])
+     ->name('eliminar_f03_servicio');
+ 
+     //enviar documento f03 con datos
+     Route::match(['post', 'delete','put'],'actualizar/f035/{name}/{nombre}', [ServicioSocialesController::class, 'actualizarF03_ServicioSocial'])
+     ->name('actualizar_f03_ServicioSocial.index');
+ 
+     //enviar documento f03 sin datos 
+     Route::match(['post', 'delete','put','get'],'subir/f035/{name}/{nombre}', [ServicioSocialesController::class, 'subirF03_ServicioSocial'])
+     ->name('subir_f03_ServicioSocial.index');
+ 
+     //cancelar solicitud documento f03
+     Route::match(['post', 'delete','put'], '/f0355/{id_d}/{nombre}',[PdfController::class,'cancelarF03_Servicio'])
+     ->name('cancelar_f03_ServicioSocial.index');
+     
+ 
+     //llenar datos f04
+     Route::get('/usuario_estancia/f04-definicion_de_proyecto', [definicionController::class, 'ver'])
+     ->name('f04Formulario.index')
+     ->middleware('auth');
+ 
+     //guardar f04
+     Route::post('/usuario/f04-definicion_de_proyecto1', [definicion_proyectoController::class, 'store'])
+     ->name('f04Guardar1.index');
+ 
+     //eliminar f04
+     Route::match(['post', 'delete','put','get'],'/f04/{id_a}/{id_a_e}/{id_p}/{id_d}',[PdfController::class,'eliminarF04_Servicio'])
+     ->name('eliminar_f04.index');
+ 
+     //descargar f04 con datos
+     Route::get('/descarga_cd_Servicio_f04/{id_proces}', [PdfController::class, 'descarga_cd_Servicio_f04'])
+     ->name('descarga_cd_Servicio_f04.index');
+ 
+     //enviar documento f04 con datos
+     Route::match(['post', 'delete','put'],'actualizar/f045/{name}/{nombre}', [ServicioSocialesController::class, 'actualizarF04_ServicioSocial'])
+     ->name('actualizar_f04_ServicioSocial.index');
+ 
+     //enviar documento f04 sin datos 
+     Route::match(['post', 'delete','put','get'],'subir/f045/{name}/{nombre}', [ServicioSocialesController::class, 'subirF04_ServicioSocial'])
+     ->name('subir_f04_ServicioSocial.index');
+ 
+     //cancelar solicitud documento f04
+     Route::match(['post', 'delete','put'], '/f04_Servicio/{id_d}/{nombre}',[PdfController::class,'cancelarF04_Servicio'])
+     ->name('cancelar_f04_ServicioSocial.index');
+ 
+     //descargar f05 con datos
+     Route::get('/descarga_cd_Servicio_f05', [PdfController::class, 'descarga_cd_Servicio_f05'])
+     ->name('descarga_cd_Servicio_f05.index');
+ 
+     //enviar documento f05 con datos
+     Route::match(['post', 'delete','put'],'actualizar/f055/{name}/{nombre}', [ServicioSocialesController::class, 'actualizarF05_ServicioSocial'])
+     ->name('actualizar_f05_ServicioSoocial.index');
+    
+     //enviar documento f05 sin datos 
+     Route::match(['post', 'delete','put','get'],'subir/f055/{name}/{nombre}', [ServicioSocialesController::class, 'subirF05_ServicoSocial'])
+     ->name('subir_f05_ServicioSocial.index');
+ 
+     //cancelar solicitud documento f05
+     Route::match(['post', 'delete','put'], '/f05/{id_d}/{nombre}',[PdfController::class,'cancelarF05_Servicio'])
+     ->name('cancelar_f05_ServicoSocial.index');
+ 
+     //reporte evaluacion
+     //Descarga
+     Route::match(['post', 'delete','put','get'],'descarga/reporte_evaluaciona_estancia', [DescargaController::class, 'descarga_reporte_estancia'])
+     ->name('descarga_reporte_evaluacion_estancia.index');
+ 
+ 
+     //Descarga
+     Route::match(['post', 'delete','put','get'],'descarga/carta_responsiva_estancia', [DescargaController::class, 'descarga_carta_responsiva_servicio'])
+     ->name('descarga_carta_responsiva_Servicio.index');
 
 //------------fallos
     Route::match(['post','get'],'/errores', [falloController::class, 'ver'])
@@ -1534,5 +1692,46 @@ Route::get('/logout', [LoginController::class, 'destroy'])
 
     //Ver Observaciones  f05 del admin vista usuario
     Route::match(['post','get'],'/observaciones2_f05', [Estancia2Controller::class, 'verObservaciones2_f05'])
+    ->name('obsevaciones2_f05.index')
+    ->middleware('auth');
+
+//--------- observaciones servicio social ---------
+    //Ver Observaciones  Carga horaria del admin vista usuario
+    Route::match(['post','get'],'/observacionesS_carga_horaria', [ServicioSocialesController::class, 'verObservacionesS_carga_horaria'])
+    ->name('observaciones_carga_horaria_ServicioSocial.index')
+    ->middleware('auth');
+
+    //Ver Observaciones Constancia derecho del admin vista usuario
+    Route::match(['post','get'],'/observacionesS_constancia_derecho', [ServicioSocialesController::class, 'verObservacionesS_constancia_derecho'])
+    ->name('obsevacionesS_constancia_derecho.index')
+    ->middleware('auth');
+    
+     //Ver Observaciones Carta responsiva del admin vista usuario
+     Route::match(['post','get'],'/observacionesS_carta_responsiva', [ServicioSocialesController::class, 'verObservacionesS_carta_responsiva'])
+     ->name('obsevacionesS_carta_responsiva.index')
+     ->middleware('auth');
+ 
+    //Ver Observaciones  f01 del admin vista usuario
+    Route::match(['post','get'],'/observacionesS_f02', [ServicioSocialesController::class, 'verObservacionesS_f02'])
+    ->name('obsevacionesS_f02.index')
+    ->middleware('auth');
+
+    //Ver Observaciones  f02 del admin vista usuario
+    Route::match(['post','get'],'/observacionesS_f01', [ServicioSocialesController::class, 'verObservacionesS_f01'])
+    ->name('obsevacionesS_f01.index')
+    ->middleware('auth');
+     
+    //Ver Observaciones  f03 del admin vista usuario
+    Route::match(['post','get'],'/observacionesS_f03', [ServicioSocialesController::class, 'verObservacionesS_f03'])
+    ->name('obsevacionesS_f03.index')
+    ->middleware('auth');
+
+    //Ver Observaciones  f04 del admin vista usuario
+    Route::match(['post','get'],'/observacionesS_f04', [ServicioSocialesController::class, 'verObservacionesS_f04'])
+    ->name('obsevacionesS_f04.index')
+    ->middleware('auth');
+
+    //Ver Observaciones  f05 del admin vista usuario
+    Route::match(['post','get'],'/observaciones2_f05', [ServicioSocialesController::class, 'verObservacionesS_f05'])
     ->name('obsevaciones2_f05.index')
     ->middleware('auth');

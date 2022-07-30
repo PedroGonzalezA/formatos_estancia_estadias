@@ -136,7 +136,7 @@
 							<a href="#!"><i class="zmdi zmdi-male-alt  zmdi-hc-5x"></i></a>
 						</div>
 						<div class="col-6 registro">
-							<p class="registroCount">{{ $servicio_social }}</p>
+							<p class="registroCount">{{ $servicio_sociales }}</p>
 							<small>Registrados</small>
 						</div>
 					</div>
