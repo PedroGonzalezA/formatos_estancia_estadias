@@ -723,7 +723,7 @@
                                                             
                                                     @endswitch
                                                     <div class="col-6 p-1">
-                                                        <form method="post" action="{{ route('ver_cd_estancia_f03_admin.index',[$respuestaCR->id_usuario,$respuestaCR->id_c_registro, $respuestaCR->nombre_c_r]) }}">
+                                                        <form method="post" action="{{ route('ver_cd_estancia_f03_admin.index',[$respuestaCR->nombre_c_r]) }}">
                                                             @csrf
                                                             <button type="submit" class="btn btn-primary btnVer" > <i class="zmdi zmdi-eye zmdi-hc-lg"></i> Ver</button>
                                                         </form>	
