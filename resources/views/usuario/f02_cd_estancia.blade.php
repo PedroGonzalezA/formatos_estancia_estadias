@@ -135,7 +135,7 @@
            </p>
            <div class="Parrafo">
                 Por medio de la presente hacemos constar que el alumno <b>[ NOMBRE DEL ALUMNO ]</b>, del Programa Educativo
-                <b>[ NOMBRE DEL PROGRAMA EDUCATIVO ]</b> ha sido aceptado en esta empresa para la realización de su programa y proyecto de Estancia denominado:    
+                <b>[ NOMBRE DEL PROGRAMA EDUCATIVO ]</b> ha sido aceptado en esta empresa para la realización de su programa y proyecto de "{{$proceso[1]}}" denominado:    
             </div>
             <br>
             <div class="nombreP">

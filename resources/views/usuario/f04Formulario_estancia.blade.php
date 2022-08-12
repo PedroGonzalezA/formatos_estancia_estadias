@@ -18,7 +18,7 @@
         <!-- Wrap the content of your PDF inside a main tag -->
             <div class="container">
                 <div class="col-6">
-                    <a href="{{ route('estancia1.index') }}" class="btn "  ><i class="zmdi zmdi-arrow-left"></i></a>
+                    <a href="{{ route('estancia1.index',[$proceso[0]]) }}" class="btn "  ><i class="zmdi zmdi-arrow-left"></i></a>
                 </div>
                 <p class="text-center p-0 m-0"><b>Universidad Politécnica de Quintana Roo</b><br>Dirección de Vinculación, Difusión y Extensión Universitaria</p>
                 @forelse ($datos['cedula'] as $dato)                            
@@ -31,9 +31,9 @@
                                         <div>
                                             <div class="titulo text-center">  DEFINICIÓN DEL PROYECTO</div>
                                             <div class="subT text-center">
-                                                <small>[ Estancia ]</small> 
+                                                <small>[ {{$proceso[1]}}]</small> 
                                                 <select class="form-control text-center " name="id_proceso" id="" required>
-                                                    <option value="1">Estancia 1</option>
+                                                    <option value="{{$proceso[0]}}">{{$proceso[1]}}</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -1034,10 +1034,9 @@
                                         <div>
                                             <div class="titulo text-center">  DEFINICIÓN DEL PROYECTO</div>
                                             <div class="subT text-center">
-                                                <small>[ Estancia ]</small> 
+                                                <small>[ {{$proceso[1]}}]</small> 
                                                 <select class="form-control text-center " name="id_proceso" id="" required>
-                                                    <option value="1">Estancia 1</option>
-                                                    <option value="2">Estancia 2</option>
+                                                    <option value="{{$proceso[0]}}">{{$proceso[1]}}</option>
                                                 </select>
                                             </div>
                                         </div>

@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Observaciones</title>
 
-   
+
     <link rel="stylesheet" href="css/menu.css">
 	<link rel="stylesheet" href="css/formato.css">
 
@@ -33,11 +33,11 @@
 			</div>
 		</div>
         <div class="container">
-				<form action="{{ route('guardarObservaciones_estancia_carga_horaria_admin.index',[$datos['id_c'], $datos['idU']]) }}" method="post" enctype="multipart/form-data" >
+				<form action="{{ route('guardarObservaciones_documento.index',[$datos['id_c'], $datos['idU'],$datos['#proces'],$datos['#doc']]) }}" method="post" enctype="multipart/form-data" >
                     @csrf
                     <div class="row">
                         <div class="col-12 p-0">
-                                <a href="{{ route('documentoEstancia1Admin.index') }}" class="btn "  ><i class="zmdi zmdi-arrow-left"></i></a>
+                                <a href="{{ route('documentoEstancia1Admin.index',[$datos['#proces']]) }}" class="btn "  ><i class="zmdi zmdi-arrow-left"></i></a>
                         </div>
                         <div class="col-12 p-1">
                             <textarea class="form-control" id="observaciones" rows="3" name="observaciones"></textarea>
@@ -47,11 +47,11 @@
                         </div>
                     </div>
                 </form>											
-          
+
         </div>
-    
+
     </section>
-    
+
 	<!--====== Scripts -->
 	<script src="./js/jquery-3.1.1.min.js"></script>
 	<script src="./js/sweetalert2.min.js"></script>
@@ -71,4 +71,4 @@
 		display: none;
 		width:10px;
 	}
-</style>
+</style> 

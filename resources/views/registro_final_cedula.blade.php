@@ -52,7 +52,17 @@
                         @break
 
                         @case(3)
-                            <a href="{{ route('descarga_cd_estadia_f03.index',[3]) }}">
+                            <a href="{{ route('descarga_cd_estancia_f03.index',[3]) }}">
+                                <button type="button" class="btn btn-outline-info btnDes"><i class="zmdi zmdi-download"> Descargar</i></button>
+                            </a>
+                        @break
+                        @case(4)
+                            <a href="{{ route('descarga_cd_estancia_f03.index',[4]) }}">
+                                <button type="button" class="btn btn-outline-info btnDes"><i class="zmdi zmdi-download"> Descargar</i></button>
+                            </a>
+                        @break
+                        @case(5)
+                            <a href="{{ route('descarga_cd_estancia_f03.index',[5]) }}">
                                 <button type="button" class="btn btn-outline-info btnDes"><i class="zmdi zmdi-download"> Descargar</i></button>
                             </a>
                         @break
@@ -76,13 +86,13 @@
 	</section>
 	
 	<!--====== Scripts -->
-	<script src="./js/jquery-3.1.1.min.js"></script>
-	<script src="./js/sweetalert2.min.js"></script>
-	<script src="./js/bootstrap.min.js"></script>
-	<script src="./js/material.min.js"></script>
-	<script src="./js/ripples.min.js"></script>
-	<script src="./js/jquery.mCustomScrollbar.concat.min.js"></script>
-	<script src="./js/main.js"></script>
+	<script src="../js/jquery-3.1.1.min.js"></script>
+	<script src="../js/sweetalert2.min.js"></script>
+	<script src="../js/bootstrap.min.js"></script>
+	<script src="../js/material.min.js"></script>
+	<script src="../js/ripples.min.js"></script>
+	<script src="../js/jquery.mCustomScrollbar.concat.min.js"></script>
+	<script src="../js/main.js"></script>
 	
 	<script>
 		$.material.init();

@@ -122,7 +122,7 @@
                                         <p class="cabecera">CARTA DE LIBERACIÓN<br>FAVOR DE REALIZAR ESTA CARTA<br>EN UNA HOJA MEMBRETADA DE LA EMPRESA</p>
                                     </div>
                                     <div class="text-center">
-                                        <p class="cabecera"><b>CARTA DE LIBERACIÓN DE ESTANCIA</b></p>
+                                        <p class="cabecera"><b>CARTA DE LIBERACIÓN DE {{$proceso[1]}}</b></p>
                                     </div>
                             </td>
                         </tr>

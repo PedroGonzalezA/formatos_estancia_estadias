@@ -40,19 +40,19 @@
                         <a href="{{ route('usuarios.index') }}"></i> Alumnos</a>
                     </li>
                     <li>
-                        <a href="{{ route('documentoEstancia1Admin.index') }}"></i> Documentos Estancias I</a>
+                        <a href="{{ route('documentoEstancia1Admin.index',[1]) }}"></i> Documentos Estancias I</a>
                     </li>
                     <li>
-                        <a href="{{ route('documentoEstancia2Admin.index') }}"></i> Documentos Estancias II</a> <!---separador de estancia 1 y 2 ------>
+                        <a href="{{ route('documentoEstancia1Admin.index',[2]) }}"></i> Documentos Estancias II</a> <!---separador de estancia 1 y 2 ------>
                     </li>
                     <li>
-                        <a href="{{ route('documentoEstadiaAdmin.index') }}"></i> Documentos Estadías</a>
+                        <a href="{{ route('documentoEstancia1Admin.index',[3]) }}"></i> Documentos Estadías</a>
                     </li>
                     <li>
-                        <a href="{{ route('documentoEstadiaNacionalAdmin.index') }}"></i> Documentos Estadías nacional</a>
+                        <a href="{{ route('documentoEstancia1Admin.index',[4]) }}"></i> Documentos Estadías nacional</a>
                     </li>
                     <li>
-                        <a href="{{ route('documentoServicioSocialAdmin.index') }}"></i> Documentos Servicio social</a>
+                        <a href="{{ route('documentoEstancia1Admin.index',[5]) }}"></i> Documentos Servicio social</a>
                     </li>
                 </ul>
                 <li>
