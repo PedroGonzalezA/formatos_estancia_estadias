@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
 use Exception;
 
-class carga_horaria extends Model
+class reporte_mensual extends Model
 {
     use HasFactory;
     protected $table = 'reporte_mensual';

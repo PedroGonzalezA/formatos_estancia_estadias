@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
 use Exception;
 
-class carga_horaria extends Model
+class carta_compromiso extends Model
 {
     use HasFactory;
     protected $table = 'carta_compromiso';

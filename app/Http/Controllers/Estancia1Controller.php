@@ -10,6 +10,8 @@ use App\Models\carta_responsiva;
 use App\Models\cedula_registro;
 use App\Models\constancia_derecho;
 use App\Models\definicion_proyecto;
+use App\Models\carta_compromiso;
+use App\Models\reporte_mensual;
 use App\Models\documentos;
 use App\Models\respuesta_doc;
 use Illuminate\Support\Facades\DB;
@@ -206,7 +208,7 @@ class Estancia1Controller extends Controller
 
         $carta_co =['carta_compromiso'=> $carta_compromiso];
         $reporte_m =['reporte_mensual'=> $reporte_mensual];
-        $datos14 = Arr::collapse([$carta_compromiso,$reporte_mensual]);
+        $datos14 = Arr::collapse([$carta_co,$reporte_m]);
 
         return view('estancia1',['datos'=>$datos,'definicionP'=>$datos1,
         'documentos'=>$datos2,'etapas'=>$datos3,'carta_aceptacion'=>$datos4,
@@ -264,12 +266,12 @@ class Estancia1Controller extends Controller
                     $response = carta_liberacion::requestInsertcartaL($data5);
                     break;
                 case '9':
-                    $datos14 = array('nombre_c_c' => $nombreAF,'estado_c_c'=> 1);
-                    $response = carta_compromiso::requestInsertcartaC($datos14);
+                    $data5 = array('nombre_c_c' => $nombreAF,'estado_c_c'=> 1);
+                    $response = carta_compromiso::requestInsertcargaC($data5);
                     break;
                 case '10':
-                    $datos14 = array('nombre_r_m' => $nombreAF,'estado_r_p'=> 1);
-                    $response = reporte_mensual::requestInsertcartarp($datos14);
+                    $data5 = array('nombre_r_m' => $nombreAF,'estado_r_p'=> 1);
+                    $response = reporte_mensual::requestInsertcartarp($data5);
                     break;    
                 default:
                     # code...
@@ -295,7 +297,7 @@ class Estancia1Controller extends Controller
                 );
             }
             $NcolBD=['id_c_horaria','id_c_derecho','id_c_responsiva','id_c_presentacion',
-            'id_c_aceptacion','id_c_registro','id_d_proyecto','id_c_liberacion'];
+            'id_c_aceptacion','id_c_registro','id_d_proyecto','id_c_liberacion','id_c_compromiso','id_r_mensual'];
         
             //controlador de estatus
             if ($date='01' | $date='02' | $date='03' | $date='04' ){
@@ -366,7 +368,7 @@ class Estancia1Controller extends Controller
     //actualizar documento carga horaria
     public function actualizar_carga_horaria_estancia1(Request $request, $name,$proces,$idDoc){//*funcional
         //!Al subir un documento se actualiza el registro de la tabla documentos
-        $Ndoc=['carga_horaria','constancia_derecho','carta_responsiva','f01','f02','f03','f04','f05'];
+        $Ndoc=['carga_horaria','constancia_derecho','carta_responsiva','f01','f02','f03','f04','f05','carta_compromiso','reporte_mensual'];
         $request->validate([
             $Ndoc[$idDoc-1]=> "required|mimetypes:application/pdf|max:30000"
         ]);
@@ -412,6 +414,14 @@ class Estancia1Controller extends Controller
                     $data5 = array('nombre_c_l'   => $nombreAF,'estado_c_l'=> 1);
                     $response = carta_liberacion::requestInsertcartaL($data5);
                     break;
+                case '9':
+                    $data5 = array('nombre_c_c'   =>$nombreAF,'estado_c_c'=> 1);
+                    $response = carta_compromiso::requestInsertcargaC($data5);
+                    break;
+                case '10':
+                    $data5 = array('nombre_r_m'   =>$nombreAF,'estado_r_m' =>1);
+                    $response = reporte_mensual::requestInsertcargarp($data5);
+                    break;   
                 default:
                     # code...
                 break;
@@ -455,6 +465,10 @@ class Estancia1Controller extends Controller
                     break;
                 case 8:$carta->id_c_liberacion=$response['id'];
                     break;
+                case 9:$carta->id_c_compromiso=$response['id'];
+                    break;
+                case 10:$carta->id_r_mensual=$response['id'];
+                    break;
                 default:
                     # code...
                     break;
@@ -489,9 +503,9 @@ class Estancia1Controller extends Controller
     //ver observaciones del documento
     public function verObservaciones1_carga_horaria($proces,$idDoc,$id){//*funcional
         $Ntab=['carga_horaria','constancia_derecho','carta_responsiva','carta_presentacion','carta_aceptacion',
-        'cedula_registro','definicion_proyecto','carta_liberacion'];
+        'cedula_registro','definicion_proyecto','carta_liberacion','carta_compromiso','reporte_mensual'];
         $Ncol=['observaciones_c_h','observaciones_c_d','observaciones_c_r','observaciones_c_p','observaciones',
-        'observaciones_c_r','observaciones_d_p','observaciones_c_l'];
+        'observaciones_c_r','observaciones_d_p','observaciones_c_l','observaciones_c_c','observaciones_r_m'];
         $observ=DB::table($Ntab[$idDoc-1])
         ->select($Ncol[$idDoc-1].' as observacion')
         ->where('id',$id)

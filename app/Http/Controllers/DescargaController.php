@@ -55,11 +55,11 @@ class DescargaController extends Controller
     }
     function descarga_carta_compromiso(){//*unicamente para la carta compromiso de servicio social
       $path=public_path('archivos/CARTA COMPROMISO DE SERVICIO SOCIAL.docx');
-      return respónse()->download($path);
+      return response()->download($path);
     }
 
     function descarga_reporte_mensual(){//*unicamente para el reporte mensual de servicio social
       $path=public_path('archivos/REPORTE MENSUAL DE ACTIVIDADES (TF03).docx');
-      return respónse()->download($path);
+      return response()->download($path);
     }
 }

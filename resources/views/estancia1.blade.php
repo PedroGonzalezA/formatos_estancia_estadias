@@ -1302,7 +1302,7 @@
 														<input type="text" class="id_d" value="{{$datoD->id_documentos}}" name="id_docs">
 														<span class="btn  fileinput-button">
 															<i class="zmdi zmdi-file"></i>
-															<input type="file" class="archivo" name="F09">
+															<input type="file" class="archivo" name="carta_compromiso">
 														</span>
 														<button type="submit" class="btn btn-outline-info btnSubir">Enviar</button>
 												</form>
@@ -1317,14 +1317,14 @@
 										@csrf
 										<span class="btn  fileinput-button">
 											<i class="zmdi zmdi-file"></i>
-											<input type="file" class="archivo" name="f09">
+											<input type="file" class="archivo" name="carta_compromiso">
 										</span>
 										<button type="submit" class="btn btn-outline-info btnSubir">Enviar</button>
 									</form>
 								@endforelse			
 							</div>	
 							<!--error f05-->			
-							@error('f09')
+							@error('carta_compromiso')
 								<p class="border border-danger rounded-md bg-red-200 w-full text-red-600 p-2 my-2">{{ $message }}</p>
 							@enderror													
 										
@@ -1429,7 +1429,7 @@
 														<input type="text" class="id_d" value="{{$datoD->id_documentos}}" name="id_docs">
 														<span class="btn  fileinput-button">
 															<i class="zmdi zmdi-file"></i>
-															<input type="file" class="archivo" name="f10">
+															<input type="file" class="archivo" name="reporte_mensual">
 														</span>
 														<button type="submit" class="btn btn-outline-info btnSubir">Enviar</button>
 												</form>
@@ -1444,14 +1444,14 @@
 										@csrf
 										<span class="btn  fileinput-button">
 											<i class="zmdi zmdi-file"></i>
-											<input type="file" class="archivo" name="f10">
+											<input type="file" class="archivo" name="reporte_mensual">
 										</span>
 										<button type="submit" class="btn btn-outline-info btnSubir">Enviar</button>
 									</form>
 								@endforelse			
 							</div>	
 							<!--error f05-->			
-							@error('f10')
+							@error('reporte_mensual')
 								<p class="border border-danger rounded-md bg-red-200 w-full text-red-600 p-2 my-2">{{ $message }}</p>
 							@enderror													
 										

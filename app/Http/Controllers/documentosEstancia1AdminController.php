@@ -10,6 +10,8 @@ use App\Models\carta_responsiva;
 use App\Models\cedula_registro;
 use App\Models\constancia_derecho;
 use App\Models\definicion_proyecto;
+use App\Models\carta_compromiso;
+use App\Models\reporte_mensual;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Arr;
@@ -114,11 +116,31 @@ class documentosEstancia1AdminController extends Controller
         ->where('documentos.id_proceso',$proces)
 
         ->get();
-        //array 5
+
         $c_d   = ['constancia_derecho' => $doc_constancia_derecho];
         $c_res   = ['carta_responsiva' => $doc_carta_responsiva];
         $datos4 = Arr::collapse([$c_d,$c_res]);
-        return view('admin.documentosEstancia1',['documentos'=>$datos,'documentos1'=>$datos1,'documentos2'=>$datos2,'documentos3'=>$datos3,'documentos4'=>$datos4,'proceso'=>$var]);
+        //datos carta compromiso
+        $doc_carta_compromiso=DB::table('users')
+        ->join('respuesta_doc','users.id','=','respuesta_doc.id_usuario')
+        ->join('documentos','documentos.id','=','respuesta_doc.id_documentos')
+        ->join('carta_compromiso','documentos.id_c_compromiso','=','carta_compromiso.id')
+        ->where('documentos.id_proceso',$proces)
+        ->get();
+
+        //datos reporte mensual
+        $doc_reporte_mensual=DB::table('users')
+        ->join('respuesta_doc','users.id','=','respuesta_doc.id_usuario')
+        ->join('documentos','documentos.id','=','respuesta_doc.id_documentos')
+        ->join('reporte_mensual','documentos.id_r_mensual','=','reporte_mensual.id')
+        ->where('documentos.id_proceso',$proces)
+        ->get();
+
+        //array 5
+        $r_m   = ['reporte_mensual' => $doc_reporte_mensual];
+        $c_com   = ['carta_compromiso' => $doc_carta_compromiso];
+        $datos5 = Arr::collapse([$c_com,$r_m]);
+        return view('admin.documentosEstancia1',['documentos'=>$datos,'documentos1'=>$datos1,'documentos2'=>$datos2,'documentos3'=>$datos3,'documentos4'=>$datos4,'proceso'=>$var,'documentos5'=>$datos5]);
     }
     public function ver_cd_estancia_f03($id,$name){//#
         $users = DB::table('users')
@@ -162,7 +184,7 @@ class documentosEstancia1AdminController extends Controller
         $name=['Carga Horaria','Constancia de Derecho',
         'Carta Responsiva','Carta de Presentación',
         'Carta de Aceptacion','Cedula de Registro',
-        'Definicion de Proyecto','Carta de Liberacion'];
+        'Definicion de Proyecto','Carta de Liberacion','Carta Compromiso','Reporte Mensual'];
         switch ($doc) {
             case 1:$carta=carga_horaria::find($id);
             $carta->estado_c_h=2;
@@ -188,6 +210,11 @@ class documentosEstancia1AdminController extends Controller
             case 8:$carta=carta_liberacion::find($id);
             $carta->estado_c_l=2;
                 break;
+            case 9:$carta=carta_compromiso::find($id);
+            $carta->estado_c_c=2;
+                break;
+            case 10:$carta=reporte_mensual::find($id);
+                break;
             default:
                 # code...
                 break;
@@ -201,7 +228,7 @@ class documentosEstancia1AdminController extends Controller
         $name=['Carga Horaria','Constancia de Derecho',
         'Carta Responsiva','Carta de Presentación',
         'Carta de Aceptacion','Cedula de Registro',
-        'Definicion de Proyecto','Carta de Liberacion'];
+        'Definicion de Proyecto','Carta de Liberacion','Carta Compromiso','Reporte Mensual'];
         switch ($doc) {
             case 1:$carta=carga_horaria::find($id);
             $carta->estado_c_h=1;
@@ -226,6 +253,12 @@ class documentosEstancia1AdminController extends Controller
                 break;
             case 8:$carta=carta_liberacion::find($id);
             $carta->estado_c_l=1;
+                break;
+            case 9:$carta=carta_compromiso::find($id);
+            $carta->estado_c_c=1;
+                break;
+            case 10:$carta=reporte_mensual::find($id);
+            $carta->estado_r_m=1;
                 break;
             default:
                 # code...
@@ -262,6 +295,10 @@ class documentosEstancia1AdminController extends Controller
                 break;
             case 8:$carta=carta_liberacion::find($id_c);
                 break;
+            case 9:$carta=carta_compromiso::find($id_c);
+                break;
+            case 10:$carta=reporte_mensual::find($id_C);
+                break;
             default:
                 # code...
                 break;
@@ -274,7 +311,7 @@ class documentosEstancia1AdminController extends Controller
         $name=['Carga Horaria','Constancia de Derecho',
         'Carta Responsiva','Carta de Presentación',
         'Carta de Aceptacion','Cedula de Registro',
-        'Definicion de Proyecto','Carta de Liberacion'];
+        'Definicion de Proyecto','Carta de Liberacion','Carta Compromiso','Reporte Mensual'];
         switch ($doc) {
             case 1:$carta=carga_horaria::find($id);
             $carta->estado_c_h=0;
@@ -307,6 +344,14 @@ class documentosEstancia1AdminController extends Controller
             case 8:$carta=carta_liberacion::find($id);
             $carta->estado_c_l=0;
             $carta->observaciones_c_l=$observacion;
+                break;
+            case 9:$carta=carta_compromiso::find($id);
+            $carta->estado_c_c=0;
+            $carta->observaciones_c_c=$observacion;
+                break;
+            case 10:$carta=reporte_mensual::find($id);
+            $carta->estado_r_m=0;
+            $carta->observaciones_r_m=$observacion;
                 break;
             default:
                 # code...
@@ -424,13 +469,31 @@ class documentosEstancia1AdminController extends Controller
         $c_res   = ['carta_responsiva' => $doc_carta_responsiva];
         $datos4 = Arr::collapse([$c_d,$c_res]);
 
+        $doc_carta_compromiso=DB::table('users')
+        ->join('respuesta_doc','users.id','=','respuesta_doc.id_usuario')
+        ->join('documentos','documentos.id','=','respuesta_doc.id_documentos')
+        ->join('carta_compromiso','documentos.id_c_compromiso','=','carta_compromiso.id')
+        ->where('documentos.id_proceso',$proces)
+        ->get();
+
+        $doc_reporte_mensual=DB::table('users')
+        ->join('respuesta_doc','users.id','=','respuesta_doc.id_usuario')
+        ->join('documentos','documentos.id','=','respuesta_doc.id_documentos')
+        ->join('reporte_mensual','documentos.id_r_mensual','=','reporte_mensual.id')
+        ->where('documentos.id_proceso',$proces)
+        ->get(); 
+        
+        $r_m   = ['reporte_mensual' => $doc_reporte_mensual];
+        $c_com   = ['carta_compromiso' => $doc_carta_compromiso];
+        $datos6 = Arr::collapse([$c_com,$r_m]);        
+
         $alumnos = DB::table('alumno')
         ->where('id_procesos',$proces)
         ->get();
 
         return view('nombres.Buscar_estancia1',['nombres'=>$nombres,'texto'=>$texto,'estatus'=>$estatus,'año'=>$año,
         'documentos'=>$users0,'documentos1'=>$datos,'documentos2'=>$datos1,'documentos3'=>$datos2,
-        'documentos4'=>$datos3,'documentos5'=>$datos4,'alumnos'=>$alumnos,'proceso'=>$var]);
+        'documentos4'=>$datos3,'documentos5'=>$datos4,'alumnos'=>$alumnos,'proceso'=>$var,'documentos6'=>$datos6]);
     }
 
     //buscar usuario lleno cedula de registro
