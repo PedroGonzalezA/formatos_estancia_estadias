@@ -1231,7 +1231,7 @@
 																		<!--Observaciones-->
 																		<div class="row">
 																			<div class="col-12 col-sm-9">
-																				<form class="btn-cancelarF5-system" action="{{ route('cancelar_doc.index',[$proceso[0],$datoCc->id_documentos,$datoCC->id,9]) }}" method="POST" enctype="multipart/form-data">
+																				<form class="btn-cancelarF5-system" action="{{ route('cancelar_doc.index',[$proceso[0],$datoCC->id_documentos,$datoCC->id,9]) }}" method="POST" enctype="multipart/form-data">
 																					@csrf
 																					<div class="row">
 																						<div class="col-12 col-sm-9 id_d" >
@@ -1365,7 +1365,7 @@
 																							<input type="text" name="ubiD" id="" value="{{$datoRP->nombre_r_m}}" class="nombreDoc"style=''>
 																						</div>
 																						<div class="col-12 col-sm-9 py-1" >
-																							<input type="text" value="{{$datoRP->nombre_c_m}}" class="nombreDoc" disabled>
+																							<input type="text" value="{{$datoRP->nombre_r_m}}" class="nombreDoc" disabled>
 																						</div>
 																						<div class="col-12 col-sm-3 py-1">
 																							<button type="submit" class="btn btn-outline-danger btnCancelar" >Cancelar</button>

@@ -297,7 +297,7 @@ class documentosEstancia1AdminController extends Controller
                 break;
             case 9:$carta=carta_compromiso::find($id_c);
                 break;
-            case 10:$carta=reporte_mensual::find($id_C);
+            case 10:$carta=reporte_mensual::find($id_c);
                 break;
             default:
                 # code...
@@ -369,9 +369,6 @@ class documentosEstancia1AdminController extends Controller
         $año     =trim($request->get('año'));
 
         $users0 = DB::table('users')
-        ->join('respuesta', 'users.id', '=', 'respuesta.id_usuario')
-        ->join('formulario', 'respuesta.id_formulario', '=', 'formulario.id')
-        ->join('alumno', 'formulario.id_alumno', '=', 'alumno.id')
         ->where('users.name','LIKE','%'.$texto.'%')
         ->orWhere('users.email','LIKE','%'.$texto.'%')
         ->get();
@@ -394,7 +391,7 @@ class documentosEstancia1AdminController extends Controller
         $documentos=DB::table('users')
         ->join('respuesta_doc','users.id','=','respuesta_doc.id_usuario')
         ->join('documentos','documentos.id','=','respuesta_doc.id_documentos')
-        ->where('documentos.id_proceso','1')
+        ->where('documentos.id_proceso',$proces)
         ->where('documentos.estatus','LIKE','%'.$estatus.'%')
         ->where('documentos.updated_at','LIKE','%'.$año.'%')
         ->get();

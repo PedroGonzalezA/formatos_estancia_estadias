@@ -91,7 +91,7 @@
       
        @forelse ($documentos as $doc)
             @forelse($documentos1['documentos'] as $respuestaD)
-                @if ($doc->name==$respuestaD->name && $doc->id_procesos==$proceso[0])
+                @if ($doc->name==$respuestaD->name)
                     <div class="row p-4 ">
                         <div class="col-12 ">
                             <div class="row documentosUsuario">
@@ -1022,8 +1022,9 @@
                                         
                                     @endforelse             
                                 @endif
+                             @if ($proceso[0]==5)
                                 <!--carta compromiso-->
-                                @if ($respuestaD->id_c_horaria)
+                                @if ($respuestaD->id_c_compromiso)
                                     @forelse ($documentos6['carta_compromiso'] as $respuestaA)
                                         @if ($respuestaA->name==$respuestaD->name)
                                             <div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-3 doc" >
@@ -1134,7 +1135,7 @@
                                     @endforelse    
                                 @endif
                                 <!--Reporte Mensual-->
-                                @if ($respuestaD->id_r_m)
+                                @if ($respuestaD->id_r_mensual)
                                     @forelse ($documentos6['reporte_mensual'] as $respuestaA)
                                         @if ($respuestaA->name==$respuestaD->name)
                                             <div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-3 doc" >
@@ -1244,6 +1245,7 @@
                                         
                                     @endforelse    
                                 @endif
+                             @endif
                             </div>  
                         </div>
                     </div>

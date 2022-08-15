@@ -58,6 +58,10 @@
 									@break
 									@case(8)<input type="text" name="observaciones" value="{{$dato->observaciones_c_l}}" class="observaciones" >
 									@break
+									@case(9)<input type="text" name="observaciones" value="{{$dato->observaciones_c_c}}" class="observaciones" >
+									@break
+									@case(10)<input type="text" name="observaciones" value="{{$dato->observaciones_r_m}}" class="observaciones" >
+									@break
 									@default
 								@endswitch
 							</div>
