@@ -1068,7 +1068,7 @@
                                                             </form>	
                                                         </div>
                                                         <div class="col-12 p-1">
-                                                            <form method="post" action="{{ route('pendiente_documento.index',[$respuestaA->id_usuario,$respuestaH->id_c_compromiso,$proceso[0],9]) }}">
+                                                            <form method="post" action="{{ route('pendiente_documento.index',[$respuestaA->id_usuario,$respuestaA->id_c_compromiso,$proceso[0],9]) }}">
                                                                 @csrf
                                                                 <button type="submit" class="btn btn-warning btnPendiente" >Pendiente</button>
                                                             </form>	

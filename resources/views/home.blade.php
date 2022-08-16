@@ -123,6 +123,12 @@
                             @case(3)
                                 <option value="3">Estadía</option>
                                 @break
+                            @case(4)
+                                <option value="4">Estadia Nacional </option>
+                                @break
+                            @case(5)
+                                <option value="5">Servicio Social</option>
+                                @break
                             @default   
                         @endswitch                        
                     </select>
