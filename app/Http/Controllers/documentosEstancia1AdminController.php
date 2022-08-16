@@ -10,6 +10,8 @@ use App\Models\carta_responsiva;
 use App\Models\cedula_registro;
 use App\Models\constancia_derecho;
 use App\Models\definicion_proyecto;
+use App\Models\carta_compromiso;
+use App\Models\reporte_mensual;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Arr;
@@ -18,20 +20,27 @@ use Illuminate\Support\Facades\Auth;
 
 class documentosEstancia1AdminController extends Controller
 {
-    public function ver(){
+    public function ver($proces){
+        $name=['Estancia I','Estancia II','Estadia','Estadias Nacionales','Servicio Social'];
+        //!cambiar este numero si se quiere agregar un nuevo proceso y tambien agregar el nombre en $name
+        if($proces>0 && $proces<=5){//comprueba si el numero es de algun proceso del 1...5
+            //$NmProces=$name[$proces-1];
+            $var=[$proces,$name[$proces-1]];//guarda el numero y nombre del proceso
+        }else return redirect('admin');
+        
         //datos usuarios
         $users = DB::table('users')
         ->join('respuesta', 'users.id', '=', 'respuesta.id_usuario')
         ->join('formulario', 'respuesta.id_formulario', '=', 'formulario.id')
         ->join('alumno', 'formulario.id_alumno', '=', 'alumno.id')
         ->join('carreras', 'alumno.id_carrera', '=', 'carreras.id_carrera')
-        ->where('alumno.id_procesos',1)
+        ->where('alumno.id_procesos',$proces)
         ->get();
         //datos de documentos
         $documentos=DB::table('users')
         ->join('respuesta_doc','users.id','=','respuesta_doc.id_usuario')
         ->join('documentos','documentos.id','=','respuesta_doc.id_documentos')
-        ->where('documentos.id_proceso','1')
+        ->where('documentos.id_proceso',$proces)
         ->get();
         //array 1
         $users   = ['usuarios' => $users];
@@ -43,14 +52,14 @@ class documentosEstancia1AdminController extends Controller
         ->join('respuesta_doc','users.id','=','respuesta_doc.id_usuario')
         ->join('documentos','documentos.id','=','respuesta_doc.id_documentos')
         ->join('carta_aceptacion','documentos.id_c_aceptacion','=','carta_aceptacion.id')
-        ->where('documentos.id_proceso','1')
+        ->where('documentos.id_proceso',$proces)
         ->get();
         //datos f04
         $doc_f04=DB::table('users')
         ->join('respuesta_doc','users.id','=','respuesta_doc.id_usuario')
         ->join('documentos','documentos.id','=','respuesta_doc.id_documentos')
         ->join('definicion_proyecto','documentos.id_d_proyecto','=','definicion_proyecto.id')
-        ->where('documentos.id_proceso','1')
+        ->where('documentos.id_proceso',$proces)
         ->get();
         //array 2
         $c_a   = ['carta_aceptacion' => $doc_f02];
@@ -61,14 +70,14 @@ class documentosEstancia1AdminController extends Controller
         ->join('respuesta_doc','users.id','=','respuesta_doc.id_usuario')
         ->join('documentos','documentos.id','=','respuesta_doc.id_documentos')
         ->join('cedula_registro','documentos.id_c_registro','=','cedula_registro.id')
-        ->where('documentos.id_proceso','1')
+        ->where('documentos.id_proceso',$proces)
         ->get();
         //datos f05
         $doc_f05=DB::table('users')
         ->join('respuesta_doc','users.id','=','respuesta_doc.id_usuario')
         ->join('documentos','documentos.id','=','respuesta_doc.id_documentos')
         ->join('carta_liberacion','documentos.id_c_liberacion','=','carta_liberacion.id')
-        ->where('documentos.id_proceso','1')
+        ->where('documentos.id_proceso',$proces)
         ->get();
         //array 3
         $c_l   = ['carta_liberacion' => $doc_f05];
@@ -79,14 +88,14 @@ class documentosEstancia1AdminController extends Controller
         ->join('respuesta_doc','users.id','=','respuesta_doc.id_usuario')
         ->join('documentos','documentos.id','=','respuesta_doc.id_documentos')
         ->join('carta_presentacion','documentos.id_c_presentacion','=','carta_presentacion.id')
-        ->where('documentos.id_proceso','1')
+        ->where('documentos.id_proceso',$proces)
         ->get();
         //datos carga horaria
         $doc_carga_horaria=DB::table('users')
         ->join('respuesta_doc','users.id','=','respuesta_doc.id_usuario')
         ->join('documentos','documentos.id','=','respuesta_doc.id_documentos')
         ->join('carga_horaria','documentos.id_c_horaria','=','carga_horaria.id')
-        ->where('documentos.id_proceso','1')
+        ->where('documentos.id_proceso',$proces)
         ->get();
         //array 4
         $c_p   = ['carta_presentacion' => $doc_carta_presentacion];
@@ -97,24 +106,43 @@ class documentosEstancia1AdminController extends Controller
         ->join('respuesta_doc','users.id','=','respuesta_doc.id_usuario')
         ->join('documentos','documentos.id','=','respuesta_doc.id_documentos')
         ->join('constancia_derecho','documentos.id_c_derecho','=','constancia_derecho.id')
-        ->where('documentos.id_proceso','1')
+        ->where('documentos.id_proceso',$proces)
         ->get();
         //datos carta responsiva
         $doc_carta_responsiva=DB::table('users')
         ->join('respuesta_doc','users.id','=','respuesta_doc.id_usuario')
         ->join('documentos','documentos.id','=','respuesta_doc.id_documentos')
         ->join('carta_responsiva','documentos.id_c_responsiva','=','carta_responsiva.id')
-        ->where('documentos.id_proceso','1')
+        ->where('documentos.id_proceso',$proces)
 
         ->get();
-        //array 5
+
         $c_d   = ['constancia_derecho' => $doc_constancia_derecho];
         $c_res   = ['carta_responsiva' => $doc_carta_responsiva];
         $datos4 = Arr::collapse([$c_d,$c_res]);
-        return view('admin.documentosEstancia1',['documentos'=>$datos,'documentos1'=>$datos1,'documentos2'=>$datos2,'documentos3'=>$datos3,'documentos4'=>$datos4]);
-    }
+        //datos carta compromiso
+        $doc_carta_compromiso=DB::table('users')
+        ->join('respuesta_doc','users.id','=','respuesta_doc.id_usuario')
+        ->join('documentos','documentos.id','=','respuesta_doc.id_documentos')
+        ->join('carta_compromiso','documentos.id_c_compromiso','=','carta_compromiso.id')
+        ->where('documentos.id_proceso',$proces)
+        ->get();
 
-    public function ver_cd_estancia_f03($id,$name){
+        //datos reporte mensual
+        $doc_reporte_mensual=DB::table('users')
+        ->join('respuesta_doc','users.id','=','respuesta_doc.id_usuario')
+        ->join('documentos','documentos.id','=','respuesta_doc.id_documentos')
+        ->join('reporte_mensual','documentos.id_r_mensual','=','reporte_mensual.id')
+        ->where('documentos.id_proceso',$proces)
+        ->get();
+
+        //array 5
+        $r_m   = ['reporte_mensual' => $doc_reporte_mensual];
+        $c_com   = ['carta_compromiso' => $doc_carta_compromiso];
+        $datos5 = Arr::collapse([$c_com,$r_m]);
+        return view('admin.documentosEstancia1',['documentos'=>$datos,'documentos1'=>$datos1,'documentos2'=>$datos2,'documentos3'=>$datos3,'documentos4'=>$datos4,'proceso'=>$var,'documentos5'=>$datos5]);
+    }
+    public function ver_cd_estancia_f03($id,$name){//#
         $users = DB::table('users')
         ->join('respuesta', 'users.id', '=', 'respuesta.id_usuario')
         ->join('formulario', 'respuesta.id_formulario', '=', 'formulario.id')
@@ -142,412 +170,200 @@ class documentosEstancia1AdminController extends Controller
         $datos = Arr::collapse([$users,$docs]);
         return  view('admin.f03_cd_estancia',['documentos'=>$datos,]);
     }
-    //carga_horaria
-    public function ver_cd_estancia_carga_horaria_admin($name) {
+    //ver documento
+    public function ver_documento($name,$proces){//*funcion optimizada 
         $nombre='/documentos/'.$name;
         $nombreD= public_path($nombre);
         $resp=file_exists($nombreD);
         if($resp==true){
             return response()->file($nombreD);
-        }else
-        {
-            return redirect('estancia1_Documentos')->with('sinRespuesta',' Carga horaria no ha sido encontrado');
+        }else return redirect('estancia1_Documentos/'.$proces)->with('sinRespuesta',' Carga horaria no ha sido encontrado');        
+    }
+    //aceptar documentos->envia correo
+    public function aceptar_documento($idU,$id,$proces,$doc) {//*funcion optimizada
+        $name=['Carga Horaria','Constancia de Derecho',
+        'Carta Responsiva','Carta de Presentación',
+        'Carta de Aceptacion','Cedula de Registro',
+        'Definicion de Proyecto','Carta de Liberacion','Carta Compromiso','Reporte Mensual'];
+        switch ($doc) {
+            case 1:$carta=carga_horaria::find($id);
+            $carta->estado_c_h=2;
+                break;
+            case 2:$carta=constancia_derecho::find($id);
+            $carta->estado_c_d=2;
+                break;
+            case 3:$carta=carta_responsiva::find($id);
+            $carta->estado_c_r=2;
+                break;
+            case 4:$carta=carta_presentacion::find($id);
+            $carta->estado_c_p=2;
+                break;
+            case 5:$carta=carta_aceptacion::find($id);
+            $carta->estado=2;
+                break;
+            case 6:$carta=cedula_registro::find($id);
+            $carta->estado_c_r=2;
+                break;
+            case 7:$carta=definicion_proyecto::find($id);
+            $carta->estado_d_p=2;
+                break;
+            case 8:$carta=carta_liberacion::find($id);
+            $carta->estado_c_l=2;
+                break;
+            case 9:$carta=carta_compromiso::find($id);
+            $carta->estado_c_c=2;
+                break;
+            case 10:$carta=reporte_mensual::find($id);
+                break;
+            default:
+                # code...
+                break;
         }
-    }
-    //aceptar carga horaria->envia correo
-    public function aceptar_estancia1_carga_horaria_admin($idU,$id,$name) {
-        $carta=carga_horaria::find($id);
-        $carta->estado_c_h=2;
         $carta->save();
-        $resp='Carga horaria Aceptada y '.CorreoController::store($idU, "Carga Horaria",1);
-         return redirect('estancia1_Documentos')->with('aceptado',$resp);
+        $resp=$name[$doc-1].' Aceptada y '.CorreoController::store($idU, $name[$doc-1],1);
+         return redirect('estancia1_Documentos/'.$proces)->with('aceptado',$resp);
     }
-    //pendiente carga horaria
-    public function pendiente_estancia1_carga_horaria_admin($idU,$id,$name) {
-        $carta=carga_horaria::find($id);
-        $carta->estado_c_h=1;
+    //documento pendiente->no manda correo
+    public function pendiente_documento($idU,$id,$proces,$doc) {//*funcion optimizada
+        $name=['Carga Horaria','Constancia de Derecho',
+        'Carta Responsiva','Carta de Presentación',
+        'Carta de Aceptacion','Cedula de Registro',
+        'Definicion de Proyecto','Carta de Liberacion','Carta Compromiso','Reporte Mensual'];
+        switch ($doc) {
+            case 1:$carta=carga_horaria::find($id);
+            $carta->estado_c_h=1;
+                break;
+            case 2:$carta=constancia_derecho::find($id);
+            $carta->estado_c_d=1;
+                break;
+            case 3:$carta=carta_responsiva::find($id);
+            $carta->estado_c_r=1;
+                break;
+            case 4:$carta=carta_presentacion::find($id);
+            $carta->estado_c_p=1;
+                break;
+            case 5:$carta=carta_aceptacion::find($id);
+            $carta->estado=1;
+                break;
+            case 6:$carta=cedula_registro::find($id);
+            $carta->estado_c_r=1;
+                break;
+            case 7:$carta=definicion_proyecto::find($id);
+            $carta->estado_d_p=1;
+                break;
+            case 8:$carta=carta_liberacion::find($id);
+            $carta->estado_c_l=1;
+                break;
+            case 9:$carta=carta_compromiso::find($id);
+            $carta->estado_c_c=1;
+                break;
+            case 10:$carta=reporte_mensual::find($id);
+            $carta->estado_r_m=1;
+                break;
+            default:
+                # code...
+                break;
+        }
         $carta->save();
-         return redirect('estancia1_Documentos')->with('pendiente','Carga horaria Pendiente');
+         return redirect('estancia1_Documentos/'.$proces)->with('pendiente',$name[$doc-1].' Pendiente');
     }
     //vista observaciones carga horaria
-    public function observaciones_estancia_carga_horaria_admin(Request $request, $idU) {
-        $id_c   = ['id_c'=>$request->input('id_c'), 'idU'=>$idU];//manda datos a la vista para despues pasarlo a correo
-        
+    public function observaciones_documento(Request $request, $idU,$proces,$doc) {//*funcion optimizada
+        $id_c   = ['id_c'=>$request->input('id_c'), 'idU'=>$idU,'#proces'=>$proces,'#doc'=>$doc];//manda datos a la vista para despues pasarlo a correo
         $datos = Arr::collapse([$id_c]);
         return view('admin.observaciones_estancia_carga_horaria',['datos'=>$datos]);
     }
     //vista observaciones con observaciones carga horaria
-    public function conObservaciones_estancia_carga_horaria_admin(Request $request) {
+    public function conObservaciones_documento_admin(Request $request,$proces,$doc) {//*funcion optimizada
         $id_c   = [ $request->input('id_c')];
-        $id_c_r   = ['id_c'=>$request->input('id_c')];
+        $id_c_r   = ['id_c'=>$request->input('id_c'),'#proces'=>$proces,'#doc'=>$doc];
         $datos = Arr::collapse([$id_c_r]);
-        $cedula=carga_horaria::find($id_c);
-        return view('admin.conObservaciones_estancia_carga_horaria',['datos'=>$cedula,'id'=>$datos]);
+        switch ($doc) {
+            case 1:$carta=carga_horaria::find($id_c);
+                break;
+            case 2:$carta=constancia_derecho::find($id_c);
+                break;
+            case 3:$carta=carta_responsiva::find($id_c);
+                break;
+            case 4:$carta=carta_presentacion::find($id_c);
+                break;
+            case 5:$carta=carta_aceptacion::find($id_c);
+                break;
+            case 6:$carta=cedula_registro::find($id_c);
+                break;
+            case 7:$carta=definicion_proyecto::find($id_c);
+                break;
+            case 8:$carta=carta_liberacion::find($id_c);
+                break;
+            case 9:$carta=carta_compromiso::find($id_c);
+                break;
+            case 10:$carta=reporte_mensual::find($id_c);
+                break;
+            default:
+                # code...
+                break;
+        }
+        return view('admin.conObservaciones_estancia_carga_horaria',['datos'=>$carta,'id'=>$datos]);
     }
     //guardar carga horaria->manda correo
-    public function  guardarObservaciones_estancia_carga_horaria_admin(Request $request,$id, $idU){
+    public function  guardarObservaciones_documento_admin(Request $request,$id, $idU,$proces,$doc){//*funcion optimizada
         $observacion= $request->input('observaciones');
-        $carta=carga_horaria::find($id);
-        $carta->estado_c_h=0;
-        $carta->observaciones_c_h=$observacion;
-        $carta->save();
-        $resp='Carga horaria Con Observacion y '.CorreoController::store($idU, 'Carga Horaria',2 );
-        return redirect('estancia1_Documentos')->with('observaciones',$resp);
-    }
-    
-    //constancia_derecho
-    public function ver_cd_estancia_constancia_derecho_admin($name) {
-        $nombre='/documentos/'.$name;
-        $nombreD= public_path($nombre);
-        $resp=file_exists($nombreD);
-        if($resp==true){
-            return response()->file($nombreD);
-        }else
-        {
-            return redirect('estancia1_Documentos')->with('sinRespuesta',' Constancia derecho no ha sido encontrado');
+        $name=['Carga Horaria','Constancia de Derecho',
+        'Carta Responsiva','Carta de Presentación',
+        'Carta de Aceptacion','Cedula de Registro',
+        'Definicion de Proyecto','Carta de Liberacion','Carta Compromiso','Reporte Mensual'];
+        switch ($doc) {
+            case 1:$carta=carga_horaria::find($id);
+            $carta->estado_c_h=0;
+            $carta->observaciones_c_h=$observacion;
+                break;
+            case 2:$carta=constancia_derecho::find($id);
+            $carta->estado_c_d=0;
+            $carta->observaciones_c_d=$observacion;
+                break;
+            case 3:$carta=carta_responsiva::find($id);
+            $carta->estado_c_r=0;
+            $carta->observaciones_c_r=$observacion;
+                break;
+            case 4:$carta=carta_presentacion::find($id);
+            $carta->estado_c_p=0;
+            $carta->observaciones_c_p=$observacion;
+                break;
+            case 5:$carta=carta_aceptacion::find($id);
+            $carta->estado=0;
+            $carta->observaciones=$observacion;
+                break;
+            case 6:$carta=cedula_registro::find($id);
+            $carta->estado_c_r=0;
+            $carta->observaciones_c_r=$observacion;
+                break;
+            case 7:$carta=definicion_proyecto::find($id);
+            $carta->estado_d_p=0;
+            $carta->observaciones_d_p=$observacion;
+                break;
+            case 8:$carta=carta_liberacion::find($id);
+            $carta->estado_c_l=0;
+            $carta->observaciones_c_l=$observacion;
+                break;
+            case 9:$carta=carta_compromiso::find($id);
+            $carta->estado_c_c=0;
+            $carta->observaciones_c_c=$observacion;
+                break;
+            case 10:$carta=reporte_mensual::find($id);
+            $carta->estado_r_m=0;
+            $carta->observaciones_r_m=$observacion;
+                break;
+            default:
+                # code...
+                break;
         }
-    }
-
-    public function aceptar_estancia1_constancia_derecho_admin($idU,$id,$name) {
-        $carta=constancia_derecho::find($id);
-        $carta->estado_c_d=2;
         $carta->save();
-        $resp='Constancia de Derecho Aceptada y '.CorreoController::store($idU, "Constancia de Derecho",1);
-         return redirect('estancia1_Documentos')->with('aceptado',$resp);
+        $resp=$name[$doc-1].' con Observación y '.CorreoController::store($idU, $name[$doc-1],2);
+         return redirect('estancia1_Documentos/'.$proces)->with('aceptado',$resp);
     }
-    
-    public function pendiente_estancia1_constancia_derecho_admin($idU,$id,$name) {
-        $carta=constancia_derecho::find($id);
-        $carta->estado_c_d=1;
-        $carta->save();
-         return redirect('estancia1_Documentos')->with('pendiente','Constancia derecho Pendiente');
-    }
-    public function conObservaciones_estancia_constancia_derecho_admin(Request $request) {
-        $id_c   = [ $request->input('id_c')];
-        $id_c_r   = ['id_c'=>$request->input('id_c')];
-        $datos = Arr::collapse([$id_c_r]);
-        $cedula=constancia_derecho::find($id_c);
-        return view('admin.conObservaciones_estancia_constancia_derecho',['datos'=>$cedula,'id'=>$datos]);
-    }
-    public function observaciones_estancia_constancia_derecho_admin(Request $request, $idU) {
-        $id_c   = ['id_c'=>$request->input('id_c'), 'idU'=>$idU];
-        
-        $datos = Arr::collapse([$id_c]);
-        return view('admin.observaciones_estancia_constancia_derecho',['datos'=>$datos]);
-    }
-
-    public function  guardarObservaciones_estancia_constancia_derecho_admin(Request $request,$id, $idU){
-        $observacion= $request->input('observaciones');
-        $carta=constancia_derecho::find($id);
-        $carta->estado_c_d=0;
-        $carta->observaciones_c_d=$observacion;
-        $carta->save();
-        $resp='Constancia de Derecho con observacion y '.CorreoController::store($idU, "Constancia de Derecho",2);
-        return redirect('estancia1_Documentos')->with('observaciones',$resp);
-    }
-
-    //carta_responsiva
-    public function ver_cd_estancia_carta_responsiva_admin($name) {
-        $nombre='/documentos/'.$name;
-        $nombreD= public_path($nombre);
-        $resp=file_exists($nombreD);
-        if($resp==true){
-            return response()->file($nombreD);
-        }else
-        {
-            return redirect('estancia1_Documentos')->with('sinRespuesta',' Carta responsiva no ha sido encontrado');
-        }
-    }
-
-    public function aceptar_estancia1_carta_responsiva_admin($idU,$id,$name) {
-        $carta=carta_responsiva::find($id);
-        $carta->estado_c_r=2;
-        $carta->save();
-        $resp='Carta Resposiva Aceptada y '.CorreoController::store($idU, "Carta Resposiva",1);
-         return redirect('estancia1_Documentos')->with('aceptado',$resp);
-    }
-    
-    public function pendiente_estancia1_carta_responsiva_admin($idU,$id,$name) {
-        $carta=carta_responsiva::find($id);
-        $carta->estado_c_r=1;
-        $carta->save();
-         return redirect('estancia1_Documentos')->with('pendiente','Carta responsiva Pendiente');
-    }
-    public function conObservaciones_estancia_carta_responsiva_admin(Request $request) {
-        $id_c   = [ $request->input('id_c')];
-        $id_c_r   = ['id_c'=>$request->input('id_c')];
-        $datos = Arr::collapse([$id_c_r]);
-        $cedula=carta_responsiva::find($id_c);
-        return view('admin.conObservaciones_estancia_carta_responsiva',['datos'=>$cedula,'id'=>$datos]);
-    }
-    public function observaciones_estancia_carta_responsiva_admin(Request $request,$idU) {
-        $id_c   = ['id_c'=>$request->input('id_c'), 'idU'=>$idU];
-        
-        $datos = Arr::collapse([$id_c]);
-        return view('admin.observaciones_estancia_carta_responsiva',['datos'=>$datos]);
-    }
-
-    public function  guardarObservaciones_estancia_carta_responsiva_admin(Request $request,$id, $idU){
-        $observacion= $request->input('observaciones');
-        $carta=carta_responsiva::find($id);
-        $carta->estado_c_r=0;
-        $carta->observaciones_c_r=$observacion;
-        $carta->save();
-        $resp='Carta responsiva con observacion y '.CorreoController::store($idU, "Carta resposiva",2);
-        return redirect('estancia1_Documentos')->with('observaciones',$resp);
-    }
-
-     //f01
-     public function ver_cd_estancia_f01_admin($name) {
-        $nombre='/documentos/'.$name;
-        $nombreD= public_path($nombre);
-        $resp=file_exists($nombreD);
-        if($resp==true){
-            return response()->file($nombreD);
-        }else
-        {
-            return redirect('estancia1_Documentos')->with('sinRespuesta',' F-01 Carta Presentación no ha sido encontrado');
-        }
-    }
-
-    public function aceptar_estancia1_f01_admin($idU,$id,$name) {
-        $carta=carta_presentacion::find($id);
-        $carta->estado_c_p=2;
-        $carta->save();
-        $resp='Carta de presentacion Aceptada y '.CorreoController::store($idU, "Carta de presentacion",1);
-         return redirect('estancia1_Documentos')->with('aceptado',$resp);
-    }
-    
-    public function pendiente_estancia1_f01_admin($idU,$id,$name) {
-        $carta=carta_presentacion::find($id);
-        $carta->estado_c_p=1;
-        $carta->save();
-         return redirect('estancia1_Documentos')->with('pendiente','F-01 Pendiente');
-    }
-    public function conObservaciones_estancia_f01_admin(Request $request) {
-        $id_c   = [ $request->input('id_c')];
-        $id_c_r   = ['id_c'=>$request->input('id_c')];
-        $datos = Arr::collapse([$id_c_r]);
-        $cedula=carta_presentacion::find($id_c);
-        return view('admin.conObservaciones_estancia_f01',['datos'=>$cedula,'id'=>$datos]);
-    }
-    public function observaciones_estancia_f01_admin(Request $request, $idU) {
-        $id_c   = ['id_c'=>$request->input('id_c'), 'idU'=>$idU];
-        
-        $datos = Arr::collapse([$id_c]);
-        return view('admin.observaciones_estancia_f01',['datos'=>$datos]);
-    }
-
-    public function  guardarObservaciones_estancia_f01_admin(Request $request,$id, $idU){
-        $observacion= $request->input('observaciones');
-        $carta=carta_presentacion::find($id);
-        $carta->estado_c_p=0;
-        $carta->observaciones_c_p=$observacion;
-        $carta->save();
-        $resp='Carta de presentación con observacion y '.CorreoController::store($idU, "Carta de presentación",2);
-        return redirect('estancia1_Documentos')->with('observaciones',$resp);
-    }
-
-    //f02
-    public function ver_cd_estancia_f02_admin($name) {
-        $nombre='/documentos/'.$name;
-        $nombreD= public_path($nombre);
-        $resp=file_exists($nombreD);
-        if($resp==true){
-            return response()->file($nombreD);
-        }else
-        {
-            return redirect('estancia1_Documentos')->with('sinRespuesta',' F-02 Carta de Aceptación no ha sido encontrado');
-        }
-    }
-
-    public function aceptar_estancia1_f02_admin($idU,$id,$name) {
-        $carta=carta_aceptacion::find($id);
-        $carta->estado=2;
-        $carta->save();
-        $resp='Carta de aceptación Aceptada y '.CorreoController::store($idU, "Carta de aceptación",1);
-         return redirect('estancia1_Documentos')->with('success',$resp);
-    }
-    public function pendiente_estancia1_f02_admin($idU,$id,$name) {
-        $carta=carta_aceptacion::find($id);
-        $carta->estado=1;
-        $carta->save();
-         return redirect('estancia1_Documentos')->with('success','F-02 Pendiente');
-    }
-    public function conObservaciones_estancia_f02_admin(Request $request) {
-        $id_c   = [ $request->input('id_c')];
-        $id_c_r   = ['id_c'=>$request->input('id_c')];
-        $datos = Arr::collapse([$id_c_r]);
-        $cedula=carta_aceptacion::find($id_c);
-        return view('admin.conObservaciones_estancia_f02',['datos'=>$cedula,'id'=>$datos]);
-    }
-    public function observaciones_estancia_f02_admin(Request $request, $idU) {
-        $id_c   = ['id_c'=>$request->input('id_c'), 'idU'=>$idU];
-        
-        $datos = Arr::collapse([$id_c]);
-        return view('admin.observaciones_estancia_f02',['datos'=>$datos]);
-    }
-
-    public function  guardarObservaciones_estancia_f02_admin(Request $request,$id, $idU){
-        $observacion= $request->input('observaciones');
-        $carta=carta_aceptacion::find($id);
-        $carta->estado=0;
-        $carta->observaciones=$observacion;
-        $carta->save();
-        $resp='Carta de aceptación con observacion y '.CorreoController::store($idU, "Carta de aceptación",2);
-        return redirect('estancia1_Documentos')->with('observaciones',$resp);
-    }
-    //f03
-    public function ver_cd_estancia_f03_admin($name) {
-        $nombre='/documentos/'.$name;
-        $nombreD= public_path($nombre);
-        $resp=file_exists($nombreD);
-        if($resp==true){
-            return response()->file($nombreD);
-        }else
-        {
-            return redirect('estancia1_Documentos')->with('sinRespuesta',' F-03 Cédula Registro no ha sido encontrado');
-        }
-    }
-
-    public function aceptar_estancia1_f03_admin($idU,$id,$name) {
-        $carta=cedula_registro::find($id);
-        $carta->estado_c_r=2;
-        $carta->save();
-        $resp='Cedula de Resgistro Aceptada y '.CorreoController::store($idU, "Cedula de Registro",1);
-         return redirect('estancia1_Documentos')->with('success',$resp);
-    }
-    public function pendiente_estancia1_f03_admin($idU,$id,$name) {
-        $carta=cedula_registro::find($id);
-        $carta->estado_c_r=1;
-        $carta->save();
-         return redirect('estancia1_Documentos')->with('success','F-03 Pendiente');
-    }
-    public function conObservaciones_estancia_f03_admin(Request $request) {
-        $id_c   = [ $request->input('id_c')];
-        $id_c_r   = ['id_c'=>$request->input('id_c')];
-        $datos = Arr::collapse([$id_c_r]);
-        $cedula=cedula_registro::find($id_c);
-        return view('admin.conObservaciones_estancia',['datos'=>$cedula,'id'=>$datos]);
-    }
-    public function observaciones_estancia_f03_admin(Request $request,$idU) {
-        $id_c   = ['id_c'=>$request->input('id_c'), 'idU'=>$idU];
-        
-        $datos = Arr::collapse([$id_c]);
-        return view('admin.observaciones_estancia',['datos'=>$datos]);
-    }
-
-    public function  guardarObservaciones_estancia_f03_admin(Request $request,$id,$idU){
-        $observacion= $request->input('observaciones');
-        $carta=cedula_registro::find($id);
-        $carta->estado_c_r=0;
-        $carta->observaciones_c_r=$observacion;
-        $carta->save();
-        $resp='Cedula de registro con observacion y '.CorreoController::store($idU, "Cedula de registro",2);
-        return redirect('estancia1_Documentos')->with('observaciones',$resp);
-    }
-    //f04
-    public function ver_cd_estancia_f04_admin($name) {
-        $nombre='/documentos/'.$name;
-        $nombreD= public_path($nombre);
-        $resp=file_exists($nombreD);
-        if($resp==true){
-            return response()->file($nombreD);
-        }else
-        {
-            return redirect('estancia1_Documentos')->with('sinRespuesta',' F-04 Definición de proyecto no ha sido encontrado');
-        }
-    }
-
-    public function aceptar_estancia1_f04_admin($idU,$id,$name) {
-        $carta=definicion_proyecto::find($id);
-        $carta->estado_d_p=2;
-        $carta->save();
-        $resp='Definición de proyecto Aceptada y '.CorreoController::store($idU, "Definición de proyecto",1);
-         return redirect('estancia1_Documentos')->with('success',$resp);
-    }
-    public function pendiente_estancia1_f04_admin($idU,$id,$name) {
-        $carta=definicion_proyecto::find($id);
-        $carta->estado_d_p=1;
-        $carta->save();
-         return redirect('estancia1_Documentos')->with('success','F-04 Pendiente');
-    }
-    public function conObservaciones_estancia_f04_admin(Request $request) {
-        $id_c   = [ $request->input('id_c')];
-        $id_c_r   = ['id_c'=>$request->input('id_c')];
-        $datos = Arr::collapse([$id_c_r]);
-        $cedula=definicion_proyecto::find($id_c);
-        return view('admin.conObservaciones_estancia_f04',['datos'=>$cedula,'id'=>$datos]);
-    }
-    public function observaciones_estancia_f04_admin(Request $request, $idU) {
-        $id_c   = ['id_c'=>$request->input('id_c'), 'idU'=>$idU];
-        
-        $datos = Arr::collapse([$id_c]);
-        return view('admin.observaciones_estancia_f04',['datos'=>$datos]);
-    }
-
-    public function  guardarObservaciones_estancia_f04_admin(Request $request,$id, $idU){
-        $observacion= $request->input('observaciones');
-        $carta=definicion_proyecto::find($id);
-        $carta->estado_d_p=0;
-        $carta->observaciones_d_p=$observacion;
-        $carta->save();
-        $resp='Definicion de proyecto con observacion y '.CorreoController::store($idU, "Definición de proyecto",2);
-        return redirect('estancia1_Documentos')->with('observaciones',$resp);
-    }
-
-    //f05
-    public function ver_cd_estancia_f05_admin($name) {
-        $nombre='/documentos/'.$name;
-        $nombreD= public_path($nombre);
-        $resp=file_exists($nombreD);
-        if($resp==true){
-            return response()->file($nombreD);
-        }else
-        {
-            return redirect('estancia1_Documentos')->with('sinRespuesta',' F-05 Carta de Liberación no ha sido encontrado');
-        }
-    }
-
-    public function aceptar_estancia1_f05_admin($idU,$id,$name) {
-        $carta=carta_liberacion::find($id);
-        $carta->estado_c_l=2;
-        $carta->save();
-        $resp='Carta de Liberación Aceptada y '.CorreoController::store($idU, "Carta de liberación",1);
-         return redirect('estancia1_Documentos')->with('success',$resp);
-    }
-    public function pendiente_estancia1_f05_admin($idU,$id,$name) {
-        $carta=carta_liberacion::find($id);
-        $carta->estado_c_l=1;
-        $carta->save();
-         return redirect('estancia1_Documentos')->with('success','F-05 Pendiente');
-    }
-    public function conObservaciones_estancia_f05_admin(Request $request) {
-        $id_c   = [ $request->input('id_c')];
-        $id_c_r   = ['id_c'=>$request->input('id_c')];
-        $datos = Arr::collapse([$id_c_r]);
-        $cedula=carta_liberacion::find($id_c);
-        return view('admin.conObservaciones_estancia_f05',['datos'=>$cedula,'id'=>$datos]);
-    }
-    public function observaciones_estancia_f05_admin(Request $request, $idU) {
-        $id_c   = ['id_c'=>$request->input('id_c'), 'idU'=>$idU];
-        
-        $datos = Arr::collapse([$id_c]);
-        return view('admin.observaciones_estancia_f05',['datos'=>$datos]);
-    }
-
-    public function  guardarObservaciones_estancia_f05_admin(Request $request,$id, $idU){
-        $observacion= $request->input('observaciones');
-        $carta=carta_liberacion::find($id);
-        $carta->estado_c_l=0;
-        $carta->observaciones_c_l=$observacion;
-        $carta->save();
-        $resp='Carta de liberación con observacion y '.CorreoController::store($idU, "Carta de liberación",2);
-        return redirect('estancia1_Documentos')->with('observaciones',$resp);
-    }
-
     //buscar datos de usuario
-    public function buscador_estancia1(Request $request){        
+    public function buscador_estancia1(Request $request,$proces,$name){//*optimizado
+        $var=[$proces,$name];  
         $texto   =trim($request->get('texto'));
         $estatus =trim($request->get('estatus'));
         $año     =trim($request->get('año'));
@@ -561,7 +377,7 @@ class documentosEstancia1AdminController extends Controller
         ->join('respuesta_doc','users.id','=','respuesta_doc.id_usuario')
         ->join('documentos','documentos.id','=','respuesta_doc.id_documentos')
         ->join('cedula_registro','documentos.id_c_registro','=','cedula_registro.id')
-        ->where('documentos.id_proceso',1)
+        ->where('documentos.id_proceso',$proces)
         ->get();
 
         $users = DB::table('users')
@@ -569,13 +385,13 @@ class documentosEstancia1AdminController extends Controller
         ->join('formulario', 'respuesta.id_formulario', '=', 'formulario.id')
         ->join('alumno', 'formulario.id_alumno', '=', 'alumno.id')
         ->join('carreras', 'alumno.id_carrera', '=', 'carreras.id_carrera')
-        ->where('alumno.id_procesos',1)
+        ->where('alumno.id_procesos',$proces)
         ->get();
 
         $documentos=DB::table('users')
         ->join('respuesta_doc','users.id','=','respuesta_doc.id_usuario')
         ->join('documentos','documentos.id','=','respuesta_doc.id_documentos')
-        ->where('documentos.id_proceso','1')
+        ->where('documentos.id_proceso',$proces)
         ->where('documentos.estatus','LIKE','%'.$estatus.'%')
         ->where('documentos.updated_at','LIKE','%'.$año.'%')
         ->get();
@@ -588,14 +404,14 @@ class documentosEstancia1AdminController extends Controller
         ->join('respuesta_doc','users.id','=','respuesta_doc.id_usuario')
         ->join('documentos','documentos.id','=','respuesta_doc.id_documentos')
         ->join('carta_aceptacion','documentos.id_c_aceptacion','=','carta_aceptacion.id')
-        ->where('documentos.id_proceso','1')
+        ->where('documentos.id_proceso',$proces)
         ->get();
 
         $doc_f04=DB::table('users')
         ->join('respuesta_doc','users.id','=','respuesta_doc.id_usuario')
         ->join('documentos','documentos.id','=','respuesta_doc.id_documentos')
         ->join('definicion_proyecto','documentos.id_d_proyecto','=','definicion_proyecto.id')
-        ->where('documentos.id_proceso','1')
+        ->where('documentos.id_proceso',$proces)
         ->get();
 
         $c_a   = ['carta_aceptacion' => $doc_f02];
@@ -606,13 +422,13 @@ class documentosEstancia1AdminController extends Controller
         ->join('respuesta_doc','users.id','=','respuesta_doc.id_usuario')
         ->join('documentos','documentos.id','=','respuesta_doc.id_documentos')
         ->join('cedula_registro','documentos.id_c_registro','=','cedula_registro.id')
-        ->where('documentos.id_proceso','1')
+        ->where('documentos.id_proceso',$proces)
         ->get();
         $doc_f05=DB::table('users')
         ->join('respuesta_doc','users.id','=','respuesta_doc.id_usuario')
         ->join('documentos','documentos.id','=','respuesta_doc.id_documentos')
         ->join('carta_liberacion','documentos.id_c_liberacion','=','carta_liberacion.id')
-        ->where('documentos.id_proceso','1')
+        ->where('documentos.id_proceso',$proces)
         ->get();
         $c_l   = ['carta_liberacion' => $doc_f05];
         $c_r   = ['cedula_registro' => $doc_f03];
@@ -622,13 +438,13 @@ class documentosEstancia1AdminController extends Controller
         ->join('respuesta_doc','users.id','=','respuesta_doc.id_usuario')
         ->join('documentos','documentos.id','=','respuesta_doc.id_documentos')
         ->join('carta_presentacion','documentos.id_c_presentacion','=','carta_presentacion.id')
-        ->where('documentos.id_proceso','1')
+        ->where('documentos.id_proceso',$proces)
         ->get();
         $doc_carga_horaria=DB::table('users')
         ->join('respuesta_doc','users.id','=','respuesta_doc.id_usuario')
         ->join('documentos','documentos.id','=','respuesta_doc.id_documentos')
         ->join('carga_horaria','documentos.id_c_horaria','=','carga_horaria.id')
-        ->where('documentos.id_proceso','1')
+        ->where('documentos.id_proceso',$proces)
         ->get();
         $c_p   = ['carta_presentacion' => $doc_carta_presentacion];
         $c_h   = ['carga_horaria' => $doc_carga_horaria];
@@ -638,36 +454,59 @@ class documentosEstancia1AdminController extends Controller
         ->join('respuesta_doc','users.id','=','respuesta_doc.id_usuario')
         ->join('documentos','documentos.id','=','respuesta_doc.id_documentos')
         ->join('constancia_derecho','documentos.id_c_derecho','=','constancia_derecho.id')
-        ->where('documentos.id_proceso','1')
+        ->where('documentos.id_proceso',$proces)
         ->get();
         $doc_carta_responsiva=DB::table('users')
         ->join('respuesta_doc','users.id','=','respuesta_doc.id_usuario')
         ->join('documentos','documentos.id','=','respuesta_doc.id_documentos')
         ->join('carta_responsiva','documentos.id_c_responsiva','=','carta_responsiva.id')
-        ->where('documentos.id_proceso','1')
+        ->where('documentos.id_proceso',$proces)
         ->get();
         $c_d   = ['constancia_derecho' => $doc_constancia_derecho];
         $c_res   = ['carta_responsiva' => $doc_carta_responsiva];
         $datos4 = Arr::collapse([$c_d,$c_res]);
 
-        $alumnos = DB::table('alumno')
-        ->where('id_procesos','1')
+        $doc_carta_compromiso=DB::table('users')
+        ->join('respuesta_doc','users.id','=','respuesta_doc.id_usuario')
+        ->join('documentos','documentos.id','=','respuesta_doc.id_documentos')
+        ->join('carta_compromiso','documentos.id_c_compromiso','=','carta_compromiso.id')
+        ->where('documentos.id_proceso',$proces)
         ->get();
 
-        return view('nombres.Buscar_estancia1',['nombres'=>$nombres,'texto'=>$texto,'estatus'=>$estatus,'año'=>$año,'documentos'=>$users0,'documentos1'=>$datos,'documentos2'=>$datos1,'documentos3'=>$datos2,'documentos4'=>$datos3,'documentos5'=>$datos4,'alumnos'=>$alumnos]);
+        $doc_reporte_mensual=DB::table('users')
+        ->join('respuesta_doc','users.id','=','respuesta_doc.id_usuario')
+        ->join('documentos','documentos.id','=','respuesta_doc.id_documentos')
+        ->join('reporte_mensual','documentos.id_r_mensual','=','reporte_mensual.id')
+        ->where('documentos.id_proceso',$proces)
+        ->get(); 
+        
+        $r_m   = ['reporte_mensual' => $doc_reporte_mensual];
+        $c_com   = ['carta_compromiso' => $doc_carta_compromiso];
+        $datos6 = Arr::collapse([$c_com,$r_m]);        
+
+        $alumnos = DB::table('alumno')
+        ->where('id_procesos',$proces)
+        ->get();
+
+        return view('nombres.Buscar_estancia1',['nombres'=>$nombres,'texto'=>$texto,'estatus'=>$estatus,'año'=>$año,
+        'documentos'=>$users0,'documentos1'=>$datos,'documentos2'=>$datos1,'documentos3'=>$datos2,
+        'documentos4'=>$datos3,'documentos5'=>$datos4,'alumnos'=>$alumnos,'proceso'=>$var,'documentos6'=>$datos6]);
     }
 
     //buscar usuario lleno cedula de registro
-    public function buscador_estancia1_c(Request $request){        
+    public function buscador_estancia1_c(Request $request,$proces,$name){//*optimizado
+        $var=[$proces,$name];    
         $texto   =trim($request->get('texto'));
+        $estatus =trim($request->get('estatus'));
+        $año     =trim($request->get('año'));
 
         $users0 = DB::table('users')
         ->join('respuesta', 'users.id', '=', 'respuesta.id_usuario')
         ->join('formulario', 'respuesta.id_formulario', '=', 'formulario.id')
         ->join('alumno', 'formulario.id_alumno', '=', 'alumno.id')
         ->join('carreras', 'alumno.id_carrera', '=', 'carreras.id_carrera')
-        ->where('alumno.id_procesos','1')
-        ->where('alumno.id_procesos','2')  
+        ->where('alumno.id_procesos',$proces)
+        ->where('alumno.id_procesos','0')  
         ->orWhere('alumno.nombres','LIKE','%'.$texto.'%')
         ->orWhere('alumno.ape_paterno','LIKE','%'.$texto.'%')
         ->orWhere('alumno.ape_materno','LIKE','%'.$texto.'%')
@@ -687,12 +526,13 @@ class documentosEstancia1AdminController extends Controller
         ->join('formulario', 'respuesta.id_formulario', '=', 'formulario.id')
         ->join('alumno', 'formulario.id_alumno', '=', 'alumno.id')
         ->join('carreras', 'alumno.id_carrera', '=', 'carreras.id_carrera')
+        ->where('alumno.id_procesos',$proces)
         ->get();
 
         $documentos=DB::table('users')
         ->join('respuesta_doc','users.id','=','respuesta_doc.id_usuario')
         ->join('documentos','documentos.id','=','respuesta_doc.id_documentos')
-        ->where('documentos.id_proceso','1')
+        ->where('documentos.id_proceso',$proces)
         ->get();
 
         $users1   = ['usuarios' => $users];
@@ -703,14 +543,14 @@ class documentosEstancia1AdminController extends Controller
         ->join('respuesta_doc','users.id','=','respuesta_doc.id_usuario')
         ->join('documentos','documentos.id','=','respuesta_doc.id_documentos')
         ->join('carta_aceptacion','documentos.id_c_aceptacion','=','carta_aceptacion.id')
-        ->where('documentos.id_proceso','1')
+        ->where('documentos.id_proceso',$proces)
         ->get();
 
         $doc_f04=DB::table('users')
         ->join('respuesta_doc','users.id','=','respuesta_doc.id_usuario')
         ->join('documentos','documentos.id','=','respuesta_doc.id_documentos')
         ->join('definicion_proyecto','documentos.id_d_proyecto','=','definicion_proyecto.id')
-        ->where('documentos.id_proceso','1')
+        ->where('documentos.id_proceso',$proces)
         ->get();
 
         $c_a   = ['carta_aceptacion' => $doc_f02];
@@ -720,13 +560,13 @@ class documentosEstancia1AdminController extends Controller
         ->join('respuesta_doc','users.id','=','respuesta_doc.id_usuario')
         ->join('documentos','documentos.id','=','respuesta_doc.id_documentos')
         ->join('cedula_registro','documentos.id_c_registro','=','cedula_registro.id')
-        ->where('documentos.id_proceso','1')
+        ->where('documentos.id_proceso',$proces)
         ->get();
         $doc_f05=DB::table('users')
         ->join('respuesta_doc','users.id','=','respuesta_doc.id_usuario')
         ->join('documentos','documentos.id','=','respuesta_doc.id_documentos')
         ->join('carta_liberacion','documentos.id_c_liberacion','=','carta_liberacion.id')
-        ->where('documentos.id_proceso','1')
+        ->where('documentos.id_proceso',$proces)
         ->get();
         $c_l   = ['carta_liberacion' => $doc_f05];
         $c_r   = ['cedula_registro' => $doc_f03];
@@ -736,13 +576,13 @@ class documentosEstancia1AdminController extends Controller
         ->join('respuesta_doc','users.id','=','respuesta_doc.id_usuario')
         ->join('documentos','documentos.id','=','respuesta_doc.id_documentos')
         ->join('carta_presentacion','documentos.id_c_presentacion','=','carta_presentacion.id')
-        ->where('documentos.id_proceso','1')
+        ->where('documentos.id_proceso',$proces)
         ->get();
         $doc_carga_horaria=DB::table('users')
         ->join('respuesta_doc','users.id','=','respuesta_doc.id_usuario')
         ->join('documentos','documentos.id','=','respuesta_doc.id_documentos')
         ->join('carga_horaria','documentos.id_c_horaria','=','carga_horaria.id')
-        ->where('documentos.id_proceso','1')
+        ->where('documentos.id_proceso',$proces)
         ->get();
         $c_p   = ['carta_presentacion' => $doc_carta_presentacion];
         $c_h   = ['carga_horaria' => $doc_carga_horaria];
@@ -752,18 +592,23 @@ class documentosEstancia1AdminController extends Controller
         ->join('respuesta_doc','users.id','=','respuesta_doc.id_usuario')
         ->join('documentos','documentos.id','=','respuesta_doc.id_documentos')
         ->join('constancia_derecho','documentos.id_c_derecho','=','constancia_derecho.id')
-        ->where('documentos.id_proceso','1')
+        ->where('documentos.id_proceso',$proces)
         ->get();
         $doc_carta_responsiva=DB::table('users')
         ->join('respuesta_doc','users.id','=','respuesta_doc.id_usuario')
         ->join('documentos','documentos.id','=','respuesta_doc.id_documentos')
         ->join('carta_responsiva','documentos.id_c_responsiva','=','carta_responsiva.id')
-        ->where('documentos.id_proceso','1')
+        ->where('documentos.id_proceso',$proces)
         ->get();
         $c_d   = ['constancia_derecho' => $doc_constancia_derecho];
         $c_res   = ['carta_responsiva' => $doc_carta_responsiva];
         $datos4 = Arr::collapse([$c_d,$c_res]);
+        $alumnos = DB::table('alumno')
+        ->where('id_procesos',$proces)
+        ->get();
 
-        return view('nombres.Buscar_estancia1_c',['nombres'=>$nombres,'texto'=>$texto,'documentos'=>$users0,'documentos1'=>$datos,'documentos2'=>$datos1,'documentos3'=>$datos2,'documentos4'=>$datos3,'documentos5'=>$datos4]);
+        return view('nombres.Buscar_estancia1',['nombres'=>$nombres,'texto'=>$texto,'estatus'=>$estatus,'año'=>$año,
+        'documentos'=>$users0,'documentos1'=>$datos,'documentos2'=>$datos1,'documentos3'=>$datos2,
+        'documentos4'=>$datos3,'documentos5'=>$datos4,'alumnos'=>$alumnos,'proceso'=>$var]);
     }
 }

@@ -38,10 +38,32 @@
 				@csrf
 					<div class="row">
 							<div class="col-12 p-0">
-									<a href="{{ route('documentoEstancia1Admin.index') }}" class="btn "  ><i class="zmdi zmdi-arrow-left"></i></a>
+									<a href="{{ route('documentoEstancia1Admin.index',$id['#proces']) }}" class="btn "  ><i class="zmdi zmdi-arrow-left"></i></a>
 							</div>
 							<div class="col-12 p-1">
-								<input type="text" name="observaciones" value="{{$dato->observaciones_c_h}}" class="observaciones" >
+								@switch($id['#doc'])
+									@case(1)<input type="text" name="observaciones" value="{{$dato->observaciones_c_h}}" class="observaciones" >
+									@break
+									@case(2)<input type="text" name="observaciones" value="{{$dato->observaciones_c_d}}" class="observaciones" >
+									@break
+									@case(3)<input type="text" name="observaciones" value="{{$dato->observaciones_c_r}}" class="observaciones" >
+									@break
+									@case(4)<input type="text" name="observaciones" value="{{$dato->observaciones_c_p}}" class="observaciones" >
+									@break
+									@case(5)<input type="text" name="observaciones" value="{{$dato->observaciones}}" class="observaciones" >
+									@break
+									@case(6)<input type="text" name="observaciones" value="{{$dato->observaciones_c_r}}" class="observaciones" >
+									@break
+									@case(7)<input type="text" name="observaciones" value="{{$dato->observaciones_d_p}}" class="observaciones" >
+									@break
+									@case(8)<input type="text" name="observaciones" value="{{$dato->observaciones_c_l}}" class="observaciones" >
+									@break
+									@case(9)<input type="text" name="observaciones" value="{{$dato->observaciones_c_c}}" class="observaciones" >
+									@break
+									@case(10)<input type="text" name="observaciones" value="{{$dato->observaciones_r_m}}" class="observaciones" >
+									@break
+									@default
+								@endswitch
 							</div>
 					</div>
 				</form>

@@ -8,7 +8,7 @@
     <body>
         <!-- Define header and footer blocks before your content -->
         <header>
-         <img style="padding:2px;" src="{{ public_path("firma/registrodefinicion.png" )}}" alt="Arriba" width='100%' />
+          <img style="padding:2px;" src="{{ public_path("firma/registrodefinicion.png" )}}" alt="Arriba" width='100%' />
         </header>
 
         <footer>
@@ -21,7 +21,7 @@
                         @forelse ($datos as $datodp)
                                 <table class="table table-borderless p-0 m-1" >
                                     <tr class="p-0 m-0">
-                                        <td class="p-0"><div><div class="titulo text-center"> </div><div class="subT text-center"><small>[Estancia {{$datodp->id_proceso}}] </small></div></div></td>
+                                        <td class="p-0"><div><div class="titulo text-center"> </div><div class="subT text-center"><small>[{{$proceso}}] </small></div></div></td>
                                         <td class="p-0"><div class="subT text-right" style="height: 5px;"><small>Fecha:</small></div></div></td>
                                         <td colspan="2" class="p-0" style="height: 5px;"><div><div class="text-center" style="border-bottom: 1px solid black;"><small>Cancun, Quintana Roo a <?php setlocale(LC_TIME, $fecha);echo strftime(" %d de %B del %Y");?></small> </div><div class="subT text-center"><small>LOCALIDAD, ESTADO Y FECHA (DD/MM/AA)</small></div></div></td>
                                         

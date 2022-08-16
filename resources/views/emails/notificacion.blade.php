@@ -7,10 +7,9 @@
     <title>Document</title>
 </head>
 <body>
+    <h3>Estimado estudiante:</h3>
     @switch($status)
         @case(1)<!--Aceptado-->
-        <h1>Estatus de tu documento</h1>
-        <p>Estimado estudiante </p>
         <p>Este documento "{{$nameDoc}}" fue aceptado</p>
             @break
         @case(2)<!--Obervaciones-->

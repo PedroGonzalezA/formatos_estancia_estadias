@@ -36,26 +36,26 @@
 		<div class="container p-2">
             <ul class="list-group">
                 <li class="list-group-item">
-					<a href="{{ route('estancia1.index') }}">
+					<a href="{{ route('estancia1.index',[1]) }}">
 						<button type="button" class="btn btn-outline-dark btnFormato" ><i class="zmdi zmdi-file zmdi-hc-lg"></i> Formatos estancias I</button>
 					</a>
 				<li class="list-group-item">
-					<a href="{{ route('estancia2.index') }}">
+					<a href="{{ route('estancia1.index',[2]) }}">
 						<button type="button" class="btn btn-outline-dark btnFormato" ><i class="zmdi zmdi-file zmdi-hc-lg"></i> Formatos estancias II</button>
 					</a>					
                 </li>
                 <li class="list-group-item">
-                    <a href="{{ route('estadia.index') }}">
+                    <a href="{{ route('estancia1.index',[3]) }}">
 						<button type="button" class="btn btn-outline-dark btnFormato" ><i class="zmdi zmdi-file zmdi-hc-lg"></i> Formatos estadías</button>
 					</a>
                 </li>
 				<li class="list-group-item">
-                    <a href="{{ route('estadia_nacionales.index') }}">
+                    <a href="{{ route('estancia1.index',[4]) }}">
 						<button type="button" class="btn btn-outline-dark btnFormato" ><i class="zmdi zmdi-file zmdi-hc-lg"></i> Formatos estadías nacionales</button>
 					</a>
                 </li>
 				<li class="list-group-item">
-                    <a href="{{ route('servicio_sociales.index') }}">
+                    <a href="{{ route('estancia1.index',[5]) }}">
 						<button type="button" class="btn btn-outline-dark btnFormato" ><i class="zmdi zmdi-file zmdi-hc-lg"></i> Formatos servicio social (Terapia fisíca)</button>
 					</a>
                 </li>

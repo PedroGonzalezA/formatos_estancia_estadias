@@ -31,15 +31,20 @@
 		<!-- Content page -->
 		<div class="container p-3">
 			<div class="page-header">
-			  <h2 class="text-titles">Observaciones <small>(Carga horaria Estancia)</small></h2>
+			  <h2 class="text-titles">Observaciones <small></small></h2>
 			</div>
 		</div>
-		<div class="observaciones">
-            @forelse ($datos as $dato)
-                    {{$dato->observaciones_c_h}}, cancele el documento y vuelva a subirlo con los cambios antes mencionados.
-				@empty
-			@endforelse
-        </div>
+		<div class="row">
+			<div class="col-12 p-0">
+				<a href="{{ route('estancia1.index',[$proceso]) }}" class="btn "  ><i class="zmdi zmdi-arrow-left"></i></a>
+			</div>
+			<div class="col-12 p-1">
+				@forelse ($datos as $dato)
+						{{$dato->observacion}}, cancele el documento y vuelva a subirlo con los cambios antes mencionados.
+					@empty
+				@endforelse
+			</div>
+		</div>
 	</section>
 	
 	<!--====== Scripts -->

@@ -39,19 +39,19 @@
 					</a>
 					<ul class="list-unstyled full-box">
 						<li>
-							<a href="{{ route('estancia1.index') }}"></i> Estancias I</a> <!--- cambio para dividir estancias 1 y 2  --->
+							<a href="{{ route('estancia1.index',[1]) }}"></i> Estancias I</a> <!--- cambio para dividir estancias 1 y 2  --->
 						</li>
 						<li>
-							<a href="{{ route('estancia2.index') }}"></i> Estancias II</a> <!--- cambio para dividir estancias 1 y 2  --->
+							<a href="{{ route('estancia1.index',[2]) }}"></i> Estancias II</a> <!--- cambio para dividir estancias 1 y 2  --->
 						</li>
                         <li>
-							<a href="{{ route('estadia.index') }}"></i> Estadías</a>
+							<a href="{{ route('estancia1.index',[3]) }}"></i> Estadías</a>
 						</li>
 						<li>
-							<a href="{{ route('estadia_nacionales.index') }}"></i> Estadías nacionales</a>
+							<a href="{{ route('estancia1.index',[4]) }}"></i> Estadías nacionales</a>
 						</li>
 						<li>
-							<a href="{{ route('servicio_sociales.index') }}"></i> Servicio social</a>
+							<a href="{{ route('estancia1.index',[5]) }}"></i> Servicio social</a>
 						</li>
 					</ul>
 				</li>
