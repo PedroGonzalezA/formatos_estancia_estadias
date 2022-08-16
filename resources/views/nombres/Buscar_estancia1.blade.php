@@ -723,7 +723,11 @@
                                                             
                                                     @endswitch
                                                     <div class="col-6 p-1">
+
                                                         <form method="post" action="{{ route('ver_documento.index',[$respuestaCR->nombre_c_r,$proceso[0]]) }}">
+
+
+
                                                             @csrf
                                                             <button type="submit" class="btn btn-primary btnVer" > <i class="zmdi zmdi-eye zmdi-hc-lg"></i> Ver</button>
                                                         </form>	
